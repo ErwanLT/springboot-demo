@@ -23,7 +23,8 @@
 	</developers>
     <modules>
         <module>spring-batch-tutorial</module>
-    </modules>
+		<module>prometheus-tutorial</module>
+	</modules>
     <scm>
 		<connection/>
 		<developerConnection/>
