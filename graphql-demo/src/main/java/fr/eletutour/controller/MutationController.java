@@ -6,9 +6,9 @@ import fr.eletutour.service.ArticleService;
 import fr.eletutour.service.AuthorService;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
 
-@RestController
+@Controller
 public class MutationController {
     private final AuthorService authorService;
     private final ArticleService articleService;
