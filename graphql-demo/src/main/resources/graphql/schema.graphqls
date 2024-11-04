@@ -1,0 +1,25 @@
+type Author {
+    id: ID!
+    name: String!
+    bio: String
+    articles: [Article]
+}
+
+type Article {
+    id: ID!
+    title: String!
+    content: String!
+    author: Author!
+}
+
+type Query {
+    getAuthors: [Author]
+    getAuthorById(id: ID!): Author
+    getArticles: [Article]
+    getArticleById(id: ID!): Article
+}
+
+type Mutation {
+    createAuthor(name: String!, bio: String): Author
+    createArticle(title: String!, content: String!, authorId: ID!): Article
+}
