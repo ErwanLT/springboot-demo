@@ -1,0 +1,7 @@
+mutation createAuthour ($name: String!, $bio: String) {
+    createAuthor (name: $name, bio: $bio) {
+        id
+        name
+        bio
+    }
+}

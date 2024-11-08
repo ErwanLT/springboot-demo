@@ -1,33 +1,26 @@
 package fr.eletutour.controller;
 
 import fr.eletutour.model.Article;
-import fr.eletutour.model.Author;
 import fr.eletutour.service.ArticleService;
-import fr.eletutour.service.AuthorService;
 import org.springframework.graphql.data.method.annotation.Argument;
+import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
 
 import java.util.List;
 
 @Controller
-public class QueryController {
-    private final AuthorService authorService;
+public class ArticleController {
+
     private final ArticleService articleService;
 
-    public QueryController(AuthorService authorService, ArticleService articleService) {
-        this.authorService = authorService;
+    public ArticleController(ArticleService articleService) {
         this.articleService = articleService;
     }
 
-    @QueryMapping
-    public List<Author> getAuthors() {
-        return authorService.getAuthors();
-    }
-
-    @QueryMapping
-    public Author getAuthorById(@Argument Long id) {
-        return authorService.getAuthorById(id).orElse(null);
+    @MutationMapping
+    public Article createArticle(@Argument String title, @Argument String content, @Argument Long authorId) {
+        return articleService.createArticle(title, content, authorId);
     }
 
     @QueryMapping
