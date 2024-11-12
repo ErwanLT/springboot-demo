@@ -24,7 +24,7 @@
     <modules>
         <module>spring-batch-tutorial</module>
 		<module>prometheus-tutorial</module>
-        <module>graphql-demo</module>
+        <module>graphql-tutorial</module>
     </modules>
     <scm>
 		<connection/>

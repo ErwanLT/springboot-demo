@@ -9,7 +9,7 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>graphql-demo</artifactId>
+    <artifactId>graphql-tutorial</artifactId>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
