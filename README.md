@@ -15,5 +15,5 @@ This tutorial teach you how to use these tool for monitoring your application.
 
 https://www.sfeir.dev/back/superviser-votre-application-spring-boot/
 
-## [GraphQL](graphql-demo)
+## [GraphQL](graphql-tutorial)
 Tutorial for integrating GraphQL in a Springboot application
