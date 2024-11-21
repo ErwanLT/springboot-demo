@@ -1,5 +1,6 @@
 package fr.eletutour.controller;
 
+import fr.eletutour.exception.AuthorNotFoundException;
 import fr.eletutour.model.Author;
 import fr.eletutour.service.AuthorService;
 import org.springframework.graphql.data.method.annotation.Argument;
@@ -29,7 +30,7 @@ public class AuthorController {
     }
 
     @QueryMapping
-    public Author getAuthorById(@Argument Long id) {
-        return authorService.getAuthorById(id).orElse(null);
+    public Author getAuthorById(@Argument Long id) throws AuthorNotFoundException {
+        return authorService.getAuthorById(id);
     }
 }

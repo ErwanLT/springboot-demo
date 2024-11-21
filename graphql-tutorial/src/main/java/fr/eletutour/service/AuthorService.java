@@ -1,6 +1,7 @@
 package fr.eletutour.service;
 
 import fr.eletutour.dao.AuthorRepository;
+import fr.eletutour.exception.AuthorNotFoundException;
 import fr.eletutour.model.Author;
 import org.springframework.stereotype.Service;
 
@@ -19,8 +20,8 @@ public class AuthorService {
         return authorRepository.findAll();
     }
 
-    public Optional<Author> getAuthorById(Long id) {
-        return authorRepository.findById(id);
+    public Author getAuthorById(Long id) throws AuthorNotFoundException {
+        return authorRepository.findById(id).orElseThrow( () -> new AuthorNotFoundException("Author non trouvé pour l'id : " + id));
     }
 
     public Author createAuthor(String name, String bio) {

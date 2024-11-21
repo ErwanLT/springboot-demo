@@ -1,5 +1,7 @@
 package fr.eletutour.controller;
 
+import fr.eletutour.exception.ArticleNotFoundException;
+import fr.eletutour.exception.AuthorNotFoundException;
 import fr.eletutour.model.Article;
 import fr.eletutour.service.ArticleService;
 import org.springframework.graphql.data.method.annotation.Argument;
@@ -19,7 +21,7 @@ public class ArticleController {
     }
 
     @MutationMapping
-    public Article createArticle(@Argument String title, @Argument String content, @Argument Long authorId) {
+    public Article createArticle(@Argument String title, @Argument String content, @Argument Long authorId) throws AuthorNotFoundException {
         return articleService.createArticle(title, content, authorId);
     }
 
@@ -29,7 +31,7 @@ public class ArticleController {
     }
 
     @QueryMapping
-    public Article getArticleById(@Argument Long id) {
-        return articleService.getArticleById(id).orElse(null);
+    public Article getArticleById(@Argument Long id) throws ArticleNotFoundException {
+        return articleService.getArticleById(id);
     }
 }
