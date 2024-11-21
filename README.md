@@ -1,23 +1,22 @@
 # Springboot Démo
-
-Demo project for springboot related to article content
+Projet démo pour Spring Boot et ses possibilités.
 
 ## [Spring batch](spring-batch-tutorial)
-Tutorial for implementing springbatch
-
-The batch will update users who are inactive if not logged since 6 month
+Implementer Spring Batch et apprenez à mettre en place des traitement périodic dans votre application Spring Boot
 
 [article](https://www.sfeir.dev/back/planifier-des-taches-avec-spring-batch/)
 
 ## [Prometheus](prometheus-tutorial)
-Tutorial for using prometheus and grafana.<br>
-This tutorial teach you how to use these tool for monitoring your application.
+Utiliser Prometheus et Grafana afin d'exposer des metric et monitorer votre application.
 
 [article](https://www.sfeir.dev/back/superviser-votre-application-spring-boot/)
 
 ## [GraphQL](graphql-tutorial)
-Tutorial for integrating GraphQL in a Springboot application
+Tutoriel sur comment intégré GraphQL à votre application Spring Boot
 
-- [part 1]()
-- [part 2]()
-- [part 3]()
+- [parttie 1]()
+- [parttie 2]()
+- [parttie 3]()
+- [parttie 4]()
+- [parttie 5]()
+- [parttie 6]()
