@@ -14,9 +14,9 @@ Utiliser Prometheus et Grafana afin d'exposer des metric et monitorer votre appl
 ## [GraphQL](graphql-tutorial)
 Tutoriel sur comment intégré GraphQL à votre application Spring Boot
 
-- [parttie 1]()
-- [parttie 2]()
-- [parttie 3]()
-- [parttie 4]()
-- [parttie 5]()
-- [parttie 6]()
+- [partie 1]()
+- [partie 2]()
+- [partie 3]()
+- [partie 4]()
+- [partie 5]()
+- [partie 6]()
