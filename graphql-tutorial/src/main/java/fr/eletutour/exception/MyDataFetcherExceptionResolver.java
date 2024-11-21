@@ -14,10 +14,6 @@ public class MyDataFetcherExceptionResolver extends DataFetcherExceptionResolver
 
     private final Logger LOGGER = LoggerFactory.getLogger(MyDataFetcherExceptionResolver.class);
 
-    public MyDataFetcherExceptionResolver() {
-        LOGGER.info("MyDataFetcherExceptionResolver actif");
-    }
-
     @Override
     protected GraphQLError resolveToSingleError(Throwable ex, DataFetchingEnvironment env) {
         LOGGER.error(ex.getMessage());
@@ -37,6 +33,11 @@ public class MyDataFetcherExceptionResolver extends DataFetcherExceptionResolver
                     .location(env.getField().getSourceLocation())
                     .build();
         }
-        return null;
+        return GraphqlErrorBuilder.newError()
+                .errorType(ErrorType.INTERNAL_ERROR)
+                .message(ex.getMessage())
+                .path(env.getExecutionStepInfo().getPath())
+                .location(env.getField().getSourceLocation())
+                .build();
     }
 }
