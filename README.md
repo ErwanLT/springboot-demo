@@ -12,7 +12,7 @@ Utiliser Prometheus et Grafana afin d'exposer des metric et monitorer votre appl
 [article](https://www.sfeir.dev/back/superviser-votre-application-spring-boot/)
 
 ## [GraphQL](graphql-tutorial)
-Tutoriel sur comment intégré GraphQL à votre application Spring Boot
+Tutoriel sur comment intégrer GraphQL à votre application Spring Boot
 
 - [partie 1]()
 - [partie 2]()
@@ -20,3 +20,8 @@ Tutoriel sur comment intégré GraphQL à votre application Spring Boot
 - [partie 4]()
 - [partie 5]()
 - [partie 6]()
+
+
+## [Security](security-tutorial)
+Tutoriels sur comment sécuriser vos API avec Spring Security
+## [Basic Auth](security-tutorial/basic-auth-tutorial)
