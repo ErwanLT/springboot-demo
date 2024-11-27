@@ -24,4 +24,5 @@ Tutoriel sur comment intégrer GraphQL à votre application Spring Boot
 
 ## [Security](security-tutorial)
 Tutoriels sur comment sécuriser vos API avec Spring Security
-## [Basic Auth](security-tutorial/basic-auth-tutorial)
+### [Basic Auth](security-tutorial/basic-auth-tutorial)
+Implémentation de Basic Auth dans une application Spring Boot
