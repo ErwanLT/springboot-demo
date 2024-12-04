@@ -42,3 +42,5 @@ En utilisant `DataFetcherExceptionResolver`, qui centralise la gestion des erreu
 Tutoriels sur comment sécuriser vos API avec Spring Security
 ### [Basic Auth](security-tutorial/basic-auth-tutorial)
 Implémentation de Basic Auth dans une application Spring Boot
+### [JWT](security-tutorial/jwt-tutorial)
+Implémentation de JWT dans une application Spring Boot
