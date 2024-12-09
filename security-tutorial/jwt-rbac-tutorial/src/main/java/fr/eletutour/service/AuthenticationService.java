@@ -19,22 +19,22 @@ import java.util.Optional;
 public class AuthenticationService {
 
     private final UserRepository userRepository;
-    private final RoleRepository roleRepository;
+    private final RoleService roleService;
 
     private final PasswordEncoder passwordEncoder;
 
     private final AuthenticationManager authenticationManager;
 
-    public AuthenticationService(UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder, AuthenticationManager authenticationManager) {
+    public AuthenticationService(UserRepository userRepository, RoleRepository roleRepository, RoleService roleService, PasswordEncoder passwordEncoder, AuthenticationManager authenticationManager) {
         this.userRepository = userRepository;
-        this.roleRepository = roleRepository;
+        this.roleService = roleService;
         this.passwordEncoder = passwordEncoder;
         this.authenticationManager = authenticationManager;
     }
 
     public User signup(RegisterUserDto input) {
 
-        Optional<Role> optionalRole = roleRepository.findByName(RoleEnum.USER);
+        Optional<Role> optionalRole = roleService.findByName(RoleEnum.USER);
 
         if (optionalRole.isEmpty()) {
             return null;
