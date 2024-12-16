@@ -6,7 +6,8 @@ Implementer Spring Batch et apprenez à mettre en place des traitement périodic
 
 [article](https://www.sfeir.dev/back/planifier-des-taches-avec-spring-batch/)
 
-## [Prometheus](prometheus-tutorial)
+## [Monitoring](monitoring-tutorial)
+### [Prometheus](monitoring-tutorial/prometheus-tutorial)
 Utiliser Prometheus et Grafana afin d'exposer des metric et monitorer votre application.
 
 [article](https://www.sfeir.dev/back/superviser-votre-application-spring-boot/)

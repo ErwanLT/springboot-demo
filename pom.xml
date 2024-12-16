@@ -23,11 +23,12 @@
 	</developers>
     <modules>
         <module>spring-batch-tutorial</module>
-		<module>prometheus-tutorial</module>
         <module>graphql-tutorial</module>
 		<module>security-tutorial</module>
 		<module>security-tutorial/basic-auth-tutorial</module>
-	</modules>
+        <module>monitoring-tutorial</module>
+		<module>monitoring-tutorial/prometheus-tutorial</module>
+    </modules>
     <scm>
 		<connection/>
 		<developerConnection/>
