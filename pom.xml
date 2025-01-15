@@ -28,6 +28,7 @@
 		<module>security-tutorial/basic-auth-tutorial</module>
         <module>monitoring-tutorial</module>
 		<module>monitoring-tutorial/prometheus-tutorial</module>
+        <module>hateoas-tutorial</module>
     </modules>
     <scm>
 		<connection/>
