@@ -10,6 +10,7 @@
     </parent>
     <packaging>pom</packaging>
     <modules>
+        <module>basic-auth-tutorial</module>
         <module>jwt-tutorial</module>
         <module>jwt-rbac-tutorial</module>
     </modules>
