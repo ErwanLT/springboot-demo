@@ -5,17 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>fr.eletutour</groupId>
-        <artifactId>springboot-demo</artifactId>
+        <artifactId>database-versioning-tutorial</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <packaging>pom</packaging>
 
-    <modules>
-        <module>flyway-tutorial</module>
-        <module>liquibase-tutorial</module>
-    </modules>
-
-    <artifactId>database-versioning-tutorial</artifactId>
+    <artifactId>liquibase-tutorial</artifactId>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
