@@ -9,5 +9,6 @@
         <sqlFile path="db/changelog/changesets/001_create_tables.sql" />
     </changeSet>
     <include file="db/changelog/changesets/002_add_users_table.xml"/>
+    <include file="db/changelog/changesets/003_add_mail_column.json"/>
 
 </databaseChangeLog>
