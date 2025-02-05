@@ -43,8 +43,12 @@ En utilisant `DataFetcherExceptionResolver`, qui centralise la gestion des erreu
 Tutoriels sur comment sécuriser vos API avec Spring Security
 ### [Basic Auth](security-tutorial/basic-auth-tutorial)
 Implémentation de Basic Auth dans une application Spring Boot
+
+[article](https://www.sfeir.dev/back/securisez-vos-api-avec-spring-security-basic-auth/)
 ### [JWT](security-tutorial/jwt-tutorial)
 Implémentation de JWT dans une application Spring Boot
+
+[article](https://www.sfeir.dev/back/securisez-vos-api-avec-spring-security-jwt/)
 ### [RBAC](security-tutorial/jwt-rbac-tutorial)
 Implementation d'une sécurité basée sur le contrôle de role avec JWT
 
@@ -53,3 +57,4 @@ Tutoriel sur comment versionner votre base de données
 ### [Flyway](database-versioning-tutorial/flyway-tutorial)
 Tutoriel sur comment utiliser Flyway pour versionner votre base de données
 ### [Liquibase](database-versioning-tutorial/liquibase-tutorial)
+Tutoriel sur comment utiliser Liquibase pour versionner votre base de données
