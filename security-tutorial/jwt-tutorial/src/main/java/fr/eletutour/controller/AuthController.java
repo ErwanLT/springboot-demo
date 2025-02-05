@@ -1,9 +1,9 @@
 package fr.eletutour.controller;
 
+import fr.eletutour.dao.entities.User;
 import fr.eletutour.model.LoginResponse;
 import fr.eletutour.model.LoginUserDto;
 import fr.eletutour.model.RegisterUserDto;
-import fr.eletutour.dao.entities.User;
 import fr.eletutour.service.AuthenticationService;
 import fr.eletutour.service.JwtService;
 import org.springframework.http.ResponseEntity;

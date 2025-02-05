@@ -1,8 +1,5 @@
 package fr.eletutour.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -11,6 +8,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import org.springframework.hateoas.RepresentationModel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Author extends RepresentationModel<Author> {

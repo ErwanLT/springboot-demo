@@ -1,9 +1,9 @@
 package fr.eletutour.service;
 
-import fr.eletutour.model.LoginUserDto;
-import fr.eletutour.model.RegisterUserDto;
 import fr.eletutour.dao.entities.User;
 import fr.eletutour.dao.repository.UserRepository;
+import fr.eletutour.model.LoginUserDto;
+import fr.eletutour.model.RegisterUserDto;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;

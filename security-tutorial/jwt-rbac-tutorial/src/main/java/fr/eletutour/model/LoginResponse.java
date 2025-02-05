@@ -1,6 +1,5 @@
 package fr.eletutour.model;
 
-import fr.eletutour.dao.entities.User;
 import org.springframework.security.core.userdetails.UserDetails;
 
 public class LoginResponse {
