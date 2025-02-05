@@ -28,7 +28,8 @@
         <module>monitoring-tutorial</module>
         <module>hateoas-tutorial</module>
 		<module>database-versioning-tutorial</module>
-	</modules>
+        <module>chaos-monkey-tutorial</module>
+    </modules>
     <scm>
 		<connection/>
 		<developerConnection/>
