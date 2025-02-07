@@ -58,3 +58,6 @@ Tutoriel sur comment versionner votre base de données
 Tutoriel sur comment utiliser Flyway pour versionner votre base de données
 ### [Liquibase](database-versioning-tutorial/liquibase-tutorial)
 Tutoriel sur comment utiliser Liquibase pour versionner votre base de données
+
+## [Chaos Monkey](chaos-monkey-tutorial)
+Tutoriel sur comment utiliser Chaos Monkey pour tester la résilience de votre application
