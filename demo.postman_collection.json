@@ -18,12 +18,10 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8083/hello",
-									"protocol": "http",
+									"raw": "{{basicAuthURL}}/hello",
 									"host": [
-										"localhost"
+										"{{basicAuthURL}}"
 									],
-									"port": "8083",
 									"path": [
 										"hello"
 									]
@@ -37,12 +35,10 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8083/goodbye",
-									"protocol": "http",
+									"raw": "{{basicAuthURL}}/goodbye",
 									"host": [
-										"localhost"
+										"{{basicAuthURL}}"
 									],
-									"port": "8083",
 									"path": [
 										"goodbye"
 									]
@@ -110,12 +106,10 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8084/auth/signup",
-									"protocol": "http",
+									"raw": "{{jwtURL}}/auth/signup",
 									"host": [
-										"localhost"
+										"{{jwtURL}}"
 									],
-									"port": "8084",
 									"path": [
 										"auth",
 										"signup"
@@ -142,12 +136,10 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8084/auth/login",
-									"protocol": "http",
+									"raw": "{{jwtURL}}/auth/login",
 									"host": [
-										"localhost"
+										"{{jwtURL}}"
 									],
-									"port": "8084",
 									"path": [
 										"auth",
 										"login"
@@ -172,12 +164,10 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8084/hello",
-									"protocol": "http",
+									"raw": "{{jwtURL}}/hello",
 									"host": [
-										"localhost"
+										"{{jwtURL}}"
 									],
-									"port": "8084",
 									"path": [
 										"hello"
 									]
@@ -208,12 +198,10 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8085/auth/signup",
-									"protocol": "http",
+									"raw": "{{jwtRbacURL}}/auth/signup",
 									"host": [
-										"localhost"
+										"{{jwtRbacURL}}"
 									],
-									"port": "8085",
 									"path": [
 										"auth",
 										"signup"
@@ -240,12 +228,10 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8085/auth/login",
-									"protocol": "http",
+									"raw": "{{jwtRbacURL}}/auth/login",
 									"host": [
-										"localhost"
+										"{{jwtRbacURL}}"
 									],
-									"port": "8085",
 									"path": [
 										"auth",
 										"login"
@@ -272,12 +258,10 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8085/auth/login",
-									"protocol": "http",
+									"raw": "{{jwtRbacURL}}/auth/login",
 									"host": [
-										"localhost"
+										"{{jwtRbacURL}}"
 									],
-									"port": "8085",
 									"path": [
 										"auth",
 										"login"
@@ -302,12 +286,10 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8085/users/me",
-									"protocol": "http",
+									"raw": "{{jwtRbacURL}}/users/me",
 									"host": [
-										"localhost"
+										"{{jwtRbacURL}}"
 									],
-									"port": "8085",
 									"path": [
 										"users",
 										"me"
@@ -332,12 +314,10 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8085/users",
-									"protocol": "http",
+									"raw": "{{jwtRbacURL}}/users",
 									"host": [
-										"localhost"
+										"{{jwtRbacURL}}"
 									],
-									"port": "8085",
 									"path": [
 										"users"
 									]
@@ -361,12 +341,10 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8086/authors",
-									"protocol": "http",
+									"raw": "{{hateoasURL}}/authors",
 									"host": [
-										"localhost"
+										"{{hateoasURL}}"
 									],
-									"port": "8086",
 									"path": [
 										"authors"
 									]
@@ -380,14 +358,11 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8086/authors/1",
-									"protocol": "http",
+									"raw": "{{hateoasURL}}authors/1",
 									"host": [
-										"localhost"
+										"{{hateoasURL}}authors"
 									],
-									"port": "8086",
 									"path": [
-										"authors",
 										"1"
 									]
 								}
@@ -405,12 +380,10 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8086/articles/1",
-									"protocol": "http",
+									"raw": "{{hateoasURL}}/articles/1",
 									"host": [
-										"localhost"
+										"{{hateoasURL}}"
 									],
-									"port": "8086",
 									"path": [
 										"articles",
 										"1"
@@ -425,12 +398,10 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8086/articles",
-									"protocol": "http",
+									"raw": "{{hateoasURL}}/articles",
 									"host": [
-										"localhost"
+										"{{hateoasURL}}"
 									],
-									"port": "8086",
 									"path": [
 										"articles"
 									]
@@ -451,12 +422,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8081/hello/Erwan",
-							"protocol": "http",
+							"raw": "{{prometheusURL}}/hello/Erwan",
 							"host": [
-								"localhost"
+								"{{prometheusURL}}"
 							],
-							"port": "8081",
 							"path": [
 								"hello",
 								"Erwan"
@@ -1449,9 +1418,34 @@
 	],
 	"variable": [
 		{
+			"key": "prometheusURL",
+			"value": "http://localhost:8081",
+			"type": "string"
+		},
+		{
+			"key": "basicAuthURL",
+			"value": "http://localhost:8083",
+			"type": "string"
+		},
+		{
+			"key": "jwtURL",
+			"value": "http://localhost:8084",
+			"type": "string"
+		},
+		{
+			"key": "jwtRbacURL",
+			"value": "http://localhost:8085",
+			"type": "string"
+		},
+		{
+			"key": "hateoasURL",
+			"value": "http://localhost:8086",
+			"type": "string"
+		},
+		{
 			"key": "chaosMonkeyURL",
 			"value": "http://localhost:8089",
-			"type": "default"
+			"type": "string"
 		}
 	]
 }
