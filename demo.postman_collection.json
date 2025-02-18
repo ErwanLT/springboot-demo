@@ -1,0 +1,1457 @@
+{
+	"info": {
+		"_postman_id": "9e15d3d9-d813-4018-9436-388826aa94da",
+		"name": "Spring Boot Démo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12559449"
+	},
+	"item": [
+		{
+			"name": "Security",
+			"item": [
+				{
+					"name": "basic auth",
+					"item": [
+						{
+							"name": "hello",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8083/hello",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"hello"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "goodbye",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8083/goodbye",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"goodbye"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"auth": {
+						"type": "basic",
+						"basic": [
+							{
+								"key": "password",
+								"value": "admin123",
+								"type": "string"
+							},
+							{
+								"key": "username",
+								"value": "admin",
+								"type": "string"
+							}
+						]
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"packages": {},
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"packages": {},
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "JWT",
+					"item": [
+						{
+							"name": "signup",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\":\"email@test.fr\",\n    \"password\":\"password\",\n    \"fullName\":\"Erwan\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8084/auth/signup",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8084",
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "login",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\":\"email@test.fr\",\n    \"password\":\"password\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8084/auth/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8084",
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "hello",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlbWFpbEB0ZXN0LmZyIiwiaWF0IjoxNzM4NzQ3OTg0LCJleHAiOjE3Mzg3NTE1ODR9.hixmDpiocFCceD2CLi4QFFEJA7MhbbZ4m0ZYfzCYXN0",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8084/hello",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8084",
+									"path": [
+										"hello"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "JWT RBAC",
+					"item": [
+						{
+							"name": "signup",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\":\"email@test.fr\",\n    \"password\":\"password\",\n    \"fullName\":\"Erwan\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8085/auth/signup",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "login",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\":\"email@test.fr\",\n    \"password\":\"password\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8085/auth/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "login super admin",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\":\"super.admin@email.com\",\n    \"password\":\"123456\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8085/auth/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "me",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlbWFpbEB0ZXN0LmZyIiwiaWF0IjoxNzM4NzQ4MjgxLCJleHAiOjE3Mzg3NTE4ODF9.hkFteP2TaD8zt2DUgf6HFOxua6_pRa1JhhxYAyxIllM",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8085/users/me",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"users",
+										"me"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "users",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdXBlci5hZG1pbkBlbWFpbC5jb20iLCJpYXQiOjE3Mzg3NDg1MDEsImV4cCI6MTczODc1MjEwMX0.BuIWzQig6FNmVwdN8h3ZsmJx-31aTu27iLK4DPlOyAk",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8085/users",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"users"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Hateoas",
+			"item": [
+				{
+					"name": "author",
+					"item": [
+						{
+							"name": "authors list",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8086/authors",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8086",
+									"path": [
+										"authors"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "author by id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8086/authors/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8086",
+									"path": [
+										"authors",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "article",
+					"item": [
+						{
+							"name": "article by id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8086/articles/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8086",
+									"path": [
+										"articles",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "article list",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8086/articles",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8086",
+									"path": [
+										"articles"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Prometheus",
+			"item": [
+				{
+					"name": "hello",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/hello/Erwan",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"hello",
+								"Erwan"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "chaosmonkey",
+			"item": [
+				{
+					"name": "watchers",
+					"item": [
+						{
+							"name": "watchers",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{chaosMonkeyURL}}/actuator/chaosmonkey/watchers",
+									"host": [
+										"{{chaosMonkeyURL}}"
+									],
+									"path": [
+										"actuator",
+										"chaosmonkey",
+										"watchers"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/actuator/chaosmonkey/watchers",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"actuator",
+												"chaosmonkey",
+												"watchers"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"controller\": \"<boolean>\",\n  \"restController\": \"<boolean>\",\n  \"service\": \"<boolean>\",\n  \"repository\": \"<boolean>\",\n  \"component\": \"<boolean>\",\n  \"restTemplate\": \"<boolean>\",\n  \"webClient\": \"<boolean>\",\n  \"actuatorHealth\": \"<boolean>\",\n  \"beans\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}"
+								}
+							]
+						},
+						{
+							"name": "update watchers",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"controller\": \"<boolean>\",\n  \"restController\": \"<boolean>\",\n  \"service\": \"<boolean>\",\n  \"repository\": \"<boolean>\",\n  \"component\": \"<boolean>\",\n  \"restTemplate\": \"<boolean>\",\n  \"webClient\": \"<boolean>\",\n  \"actuatorHealth\": \"<boolean>\",\n  \"beans\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{chaosMonkeyURL}}/actuator/chaosmonkey/watchers",
+									"host": [
+										"{{chaosMonkeyURL}}"
+									],
+									"path": [
+										"actuator",
+										"chaosmonkey",
+										"watchers"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "update watchers rest controller",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"controller\": false,\n  \"restController\": true,\n  \"service\": false,\n  \"repository\": false,\n  \"component\": false,\n  \"restTemplate\": false,\n  \"webClient\": false,\n  \"actuatorHealth\": false\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{chaosMonkeyURL}}/actuator/chaosmonkey/watchers",
+											"host": [
+												"{{chaosMonkeyURL}}"
+											],
+											"path": [
+												"actuator",
+												"chaosmonkey",
+												"watchers"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "plain",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain;charset=UTF-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "26"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 07 Feb 2025 14:43:46 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "Watcher config has changed"
+								},
+								{
+									"name": "update watchers all true",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"controller\": false,\n  \"restController\": true,\n  \"service\": true,\n  \"repository\": true,\n  \"component\": false,\n  \"restTemplate\": false,\n  \"webClient\": false,\n  \"actuatorHealth\": false\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{chaosMonkeyURL}}/actuator/chaosmonkey/watchers",
+											"host": [
+												"{{chaosMonkeyURL}}"
+											],
+											"path": [
+												"actuator",
+												"chaosmonkey",
+												"watchers"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "plain",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain;charset=UTF-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "26"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 07 Feb 2025 14:43:46 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "Watcher config has changed"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "assaults",
+					"item": [
+						{
+							"name": "assaults",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{chaosMonkeyURL}}/actuator/chaosmonkey/assaults",
+									"host": [
+										"{{chaosMonkeyURL}}"
+									],
+									"path": [
+										"actuator",
+										"chaosmonkey",
+										"assaults"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/actuator/chaosmonkey/assaults",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"actuator",
+												"chaosmonkey",
+												"assaults"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"level\": \"<integer>\",\n  \"deterministic\": \"<boolean>\",\n  \"latencyRangeStart\": \"<integer>\",\n  \"latencyRangeEnd\": \"<integer>\",\n  \"latencyActive\": \"<boolean>\",\n  \"exceptionsActive\": \"<boolean>\",\n  \"exception\": {\n    \"arguments\": [\n      {\n        \"type\": \"<string>\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"type\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    ],\n    \"method\": \"<string>\",\n    \"type\": \"<string>\"\n  },\n  \"killApplicationActive\": \"<boolean>\",\n  \"killApplicationCronExpression\": \"<string>\",\n  \"memoryActive\": \"<boolean>\",\n  \"memoryMillisecondsHoldFilledMemory\": \"<integer>\",\n  \"memoryMillisecondsWaitNextIncrease\": \"<integer>\",\n  \"memoryFillIncrementFraction\": \"<double>\",\n  \"memoryFillTargetFraction\": \"<double>\",\n  \"memoryCronExpression\": \"<string>\",\n  \"cpuActive\": \"<boolean>\",\n  \"cpuMillisecondsHoldLoad\": \"<integer>\",\n  \"cpuLoadTargetFraction\": \"<double>\",\n  \"cpuCronExpression\": \"<string>\",\n  \"runtimeAssaultCronExpression\": \"<string>\",\n  \"watchedCustomServices\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}"
+								}
+							]
+						},
+						{
+							"name": "update assaults",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"level\": \"<integer>\",\n  \"deterministic\": \"<boolean>\",\n  \"latencyRangeStart\": \"<integer>\",\n  \"latencyRangeEnd\": \"<integer>\",\n  \"latencyActive\": \"<boolean>\",\n  \"exceptionsActive\": \"<boolean>\",\n  \"exception\": {\n    \"arguments\": [\n      {\n        \"type\": \"<string>\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"type\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    ],\n    \"method\": \"<string>\",\n    \"type\": \"<string>\"\n  },\n  \"killApplicationActive\": \"<boolean>\",\n  \"killApplicationCronExpression\": \"<string>\",\n  \"memoryActive\": \"<boolean>\",\n  \"memoryMillisecondsHoldFilledMemory\": \"<integer>\",\n  \"memoryMillisecondsWaitNextIncrease\": \"<integer>\",\n  \"memoryFillIncrementFraction\": \"<double>\",\n  \"memoryFillTargetFraction\": \"<double>\",\n  \"memoryCronExpression\": \"<string>\",\n  \"cpuActive\": \"<boolean>\",\n  \"cpuMillisecondsHoldLoad\": \"<integer>\",\n  \"cpuLoadTargetFraction\": \"<double>\",\n  \"cpuCronExpression\": \"<string>\",\n  \"runtimeAssaultCronExpression\": \"<string>\",\n  \"watchedCustomServices\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{chaosMonkeyURL}}/actuator/chaosmonkey/assaults",
+									"host": [
+										"{{chaosMonkeyURL}}"
+									],
+									"path": [
+										"actuator",
+										"chaosmonkey",
+										"assaults"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "latency assault",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"level\": 5,\n  \"deterministic\": true,\n  \"latencyRangeStart\": 5000,\n  \"latencyRangeEnd\": 10000,\n  \"latencyActive\": true,\n  \"watchedCustomServices\": [\n    \"fr.eletutour.controller.ArticleController\"\n  ]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{chaosMonkeyURL}}/actuator/chaosmonkey/assaults",
+											"host": [
+												"{{chaosMonkeyURL}}"
+											],
+											"path": [
+												"actuator",
+												"chaosmonkey",
+												"assaults"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "plain",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain;charset=UTF-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "26"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 11 Feb 2025 12:05:14 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "Assault config has changed"
+								}
+							]
+						},
+						{
+							"name": "runtime attack",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{chaosMonkeyURL}}/actuator/chaosmonkey/assaults/runtime/attack",
+									"host": [
+										"{{chaosMonkeyURL}}"
+									],
+									"path": [
+										"actuator",
+										"chaosmonkey",
+										"assaults",
+										"runtime",
+										"attack"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/actuator/chaosmonkey/assaults/runtime/attack",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"actuator",
+												"chaosmonkey",
+												"assaults",
+												"runtime",
+												"attack"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "<string>"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "authors",
+					"item": [
+						{
+							"name": "get Authors",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{chaosMonkeyURL}}/authors",
+									"host": [
+										"{{chaosMonkeyURL}}"
+									],
+									"path": [
+										"authors"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/authors",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"authors"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"id\": \"<long>\",\n    \"name\": \"<string>\",\n    \"bio\": \"<string>\",\n    \"articles\": [\n      {\n        \"id\": \"<long>\",\n        \"title\": \"<string>\",\n        \"content\": \"<string>\",\n        \"author\": {\n          \"value\": \"<Circular reference to #/components/schemas/Author detected>\"\n        }\n      },\n      {\n        \"id\": \"<long>\",\n        \"title\": \"<string>\",\n        \"content\": \"<string>\",\n        \"author\": {\n          \"value\": \"<Circular reference to #/components/schemas/Author detected>\"\n        }\n      }\n    ]\n  },\n  {\n    \"id\": \"<long>\",\n    \"name\": \"<string>\",\n    \"bio\": \"<string>\",\n    \"articles\": [\n      {\n        \"id\": \"<long>\",\n        \"title\": \"<string>\",\n        \"content\": \"<string>\",\n        \"author\": {\n          \"value\": \"<Circular reference to #/components/schemas/Author detected>\"\n        }\n      },\n      {\n        \"id\": \"<long>\",\n        \"title\": \"<string>\",\n        \"content\": \"<string>\",\n        \"author\": {\n          \"value\": \"<Circular reference to #/components/schemas/Author detected>\"\n        }\n      }\n    ]\n  }\n]"
+								}
+							]
+						},
+						{
+							"name": "get Author By Id",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{chaosMonkeyURL}}/authors/:id",
+									"host": [
+										"{{chaosMonkeyURL}}"
+									],
+									"path": [
+										"authors",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "<long>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/authors/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"authors",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "<long>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"bio\": \"<string>\",\n  \"articles\": [\n    {\n      \"id\": \"<long>\",\n      \"title\": \"<string>\",\n      \"content\": \"<string>\",\n      \"author\": {\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"bio\": \"<string>\",\n        \"articles\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Article detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Article detected>\"\n          }\n        ]\n      }\n    },\n    {\n      \"id\": \"<long>\",\n      \"title\": \"<string>\",\n      \"content\": \"<string>\",\n      \"author\": {\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"bio\": \"<string>\",\n        \"articles\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Article detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Article detected>\"\n          }\n        ]\n      }\n    }\n  ]\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "articles",
+					"item": [
+						{
+							"name": "get Articles",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{chaosMonkeyURL}}/articles",
+									"host": [
+										"{{chaosMonkeyURL}}"
+									],
+									"path": [
+										"articles"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/articles",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"articles"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"id\": \"<long>\",\n    \"title\": \"<string>\",\n    \"content\": \"<string>\",\n    \"author\": {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\",\n      \"bio\": \"<string>\",\n      \"articles\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Article detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Article detected>\"\n        }\n      ]\n    }\n  },\n  {\n    \"id\": \"<long>\",\n    \"title\": \"<string>\",\n    \"content\": \"<string>\",\n    \"author\": {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\",\n      \"bio\": \"<string>\",\n      \"articles\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Article detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Article detected>\"\n        }\n      ]\n    }\n  }\n]"
+								}
+							]
+						},
+						{
+							"name": "get Article By Id",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{chaosMonkeyURL}}/articles/:id",
+									"host": [
+										"{{chaosMonkeyURL}}"
+									],
+									"path": [
+										"articles",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "<long>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/articles/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"articles",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "<long>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"<long>\",\n  \"title\": \"<string>\",\n  \"content\": \"<string>\",\n  \"author\": {\n    \"id\": \"<long>\",\n    \"name\": \"<string>\",\n    \"bio\": \"<string>\",\n    \"articles\": [\n      {\n        \"id\": \"<long>\",\n        \"title\": \"<string>\",\n        \"content\": \"<string>\",\n        \"author\": {\n          \"value\": \"<Circular reference to #/components/schemas/Author detected>\"\n        }\n      },\n      {\n        \"id\": \"<long>\",\n        \"title\": \"<string>\",\n        \"content\": \"<string>\",\n        \"author\": {\n          \"value\": \"<Circular reference to #/components/schemas/Author detected>\"\n        }\n      }\n    ]\n  }\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "actuator",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "{{chaosMonkeyURL}}/actuator/chaosmonkey",
+							"host": [
+								"{{chaosMonkeyURL}}"
+							],
+							"path": [
+								"actuator",
+								"chaosmonkey"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/actuator/chaosmonkey",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"actuator",
+										"chaosmonkey"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"chaosMonkeyProperties\": {\n    \"enabled\": \"<boolean>\",\n    \"lastEnabledToggleTimestamp\": \"<long>\",\n    \"togglePrefix\": \"<string>\"\n  },\n  \"assaultProperties\": {\n    \"level\": \"<integer>\",\n    \"deterministic\": \"<boolean>\",\n    \"latencyRangeStart\": \"<integer>\",\n    \"latencyRangeEnd\": \"<integer>\",\n    \"latencyActive\": \"<boolean>\",\n    \"exceptionsActive\": \"<boolean>\",\n    \"exception\": {\n      \"arguments\": [\n        {\n          \"type\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"type\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"method\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    \"killApplicationActive\": \"<boolean>\",\n    \"killApplicationCronExpression\": \"<string>\",\n    \"memoryActive\": \"<boolean>\",\n    \"memoryMillisecondsHoldFilledMemory\": \"<integer>\",\n    \"memoryMillisecondsWaitNextIncrease\": \"<integer>\",\n    \"memoryFillIncrementFraction\": \"<double>\",\n    \"memoryFillTargetFraction\": \"<double>\",\n    \"memoryCronExpression\": \"<string>\",\n    \"cpuActive\": \"<boolean>\",\n    \"cpuMillisecondsHoldLoad\": \"<integer>\",\n    \"cpuLoadTargetFraction\": \"<double>\",\n    \"cpuCronExpression\": \"<string>\",\n    \"runtimeAssaultCronExpression\": \"<string>\",\n    \"watchedCustomServices\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"watcherProperties\": {\n    \"controller\": \"<boolean>\",\n    \"restController\": \"<boolean>\",\n    \"service\": \"<boolean>\",\n    \"repository\": \"<boolean>\",\n    \"component\": \"<boolean>\",\n    \"restTemplate\": \"<boolean>\",\n    \"webClient\": \"<boolean>\",\n    \"actuatorHealth\": \"<boolean>\",\n    \"beans\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}"
+						}
+					]
+				},
+				{
+					"name": "activation",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "{{chaosMonkeyURL}}/actuator/chaosmonkey/enable",
+							"host": [
+								"{{chaosMonkeyURL}}"
+							],
+							"path": [
+								"actuator",
+								"chaosmonkey",
+								"enable"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/actuator/chaosmonkey/enable",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"actuator",
+										"chaosmonkey",
+										"enable"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"enabledAt\": \"<dateTime>\",\n  \"disabledAt\": \"<dateTime>\",\n  \"enabledFor\": {\n    \"raw\": {\n      \"seconds\": \"<long>\",\n      \"zero\": \"<boolean>\",\n      \"nano\": \"<integer>\",\n      \"negative\": \"<boolean>\",\n      \"positive\": \"<boolean>\",\n      \"units\": [\n        {\n          \"durationEstimated\": \"<boolean>\",\n          \"timeBased\": \"<boolean>\",\n          \"dateBased\": \"<boolean>\"\n        },\n        {\n          \"durationEstimated\": \"<boolean>\",\n          \"timeBased\": \"<boolean>\",\n          \"dateBased\": \"<boolean>\"\n        }\n      ]\n    },\n    \"formatted\": \"<string>\"\n  },\n  \"enabled\": \"<boolean>\"\n}"
+						}
+					]
+				},
+				{
+					"name": "desactivation",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "{{chaosMonkeyURL}}/actuator/chaosmonkey/disable",
+							"host": [
+								"{{chaosMonkeyURL}}"
+							],
+							"path": [
+								"actuator",
+								"chaosmonkey",
+								"disable"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/actuator/chaosmonkey/disable",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"actuator",
+										"chaosmonkey",
+										"disable"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"enabledAt\": \"<dateTime>\",\n  \"disabledAt\": \"<dateTime>\",\n  \"enabledFor\": {\n    \"raw\": {\n      \"seconds\": \"<long>\",\n      \"zero\": \"<boolean>\",\n      \"nano\": \"<integer>\",\n      \"negative\": \"<boolean>\",\n      \"positive\": \"<boolean>\",\n      \"units\": [\n        {\n          \"durationEstimated\": \"<boolean>\",\n          \"timeBased\": \"<boolean>\",\n          \"dateBased\": \"<boolean>\"\n        },\n        {\n          \"durationEstimated\": \"<boolean>\",\n          \"timeBased\": \"<boolean>\",\n          \"dateBased\": \"<boolean>\"\n        }\n      ]\n    },\n    \"formatted\": \"<string>\"\n  },\n  \"enabled\": \"<boolean>\"\n}"
+						}
+					]
+				},
+				{
+					"name": "status",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "{{chaosMonkeyURL}}/actuator/chaosmonkey/status",
+							"host": [
+								"{{chaosMonkeyURL}}"
+							],
+							"path": [
+								"actuator",
+								"chaosmonkey",
+								"status"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/actuator/chaosmonkey/status",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"actuator",
+										"chaosmonkey",
+										"status"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"enabledAt\": \"<dateTime>\",\n  \"disabledAt\": \"<dateTime>\",\n  \"enabledFor\": {\n    \"raw\": {\n      \"seconds\": \"<long>\",\n      \"zero\": \"<boolean>\",\n      \"nano\": \"<integer>\",\n      \"negative\": \"<boolean>\",\n      \"positive\": \"<boolean>\",\n      \"units\": [\n        {\n          \"durationEstimated\": \"<boolean>\",\n          \"timeBased\": \"<boolean>\",\n          \"dateBased\": \"<boolean>\"\n        },\n        {\n          \"durationEstimated\": \"<boolean>\",\n          \"timeBased\": \"<boolean>\",\n          \"dateBased\": \"<boolean>\"\n        }\n      ]\n    },\n    \"formatted\": \"<string>\"\n  },\n  \"enabled\": \"<boolean>\"\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "chaosMonkeyURL",
+			"value": "http://localhost:8089",
+			"type": "default"
+		}
+	]
+}
