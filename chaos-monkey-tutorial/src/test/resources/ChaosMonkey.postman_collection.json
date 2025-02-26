@@ -2,6 +2,7 @@
 	"info": {
 		"_postman_id": "6e05c069-50a6-43e9-a871-82cc84cc004d",
 		"name": "ChaosMonkey",
+		"description": "Collection de test pour Chaos Monkey pour Spring Boot\n\n- Actiation de Chaos Monkey\n    \n- Verification des watchers\n    \n- Update des watchers\n    \n- Update des assaults\n    \n- Test de latence",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "12559449"
 	},
@@ -45,7 +46,8 @@
 						"chaosmonkey",
 						"enable"
 					]
-				}
+				},
+				"description": "Activation de Chaos Monkey"
 			},
 			"response": [
 				{
@@ -137,7 +139,8 @@
 						"chaosmonkey",
 						"watchers"
 					]
-				}
+				},
+				"description": "Récupération de la configuration des watchers actuelle"
 			},
 			"response": [
 				{
@@ -227,7 +230,8 @@
 						"chaosmonkey",
 						"watchers"
 					]
-				}
+				},
+				"description": "Update de la configuration des watchers"
 			},
 			"response": [
 				{
@@ -254,10 +258,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{chaosMonkeyURL}}/actuator/chaosmonkey/watchers",
+							"raw": "http://localhost:8089/actuator/chaosmonkey/watchers",
+							"protocol": "http",
 							"host": [
-								"{{chaosMonkeyURL}}"
+								"localhost"
 							],
+							"port": "8089",
 							"path": [
 								"actuator",
 								"chaosmonkey",
@@ -409,7 +415,8 @@
 						"chaosmonkey",
 						"assaults"
 					]
-				}
+				},
+				"description": "Update de la configuration des assaults"
 			},
 			"response": [
 				{
@@ -436,10 +443,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{chaosMonkeyURL}}/actuator/chaosmonkey/assaults",
+							"raw": "http://localhost:8089/actuator/chaosmonkey/assaults",
+							"protocol": "http",
 							"host": [
-								"{{chaosMonkeyURL}}"
+								"localhost"
 							],
+							"port": "8089",
 							"path": [
 								"actuator",
 								"chaosmonkey",
@@ -514,7 +523,8 @@
 					"path": [
 						"articles"
 					]
-				}
+				},
+				"description": "Test latence de la requete"
 			},
 			"response": [
 				{
