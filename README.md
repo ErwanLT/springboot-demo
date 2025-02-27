@@ -56,6 +56,7 @@ Implémentation de JWT dans une application Spring Boot
 ### [RBAC](security-tutorial/jwt-rbac-tutorial)
 Implementation d'une sécurité basée sur le contrôle de role avec JWT
 
+[article](https://www.sfeir.dev/back/securisez-vos-api-avec-spring-security-acces-par-role/)
 ## [Database versioning](database-versioning-tutorial)
 Tutoriel sur comment versionner votre base de données
 ### [Flyway](database-versioning-tutorial/flyway-tutorial)
