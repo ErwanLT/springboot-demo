@@ -1,0 +1,14 @@
+{
+  "name": "basic-auth-tutorial",
+  "version": "1.0.0",
+  "description": "basic auth",
+  "main": "index.js",
+  "scripts": {
+    "test": "newman run -r cli,htmlextra --reporter-htmlextra-title \"Basic Auth\" --reporter-htmlextra-export ./target/postman/basic-auth.html src/test/resources/BasicAuth.postman_collection.json"
+  },
+  "devDependencies": {
+    "inliner": "^1.0.0",
+    "newman": "^6.2.1",
+    "newman-reporter-htmlextra": "^1.23.1"
+  }
+}
