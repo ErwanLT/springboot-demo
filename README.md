@@ -1,5 +1,9 @@
 # Springboot Démo
 Projet démo pour Spring Boot et ses possibilités.
+## [Customisation bannière](banner-tutorial)
+Comment customiser la bannière de votre application Spring Boot.
+
+[article](https://www.sfeir.dev/back/comment-avoir-une-banniere-spring-personnalisee/)
 
 ## [Spring batch](spring-batch-tutorial)
 Implementer Spring Batch et apprenez à mettre en place des traitement périodic dans votre application Spring Boot
@@ -59,5 +63,9 @@ Tutoriel sur comment utiliser Flyway pour versionner votre base de données
 ### [Liquibase](database-versioning-tutorial/liquibase-tutorial)
 Tutoriel sur comment utiliser Liquibase pour versionner votre base de données
 
+[article](https://www.sfeir.dev/back/migration-versioning-de-base-de-donnees-dans-une-application-spring-boot/)
+
 ## [Chaos Monkey](chaos-monkey-tutorial)
 Tutoriel sur comment utiliser Chaos Monkey pour tester la résilience de votre application
+
+[article](https://www.sfeir.dev/back/introduisez-du-chaos-dans-votre-application-spring-boot/)
