@@ -1,3 +1,5 @@
+[![Java CI with Maven](https://github.com/ErwanLT/springboot-demo/actions/workflows/maven.yml/badge.svg)](https://github.com/ErwanLT/springboot-demo/actions/workflows/maven.yml)
+
 # Springboot Démo
 Projet démo pour Spring Boot et ses possibilités.
 ## [Customisation bannière](banner-tutorial)
