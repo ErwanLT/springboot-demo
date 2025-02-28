@@ -16,10 +16,18 @@
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>
-		<license/>
+		<license>
+			<name>MIT</name>
+		</license>
 	</licenses>
 	<developers>
-		<developer/>
+		<developer>
+			<id>1</id>
+			<name>LE TUTOUR Erwan</name>
+			<roles>
+				<role>OWNER</role>
+			</roles>
+		</developer>
 	</developers>
     <modules>
         <module>spring-batch-tutorial</module>
