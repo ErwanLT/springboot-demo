@@ -2,26 +2,54 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon site GitHub Pages</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 50px;
-            background-color: #f4f4f4;
-        }
-        h1 {
-            color: #333;
-        }
-        p {
-            color: #666;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tutoriels Spring Boot</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<h1>Bienvenue sur mon site GitHub Pages !</h1>
-<p>Ceci est une page hébergée directement depuis GitHub.</p>
-<p>Modifie ce fichier et pousse tes changements pour voir les mises à jour.</p>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Spring Boot Tutorials</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="banner-tutorial/">🖼️ Bannière</a></li>
+                <li class="nav-item"><a class="nav-link" href="chaos-monkey-tutorial/">🛠️ Chaos Monkey</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dbDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">📂 Database Versioning</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="database-versioning-tutorial/flyway-tutorial/">Flyway</a></li>
+                        <li><a class="dropdown-item" href="database-versioning-tutorial/liquibase-tutorial/">Liquibase</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="graphql-tutorial/">🔍 GraphQL</a></li>
+                <li class="nav-item"><a class="nav-link" href="hateoas-tutorial/">🔗 HATEOAS</a></li>
+                <li class="nav-item"><a class="nav-link" href="monitoring-tutorial/">📊 Monitoring</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="securityDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">🔒 Sécurité</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="security-tutorial/basic-auth-tutorial/">Basic Auth</a></li>
+                        <li><a class="dropdown-item" href="security-tutorial/jwt-tutorial/">JWT</a></li>
+                        <li><a class="dropdown-item" href="security-tutorial/jwt-rbac-tutorial/">JWT RBAC</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="spring-batch-tutorial/">⏳ Spring Batch</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Contenu principal -->
+<div class="container mt-5">
+    <h1 class="text-center">📘 Tutoriels Spring Boot</h1>
+    <p class="text-center">Explorez divers concepts et frameworks autour de Spring Boot.</p>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
