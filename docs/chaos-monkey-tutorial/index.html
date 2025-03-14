@@ -12,22 +12,27 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="../index.html">Spring Boot Tutorials</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item"><a class="nav-link" href="../banner-tutorial/index.html">🖼️ Bannière</a></li>
-                <li class="nav-item"><a class="nav-link active" href="../chaos-monkey-tutorial/index.html">🛠️ Chaos Monkey</a></li>
+                <li class="nav-item"><a class="nav-link active" href="../chaos-monkey-tutorial/index.html">🛠️ Chaos
+                    Monkey</a></li>
 
                 <!-- Database Versioning Dropdown -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dbDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" id="dbDropdown" role="button" data-bs-toggle="dropdown"
+                       aria-expanded="false">
                         📂 Database Versioning
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="../database-versioning-tutorial/flyway-tutorial/index.html">Flyway</a></li>
-                        <li><a class="dropdown-item" href="../database-versioning-tutorial/liquibase-tutorial/index.html">Liquibase</a></li>
+                        <li><a class="dropdown-item" href="../database-versioning-tutorial/flyway-tutorial/index.html">Flyway</a>
+                        </li>
+                        <li><a class="dropdown-item"
+                               href="../database-versioning-tutorial/liquibase-tutorial/index.html">Liquibase</a></li>
                     </ul>
                 </li>
 
@@ -37,21 +42,51 @@
 
                 <!-- Security Dropdown -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="securityDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" id="securityDropdown" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
                         🔒 Sécurité
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="../security-tutorial/basic-auth-tutorial/index.html">Basic Auth</a></li>
+                        <li><a class="dropdown-item" href="../security-tutorial/basic-auth-tutorial/index.html">Basic
+                            Auth</a></li>
                         <li><a class="dropdown-item" href="../security-tutorial/jwt-tutorial/index.html">JWT</a></li>
-                        <li><a class="dropdown-item" href="../security-tutorial/jwt-rbac-tutorial/index.html">JWT RBAC</a></li>
+                        <li><a class="dropdown-item" href="../security-tutorial/jwt-rbac-tutorial/index.html">JWT
+                            RBAC</a></li>
                     </ul>
                 </li>
 
-                <li class="nav-item"><a class="nav-link" href="../spring-batch-tutorial/index.html">⏳ Spring Batch</a></li>
+                <li class="nav-item"><a class="nav-link" href="../spring-batch-tutorial/index.html">⏳ Spring Batch</a>
+                </li>
             </ul>
         </div>
     </div>
 </nav>
+
+<div class="container-fluid">
+    <h1>Introduisez du chaos dans votre application Spring Boot</h1>
+    <p>
+        Mais pourquoi vouloir introduire du chaos volontairement dans mon application ?<br>
+        C'est sans doute la question qui vous a traversé l'esprit en lisant le titre de cet article.<br>
+        Et c'est ce que nous allons voir dans cet article en introduisant divers types de chaos dans une application
+        Spring Boot.
+    </p>
+    <h2>Le chaos engineering</h2>
+    <p>
+        Le Chaos Engineering est une discipline qui consiste à tester la résilience des systèmes en introduisant des
+        perturbations contrôlées. L’objectif est d’identifier les failles avant qu’elles ne se manifestent en production
+        et de s’assurer que l’application peut tolérer les pannes sans compromettre son bon fonctionnement.
+    </p>
+    <h3>Pourquoi utiliser le chaos engineering ?</h3>
+    <p>
+        Les systèmes modernes sont distribués, complexes et dynamiques (microservices, cloud, conteneurs…). Les pannes
+        sont inévitables :<br>
+        ✅ <b>Tester la robustesse</b> face aux pannes de réseau, surcharges ou erreurs applicatives.<br>
+        ✅ <b>Identifier les points faibles</b> avant qu’un incident ne survienne en production.<br>
+        ✅ <b>Améliorer la résilience</b> en optimisant la tolérance aux erreurs et en renforçant l’architecture.
+    </p>
+
+
+</div>
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
