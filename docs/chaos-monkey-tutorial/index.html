@@ -2,18 +2,17 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Chaos Monkey</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Chaos Monkey pour Spring Boot</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-okaidia.min.css" rel="stylesheet">
 </head>
-<body>
-<!-- Navbar -->
+<body class="bg-light">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="../index.html">Spring Boot Tutorials</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
+                data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -24,8 +23,8 @@
 
                 <!-- Database Versioning Dropdown -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dbDropdown" role="button" data-bs-toggle="dropdown"
-                       aria-expanded="false">
+                    <a aria-expanded="false" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" id="dbDropdown"
+                       role="button">
                         📂 Database Versioning
                     </a>
                     <ul class="dropdown-menu">
@@ -42,8 +41,8 @@
 
                 <!-- Security Dropdown -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="securityDropdown" role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false">
+                    <a aria-expanded="false" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#"
+                       id="securityDropdown" role="button">
                         🔒 Sécurité
                     </a>
                     <ul class="dropdown-menu">
@@ -62,33 +61,92 @@
     </div>
 </nav>
 
-<div class="container-fluid">
-    <h1>Introduisez du chaos dans votre application Spring Boot</h1>
-    <p>
-        Mais pourquoi vouloir introduire du chaos volontairement dans mon application ?<br>
-        C'est sans doute la question qui vous a traversé l'esprit en lisant le titre de cet article.<br>
-        Et c'est ce que nous allons voir dans cet article en introduisant divers types de chaos dans une application
-        Spring Boot.
-    </p>
-    <h2>Le chaos engineering</h2>
-    <p>
-        Le Chaos Engineering est une discipline qui consiste à tester la résilience des systèmes en introduisant des
-        perturbations contrôlées. L’objectif est d’identifier les failles avant qu’elles ne se manifestent en production
-        et de s’assurer que l’application peut tolérer les pannes sans compromettre son bon fonctionnement.
-    </p>
-    <h3>Pourquoi utiliser le chaos engineering ?</h3>
-    <p>
-        Les systèmes modernes sont distribués, complexes et dynamiques (microservices, cloud, conteneurs…). Les pannes
-        sont inévitables :<br>
-        ✅ <b>Tester la robustesse</b> face aux pannes de réseau, surcharges ou erreurs applicatives.<br>
-        ✅ <b>Identifier les points faibles</b> avant qu’un incident ne survienne en production.<br>
-        ✅ <b>Améliorer la résilience</b> en optimisant la tolérance aux erreurs et en renforçant l’architecture.
-    </p>
+<div class="container mt-5">
+    <h1 class="text-center">Chaos Monkey pour Spring Boot</h1>
+    <p><strong>Mais pourquoi vouloir introduire du chaos volontairement dans mon application ?</strong></p>
+    <p>C'est sans doute la question qui vous a traversé l'esprit en lisant le titre de cet article. Et c'est ce que nous allons voir en introduisant divers types de chaos dans une application Spring Boot.</p>
 
+    <h2>Le Chaos Engineering</h2>
+    <p>Le Chaos Engineering est une discipline qui consiste à tester la résilience des systèmes en introduisant des perturbations contrôlées. L’objectif est d’identifier les failles avant qu’elles ne se manifestent en production et de s’assurer que l’application peut tolérer les pannes sans compromettre son bon fonctionnement.</p>
 
+    <h2>Pourquoi utiliser le Chaos Engineering ?</h2>
+    <ul>
+        <li>✅ Tester la robustesse face aux pannes de réseau, surcharges ou erreurs applicatives.</li>
+        <li>✅ Identifier les points faibles avant qu’un incident ne survienne en production.</li>
+        <li>✅ Améliorer la résilience en optimisant la tolérance aux erreurs et en renforçant l’architecture.</li>
+    </ul>
+
+    <h2>Exemple d'outils de Chaos Engineering</h2>
+    <p>Développé par Netflix, Chaos Monkey injecte des pannes aléatoires dans un environnement pour tester sa robustesse.</p>
+
+    <h2>Installation dans Spring Boot</h2>
+    <p>Pour ajouter Chaos Monkey dans votre application Spring Boot, ajoutez la dépendance suivante :</p>
+    <pre><code class="language-xml">&lt;dependency&gt;
+    &lt;groupId&gt;de.codecentric&lt;/groupId&gt;
+    &lt;artifactId&gt;chaos-monkey-spring-boot&lt;/artifactId&gt;
+    &lt;version&gt;3.1.2&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+
+    <h2>Activation</h2>
+    <p>Activez le profil adéquat dans votre <code>application.properties</code> :</p>
+    <pre><code class="language-properties">spring.profiles.active=chaos-monkey</code></pre>
+
+    <p>Au démarrage de votre application vous aurez en plus de la traditionnelle bannière Spring Boot, une bannière Chaos Monkey</p>
+    <pre><code class="language-logs">
+     _____ _                       __  __             _
+    / ____| |                     |  \/  |           | |
+   | |    | |__   __ _  ___  ___  | \  / | ___  _ __ | | _____ _   _
+   | |    | '_ \ / _` |/ _ \/ __| | |\/| |/ _ \| '_ \| |/ / _ | | | |
+   | |____| | | | (_| | (_) \__ \ | |  | | (_) | | | |   |  __| |_| |
+    \_____|_| |_|\__,_|\___/|___/ |_|  |_|\___/|_| |_|_|\_\___|\__, |
+                                                                __/ |
+    _ready to do evil!                                         |___/
+
+:: Chaos Monkey for Spring Boot                                    ::
+    </code></pre>
+
+    <p>Ajoutez ensuite les dépendances suivantes pour activer les actuators :</p>
+    <pre><code class="language-xml">&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-actuator&lt;/artifactId&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springdoc&lt;/groupId&gt;
+    &lt;artifactId&gt;springdoc-openapi-starter-webmvc-ui&lt;/artifactId&gt;
+    &lt;version&gt;2.8.4&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+
+    <h2>Déchaîner le chaos</h2>
+    <p>Définissez où le chaos doit survenir :</p>
+    <pre><code class="language-json">{
+  "controller": false,
+  "restController": true,
+  "service": false,
+  "repository": false,
+  "component": false
+}</code></pre>
+
+    <h2>Définir le type de chaos</h2>
+    <p>Personnalisez les attaques via <code>/actuator/chaosmonkey/assaults</code> :</p>
+    <pre><code class="language-json">{
+  "level": 5,
+  "deterministic": true,
+  "latencyRangeStart": 5000,
+  "latencyRangeEnd": 10000,
+  "latencyActive": true,
+  "watchedCustomServices": [
+    "fr.eletutour.controller.ArticleController"
+  ]
+}</code></pre>
+
+    <h2>Conclusion</h2>
+    <p>Ce n'est qu'un aperçu des possibilités offertes par Chaos Monkey. Testez-le avec prudence et communiquez avec votre équipe avant de semer le chaos !</p>
 </div>
 
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-properties.min.js"></script>
 </body>
 </html>
