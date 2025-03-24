@@ -21,7 +21,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-hateoas</artifactId>
-            <version>3.4.3</version>
+            <version>3.4.4</version>
         </dependency>
     </dependencies>
 
