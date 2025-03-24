@@ -20,10 +20,11 @@
                 <li class="nav-item"><a class="nav-link" href="../banner-tutorial/index.html">🖼️ Bannière</a></li>
                 <li class="nav-item"><a class="nav-link active" href="../chaos-monkey-tutorial/index.html">🛠️ Chaos
                     Monkey</a></li>
-
+                
                 <!-- Database Versioning Dropdown -->
                 <li class="nav-item dropdown">
-                    <a aria-expanded="false" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" id="dbDropdown"
+                    <a aria-expanded="false" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#"
+                       id="dbDropdown"
                        role="button">
                         📂 Database Versioning
                     </a>
@@ -34,11 +35,11 @@
                                href="../database-versioning-tutorial/liquibase-tutorial/index.html">Liquibase</a></li>
                     </ul>
                 </li>
-
+                
                 <li class="nav-item"><a class="nav-link" href="../graphql-tutorial/index.html">🔍 GraphQL</a></li>
                 <li class="nav-item"><a class="nav-link" href="../hateoas-tutorial/index.html">🔗 HATEOAS</a></li>
                 <li class="nav-item"><a class="nav-link" href="../monitoring-tutorial/index.html">📊 Monitoring</a></li>
-
+                
                 <!-- Security Dropdown -->
                 <li class="nav-item dropdown">
                     <a aria-expanded="false" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#"
@@ -53,7 +54,7 @@
                             RBAC</a></li>
                     </ul>
                 </li>
-
+                
                 <li class="nav-item"><a class="nav-link" href="../spring-batch-tutorial/index.html">⏳ Spring Batch</a>
                 </li>
             </ul>
@@ -61,27 +62,32 @@
     </div>
 </nav>
 <div class="text-center">
-    <img src="chaosMonkeys.png" alt="Chaos Monkey Banner" class="img-fluid" style="max-width: 100%; height: auto; max-height: 450px;">
+    <img src="chaosMonkeys.png" alt="Chaos Monkey Banner" class="img-fluid"
+         style="max-width: 100%; height: auto; max-height: 450px;">
 </div>
 
 <div class="container mt-5">
     <h1 class="text-center">Chaos Monkey pour Spring Boot</h1>
     <p><strong>Mais pourquoi vouloir introduire du chaos volontairement dans mon application ?</strong></p>
-    <p>C'est sans doute la question qui vous a traversé l'esprit en lisant le titre de cet article. Et c'est ce que nous allons voir en introduisant divers types de chaos dans une application Spring Boot.</p>
-
+    <p>C'est sans doute la question qui vous a traversé l'esprit en lisant le titre de cet article. Et c'est ce que nous
+        allons voir en introduisant divers types de chaos dans une application Spring Boot.</p>
+    
     <h2>Le Chaos Engineering</h2>
-    <p>Le Chaos Engineering est une discipline qui consiste à tester la résilience des systèmes en introduisant des perturbations contrôlées. L’objectif est d’identifier les failles avant qu’elles ne se manifestent en production et de s’assurer que l’application peut tolérer les pannes sans compromettre son bon fonctionnement.</p>
-
+    <p>Le Chaos Engineering est une discipline qui consiste à tester la résilience des systèmes en introduisant des
+        perturbations contrôlées. L’objectif est d’identifier les failles avant qu’elles ne se manifestent en production
+        et de s’assurer que l’application peut tolérer les pannes sans compromettre son bon fonctionnement.</p>
+    
     <h2>Pourquoi utiliser le Chaos Engineering ?</h2>
     <ul>
         <li>✅ Tester la robustesse face aux pannes de réseau, surcharges ou erreurs applicatives.</li>
         <li>✅ Identifier les points faibles avant qu’un incident ne survienne en production.</li>
         <li>✅ Améliorer la résilience en optimisant la tolérance aux erreurs et en renforçant l’architecture.</li>
     </ul>
-
+    
     <h2>Exemple d'outils de Chaos Engineering</h2>
-    <p>Développé par Netflix, Chaos Monkey injecte des pannes aléatoires dans un environnement pour tester sa robustesse.</p>
-
+    <p>Développé par Netflix, Chaos Monkey injecte des pannes aléatoires dans un environnement pour tester sa
+        robustesse.</p>
+    
     <h2>Installation dans Spring Boot</h2>
     <p>Pour ajouter Chaos Monkey dans votre application Spring Boot, ajoutez la dépendance suivante :</p>
     <pre><code class="language-xml">&lt;dependency&gt;
@@ -89,61 +95,63 @@
     &lt;artifactId&gt;chaos-monkey-spring-boot&lt;/artifactId&gt;
     &lt;version&gt;3.1.2&lt;/version&gt;
 &lt;/dependency&gt;</code></pre>
-
+    
     <h2>Activation</h2>
     <p>Activez le profil adéquat dans votre <code>application.properties</code> :</p>
     <pre><code class="language-properties">spring.profiles.active=chaos-monkey</code></pre>
-
-    <p>Au démarrage de votre application vous aurez en plus de la traditionnelle bannière Spring Boot, une bannière Chaos Monkey</p>
+    
+    <p>Au démarrage de votre application vous aurez en plus de la traditionnelle bannière Spring Boot, une bannière
+        Chaos Monkey</p>
     <pre><code class="language-logs">
-     _____ _                       __  __             _
-    / ____| |                     |  \/  |           | |
-   | |    | |__   __ _  ___  ___  | \  / | ___  _ __ | | _____ _   _
-   | |    | '_ \ / _` |/ _ \/ __| | |\/| |/ _ \| '_ \| |/ / _ | | | |
-   | |____| | | | (_| | (_) \__ \ | |  | | (_) | | | |   |  __| |_| |
-    \_____|_| |_|\__,_|\___/|___/ |_|  |_|\___/|_| |_|_|\_\___|\__, |
-                                                                __/ |
-    _ready to do evil!                                         |___/
+_____ _                       __  __             _
+/ ____| |                     |  \/  |           | |
+| |    | |__   __ _  ___  ___  | \  / | ___  _ __ | | _____ _   _
+| |    | '_ \ / _` |/ _ \/ __| | |\/| |/ _ \| '_ \| |/ / _ | | | |
+| |____| | | | (_| | (_) \__ \ | |  | | (_) | | | |   |  __| |_| |
+\_____|_| |_|\__,_|\___/|___/ |_|  |_|\___/|_| |_|_|\_\___|\__, |
+                        __/ |
+_ready to do evil!                                         |___/
 
 :: Chaos Monkey for Spring Boot                                    ::
-    </code></pre>
-
+</code></pre>
+    
     <p>Ajoutez ensuite les dépendances suivantes pour activer les actuators :</p>
     <pre><code class="language-xml">&lt;dependency&gt;
     &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
     &lt;artifactId&gt;spring-boot-starter-actuator&lt;/artifactId&gt;
-&lt;/dependency&gt;
+    &lt;/dependency&gt;
 &lt;dependency&gt;
     &lt;groupId&gt;org.springdoc&lt;/groupId&gt;
     &lt;artifactId&gt;springdoc-openapi-starter-webmvc-ui&lt;/artifactId&gt;
     &lt;version&gt;2.8.4&lt;/version&gt;
 &lt;/dependency&gt;</code></pre>
-
+    
     <h2>Déchaîner le chaos</h2>
     <p>Définissez où le chaos doit survenir :</p>
     <pre><code class="language-json">{
-  "controller": false,
-  "restController": true,
-  "service": false,
-  "repository": false,
-  "component": false
+    "controller": false,
+    "restController": true,
+    "service": false,
+    "repository": false,
+    "component": false
 }</code></pre>
-
+    
     <h2>Définir le type de chaos</h2>
     <p>Personnalisez les attaques via <code>/actuator/chaosmonkey/assaults</code> :</p>
     <pre><code class="language-json">{
-  "level": 5,
-  "deterministic": true,
-  "latencyRangeStart": 5000,
-  "latencyRangeEnd": 10000,
-  "latencyActive": true,
-  "watchedCustomServices": [
-    "fr.eletutour.controller.ArticleController"
-  ]
+    "level": 5,
+    "deterministic": true,
+    "latencyRangeStart": 5000,
+    "latencyRangeEnd": 10000,
+    "latencyActive": true,
+    "watchedCustomServices": [
+        "fr.eletutour.controller.ArticleController"
+    ]
 }</code></pre>
-
+    
     <h2>Conclusion</h2>
-    <p>Ce n'est qu'un aperçu des possibilités offertes par Chaos Monkey. Testez-le avec prudence et communiquez avec votre équipe avant de semer le chaos !</p>
+    <p>Ce n'est qu'un aperçu des possibilités offertes par Chaos Monkey. Testez-le avec prudence et communiquez avec
+        votre équipe avant de semer le chaos !</p>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
