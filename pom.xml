@@ -38,7 +38,8 @@
 		<module>database-versioning-tutorial</module>
         <module>chaos-monkey-tutorial</module>
         <module>banner-tutorial</module>
-    </modules>
+		<module>client-generation-tutorial</module>
+	</modules>
     <scm>
 		<connection/>
 		<developerConnection/>
