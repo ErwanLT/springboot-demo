@@ -72,3 +72,6 @@ Tutoriel sur comment utiliser Liquibase pour versionner votre base de données
 Tutoriel sur comment utiliser Chaos Monkey pour tester la résilience de votre application
 
 [article](https://www.sfeir.dev/back/introduisez-du-chaos-dans-votre-application-spring-boot/)
+
+## [Génération de client à partir de la spécification OpenAPI](client-generation-tutorial)
+Tutoriel sur comment générer un client à partir de la spécification OpenAPI
