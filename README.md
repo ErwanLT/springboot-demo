@@ -7,16 +7,22 @@ Comment customiser la bannière de votre application Spring Boot.
 
 [article](https://www.sfeir.dev/back/comment-avoir-une-banniere-spring-personnalisee/)
 
-## [Spring batch](spring-batch-tutorial)
-Implementer Spring Batch et apprenez à mettre en place des traitement périodic dans votre application Spring Boot
+## [Chaos Monkey](chaos-monkey-tutorial)
+Tutoriel sur comment utiliser Chaos Monkey pour tester la résilience de votre application
 
-[article](https://www.sfeir.dev/back/planifier-des-taches-avec-spring-batch/)
+[article](https://www.sfeir.dev/back/introduisez-du-chaos-dans-votre-application-spring-boot/)
 
-## [Monitoring](monitoring-tutorial)
-### [Prometheus](monitoring-tutorial/prometheus-tutorial)
-Utiliser Prometheus et Grafana afin d'exposer des metric et monitorer votre application.
+## [Génération de client à partir de la spécification OpenAPI](client-generation-tutorial)
+Tutoriel sur comment générer un client à partir de la spécification OpenAPI
 
-[article](https://www.sfeir.dev/back/superviser-votre-application-spring-boot/)
+## [Database versioning](database-versioning-tutorial)
+Tutoriel sur comment versionner votre base de données
+### [Flyway](database-versioning-tutorial/flyway-tutorial)
+Tutoriel sur comment utiliser Flyway pour versionner votre base de données
+### [Liquibase](database-versioning-tutorial/liquibase-tutorial)
+Tutoriel sur comment utiliser Liquibase pour versionner votre base de données
+
+[article](https://www.sfeir.dev/back/migration-versioning-de-base-de-donnees-dans-une-application-spring-boot/)
 
 ## [GraphQL](graphql-tutorial)
 Tutoriel sur comment intégrer GraphQL à votre application Spring Boot
@@ -45,6 +51,12 @@ Comment gérer efficacement les erreurs dans une API GraphQL avec Spring Boot ?<
 En utilisant `DataFetcherExceptionResolver`, qui centralise la gestion des erreurs, et c'est ce que nous allons mettre en place dans cet article.
 
 
+## [Monitoring](monitoring-tutorial)
+### [Prometheus](monitoring-tutorial/prometheus-tutorial)
+Utiliser Prometheus et Grafana afin d'exposer des metric et monitorer votre application.
+
+[article](https://www.sfeir.dev/back/superviser-votre-application-spring-boot/)
+
 ## [Security](security-tutorial)
 Tutoriels sur comment sécuriser vos API avec Spring Security
 ### [Basic Auth](security-tutorial/basic-auth-tutorial)
@@ -59,19 +71,8 @@ Implémentation de JWT dans une application Spring Boot
 Implementation d'une sécurité basée sur le contrôle de role avec JWT
 
 [article](https://www.sfeir.dev/back/securisez-vos-api-avec-spring-security-acces-par-role/)
-## [Database versioning](database-versioning-tutorial)
-Tutoriel sur comment versionner votre base de données
-### [Flyway](database-versioning-tutorial/flyway-tutorial)
-Tutoriel sur comment utiliser Flyway pour versionner votre base de données
-### [Liquibase](database-versioning-tutorial/liquibase-tutorial)
-Tutoriel sur comment utiliser Liquibase pour versionner votre base de données
 
-[article](https://www.sfeir.dev/back/migration-versioning-de-base-de-donnees-dans-une-application-spring-boot/)
+## [Spring batch](spring-batch-tutorial)
+Implementer Spring Batch et apprenez à mettre en place des traitement périodic dans votre application Spring Boot
 
-## [Chaos Monkey](chaos-monkey-tutorial)
-Tutoriel sur comment utiliser Chaos Monkey pour tester la résilience de votre application
-
-[article](https://www.sfeir.dev/back/introduisez-du-chaos-dans-votre-application-spring-boot/)
-
-## [Génération de client à partir de la spécification OpenAPI](client-generation-tutorial)
-Tutoriel sur comment générer un client à partir de la spécification OpenAPI
+[article](https://www.sfeir.dev/back/planifier-des-taches-avec-spring-batch/)
