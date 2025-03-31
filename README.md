@@ -52,7 +52,7 @@ En utilisant `DataFetcherExceptionResolver`, qui centralise la gestion des erreu
 
 
 ## [Monitoring](monitoring-tutorial)
-### [Prometheus](monitoring-tutorial/prometheus-tutorial)
+### [Prometheus et Grafana](monitoring-tutorial/prometheus-tutorial)
 Utiliser Prometheus et Grafana afin d'exposer des metric et monitorer votre application.
 
 [article](https://www.sfeir.dev/back/superviser-votre-application-spring-boot/)
