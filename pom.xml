@@ -91,7 +91,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-release-plugin</artifactId>
-				<version>3.0.1</version> <!-- Utilisez la dernière version disponible -->
+				<version>3.1.1</version> <!-- Utilisez la dernière version disponible -->
 				<configuration>
 					<tagNameFormat>v@{project.version}</tagNameFormat> <!-- Format du tag, optionnel -->
 					<autoVersionSubmodules>true</autoVersionSubmodules> <!-- Gère les sous-modules automatiquement -->
