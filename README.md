@@ -12,8 +12,12 @@ Tutoriel sur comment utiliser Chaos Monkey pour tester la résilience de votre a
 
 [article](https://www.sfeir.dev/back/introduisez-du-chaos-dans-votre-application-spring-boot/)
 
-## [Génération de client à partir de la spécification OpenAPI](client-generation-tutorial)
+## [Génération de code](code-generation-tutorial)
+### [Génération de client à partir de la spécification OpenAPI](code-generation-tutorial/client-generation-tutorial)
 Tutoriel sur comment générer un client à partir de la spécification OpenAPI
+
+## [Génération de mappers](code-generation-tutorial/mapper-tutorial)
+Tutoriel sur la génération de mappers avec MapStruct
 
 ## [Database versioning](database-versioning-tutorial)
 Tutoriel sur comment versionner votre base de données
