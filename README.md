@@ -16,7 +16,7 @@ Tutoriel sur comment utiliser Chaos Monkey pour tester la résilience de votre a
 ### [Génération de client à partir de la spécification OpenAPI](code-generation-tutorial/client-generation-tutorial)
 Tutoriel sur comment générer un client à partir de la spécification OpenAPI
 
-## [Génération de mappers](code-generation-tutorial/mapper-tutorial)
+### [Génération de mappers](code-generation-tutorial/mapper-tutorial)
 Tutoriel sur la génération de mappers avec MapStruct
 
 ## [Database versioning](database-versioning-tutorial)
