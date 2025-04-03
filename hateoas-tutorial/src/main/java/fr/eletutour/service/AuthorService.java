@@ -4,7 +4,6 @@ import fr.eletutour.dao.AuthorRepository;
 import fr.eletutour.exception.ArticleNotFoundException;
 import fr.eletutour.exception.AuthorNotFoundException;
 import fr.eletutour.model.Author;
-import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Service;
 import fr.eletutour.utils.LinkBuilder;
 
@@ -32,8 +31,9 @@ public class AuthorService {
     }
 
     public Author getAuthorById(Long id) throws AuthorNotFoundException {
-        return authorRepository.findById(id)
+        Author author = authorRepository.findById(id)
                 .orElseThrow(() -> new AuthorNotFoundException(AUTHOR_NOT_FOUND_MESSAGE + id));
+        return addAuthorLinks(addArticleLinks(author)); // Ajout des liens
     }
 
     public void createAuthor(String name, String bio) {
@@ -43,16 +43,10 @@ public class AuthorService {
         authorRepository.save(author);
     }
 
-    @PostConstruct
-    private void initAuthors(){
-        createAuthor("J.K. Rowling", "J.K. Rowling is the author of the much-loved series of seven Harry Potter novels.");
-        createAuthor("Stephen King", "Stephen King is the author of more than sixty books, all of them worldwide bestsellers.");
-        createAuthor("Agatha Christie", "Agatha Christie is known throughout the world as the Queen of Crime.");
-    }
-
     private Author addAuthorLinks(Author author) throws AuthorNotFoundException, ArticleNotFoundException {
         author.add(linkBuilder.authorSelfLink(author.getId()));
         author.add(linkBuilder.authorsListLink());
+        author.add(linkBuilder.authorDeleteLink(author.getId()));
         return author;
     }
 
@@ -60,7 +54,17 @@ public class AuthorService {
         author.getArticles().forEach(article -> {
             article.add(linkBuilder.articleSelfLink(article.getId()));
             article.add(linkBuilder.articlesListLink());
+            article.add(linkBuilder.articleDeleteLink(article.getId()));
         });
         return author;
+    }
+
+    public void deleteAuthor(Long id) {
+        var author = authorRepository.findById(id);
+        if (author.isPresent()) {
+            authorRepository.delete(author.get());
+        } else {
+            throw new AuthorNotFoundException(AUTHOR_NOT_FOUND_MESSAGE + id);
+        }
     }
 }

@@ -6,7 +6,6 @@ import fr.eletutour.exception.AuthorNotFoundException;
 import fr.eletutour.model.Article;
 import fr.eletutour.model.Author;
 import fr.eletutour.utils.LinkBuilder;
-import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -35,8 +34,9 @@ public class ArticleService {
     }
 
     public Article getArticleById(Long id) throws ArticleNotFoundException {
-        return articleRepository.findById(id)
+        var article = articleRepository.findById(id)
                 .orElseThrow(() -> new ArticleNotFoundException(ARTICLE_NOT_FOUND_MESSAGE + id));
+        return addArticleLinks(article);
     }
 
     public void createArticle(String title, String content, Long authorId) throws AuthorNotFoundException {
@@ -48,16 +48,20 @@ public class ArticleService {
         articleRepository.save(article);
     }
 
-    @PostConstruct
-    private void init() throws AuthorNotFoundException {
-        createArticle("Harry Potter", "Harry Potter is a series of seven fantasy novels written by British author J. K. Rowling.", 1L);
-        createArticle("The Shining", "The Shining is a horror novel by American author Stephen King.", 2L);
-    }
-
     private Article addArticleLinks(Article article) {
         article.add(linkBuilder.articleSelfLink(article.getId()));
         article.add(linkBuilder.articlesListLink());
         article.add(linkBuilder.authorSelfLink(article.getAuthor().getId()));
+        article.add(linkBuilder.articleDeleteLink(article.getId()));
         return article;
+    }
+
+    public void deleteArticle(Long id) {
+        var article = articleRepository.findById(id);
+        if (article.isPresent()) {
+            articleRepository.delete(article.get());
+        } else {
+            throw new ArticleNotFoundException(ARTICLE_NOT_FOUND_MESSAGE + id);
+        }
     }
 }

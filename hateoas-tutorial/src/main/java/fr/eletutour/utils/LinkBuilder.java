@@ -5,8 +5,10 @@ import fr.eletutour.exception.AuthorNotFoundException;
 import org.springframework.hateoas.Link;
 
 public interface LinkBuilder {
-    Link authorSelfLink(Long authorId) throws AuthorNotFoundException;
-    Link authorsListLink() throws AuthorNotFoundException, ArticleNotFoundException;
-    Link articleSelfLink(Long articleId) throws ArticleNotFoundException;
+    Link authorSelfLink(Long authorId);
+    Link authorsListLink();
+    Link authorDeleteLink(Long authorId); // Nouveau lien pour DELETE
+    Link articleSelfLink(Long articleId);
     Link articlesListLink();
+    Link articleDeleteLink(Long articleId); // Nouveau lien pour DELETE
 }
