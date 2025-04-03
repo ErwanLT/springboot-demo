@@ -1,6 +1,6 @@
 package fr.eletutour.exception;
 
-public class ArticleNotFoundException extends Exception {
+public class ArticleNotFoundException extends RuntimeException {
 
     public ArticleNotFoundException(String msg) {
         super(msg);
