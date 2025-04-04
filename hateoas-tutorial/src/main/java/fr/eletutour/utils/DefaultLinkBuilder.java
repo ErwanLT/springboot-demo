@@ -2,8 +2,6 @@ package fr.eletutour.utils;
 
 import fr.eletutour.controller.ArticleController;
 import fr.eletutour.controller.AuthorController;
-import fr.eletutour.exception.ArticleNotFoundException;
-import fr.eletutour.exception.AuthorNotFoundException;
 import org.springframework.hateoas.Link;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
