@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  openldap:
+    image: bitnami/openldap:latest
+    container_name: openldap
+    networks:
+      - my-network
+    ports:
+      - "1389:1389"  # Port LDAP par défaut pour Bitnami OpenLDAP
+      - "1636:1636"  # Port LDAPS (optionnel, si activé)
+    environment:
+      - LDAP_ADMIN_USERNAME=admin
+      - LDAP_ADMIN_PASSWORD=adminpassword
+      - LDAP_USERS=customuser
+      - LDAP_PASSWORDS=custompassword
+      - LDAP_ROOT=dc=example,dc=org
+      - LDAP_ADMIN_DN=cn=admin,dc=example,dc=org
+    deploy:
+      mode: replicated
+      replicas: 1
+    restart: unless-stopped
+
+  mariadb-galera:
+    image: bitnami/mariadb-galera:latest
+    container_name: mariadb-galera
+    networks:
+      - my-network
+    ports:
+      - "3307:3307"  # Port MySQL/MariaDB par défaut
+    environment:
+      - MARIADB_ROOT_PASSWORD=root-password
+      - MARIADB_GALERA_MARIABACKUP_PASSWORD=backup-password
+      - MARIADB_USER=customuser
+      - MARIADB_DATABASE=customdatabase
+      - MARIADB_ENABLE_LDAP=yes
+      - LDAP_URI=ldap://openldap:1389
+      - LDAP_BASE=dc=example,dc=org
+      - LDAP_BIND_DN=cn=admin,dc=example,dc=org
+      - LDAP_BIND_PASSWORD=adminpassword
+    depends_on:
+      - openldap
+    restart: unless-stopped
+
+networks:
+  my-network:
+    driver: bridge
