@@ -1,0 +1,26 @@
+<!-- Created with Jaspersoft Studio version 7.0.2.final using JasperReports Library version 7.0.2-31532122640f516c6d17238ae0e41a08113d5ac0  -->
+<jasperReport name="reportTest" language="java" pageWidth="595" pageHeight="842" whenNoDataType="NoDataSection" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9f0a81cd-26bc-4338-86c2-c5a76619c71f">
+	<query language="sql"><![CDATA[]]></query>
+	<background splitType="Stretch"/>
+	<title height="79" splitType="Stretch">
+		<element kind="staticText" uuid="b3d8c4fc-5eeb-429c-8742-88388e7b26f2" x="-20" y="0" width="590" height="79" rotation="None" fontSize="33.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[Ici le titre du rapport]]></text>
+		</element>
+	</title>
+	<pageHeader height="52" splitType="Stretch">
+		<element kind="textField" uuid="cc4404c5-7654-4455-a8be-d8f397803379" x="420" y="10" width="150" height="30" pattern="MMMMM dd, yyyy">
+			<expression><![CDATA[new java.util.Date()]]></expression>
+		</element>
+	</pageHeader>
+	<columnHeader height="61" splitType="Stretch"/>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter height="45" splitType="Stretch"/>
+	<pageFooter height="59" splitType="Stretch">
+		<element kind="textField" uuid="4be546c1-fd42-4733-af4d-c947256da693" x="-10" y="29" width="100" height="30">
+			<expression><![CDATA[$V{PAGE_NUMBER}]]></expression>
+		</element>
+	</pageFooter>
+	<summary height="42" splitType="Stretch"/>
+</jasperReport>
