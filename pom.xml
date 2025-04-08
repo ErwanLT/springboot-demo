@@ -38,7 +38,8 @@
         <module>chaos-monkey-tutorial</module>
         <module>banner-tutorial</module>
 		<module>code-generation-tutorial</module>
-	</modules>
+        <module>templating-tutorial</module>
+    </modules>
 	<scm>
 		<url>https://github.com/ErwanLT/springboot-demo.git</url>
 		<connection>scm:git:ssh://git@github.com/ErwanLT/springboot-demo.git</connection>
