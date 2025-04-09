@@ -1,5 +1,6 @@
 <!-- Created with Jaspersoft Studio version 7.0.2.final using JasperReports Library version 7.0.2-31532122640f516c6d17238ae0e41a08113d5ac0  -->
 <jasperReport name="reportTest" language="java" pageWidth="595" pageHeight="842" whenNoDataType="NoDataSection" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9f0a81cd-26bc-4338-86c2-c5a76619c71f">
+	<parameter name="nom" class="java.lang.String"/>
 	<query language="sql"><![CDATA[]]></query>
 	<background splitType="Stretch"/>
 	<title height="79" splitType="Stretch">
@@ -14,7 +15,11 @@
 	</pageHeader>
 	<columnHeader height="61" splitType="Stretch"/>
 	<detail>
-		<band height="125" splitType="Stretch"/>
+		<band height="125" splitType="Stretch">
+			<element kind="textField" uuid="d04bb540-e4ca-4d6e-a0b4-b8fcc02a667d" x="-18" y="10" width="590" height="30">
+				<expression><![CDATA["Bonjour, " + $P{nom}]]></expression>
+			</element>
+		</band>
 	</detail>
 	<columnFooter height="45" splitType="Stretch"/>
 	<pageFooter height="59" splitType="Stretch">
