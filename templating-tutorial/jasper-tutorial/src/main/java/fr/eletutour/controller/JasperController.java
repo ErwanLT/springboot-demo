@@ -2,7 +2,14 @@ package fr.eletutour.controller;
 
 import fr.eletutour.exception.JasperException;
 import fr.eletutour.jasper.JasperService;
+import fr.eletutour.models.JasperRequest;
+import org.springframework.http.ContentDisposition;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -14,10 +21,17 @@ public class JasperController {
         this.jasperService = jasperService;
     }
 
-    @GetMapping
-    public void getReport() throws JasperException {
-        jasperService.setReportName("reportTest.jrxml");
-        jasperService.compileAndFillReport();
-        jasperService.exportReportToPDF("test.pdf");
+    @PostMapping
+    public ResponseEntity<byte[]> getReport(@RequestBody JasperRequest request) throws JasperException {
+
+        byte[] pdf = jasperService.getPDF(request);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_PDF);
+        headers.setContentDisposition(ContentDisposition.builder("attachment").filename(request.getExportName()).build());
+
+        return ResponseEntity.ok()
+                .headers(headers)
+                .body(pdf);
     }
 }
