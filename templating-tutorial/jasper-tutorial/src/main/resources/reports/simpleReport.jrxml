@@ -13,7 +13,6 @@
 			<expression><![CDATA[new java.util.Date()]]></expression>
 		</element>
 	</pageHeader>
-	<columnHeader height="61" splitType="Stretch"/>
 	<detail>
 		<band height="277" splitType="Stretch">
 			<element kind="textField" uuid="d04bb540-e4ca-4d6e-a0b4-b8fcc02a667d" x="-18" y="10" width="590" height="30">
@@ -21,11 +20,9 @@
 			</element>
 		</band>
 	</detail>
-	<columnFooter height="45" splitType="Stretch"/>
 	<pageFooter height="59" splitType="Stretch">
 		<element kind="textField" uuid="4be546c1-fd42-4733-af4d-c947256da693" x="-10" y="29" width="100" height="30">
 			<expression><![CDATA[$V{PAGE_NUMBER}]]></expression>
 		</element>
 	</pageFooter>
-	<summary height="42" splitType="Stretch"/>
 </jasperReport>

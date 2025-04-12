@@ -8,8 +8,6 @@
 			<text><![CDATA[ici le sous rapport]]></text>
 		</element>
 	</title>
-	<pageHeader height="35" splitType="Stretch"/>
-	<columnHeader height="61" splitType="Stretch"/>
 	<detail>
 		<band height="125" splitType="Stretch">
 			<element kind="textField" uuid="0fedeb5e-7996-45ff-847b-337354565017" x="280" y="20" width="100" height="30">
@@ -17,7 +15,4 @@
 			</element>
 		</band>
 	</detail>
-	<columnFooter height="45" splitType="Stretch"/>
-	<pageFooter height="54" splitType="Stretch"/>
-	<summary height="42" splitType="Stretch"/>
 </jasperReport>
