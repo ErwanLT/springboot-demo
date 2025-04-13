@@ -39,7 +39,8 @@
         <module>banner-tutorial</module>
 		<module>code-generation-tutorial</module>
         <module>templating-tutorial</module>
-    </modules>
+		<module>drools-tutorial</module>
+	</modules>
 	<scm>
 		<url>https://github.com/ErwanLT/springboot-demo.git</url>
 		<connection>scm:git:ssh://git@github.com/ErwanLT/springboot-demo.git</connection>
