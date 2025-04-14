@@ -1,7 +1,6 @@
 package fr.eletutour.aspect;
 
-import fr.eletutour.model.Account;
-import fr.eletutour.model.Transaction;
+import fr.eletutour.model.DroolsFact;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -11,8 +10,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
+/**
+ * Aspect pour appliquer les règles Drools aux méthodes annotées avec @DroolsRule.
+ */
 @Aspect
 @Component
 public class DroolsAspect {
@@ -28,46 +32,39 @@ public class DroolsAspect {
         logger.info("Interception de la méthode avec @DroolsRule: {}, arguments: {}",
                 joinPoint.getSignature(), Arrays.toString(joinPoint.getArgs()));
 
-        // Récupérer les arguments de la méthode
-        Object[] args = joinPoint.getArgs();
-        Transaction transaction = null;
-        Account account = null;
-
-        // Identifier Transaction et Account dans les arguments
-        for (Object arg : args) {
-            if (arg instanceof Transaction) {
-                transaction = (Transaction) arg;
-            } else if (arg instanceof Account) {
-                account = (Account) arg;
+        // Récupérer les faits Drools parmi les arguments
+        List<DroolsFact> facts = new ArrayList<>();
+        for (Object arg : joinPoint.getArgs()) {
+            if (arg instanceof DroolsFact) {
+                facts.add((DroolsFact) arg);
             }
         }
 
-        // Vérifier que Transaction et Account sont présents
-        if (transaction == null) {
-            logger.error("Aucune Transaction trouvée dans les arguments");
-            throw new IllegalArgumentException("Transaction requise pour appliquer les règles Drools");
+        // Vérifier qu'il y a des faits
+        if (facts.isEmpty()) {
+            logger.error("Aucun fait Drools trouvé dans les arguments");
+            throw new IllegalArgumentException("Au moins un fait Drools est requis pour appliquer les règles");
         }
-        if (account == null) {
-            logger.error("Aucun Account trouvé dans les arguments");
-            throw new IllegalArgumentException("Account requis pour appliquer les règles Drools");
-        }
-        logger.info("Faits trouvés: Transaction={}, Account={}", transaction, account);
+        logger.info("Faits trouvés: {}", facts);
 
         // Créer une session Drools
         logger.info("Création de la KieSession 'bankSession'");
-        Logger logger = LoggerFactory.getLogger("RulesLogger");
         KieSession kieSession = kieContainer.newKieSession("bankSession");
-        kieSession.setGlobal("logger", logger);
         if (kieSession == null) {
             logger.error("Échec de la création de la KieSession 'bankSession'");
             throw new IllegalStateException("KieSession 'bankSession' non trouvée");
         }
 
+        // Configurer le logger comme global
+        Logger rulesLogger = LoggerFactory.getLogger("RulesLogger");
+        kieSession.setGlobal("logger", rulesLogger);
+
         try {
             // Insérer les faits
-            kieSession.insert(transaction);
-            kieSession.insert(account);
-            logger.info("Faits insérés: Transaction={}, Account={}", transaction, account);
+            for (DroolsFact fact : facts) {
+                kieSession.insert(fact);
+            }
+            logger.info("Faits insérés: {}", facts);
 
             // Exécuter les règles
             logger.info("Exécution des règles Drools");

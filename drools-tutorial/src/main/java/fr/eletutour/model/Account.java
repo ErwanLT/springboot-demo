@@ -2,10 +2,12 @@ package fr.eletutour.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
-public class Account {
+public class Account implements DroolsFact{
     @Id
+    @NotBlank(message = "Le numéro de compte ne peut pas être vide")
     private String accountNumber;
     private double balance;
 

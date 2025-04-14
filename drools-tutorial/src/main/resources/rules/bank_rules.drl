@@ -7,8 +7,29 @@ dialect "mvel"
 
 global org.slf4j.Logger logger
 
+// Règle 0 : Valider les données de la transaction
+rule "Validate Transaction"
+    salience 100
+    when
+        $t: Transaction(
+            accountNumber == null || accountNumber == "",
+            approved == false
+            ||
+            amount <= 0,
+            approved == false
+            ||
+            type == null || type == "",
+            approved == false
+        )
+    then
+        $t.setApproved(false);
+        $t.setMessage("Transaction invalide : numéro de compte, montant ou type manquant ou incorrect.");
+        logger.error("Règle 'Validate Transaction' déclenchée pour une transaction invalide");
+end
+
 // Règle 1 : Vérifier si le retrait est possible
 rule "Check Sufficient Balance for Withdrawal"
+    salience 50
     when
         $t: Transaction(type in ("WITHDRAW", "WITHDRAWAL"), $amount: amount, approved == false)
         $a: Account(accountNumber == $t.accountNumber, balance >= $amount)
@@ -21,6 +42,7 @@ end
 
 // Règle 2 : Refuser le retrait si solde insuffisant
 rule "Deny Withdrawal Insufficient Balance"
+    salience 50
     when
         $t: Transaction(type in ("WITHDRAW", "WITHDRAWAL"), $amount: amount, approved == false)
         $a: Account(accountNumber == $t.accountNumber, balance < $amount)
@@ -32,6 +54,7 @@ end
 
 // Règle 3 : Appliquer des frais de découvert
 rule "Apply Overdraft Fee"
+    salience 30
     when
         $a: Account(balance < 0)
     then
@@ -42,6 +65,7 @@ end
 
 // Règle 4 : Détecter une transaction suspecte
 rule "Flag Suspicious Transaction"
+    salience 20
     when
         $t: Transaction(type in ("WITHDRAW", "WITHDRAWAL"), amount > 1000, approved == true)
     then
@@ -51,6 +75,7 @@ end
 
 // Règle 5 : Gérer les dépôts
 rule "Process Deposit"
+    salience 50
     when
         $t: Transaction(type == "DEPOSIT", $amount: amount, approved == false)
         $a: Account(accountNumber == $t.accountNumber)
