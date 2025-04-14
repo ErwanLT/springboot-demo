@@ -1,7 +1,6 @@
 package fr.eletutour.service;
 
 import fr.eletutour.exception.AccountNotFoundException;
-import fr.eletutour.exception.TransactionFailedException;
 import fr.eletutour.model.Account;
 import fr.eletutour.model.Transaction;
 import fr.eletutour.repository.AccountRepository;
