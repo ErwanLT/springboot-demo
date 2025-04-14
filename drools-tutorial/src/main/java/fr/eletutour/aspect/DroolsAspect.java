@@ -1,6 +1,5 @@
 package fr.eletutour.aspect;
 
-import fr.eletutour.annotation.DroolsRule;
 import fr.eletutour.model.Account;
 import fr.eletutour.model.Transaction;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -56,7 +55,9 @@ public class DroolsAspect {
 
         // Créer une session Drools
         logger.info("Création de la KieSession 'bankSession'");
+        Logger logger = LoggerFactory.getLogger("RulesLogger");
         KieSession kieSession = kieContainer.newKieSession("bankSession");
+        kieSession.setGlobal("logger", logger);
         if (kieSession == null) {
             logger.error("Échec de la création de la KieSession 'bankSession'");
             throw new IllegalStateException("KieSession 'bankSession' non trouvée");

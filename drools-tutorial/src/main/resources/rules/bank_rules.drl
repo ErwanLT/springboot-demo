@@ -5,6 +5,8 @@ import fr.eletutour.model.Transaction
 
 dialect "mvel"
 
+global org.slf4j.Logger logger
+
 // Règle 1 : Vérifier si le retrait est possible
 rule "Check Sufficient Balance for Withdrawal"
     when
@@ -14,7 +16,7 @@ rule "Check Sufficient Balance for Withdrawal"
         $t.setApproved(true);
         $a.setBalance($a.getBalance() - $amount);
         $t.setMessage("Retrait de " + $amount + " approuvé.");
-        System.out.println("Règle 'Check Sufficient Balance' déclenchée pour " + $t.getAccountNumber());
+        logger.info("Règle 'Check Sufficient Balance' déclenchée pour " + $t.getAccountNumber());
 end
 
 // Règle 2 : Refuser le retrait si solde insuffisant
@@ -25,7 +27,7 @@ rule "Deny Withdrawal Insufficient Balance"
     then
         $t.setApproved(false);
         $t.setMessage("Retrait de " + $amount + " refusé : solde insuffisant.");
-        System.out.println("Règle 'Deny Withdrawal' déclenchée pour " + $t.getAccountNumber() + ", solde=" + $a.getBalance());
+        logger.info("Règle 'Deny Withdrawal' déclenchée pour " + $t.getAccountNumber() + ", solde=" + $a.getBalance());
 end
 
 // Règle 3 : Appliquer des frais de découvert
@@ -35,7 +37,7 @@ rule "Apply Overdraft Fee"
     then
         double fee = 10.0;
         $a.setBalance($a.getBalance() - fee);
-        System.out.println("Frais de découvert de " + fee + " appliqués au compte " + $a.getAccountNumber());
+        logger.info("Frais de découvert de " + fee + " appliqués au compte " + $a.getAccountNumber());
 end
 
 // Règle 4 : Détecter une transaction suspecte
@@ -44,7 +46,7 @@ rule "Flag Suspicious Transaction"
         $t: Transaction(type in ("WITHDRAW", "WITHDRAWAL"), amount > 1000, approved == true)
     then
         $t.setMessage($t.getMessage() + " [ATTENTION : Transaction suspecte détectée !]");
-        System.out.println("Transaction suspecte : " + $t);
+        logger.info("Transaction suspecte : " + $t);
 end
 
 // Règle 5 : Gérer les dépôts
@@ -56,5 +58,5 @@ rule "Process Deposit"
         $t.setApproved(true);
         $a.setBalance($a.getBalance() + $amount);
         $t.setMessage("Dépôt de " + $amount + " approuvé.");
-        System.out.println("Règle 'Process Deposit' déclenchée pour " + $t.getAccountNumber());
+        logger.info("Règle 'Process Deposit' déclenchée pour " + $t.getAccountNumber());
 end
