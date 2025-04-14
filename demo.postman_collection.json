@@ -67,9 +67,7 @@
 							"listen": "prerequest",
 							"script": {
 								"type": "text/javascript",
-								"packages": {
-
-								},
+								"packages": {},
 								"exec": [
 									""
 								]
@@ -79,9 +77,7 @@
 							"listen": "test",
 							"script": {
 								"type": "text/javascript",
-								"packages": {
-
-								},
+								"packages": {},
 								"exec": [
 									""
 								]
@@ -331,7 +327,8 @@
 						}
 					]
 				}
-			]
+			],
+			"description": "<img src=\"https://content.pstmn.io/854e2399-f7da-46cd-91cc-b44649497e31/aW1hZ2UucG5n\" alt=\"\" height=\"870\" width=\"1304\">"
 		},
 		{
 			"name": "Hateoas",
@@ -362,11 +359,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{hateoasURL}}authors/1",
+									"raw": "{{hateoasURL}}/authors/1",
 									"host": [
-										"{{hateoasURL}}authors"
+										"{{hateoasURL}}"
 									],
 									"path": [
+										"authors",
 										"1"
 									]
 								}
@@ -438,7 +436,8 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"description": "Dans le développement d'une application, il ne suffit pas de la construire et de la sécuriser, il est également crucial de surveiller son état de santé en continu.  \nLa surveillance permet de réagir rapidement face à des anomalies ou à des problèmes de performance, assurant ainsi une meilleure stabilité et une réactivité accrue.\n\n**Prometheus** nous permettra de collecter des métriques détaillées sur le comportement de notre API (comme les temps de réponse et la charge système), tandis que **Grafana** nous aidera à les visualiser à travers des tableaux de bord."
 		},
 		{
 			"name": "chaos monkey pour Spring Boot",
@@ -785,7 +784,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"level\": 5,\n  \"deterministic\": true,\n  \"latencyRangeStart\": 5000,\n  \"latencyRangeEnd\": 10000,\n  \"latencyActive\": true,\n  \"watchedCustomServices\": [\n    \"fr.eletutour.controller.ArticleController\"\n  ]\n}",
+											"raw": "{\n    \"level\": 5,\n    \"deterministic\": false,\n    \"latencyRangeStart\": 5000,\n    \"latencyRangeEnd\": 10000,\n    \"latencyActive\": true,\n    \"exceptionsActive\": true,\n    \"exception\": {\n        \"type\": \"java.lang.RuntimeException\",\n        \"method\": \"<init>\",\n        \"arguments\": [\n            {\n                \"type\": \"java.lang.String\",\n                \"value\": \"Chaos Monkey - RuntimeException\"\n            }\n        ]\n    },\n    \"watchedCustomServices\": [\n        \"fr.eletutour.controller.ArticleController\"\n    ]\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -1396,7 +1395,1099 @@
 					]
 				}
 			],
-			"description": "<img src=\"https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExejRzeWtkNGRqNWt1a3o1Ymd6cnU4d3BoZnVwNzg5ZWo1ZTh3aG5qaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/d31xn6cQIWcOO45G/giphy.gif\" alt=\"Professor%20Chaos\">\n\n### Pourquoi utiliser le chaos engineering ?\n\nLes systèmes modernes sont **distribués, complexes et dynamiques** (microservices, cloud, conteneurs…). Les pannes sont inévitables :  \n✅ **Tester la robustesse** face aux pannes de réseau, surcharges ou erreurs applicatives.  \n✅ **Identifier les points faibles** avant qu’un incident ne survienne en production.  \n✅ **Améliorer la résilience** en optimisant la tolérance aux erreurs et en renforçant l’architecture."
+			"description": "<img src=\"https://content.pstmn.io/a6740307-ec2d-40ce-8ac8-d27a209f5e73/Y2hhb3NNb25rZXkucG5n\" alt=\"\">\n\n<img src=\"https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExejRzeWtkNGRqNWt1a3o1Ymd6cnU4d3BoZnVwNzg5ZWo1ZTh3aG5qaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/d31xn6cQIWcOO45G/giphy.gif\" alt=\"Professor%20Chaos\">\n\n### Pourquoi utiliser le chaos engineering ?\n\nLes systèmes modernes sont **distribués, complexes et dynamiques** (microservices, cloud, conteneurs…). Les pannes sont inévitables :  \n✅ **Tester la robustesse** face aux pannes de réseau, surcharges ou erreurs applicatives.  \n✅ **Identifier les points faibles** avant qu’un incident ne survienne en production.  \n✅ **Améliorer la résilience** en optimisant la tolérance aux erreurs et en renforçant l’architecture."
+		},
+		{
+			"name": "client generation",
+			"item": [
+				{
+					"name": "authors",
+					"item": [
+						{
+							"name": "{id}",
+							"item": [
+								{
+									"name": "Récupérer un auteur par ID",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{clientGenerationURL}}/authors/:id",
+											"host": [
+												"{{clientGenerationURL}}"
+											],
+											"path": [
+												"authors",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "<long>",
+													"description": "(Required) Identifiant de l'auteur à récupérer"
+												}
+											]
+										},
+										"description": "Récupère un auteur spécifique en fonction de son identifiant"
+									},
+									"response": [
+										{
+											"name": "Auteur trouvé avec succès",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/authors/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"authors",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<long>",
+															"description": "(Required) Identifiant de l'auteur à récupérer"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"bio\": \"<string>\",\n  \"books\": [\n    {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\",\n      \"authorId\": \"<long>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\",\n      \"authorId\": \"<long>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "Aucun auteur avec cet ID",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/authors/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"authors",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<long>",
+															"description": "(Required) Identifiant de l'auteur à récupérer"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"status\": \"<string>\",\n  \"message\": \"<string>\",\n  \"cause\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}"
+										},
+										{
+											"name": "Erreur lors du traitement",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/authors/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"authors",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<long>",
+															"description": "(Required) Identifiant de l'auteur à récupérer"
+														}
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"status\": \"<string>\",\n  \"message\": \"<string>\",\n  \"cause\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}"
+										}
+									]
+								},
+								{
+									"name": "Mettre à jour un auteur",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"bio\": \"<string>\",\n  \"books\": [\n    {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\",\n      \"authorId\": \"<long>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\",\n      \"authorId\": \"<long>\"\n    }\n  ]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{clientGenerationURL}}/authors/:id",
+											"host": [
+												"{{clientGenerationURL}}"
+											],
+											"path": [
+												"authors",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "<long>",
+													"description": "(Required) Identifiant de l'auteur à mettre à jour"
+												}
+											]
+										},
+										"description": "Met à jour les informations d'un auteur existant"
+									},
+									"response": [
+										{
+											"name": "Auteur mis à jour avec succès",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"bio\": \"<string>\",\n  \"books\": [\n    {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\",\n      \"authorId\": \"<long>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\",\n      \"authorId\": \"<long>\"\n    }\n  ]\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/authors/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"authors",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<long>",
+															"description": "(Required) Identifiant de l'auteur à mettre à jour"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"bio\": \"<string>\",\n  \"books\": [\n    {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\",\n      \"authorId\": \"<long>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\",\n      \"authorId\": \"<long>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "Données de l'auteur invalides",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"bio\": \"<string>\",\n  \"books\": [\n    {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\",\n      \"authorId\": \"<long>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\",\n      \"authorId\": \"<long>\"\n    }\n  ]\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/authors/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"authors",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<long>",
+															"description": "(Required) Identifiant de l'auteur à mettre à jour"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"status\": \"<string>\",\n  \"message\": \"<string>\",\n  \"cause\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}"
+										},
+										{
+											"name": "Aucun auteur avec cet ID",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"bio\": \"<string>\",\n  \"books\": [\n    {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\",\n      \"authorId\": \"<long>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\",\n      \"authorId\": \"<long>\"\n    }\n  ]\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/authors/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"authors",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<long>",
+															"description": "(Required) Identifiant de l'auteur à mettre à jour"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"status\": \"<string>\",\n  \"message\": \"<string>\",\n  \"cause\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}"
+										},
+										{
+											"name": "Erreur lors du traitement",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"bio\": \"<string>\",\n  \"books\": [\n    {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\",\n      \"authorId\": \"<long>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\",\n      \"authorId\": \"<long>\"\n    }\n  ]\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/authors/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"authors",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<long>",
+															"description": "(Required) Identifiant de l'auteur à mettre à jour"
+														}
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"status\": \"<string>\",\n  \"message\": \"<string>\",\n  \"cause\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}"
+										}
+									]
+								},
+								{
+									"name": "Supprimer un auteur",
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{clientGenerationURL}}/authors/:id",
+											"host": [
+												"{{clientGenerationURL}}"
+											],
+											"path": [
+												"authors",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "<long>",
+													"description": "(Required) Identifiant de l'auteur à supprimer"
+												}
+											]
+										},
+										"description": "Supprime un auteur en fonction de son identifiant"
+									},
+									"response": [
+										{
+											"name": "Auteur supprimé avec succès",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/authors/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"authors",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<long>",
+															"description": "(Required) Identifiant de l'auteur à supprimer"
+														}
+													]
+												}
+											},
+											"status": "No Content",
+											"code": 204,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "\"\""
+										},
+										{
+											"name": "Aucun auteur avec cet ID",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/authors/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"authors",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<long>",
+															"description": "(Required) Identifiant de l'auteur à supprimer"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"status\": \"<string>\",\n  \"message\": \"<string>\",\n  \"cause\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}"
+										},
+										{
+											"name": "Erreur lors du traitement",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/authors/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"authors",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<long>",
+															"description": "(Required) Identifiant de l'auteur à supprimer"
+														}
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"status\": \"<string>\",\n  \"message\": \"<string>\",\n  \"cause\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "Récupérer tous les auteurs",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{clientGenerationURL}}/authors",
+									"host": [
+										"{{clientGenerationURL}}"
+									],
+									"path": [
+										"authors"
+									]
+								},
+								"description": "Récupère la liste complète des auteurs"
+							},
+							"response": [
+								{
+									"name": "Liste des auteurs récupérée avec succès",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/authors",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"authors"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"id\": \"<long>\",\n    \"name\": \"<string>\",\n    \"bio\": \"<string>\",\n    \"books\": [\n      {\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"authorId\": \"<long>\"\n      },\n      {\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"authorId\": \"<long>\"\n      }\n    ]\n  },\n  {\n    \"id\": \"<long>\",\n    \"name\": \"<string>\",\n    \"bio\": \"<string>\",\n    \"books\": [\n      {\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"authorId\": \"<long>\"\n      },\n      {\n        \"id\": \"<long>\",\n        \"name\": \"<string>\",\n        \"authorId\": \"<long>\"\n      }\n    ]\n  }\n]"
+								},
+								{
+									"name": "Aucun auteur trouvé",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/authors",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"authors"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"status\": \"<string>\",\n  \"message\": \"<string>\",\n  \"cause\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}"
+								},
+								{
+									"name": "Erreur lors du traitement",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/authors",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"authors"
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"status\": \"<string>\",\n  \"message\": \"<string>\",\n  \"cause\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}"
+								}
+							]
+						},
+						{
+							"name": "Créer un nouvel auteur",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"toto\",\n  \"bio\": \"lorem ipsum\",\n  \"books\": [\n    {\n      \"name\": \"test\"\n    }\n  ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{clientGenerationURL}}/authors",
+									"host": [
+										"{{clientGenerationURL}}"
+									],
+									"path": [
+										"authors"
+									]
+								},
+								"description": "Ajoute un nouvel auteur dans le système"
+							},
+							"response": [
+								{
+									"name": "Auteur créé avec succès",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"bio\": \"<string>\",\n  \"books\": [\n    {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\",\n      \"authorId\": \"<long>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\",\n      \"authorId\": \"<long>\"\n    }\n  ]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/authors",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"authors"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"bio\": \"<string>\",\n  \"books\": [\n    {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\",\n      \"authorId\": \"<long>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\",\n      \"authorId\": \"<long>\"\n    }\n  ]\n}"
+								},
+								{
+									"name": "Données de l'auteur invalides",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"bio\": \"<string>\",\n  \"books\": [\n    {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\",\n      \"authorId\": \"<long>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\",\n      \"authorId\": \"<long>\"\n    }\n  ]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/authors",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"authors"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"status\": \"<string>\",\n  \"message\": \"<string>\",\n  \"cause\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}"
+								},
+								{
+									"name": "Erreur lors du traitement",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"bio\": \"<string>\",\n  \"books\": [\n    {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\",\n      \"authorId\": \"<long>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\",\n      \"authorId\": \"<long>\"\n    }\n  ]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/authors",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"authors"
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"status\": \"<string>\",\n  \"message\": \"<string>\",\n  \"cause\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "drools",
+			"item": [
+				{
+					"name": "api/bank",
+					"item": [
+						{
+							"name": "accounts",
+							"item": [
+								{
+									"name": "create Account",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"accountNumber\": \"<string>\",\n  \"balance\": \"<double>\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{droolsUrl}}/api/bank/accounts",
+											"host": [
+												"{{droolsUrl}}"
+											],
+											"path": [
+												"api",
+												"bank",
+												"accounts"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"accountNumber\": \"<string>\",\n  \"balance\": \"<double>\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/bank/accounts",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"bank",
+														"accounts"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"accountNumber\": \"<string>\",\n  \"balance\": \"<double>\"\n}"
+										}
+									]
+								},
+								{
+									"name": "get Account",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{droolsUrl}}/api/bank/accounts/:accountNumber",
+											"host": [
+												"{{droolsUrl}}"
+											],
+											"path": [
+												"api",
+												"bank",
+												"accounts",
+												":accountNumber"
+											],
+											"variable": [
+												{
+													"key": "accountNumber",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/bank/accounts/:accountNumber",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"bank",
+														"accounts",
+														":accountNumber"
+													],
+													"variable": [
+														{
+															"key": "accountNumber",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"accountNumber\": \"<string>\",\n  \"balance\": \"<double>\"\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "process Transaction",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id\": \"<long>\",\n  \"type\": \"<string>\",\n  \"amount\": \"<double>\",\n  \"accountNumber\": \"<string>\",\n  \"approved\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{droolsUrl}}/api/bank/transactions",
+									"host": [
+										"{{droolsUrl}}"
+									],
+									"path": [
+										"api",
+										"bank",
+										"transactions"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": \"<long>\",\n  \"type\": \"<string>\",\n  \"amount\": \"<double>\",\n  \"accountNumber\": \"<string>\",\n  \"approved\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/bank/transactions",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"bank",
+												"transactions"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"<long>\",\n  \"type\": \"<string>\",\n  \"amount\": \"<double>\",\n  \"accountNumber\": \"<string>\",\n  \"approved\": \"<boolean>\",\n  \"message\": \"<string>\"\n}"
+								}
+							]
+						}
+					]
+				}
+			]
 		}
 	],
 	"event": [
@@ -1404,9 +2495,7 @@
 			"listen": "prerequest",
 			"script": {
 				"type": "text/javascript",
-				"packages": {
-
-				},
+				"packages": {},
 				"exec": [
 					""
 				]
@@ -1416,9 +2505,7 @@
 			"listen": "test",
 			"script": {
 				"type": "text/javascript",
-				"packages": {
-
-				},
+				"packages": {},
 				"exec": [
 					""
 				]
@@ -1454,6 +2541,16 @@
 		{
 			"key": "chaosMonkeyURL",
 			"value": "http://localhost:8089",
+			"type": "default"
+		},
+		{
+			"key": "clientGenerationURL",
+			"value": "http://localhost:8091",
+			"type": "string"
+		},
+		{
+			"key": "droolsUrl",
+			"value": "http://localhost:8094",
 			"type": "string"
 		}
 	]
