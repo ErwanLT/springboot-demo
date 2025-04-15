@@ -7,6 +7,10 @@ Comment customiser la bannière de votre application Spring Boot.
 
 [article](https://www.sfeir.dev/back/comment-avoir-une-banniere-spring-personnalisee/)
 
+## [Système de gestion de règles métier](brms-tutorial)
+### [Drools](brms-tutorial/drools-tutorial)
+Tutoriel sur comment intégrer Drools à votre application Spring Boot
+
 ## [Chaos Monkey](chaos-monkey-tutorial)
 Tutoriel sur comment utiliser Chaos Monkey pour tester la résilience de votre application
 
@@ -27,8 +31,6 @@ Tutoriel sur comment utiliser Flyway pour versionner votre base de données
 Tutoriel sur comment utiliser Liquibase pour versionner votre base de données
 
 [article](https://www.sfeir.dev/back/migration-versioning-de-base-de-donnees-dans-une-application-spring-boot/)
-
-## [Système de gestion de règles métier](drools-tutorial)
 
 ## [GraphQL](graphql-tutorial)
 Tutoriel sur comment intégrer GraphQL à votre application Spring Boot
