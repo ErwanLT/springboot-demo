@@ -28,6 +28,8 @@ Tutoriel sur comment utiliser Liquibase pour versionner votre base de données
 
 [article](https://www.sfeir.dev/back/migration-versioning-de-base-de-donnees-dans-une-application-spring-boot/)
 
+## [Système de gestion de règles métier](drools-tutorial)
+
 ## [GraphQL](graphql-tutorial)
 Tutoriel sur comment intégrer GraphQL à votre application Spring Boot
 ### [partie 1 : Mise en place](https://www.sfeir.dev/partie-1-mise-en-place/)
@@ -80,3 +82,6 @@ Implementation d'une sécurité basée sur le contrôle de role avec JWT
 Implementer Spring Batch et apprenez à mettre en place des traitement périodic dans votre application Spring Boot
 
 [article](https://www.sfeir.dev/back/planifier-des-taches-avec-spring-batch/)
+
+## [Templating](templating-tutorial)
+### [Jasper](templating-tutorial/jasper-tutorial)
