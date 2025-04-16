@@ -11,6 +11,9 @@ Comment customiser la bannière de votre application Spring Boot.
 ### [Drools](brms-tutorial/drools-tutorial)
 Tutoriel sur comment intégrer Drools à votre application Spring Boot
 
+### [RuleBook](brms-tutorial/rulebook-tutorial)
+Tutoriel sur comment intégrer RuleBook à votre application Spring Boot
+
 ## [Chaos Monkey](chaos-monkey-tutorial)
 Tutoriel sur comment utiliser Chaos Monkey pour tester la résilience de votre application
 
