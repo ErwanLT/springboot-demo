@@ -2238,13 +2238,265 @@
 			]
 		},
 		{
-			"name": "drools",
+			"name": "BRMS",
 			"item": [
 				{
-					"name": "api/bank",
+					"name": "drools",
 					"item": [
 						{
-							"name": "accounts",
+							"name": "api/bank",
+							"item": [
+								{
+									"name": "accounts",
+									"item": [
+										{
+											"name": "create Account",
+											"request": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"accountNumber\": \"<string>\",\n  \"balance\": \"<double>\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{droolsUrl}}/api/bank/accounts",
+													"host": [
+														"{{droolsUrl}}"
+													],
+													"path": [
+														"api",
+														"bank",
+														"accounts"
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "OK",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "*/*"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"accountNumber\": \"<string>\",\n  \"balance\": \"<double>\"\n}",
+															"options": {
+																"raw": {
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/bank/accounts",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"bank",
+																"accounts"
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "*/*"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"accountNumber\": \"<string>\",\n  \"balance\": \"<double>\"\n}"
+												}
+											]
+										},
+										{
+											"name": "get Account",
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"url": {
+													"raw": "{{droolsUrl}}/api/bank/accounts/:accountNumber",
+													"host": [
+														"{{droolsUrl}}"
+													],
+													"path": [
+														"api",
+														"bank",
+														"accounts",
+														":accountNumber"
+													],
+													"variable": [
+														{
+															"key": "accountNumber",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "OK",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "*/*"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/bank/accounts/:accountNumber",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"bank",
+																"accounts",
+																":accountNumber"
+															],
+															"variable": [
+																{
+																	"key": "accountNumber",
+																	"value": "<string>",
+																	"description": "(Required) "
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "*/*"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"accountNumber\": \"<string>\",\n  \"balance\": \"<double>\"\n}"
+												}
+											]
+										}
+									]
+								},
+								{
+									"name": "process Transaction",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": \"<long>\",\n  \"type\": \"<string>\",\n  \"amount\": \"<double>\",\n  \"accountNumber\": \"<string>\",\n  \"approved\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{droolsUrl}}/api/bank/transactions",
+											"host": [
+												"{{droolsUrl}}"
+											],
+											"path": [
+												"api",
+												"bank",
+												"transactions"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"id\": \"<long>\",\n  \"type\": \"<string>\",\n  \"amount\": \"<double>\",\n  \"accountNumber\": \"<string>\",\n  \"approved\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/bank/transactions",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"bank",
+														"transactions"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"id\": \"<long>\",\n  \"type\": \"<string>\",\n  \"amount\": \"<double>\",\n  \"accountNumber\": \"<string>\",\n  \"approved\": \"<boolean>\",\n  \"message\": \"<string>\"\n}"
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "rulebook",
+					"item": [
+						{
+							"name": "api/accounts",
 							"item": [
 								{
 									"name": "create Account",
@@ -2262,7 +2514,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"accountNumber\": \"<string>\",\n  \"balance\": \"<double>\"\n}",
+											"raw": "{\n  \"accountNumber\": \"ACC01\",\n  \"ownerName\": \"Erwan\",\n  \"balance\": 0\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -2270,13 +2522,12 @@
 											}
 										},
 										"url": {
-											"raw": "{{droolsUrl}}/api/bank/accounts",
+											"raw": "{{rulebookUrl}}/api/accounts",
 											"host": [
-												"{{droolsUrl}}"
+												"{{rulebookUrl}}"
 											],
 											"path": [
 												"api",
-												"bank",
 												"accounts"
 											]
 										}
@@ -2294,7 +2545,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"accountNumber\": \"<string>\",\n  \"balance\": \"<double>\"\n}",
+													"raw": "{\n  \"accountNumber\": \"<string>\",\n  \"ownerName\": \"<string>\",\n  \"balance\": \"<number>\"\n}",
 													"options": {
 														"raw": {
 															"language": "json"
@@ -2302,20 +2553,19 @@
 													}
 												},
 												"url": {
-													"raw": "{{baseUrl}}/api/bank/accounts",
+													"raw": "{{baseUrl}}/api/accounts",
 													"host": [
 														"{{baseUrl}}"
 													],
 													"path": [
 														"api",
-														"bank",
 														"accounts"
 													]
 												}
 											},
 											"status": "OK",
 											"code": 200,
-											"_postman_previewlanguage": "json",
+											"_postman_previewlanguage": "text",
 											"header": [
 												{
 													"key": "Content-Type",
@@ -2323,136 +2573,18 @@
 												}
 											],
 											"cookie": [],
-											"body": "{\n  \"accountNumber\": \"<string>\",\n  \"balance\": \"<double>\"\n}"
+											"body": "<string>"
 										}
 									]
 								},
 								{
-									"name": "get Account",
+									"name": "process Transaction",
 									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "*/*"
-											}
-										],
-										"url": {
-											"raw": "{{droolsUrl}}/api/bank/accounts/:accountNumber",
-											"host": [
-												"{{droolsUrl}}"
-											],
-											"path": [
-												"api",
-												"bank",
-												"accounts",
-												":accountNumber"
-											],
-											"variable": [
-												{
-													"key": "accountNumber",
-													"value": "<string>",
-													"description": "(Required) "
-												}
-											]
-										}
-									},
-									"response": [
-										{
-											"name": "OK",
-											"originalRequest": {
-												"method": "GET",
-												"header": [
-													{
-														"key": "Accept",
-														"value": "*/*"
-													}
-												],
-												"url": {
-													"raw": "{{baseUrl}}/api/bank/accounts/:accountNumber",
-													"host": [
-														"{{baseUrl}}"
-													],
-													"path": [
-														"api",
-														"bank",
-														"accounts",
-														":accountNumber"
-													],
-													"variable": [
-														{
-															"key": "accountNumber",
-															"value": "<string>",
-															"description": "(Required) "
-														}
-													]
-												}
-											},
-											"status": "OK",
-											"code": 200,
-											"_postman_previewlanguage": "json",
-											"header": [
-												{
-													"key": "Content-Type",
-													"value": "*/*"
-												}
-											],
-											"cookie": [],
-											"body": "{\n  \"accountNumber\": \"<string>\",\n  \"balance\": \"<double>\"\n}"
-										}
-									]
-								}
-							]
-						},
-						{
-							"name": "process Transaction",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									},
-									{
-										"key": "Accept",
-										"value": "*/*"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"id\": \"<long>\",\n  \"type\": \"<string>\",\n  \"amount\": \"<double>\",\n  \"accountNumber\": \"<string>\",\n  \"approved\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{droolsUrl}}/api/bank/transactions",
-									"host": [
-										"{{droolsUrl}}"
-									],
-									"path": [
-										"api",
-										"bank",
-										"transactions"
-									]
-								}
-							},
-							"response": [
-								{
-									"name": "OK",
-									"originalRequest": {
 										"method": "POST",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "*/*"
-											}
-										],
+										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"id\": \"<long>\",\n  \"type\": \"<string>\",\n  \"amount\": \"<double>\",\n  \"accountNumber\": \"<string>\",\n  \"approved\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+											"raw": "{\n    \"accountNumber\": \"ACC01\",\n    \"type\": \"WITHDRAWAL\",\n    \"amount\": 300\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -2460,28 +2592,18 @@
 											}
 										},
 										"url": {
-											"raw": "{{baseUrl}}/api/bank/transactions",
+											"raw": "{{rulebookUrl}}/api/accounts/transaction",
 											"host": [
-												"{{baseUrl}}"
+												"{{rulebookUrl}}"
 											],
 											"path": [
 												"api",
-												"bank",
-												"transactions"
+												"accounts",
+												"transaction"
 											]
 										}
 									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "*/*"
-										}
-									],
-									"cookie": [],
-									"body": "{\n  \"id\": \"<long>\",\n  \"type\": \"<string>\",\n  \"amount\": \"<double>\",\n  \"accountNumber\": \"<string>\",\n  \"approved\": \"<boolean>\",\n  \"message\": \"<string>\"\n}"
+									"response": []
 								}
 							]
 						}
@@ -2551,6 +2673,11 @@
 		{
 			"key": "droolsUrl",
 			"value": "http://localhost:8094",
+			"type": "string"
+		},
+		{
+			"key": "rulebookUrl",
+			"value": "http://localhost:8095",
 			"type": "string"
 		}
 	]
