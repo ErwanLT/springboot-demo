@@ -4,7 +4,7 @@
     <parent>
         <groupId>fr.eletutour</groupId>
         <artifactId>monitoring-tutorial</artifactId>
-        <version>3.0.1</version>
+        <version>3.0.2-SNAPSHOT</version>
     </parent>
 
     <artifactId>prometheus-tutorial</artifactId>
