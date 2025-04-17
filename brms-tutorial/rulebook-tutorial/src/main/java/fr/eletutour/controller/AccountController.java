@@ -1,6 +1,7 @@
 package fr.eletutour.controller;
 
 import fr.eletutour.model.Account;
+import fr.eletutour.model.Transaction;
 import fr.eletutour.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -19,13 +20,8 @@ public class AccountController {
         return accountService.createAccount(account);
     }
 
-    @PostMapping("/{accountNumber}/deposit")
-    public Account deposit(@PathVariable String accountNumber, @RequestParam BigDecimal amount) {
-        return accountService.deposit(accountNumber, amount);
-    }
-
-    @PostMapping("/{accountNumber}/withdraw")
-    public Account withdraw(@PathVariable String accountNumber, @RequestParam BigDecimal amount) {
-        return accountService.withdraw(accountNumber, amount);
+    @PostMapping("/transaction")
+    public Transaction processTransaction(@RequestBody Transaction transaction) {
+        return accountService.processTransaction(transaction);
     }
 }

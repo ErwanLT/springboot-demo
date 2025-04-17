@@ -13,12 +13,7 @@ public class RuleBookConfiguration {
     }
 
     @Bean
-    public SpringAwareRuleBookRunner withdrawalRuleBook() {
-        return new SpringAwareRuleBookRunner("fr.eletutour.rules.account.operation.withdraw");
-    }
-
-    @Bean
-    public SpringAwareRuleBookRunner depositRuleBook() {
-        return new SpringAwareRuleBookRunner("fr.eletutour.rules.account.operation.deposit");
+    public SpringAwareRuleBookRunner transactionRuleBook() {
+        return new SpringAwareRuleBookRunner("fr.eletutour.rules.account.operation");
     }
 }

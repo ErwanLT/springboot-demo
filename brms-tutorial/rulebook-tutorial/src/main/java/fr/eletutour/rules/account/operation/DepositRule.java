@@ -1,22 +1,26 @@
-package fr.eletutour.rules.account.operation.deposit;
+package fr.eletutour.rules.account.operation;
 
 import com.deliveredtechnologies.rulebook.annotation.*;
 import com.deliveredtechnologies.rulebook.spring.RuleBean;
+import fr.eletutour.model.Transaction;
+import fr.eletutour.model.TransactionType;
+
 import java.math.BigDecimal;
 
 @RuleBean
 @Rule(order = 1)
 public class DepositRule {
 
-    @Given("amount")
-    private BigDecimal amount;
+    @Given("transaction")
+    private Transaction transaction;
 
     @Result
     private String result;
 
     @When
     public boolean when() {
-        return amount == null || amount.compareTo(BigDecimal.ZERO) <= 0;
+        return transaction.getType() == TransactionType.DEPOSIT
+                && (transaction.getAmount() == null || transaction.getAmount().compareTo(BigDecimal.ZERO) <= 0);
     }
 
     @Then
