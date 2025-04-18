@@ -6,10 +6,8 @@ import fr.eletutour.model.Transaction;
 import fr.eletutour.model.TransactionType;
 import fr.eletutour.repository.AccountRepository;
 import fr.eletutour.repository.TransactionRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
 
 @Service
 public class AccountService {

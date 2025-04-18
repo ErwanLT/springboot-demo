@@ -3,17 +3,18 @@ package fr.eletutour.controller;
 import fr.eletutour.model.Account;
 import fr.eletutour.model.Transaction;
 import fr.eletutour.service.AccountService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.math.BigDecimal;
 
 @RestController
 @RequestMapping("/api/accounts")
 public class AccountController {
 
-    @Autowired
-    private AccountService accountService;
+    private final AccountService accountService;
+
+    public AccountController(AccountService accountService) {
+        this.accountService = accountService;
+    }
 
     @PostMapping
     public Account createAccount(@RequestBody Account account) {
