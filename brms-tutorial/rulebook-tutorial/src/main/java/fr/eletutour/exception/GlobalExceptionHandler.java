@@ -12,4 +12,10 @@ public class GlobalExceptionHandler {
     public ResponseEntity<String> handleIllegalArgumentException(IllegalArgumentException ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler(TransactionException.class)
+    public ResponseEntity<ErrorResponse> handleTransactionException(TransactionException ex) {
+        ErrorResponse errorResponse = new ErrorResponse(ex.getErrors());
+        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+    }
 }

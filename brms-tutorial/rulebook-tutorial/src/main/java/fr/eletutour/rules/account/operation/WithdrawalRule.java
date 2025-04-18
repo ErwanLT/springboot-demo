@@ -4,12 +4,16 @@ import com.deliveredtechnologies.rulebook.annotation.*;
 import com.deliveredtechnologies.rulebook.spring.RuleBean;
 import fr.eletutour.model.Transaction;
 import fr.eletutour.model.TransactionType;
+import org.slf4j.Logger;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @RuleBean
 @Rule(order = 2)
 public class WithdrawalRule {
+
+    private final Logger logger = org.slf4j.LoggerFactory.getLogger(WithdrawalRule.class);
 
     @Given("transaction")
     private Transaction transaction;
@@ -17,11 +21,12 @@ public class WithdrawalRule {
     @Given("balance")
     private BigDecimal balance;
 
-    @Result
-    private String result;
+    @Given("errors")
+    private List<String> errors;
 
     @When
     public boolean when() {
+        logger.info("Validating withdrawal transaction: {}", transaction);
         return transaction.getType() == TransactionType.WITHDRAWAL
                 && (transaction.getAmount() == null
                 || transaction.getAmount().compareTo(BigDecimal.ZERO) <= 0
@@ -31,6 +36,7 @@ public class WithdrawalRule {
 
     @Then
     public void then() {
-        result = "Withdrawal failed: Insufficient balance or invalid amount";
+        logger.error("Withdrawal failed: Insufficient balance or invalid amount");
+        errors.add("Withdrawal failed: Insufficient balance or invalid amount");
     }
 }
