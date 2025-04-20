@@ -1,6 +1,9 @@
 package fr.eletutour.rules.account.operation;
 
-import com.deliveredtechnologies.rulebook.annotation.*;
+import com.deliveredtechnologies.rulebook.annotation.Given;
+import com.deliveredtechnologies.rulebook.annotation.Rule;
+import com.deliveredtechnologies.rulebook.annotation.Then;
+import com.deliveredtechnologies.rulebook.annotation.When;
 import com.deliveredtechnologies.rulebook.spring.RuleBean;
 import fr.eletutour.model.Transaction;
 import fr.eletutour.model.TransactionType;

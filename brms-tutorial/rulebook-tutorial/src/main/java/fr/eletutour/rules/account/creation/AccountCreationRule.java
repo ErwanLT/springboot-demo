@@ -1,6 +1,10 @@
 package fr.eletutour.rules.account.creation;
 
-import com.deliveredtechnologies.rulebook.annotation.*;
+import com.deliveredtechnologies.rulebook.annotation.Given;
+import com.deliveredtechnologies.rulebook.annotation.Result;
+import com.deliveredtechnologies.rulebook.annotation.Rule;
+import com.deliveredtechnologies.rulebook.annotation.Then;
+import com.deliveredtechnologies.rulebook.annotation.When;
 import com.deliveredtechnologies.rulebook.spring.RuleBean;
 import fr.eletutour.model.Account;
 import org.slf4j.Logger;

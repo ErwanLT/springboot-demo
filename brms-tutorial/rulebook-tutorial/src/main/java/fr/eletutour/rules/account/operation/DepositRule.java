@@ -1,13 +1,16 @@
 package fr.eletutour.rules.account.operation;
 
-import com.deliveredtechnologies.rulebook.annotation.*;
+import com.deliveredtechnologies.rulebook.annotation.Given;
+import com.deliveredtechnologies.rulebook.annotation.Rule;
+import com.deliveredtechnologies.rulebook.annotation.Then;
+import com.deliveredtechnologies.rulebook.annotation.When;
 import com.deliveredtechnologies.rulebook.spring.RuleBean;
 import fr.eletutour.model.Transaction;
 import fr.eletutour.model.TransactionType;
 import org.slf4j.Logger;
 
-import java.util.List;
 import java.math.BigDecimal;
+import java.util.List;
 
 @RuleBean
 @Rule(order = 1)

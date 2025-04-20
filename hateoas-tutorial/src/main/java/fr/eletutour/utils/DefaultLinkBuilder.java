@@ -3,9 +3,10 @@ package fr.eletutour.utils;
 import fr.eletutour.controller.ArticleController;
 import fr.eletutour.controller.AuthorController;
 import org.springframework.hateoas.Link;
+import org.springframework.stereotype.Component;
+
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
-import org.springframework.stereotype.Component;
 
 @Component
 public class DefaultLinkBuilder implements LinkBuilder {

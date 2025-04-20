@@ -5,9 +5,9 @@ import fr.eletutour.model.Account;
 import fr.eletutour.model.Transaction;
 import fr.eletutour.repository.AccountRepository;
 import fr.eletutour.rules.Engine;
+import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.stereotype.Component;
-import org.aspectj.lang.annotation.Aspect;
 
 @Aspect
 @Component

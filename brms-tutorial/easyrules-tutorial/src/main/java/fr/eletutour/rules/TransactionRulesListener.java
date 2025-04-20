@@ -4,17 +4,18 @@ import fr.eletutour.exception.TransactionException;
 import org.jeasy.rules.api.Facts;
 import org.jeasy.rules.api.Rule;
 import org.jeasy.rules.api.RuleListener;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class TransactionRulesListener implements RuleListener {
 
-    private TransactionException transactionException;
+    private static final Logger logger = LoggerFactory.getLogger(TransactionRulesListener.class);
 
-    public void reset() {
-        this.transactionException = null;
-    }
+    private TransactionException transactionException;
 
     @Override
     public boolean beforeEvaluate(Rule rule, Facts facts) {
+        this.transactionException = null;
         return true; // Permet l'évaluation de la règle
     }
 
@@ -30,7 +31,8 @@ public class TransactionRulesListener implements RuleListener {
 
     @Override
     public void onSuccess(Rule rule, Facts facts) {
-        // Rien à faire en cas de succès
+        this.transactionException = null;
+        logger.info("Rule executed successfully: {}", rule.getName());
     }
 
     @Override
@@ -38,6 +40,7 @@ public class TransactionRulesListener implements RuleListener {
         // Capturer TransactionException si elle est la cause
         Throwable cause = exception;
         while (cause != null) {
+            logger.error("Error executing rule: {}", rule.getName());
             if (cause instanceof TransactionException) {
                 this.transactionException = (TransactionException) cause;
                 return;
@@ -46,6 +49,7 @@ public class TransactionRulesListener implements RuleListener {
         }
         // Stocker une exception générique si ce n'est pas une TransactionException
         this.transactionException = new TransactionException("Error executing rule: " + rule.getName());
+        logger.error("Error executing rule: {}", rule.getName(), exception);
     }
 
     /**

@@ -4,8 +4,8 @@ import fr.eletutour.dao.AuthorRepository;
 import fr.eletutour.exception.ArticleNotFoundException;
 import fr.eletutour.exception.AuthorNotFoundException;
 import fr.eletutour.model.Author;
-import org.springframework.stereotype.Service;
 import fr.eletutour.utils.LinkBuilder;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;

@@ -1,12 +1,9 @@
 package fr.eletutour.rules;
 
-import fr.eletutour.exception.TransactionException;
 import fr.eletutour.model.Account;
 import fr.eletutour.model.Transaction;
 import org.jeasy.rules.api.Facts;
 import org.jeasy.rules.api.Rules;
-import org.jeasy.rules.api.RulesEngine;
-import org.jeasy.rules.api.RulesEngineParameters;
 import org.jeasy.rules.core.DefaultRulesEngine;
 import org.springframework.stereotype.Component;
 
@@ -28,9 +25,7 @@ public class Engine {
         Facts facts = new Facts();
         facts.put("account", account);
         facts.put("transaction", transaction);
-        rulesListener.reset();
         rulesEngine.fire(rules, facts);
         rulesListener.throwIfFailed();
-
     }
 }
