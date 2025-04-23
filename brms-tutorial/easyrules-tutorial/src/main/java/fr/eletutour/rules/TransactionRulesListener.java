@@ -31,8 +31,6 @@ public class TransactionRulesListener implements RuleListener {
 
     @Override
     public void onSuccess(Rule rule, Facts facts) {
-        this.transactionException = null;
-        logger.info("Rule executed successfully: {}", rule.getName());
     }
 
     @Override

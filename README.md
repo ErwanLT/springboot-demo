@@ -26,8 +26,12 @@ Tutoriel sur comment utiliser Chaos Monkey pour tester la résilience de votre a
 ### [Génération de client à partir de la spécification OpenAPI](code-generation-tutorial/client-generation-tutorial)
 Tutoriel sur comment générer un client à partir de la spécification OpenAPI
 
+[article](https://www.sfeir.dev/back/generer-vos-client-dapi-a-partir-de-leur-specification-openapi/)
+
 ### [Génération de mappers](code-generation-tutorial/mapper-tutorial)
 Tutoriel sur la génération de mappers avec MapStruct
+
+[article](https://www.sfeir.dev/back/mapstruct-dites-adieu-au-code-repetitif/)
 
 ## [Database versioning](database-versioning-tutorial)
 Tutoriel sur comment versionner votre base de données
