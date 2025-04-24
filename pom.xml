@@ -40,7 +40,6 @@
 		<module>code-generation-tutorial</module>
         <module>templating-tutorial</module>
 		<module>brms-tutorial</module>
-		<module>admin-tutorial</module>
 	</modules>
 	<scm>
 		<url>https://github.com/ErwanLT/springboot-demo.git</url>

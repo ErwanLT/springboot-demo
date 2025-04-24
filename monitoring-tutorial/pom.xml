@@ -11,6 +11,7 @@
 
     <modules>
         <module>prometheus-tutorial</module>
+        <module>admin-tutorial</module>
     </modules>
 
     <properties>

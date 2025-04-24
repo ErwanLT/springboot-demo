@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>fr.eletutour</groupId>
-        <artifactId>springboot-demo</artifactId>
+        <artifactId>monitoring-tutorial</artifactId>
         <version>3.0.2-SNAPSHOT</version>
     </parent>
     <packaging>pom</packaging>
