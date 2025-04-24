@@ -75,6 +75,9 @@ Utiliser Prometheus et Grafana afin d'exposer des metric et monitorer votre appl
 
 [article](https://www.sfeir.dev/back/superviser-votre-application-spring-boot/)
 
+### [Spring Boot Admin](monitoring-tutorial/admin-tutorial)
+Utiliser Spring Boot Admin pour monitorer vos applications Spring Boot
+
 ## [Security](security-tutorial)
 Tutoriels sur comment sécuriser vos API avec Spring Security
 ### [Basic Auth](security-tutorial/basic-auth-tutorial)
