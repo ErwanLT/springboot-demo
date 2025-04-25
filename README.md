@@ -100,3 +100,7 @@ Implementer Spring Batch et apprenez à mettre en place des traitement périodic
 
 ## [Templating](templating-tutorial)
 ### [Jasper](templating-tutorial/jasper-tutorial)
+
+## [Testing tutorial](testing-tutorial)
+### [ArchUnit](testing-tutorial/archunit-tutorial)
+Tutoriel sur comment utiliser ArchUnit pour tester l'architecture de votre application Spring Boot
