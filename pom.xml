@@ -9,7 +9,7 @@
 	</parent>
 	<groupId>fr.eletutour</groupId>
 	<artifactId>springboot-demo</artifactId>
-	<version>3.0.2-SNAPSHOT</version>
+	<version>4.0.0</version>
     <packaging>pom</packaging>
     <name>springboot-demo</name>
 	<description>Demo project for Spring Boot</description>
@@ -45,7 +45,7 @@
 		<url>https://github.com/ErwanLT/springboot-demo.git</url>
 		<connection>scm:git:ssh://git@github.com/ErwanLT/springboot-demo.git</connection>
 		<developerConnection>scm:git:ssh://git@github.com/ErwanLT/springboot-demo.git</developerConnection>
-		<tag>HEAD</tag>
+		<tag>v4.0.0</tag>
 	</scm>
 	<properties>
 		<java.version>21</java.version>
