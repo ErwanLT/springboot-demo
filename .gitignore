@@ -31,3 +31,4 @@ build/
 
 ### VS Code ###
 .vscode/
+/monitoring-tutorial/admin-tutorial/springboot-admin-server/src/main/resources/application.dic
