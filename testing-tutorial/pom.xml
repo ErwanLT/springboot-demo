@@ -11,6 +11,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>archunit-tutorial</module>
+        <module>gatling-tutorial</module>
     </modules>
 
     <artifactId>testing-tutorial</artifactId>
