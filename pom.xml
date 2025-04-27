@@ -35,7 +35,6 @@
         <module>monitoring-tutorial</module>
         <module>hateoas-tutorial</module>
 		<module>database-versioning-tutorial</module>
-        <module>chaos-monkey-tutorial</module>
         <module>banner-tutorial</module>
 		<module>code-generation-tutorial</module>
         <module>templating-tutorial</module>

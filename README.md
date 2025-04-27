@@ -17,11 +17,6 @@ Tutoriel sur la bibliothèque Easy Rules, qui est un moteur de règles Java simp
 ### [RuleBook](brms-tutorial/rulebook-tutorial)
 Tutoriel sur comment intégrer RuleBook à votre application Spring Boot
 
-## [Chaos Monkey](chaos-monkey-tutorial)
-Tutoriel sur comment utiliser Chaos Monkey pour tester la résilience de votre application
-
-[article](https://www.sfeir.dev/back/introduisez-du-chaos-dans-votre-application-spring-boot/)
-
 ## [Génération de code](code-generation-tutorial)
 ### [Génération de client à partir de la spécification OpenAPI](code-generation-tutorial/client-generation-tutorial)
 Tutoriel sur comment générer un client à partir de la spécification OpenAPI
@@ -104,3 +99,11 @@ Implementer Spring Batch et apprenez à mettre en place des traitement périodic
 ## [Testing tutorial](testing-tutorial)
 ### [ArchUnit](testing-tutorial/archunit-tutorial)
 Tutoriel sur comment utiliser ArchUnit pour tester l'architecture de votre application Spring Boot
+
+### [Chaos Monkey](testing-tutorial/chaos-monkey-tutorial)
+Tutoriel sur comment utiliser Chaos Monkey pour tester la résilience de votre application
+
+[article](https://www.sfeir.dev/back/introduisez-du-chaos-dans-votre-application-spring-boot/)
+
+### [Gatling](testing-tutorial/gatling-tutorial)
+Tutoriel sur comment utiliser Gatling pour tester la performance de votre application
