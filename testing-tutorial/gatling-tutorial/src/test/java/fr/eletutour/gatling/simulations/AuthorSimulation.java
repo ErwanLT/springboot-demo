@@ -19,7 +19,9 @@ import io.gatling.javaapi.core.OpenInjectionStep.RampRate.RampRateOpenInjectionS
 import io.gatling.javaapi.core.ScenarioBuilder;
 import io.gatling.javaapi.core.Simulation;
 import io.gatling.javaapi.http.HttpProtocolBuilder;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class AuthorSimulation extends Simulation {
 
     private static final HttpProtocolBuilder HTTP_PROTOCOL_BUILDER = setupProtocolForSimulation();
