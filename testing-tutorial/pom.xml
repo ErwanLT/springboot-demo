@@ -13,6 +13,7 @@
         <module>archunit-tutorial</module>
         <module>chaos-monkey-tutorial</module>
         <module>gatling-tutorial</module>
+        <module>parametrize-test-tutorial</module>
     </modules>
 
     <artifactId>testing-tutorial</artifactId>

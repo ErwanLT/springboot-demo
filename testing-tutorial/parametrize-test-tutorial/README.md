@@ -1,0 +1,2 @@
+# Parametrized Tests
+Parametrized tests are a powerful feature in pytest that allow you to run the same test function with different sets of input data. This is particularly useful when you want to test a function with multiple scenarios without writing separate test functions for each case.

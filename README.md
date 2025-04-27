@@ -107,3 +107,6 @@ Tutoriel sur comment utiliser Chaos Monkey pour tester la résilience de votre a
 
 ### [Gatling](testing-tutorial/gatling-tutorial)
 Tutoriel sur comment utiliser Gatling pour tester la performance de votre application
+
+### [Parameterized tests](testing-tutorial/parametrize-test-tutorial)
+Tutoriel sur comment utiliser les tests paramétrés avec pytest pour tester votre application Java
