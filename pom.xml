@@ -40,7 +40,8 @@
         <module>templating-tutorial</module>
 		<module>brms-tutorial</module>
         <module>testing-tutorial</module>
-    </modules>
+		<module>elasticsearch-tutorial</module>
+	</modules>
 	<scm>
 		<url>https://github.com/ErwanLT/springboot-demo.git</url>
 		<connection>scm:git:ssh://git@github.com/ErwanLT/springboot-demo.git</connection>
