@@ -7,6 +7,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-okaidia.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <style>
         body {
@@ -129,14 +130,115 @@
 </nav>
 
 <!-- Main Content -->
-<div class="content">
-    <div class="container">
-        <h1>Banner Tutorial</h1>
-        <p>This tutorial guides you through creating a responsive web banner using HTML, CSS, and Bootstrap. A banner is a prominent visual element often used for promotions, announcements, or branding.</p>
+<div class="text-center">
+    <img src="banner.png" alt="Banner" class="img-fluid"
+         style="max-width: 100%; height: auto; max-height: 450px;">
+</div>
+
+<div class="container mt-5">
+    <h1 class="text-center">La bannière Spring par défaut</h1>
+    <p>La bannière Spring Boot est un élément distinctif de Spring Boot, un framework Java populaire utilisé pour créer des applications web. La bannière est affichée au démarrage de chaque application Spring Boot et contient le logo Spring Boot, le nom de la version et un message personnalisable.</p>
+    <pre><code class="language-logs">  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.0.6)</code></pre>
+    <p>Mais saviez-vous que cette bannière est désactivable, voir même personnalisable ? Et que c'est très simple à mettre à place ?
+        Non ? Et bien voyons ça.</p>
+    
+    <h1 class="text-center">Désactiver la bannière</h1>
+    <p>Si jamais vous ne voulez pas voir la bannière apparaitre au démarrage de l'application il existe plusieurs solutions que je vous detaillerais ici :</p>
+    <ul>
+        <li>depuis le fichier application.properties</li>
+        <li>depuis la méthode main de notre application</li>
+        <li>depuis le fichier banner.txt des resources du projet</li>
+    </ul>
+    
+    <h2 class="text-center">Depuis le fichier de properties</h2>
+    <p>Pour désactiver la bannière Spring Boot depuis le fichier de propriétés de votre application, il ne vous faudra ajouter qu'une seule ligne à l'intérieur</p>
+    <pre><code class="language-properties">spring.main.banner-mode=off</code></pre>
+    <p>Si jamais votre fichier est au format yaml, ce n'est pas bien compliqué non plus</p>
+    <pre><code class="language-properties">spring:
+  main:
+    banner-mode: 'off'</code></pre>
+    
+    <h2 class="text-center">Depuis le main de l'application</h2>
+    <p>Pour désactiver la bannière Spring Boot depuis la méthode main de votre application il vous faut modifier la ligne de run pour passer de ça :</p>
+    <pre><code class="language-java">SpringApplication.run(MonApp.class, args);</code></pre>
+    <p>à ceci :</p>
+    <pre><code class="language-java">new SpringApplicationBuilder(SpringbootBannerApplication.class)
+				.bannerMode(Banner.Mode.OFF)
+				.run(args);</code></pre>
+    
+    <h2 class="text-center">Depuis le fichier banner.txt</h2>
+    <p>Pour désactiver la bannière Spring Boot depuis le fichier banner.txt vous avez 2 choix :</p>
+    <ul>
+        <li>Si le fichier existe, le supprimer du répertoire des ressources de l'application ou en le renommant. Spring Boot détecte automatiquement la présence du fichier banner.txt et l'affiche au démarrage de l'application. En supprimant ou en renommant ce fichier, Spring Boot ne trouvera plus la bannière et ne l'affichera donc pas.</li>
+        <li>Si le fichier n'existe pas, le créer dans le repertoire des resources et le laisser vide. Au démarrage de l'application, le fichier sera detecté et son contenu sera affiché, ici rien car le fichier sera vide.</li>
+    </ul>
+    
+    <h1 class="text-center">Personnaliser la bannière</h1>
+    <p>Par défaut Spring Boot va scanner les fichiers présent dans votre répertoire de resource à la recherche d'un fichier nommé banner.txt et utilisera son contenu pour généré la bannière au démarrage de l'application.<br>
+        Sachez cependant que le fichier contenant votre bannière peut tout aussi bien être un fichier de type image qui sera à ce moment là convertie en ASCII avant d'être affiché (seulement version antérieur à Spring Boot 3).</p>
+
+    <h2 class="text-center">Le fichier banner.txt</h2>
+    <p>Nous avons vu précédement que nous pouvions créer un fichier banner.txt dans le répertoire resources de notre projet et le laisser vide afin de désactiver la bannière, mais il est également possible de lui ajouter du contenu qui sera par la suite afficher.
+        <br><br>
+        Par exemple si je rajoute :
+    </p>
+    <pre><code class="language-text"> Oh no not again !
+     (")
+     \)/
+    _____
+    \___/
+
+                      Hello ground !!
+        .-------------'```'----....,,__                        _,
+       |                               `'`'`'`'-.,.__        .'(
+       |                                             `'--._.'   )
+       |                                                   `'-.<
+       \               .-'`'-.                            -.    `\
+        \               -.o_.     _                     _,-'`\    |
+         ``````''--.._.-=-._    .'  \            _,,--'`      `-._(
+           (^^^^^^^^`___    '-. |    \  __,,..--'                 `
+            `````````   `'--..___\    |`
+                                  `-.,'
+
+</code></pre>
+    <p>Dans mon fichier et que je relance mon application, je verrais en console le résultat suivant :</p>
+    <div class="text-center">
+        <img src="banner-simple.png" alt="Banner" class="img-fluid"
+             style="max-width: 100%; height: auto; max-height: 450px;">
+    </div>
+    
+    <p>Vous pouvez aussi ajoutez des styles de police, ainsi que de la couleur dans votre fichier en ajoutant en début de lignes :</p>
+    <ul>
+        <li>${AnsiStyle.STYLE_NAME} : BOLD / ITALIC / NORMAL ...</li>
+        <li>${AnsiColor.COLOR_NAME} : BLUE / RED / YELLOW ...</li>
+        <li>${AnsiBackground.COLOR_NAME}</li>
+    </ul>
+    <p>Ce qui permet d'avoir au démarrage un résultat comme suit :</p>
+    <div class="text-center">
+        <img src="banner-color.png" alt="Banner" class="img-fluid"
+             style="max-width: 100%; height: auto; max-height: 450px;">
+    </div>
+    <p>Attention cependant à l'utilisation des variable de style, car si vous ne précisez pas de retour à la normal, le style continuera de s'appliquer.</p>
+    
+    <h2 class="text-center">Utiliser une image comme bannière</h2>
+    <p>Jusqu'à la version 3 de Spring Boot, il était possible d'utiliser une image comme bannière.
+        Cette dernière était convertie en ASCII avant le démarrage de l'application ce qui pouvait prendre du temps en fonction de la taille de l'image, et le rendu n'était pas forcément très comprehensible.
+        Pour ce faire il fallait placer l'image souhaité dans le répertoire resource du projet, et ajouter la ligne de properties suivante :</p>
+    <pre><code class="language-properties">spring.banner.image.location=classpath:monImage.png|jpg|gif</code></pre>
+    <p>ce qui donnerait un resultat comme celui-ci</p>
+    <div class="text-center">
+        <img src="banner-image.png" alt="Banner" class="img-fluid"
+             style="max-width: 100%; height: auto; max-height: 450px;">
     </div>
 </div>
 
-<footer class="bg-dark text-white text-center py-4 fixed-bottom">
+<footer class="bg-dark text-white text-center py-4">
     <div class="container">
         <p class="mb-2">© 2025 Project Documentation. All rights reserved.</p>
         <div class="social-icons">
@@ -160,5 +262,9 @@
 <!-- Bootstrap JS and Popper -->
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-properties.min.js"></script>
 </body>
 </html>
