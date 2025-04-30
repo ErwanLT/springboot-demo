@@ -1,21 +1,27 @@
 package fr.eletutour.elastic.model;
 
+import jakarta.validation.constraints.NotNull;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
+import org.springframework.data.elasticsearch.annotations.Mapping;
 
-@org.springframework.data.elasticsearch.annotations.Document(indexName = "documents") // Nom de l'index Elasticsearch
-public class Document {
+@Document(indexName = "books")
+@Mapping(mappingPath = "/elasticsearch/mappings/books.json")
+public class Book {
 
     @Id
     private String id;
 
+    @NotNull
     @Field(type = FieldType.Text, analyzer = "standard")
     private String title;
 
     @Field(type = FieldType.Text, analyzer = "standard")
     private String content;
 
+    @NotNull
     @Field(type = FieldType.Keyword)
     private String author;
 
@@ -28,4 +34,14 @@ public class Document {
     public void setContent(String content) { this.content = content; }
     public String getAuthor() { return author; }
     public void setAuthor(String author) { this.author = author; }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id='" + id + '\'' +
+                ", title='" + title + '\'' +
+                ", content='" + content + '\'' +
+                ", author='" + author + '\'' +
+                '}';
+    }
 }
