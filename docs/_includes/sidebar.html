@@ -1,13 +1,21 @@
 <ul>
     <li class="nav-item"><a class="nav-link" href="{{ '/' | relative_url }}">Accueil</a></li>
     <li class="nav-item"><a class="nav-link" href="{{ '/banner/banner' | relative_url }}">Bannière Spring Boot</a></li>
-    <li>BRMS
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">BRMS</a>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="{{ '/brms/drools' | relative_url }}">Drools</a>
+            <a class="dropdown-item" href="{{ '/brms/easy-rules' | relative_url }}">Easy Rules</a>
+            <a class="dropdown-item" href="{{ '/brms/rulebook' | relative_url }}">Rulebook</a>
+        </div>
+    </li>
+    <!--<li>BRMS
         <ul>
             <li class="nav-item"><a class="nav-link" href="{{ '/brms/drools' | relative_url }}">Drools</a></li>
             <li class="nav-item"><a class="nav-link" href="{{ '/brms/easy-rules' | relative_url }}">Easy Rules</a></li>
             <li class="nav-item"><a class="nav-link" href="{{ '/brms/rulebook' | relative_url }}">Rulebook</a></li>
         </ul>
-    </li>
+    </li>-->
     <li>Code Generation
         <ul>
             <li class="nav-item"><a class="nav-link" href="{{ '/code-generation/openapi' | relative_url }}">OpenAPI Code Gen</a></li>
