@@ -23,31 +23,11 @@ Les systèmes modernes sont **distribués, complexes et dynamiques** (microser
 
 Développé par Netflix, **Chaos Monkey** injecte des pannes aléatoires dans un environnement pour tester sa robustesse.
 
-[
-
-L’armée des singes du chaos : définition
-
-Découvrez pourquoi introduire du chaos dans votre infrastructure, une pratique qui peut sembler contre-intuitive, peut finalement vous permettre d’être plus résilient.
-
-![](https://www.sfeir.dev/content/images/icon/plume-point-154.png)sfeir.dev - Le média incontournable pour les passionnés de tech et d'intelligence artificielleErwan Le Tutour
-
-![](https://www.sfeir.dev/content/images/thumbnail/simainArmy-1.png)
-
-](https://www.sfeir.dev/armee-des-singes-du-chaos-definition/)
+[L’armée des singes du chaos : définition](https://www.sfeir.dev/armee-des-singes-du-chaos-definition/)
 
 ## Chaos Monkey pour Spring Boot
 
-[
-
-GitHub - codecentric/chaos-monkey-spring-boot: Chaos Monkey for Spring Boot
-
-Chaos Monkey for Spring Boot. Contribute to codecentric/chaos-monkey-spring-boot development by creating an account on GitHub.
-
-![](https://www.sfeir.dev/content/images/icon/pinned-octocat-093da3e6fa40-13.svg)GitHubcodecentric
-
-![](https://www.sfeir.dev/content/images/thumbnail/chaos-monkey-spring-boot)
-
-](https://github.com/codecentric/chaos-monkey-spring-boot?ref=sfeir.dev)
+[![](https://www.sfeir.dev/content/images/thumbnail/chaos-monkey-spring-boot)](https://github.com/codecentric/chaos-monkey-spring-boot?ref=sfeir.dev)
 
 Chaos Monkey for Spring Boot est un projet [open source](https://www.sfeir.dev/open-source-et-au-dela/) inspiré de la Simian Army de [Netflix](https://www.sfeir.dev/tendances/netflix-fete-ses-10-ans-en-france/) mais centré sur ... Spring Boot.
 
