@@ -1,3 +1,8 @@
+---
+layout: default
+title: Accueil
+---
+
 # Comment personnaliser la bannière d'un projet Spring Boot
 ## La bannière Spring par défaut
 
