@@ -605,17 +605,7 @@ Ici l'on se sert du bean **`AuthenticationProvider`** défini dans notre class
 
 Je vous passe le laïus sur le fait qu'il est important de bien gérer ses erreurs dans spring boot, vous trouverez un article sur le sujet juste ici
 
-[
-
-Comment bien gérer ses exceptions dans Spring Boot
-
-Découvrez comment bien intercepter vos exceptions dans Spring Boot et remonter des messages d’erreur clairs à vos utilisateurs.
-
-![](https://www.sfeir.dev/content/images/icon/plume-point-117.png)sfeir.dev - Le média incontournable pour les passionnés de tech et d'intelligence artificielleErwan Le Tutour
-
-![](https://www.sfeir.dev/content/images/thumbnail/photo-1579373903781-fd5c0c30c4cd.jpeg)
-
-](https://www.sfeir.dev/back/comment-bien-gerer-ses-erreur-dans-springboot/)
+[![](https://www.sfeir.dev/content/images/thumbnail/photo-1579373903781-fd5c0c30c4cd.jpeg)](https://www.sfeir.dev/back/comment-bien-gerer-ses-erreur-dans-springboot/)
 
 Sachez cependant qu'en matière de sécurité, il ne faut pas non plus donner trop de détails.
 

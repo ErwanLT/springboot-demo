@@ -13,17 +13,7 @@ Dans cet article, nous allons explorer ce qu'est **MapStruct**, ses avantages e
 
 MapStruct est une bibliothèque Java qui simplifie la création de mappers entre des beans (objets Java simples avec des propriétés, getters et setters). Contrairement à d'autres outils qui fonctionnent à l'exécution (runtime), MapStruct génère du code source lors de la compilation. Le principe est simple : le développeur définit une interface contenant les signatures des méthodes de mappage, et **MapStruct** se charge de créer automatiquement une implémentation concrète à partir de ces définitions.
 
-[
-
-GitHub - mapstruct/mapstruct: An annotation processor for generating type-safe bean mappers
-
-An annotation processor for generating type-safe bean mappers - mapstruct/mapstruct
-
-![](https://www.sfeir.dev/content/images/icon/pinned-octocat-093da3e6fa40-20.svg)GitHubmapstruct
-
-![](https://www.sfeir.dev/content/images/thumbnail/mapstruct)
-
-](https://github.com/mapstruct/mapstruct?ref=sfeir.dev)
+[![](https://www.sfeir.dev/content/images/thumbnail/mapstruct)](https://github.com/mapstruct/mapstruct?ref=sfeir.dev)
 
 ### Installation
 

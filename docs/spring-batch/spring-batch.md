@@ -11,17 +11,7 @@ Dans cet article, nous allons voir comment implémenter un traitement par lot av
 
 Avoir lu et suivit les différentes étapes de l'article suivant
 
-[
-
-Comment créer son projet Spring Boot de zéro !
-
-Débutant ou expert, lancer un projet Spring Boot de zéro n’a jamais été aussi simple !
-
-![](https://www.sfeir.dev/content/images/icon/plume-point-32.png)sfeir.dev - Le média incontournable pour les passionnés de tech et d'intelligence artificielleYves Dautremay
-
-![](https://www.sfeir.dev/content/images/thumbnail/Capture-d-e-cran-2023-10-27-a--09.54.06-1.png)
-
-](https://www.sfeir.dev/back/creer-son-projet-spring-boot-de-zero/)
+[![](https://www.sfeir.dev/content/images/thumbnail/Capture-d-e-cran-2023-10-27-a--09.54.06-1.png)](https://www.sfeir.dev/back/creer-son-projet-spring-boot-de-zero/)
 
 ## Ajouter les dépendances
 

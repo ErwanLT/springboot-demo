@@ -43,18 +43,7 @@ Malgré ses nombreux avantages, le plugin présente aussi quelques limites :
 Le plugin Maven `openapi-generator-maven-plugin`, développé par **OpenAPITools**, est un outil puissant pour générer des clients, des serveurs ou des modèles à partir de spécifications OpenAPI.  
 Intégré au cycle de vie de Maven, il s’exécute typiquement durant la phase generate-sources, produisant du code dans un dossier comme target/generated-sources.
 
-[
-
-GitHub - OpenAPITools/openapi-generator: OpenAPI Generator allows generation of API client libraries (SDK generation), server stubs, documentation and configuration automatically given an OpenAPI Spec (v2, v3)
-
-OpenAPI Generator allows generation of API client libraries (SDK generation), server stubs, documentation and configuration automatically given an OpenAPI Spec (v2, v3) - OpenAPITools/openapi-gener…
-
-![](https://www.sfeir.dev/content/images/icon/pinned-octocat-093da3e6fa40-18.svg)GitHubOpenAPITools
-
-![](https://www.sfeir.dev/content/images/thumbnail/openapi-generator)
-
-](https://github.com/OpenAPITools/openapi-generator/tree/master?ref=sfeir.dev)
-
+[![](https://www.sfeir.dev/content/images/thumbnail/openapi-generator)](https://github.com/OpenAPITools/openapi-generator/tree/master?ref=sfeir.dev)
 Projet GitHub du plugin maven
 
 ### Configuration de base
