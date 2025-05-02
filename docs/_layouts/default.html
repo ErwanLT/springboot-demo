@@ -38,14 +38,7 @@
 
 </head>
 <body>
-<nav class="navbar navbar-light bg-light flex-column">
-    <button class="btn btn-outline-secondary mb-2" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarContent" aria-controls="sidebarContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse show w-100" id="sidebarContent">
-        {% include sidebar.html %}
-    </div>
-</nav>
+{% include sidebar.html %}
 <main>
     {{ content }}
     {% include footer.html %}

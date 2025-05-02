@@ -1,91 +1,97 @@
-<div class="d-flex flex-column p-3 bg-light" style="width: 280px">
-    <h4>Navigation</h4>
-    <ul class="nav nav-pills flex-column mb-auto">
-        <li class="nav-item">
-            <a href="{{ '/' | relative_url }}" class="nav-link">Accueil</a>
-        </li>
-        <li class="nav-item">
-            <a href="{{ '/banner/banner' | relative_url }}" class="nav-link">Bannière Spring Boot</a>
-        </li>
-        
-        <!-- BRMS Dropdown -->
-        <li class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">BRMS</a>
-            <ul class="dropdown-menu dropdown-menu-end">
-                <li><a class="dropdown-item" href="{{ '/brms/drools' | relative_url }}">Drools</a></li>
-                <li><a class="dropdown-item" href="{{ '/brms/easy-rules' | relative_url }}">Easy Rules</a></li>
-                <li><a class="dropdown-item" href="{{ '/brms/rulebook' | relative_url }}">Rulebook</a></li>
+<nav class="navbar navbar-light bg-light flex-column">
+    <button class="btn btn-outline-secondary mb-2" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarContent" aria-controls="sidebarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse show w-100" id="sidebarContent">
+        <div class="d-flex flex-column p-3 bg-light" style="width: 280px">
+            <ul class="nav nav-pills flex-column mb-auto">
+                <li class="nav-item">
+                    <a href="{{ '/' | relative_url }}" class="nav-link">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ '/banner/banner' | relative_url }}" class="nav-link">Bannière Spring Boot</a>
+                </li>
+                
+                <!-- BRMS Dropdown -->
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">BRMS</a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="{{ '/brms/drools' | relative_url }}">Drools</a></li>
+                        <li><a class="dropdown-item" href="{{ '/brms/easy-rules' | relative_url }}">Easy Rules</a></li>
+                        <li><a class="dropdown-item" href="{{ '/brms/rulebook' | relative_url }}">Rulebook</a></li>
+                    </ul>
+                </li>
+                
+                <!-- Code Generation -->
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Code Generation</a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="{{ '/code-generation/openapi' | relative_url }}">OpenAPI Code Gen</a></li>
+                        <li><a class="dropdown-item" href="{{ '/code-generation/mapstruct' | relative_url }}">MapStruct</a></li>
+                    </ul>
+                </li>
+                
+                <!-- Database Versioning -->
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Database Versioning</a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="{{ '/database-versioning/flyway' | relative_url }}">Flyway</a></li>
+                        <li><a class="dropdown-item" href="{{ '/database-versioning/liquibase' | relative_url }}">Liquibase</a></li>
+                    </ul>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ '/elasticsearch/elastic' | relative_url }}">Elasticsearch</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ '/graphql/graphql' | relative_url }}">GraphQL</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ '/hateoas/hateoas' | relative_url }}">HATEOAS</a>
+                </li>
+                
+                <!-- Monitoring -->
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Monitoring</a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="{{ '/monitoring/admin' | relative_url }}">Spring Boot Admin</a></li>
+                        <li><a class="dropdown-item" href="{{ '/monitoring/prometheus' | relative_url }}">Grafana & Prometheus</a></li>
+                    </ul>
+                </li>
+                
+                <!-- Security -->
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Security</a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="{{ '/security/basic-auth' | relative_url }}">Basic Auth</a></li>
+                        <li><a class="dropdown-item" href="{{ '/security/jwt' | relative_url }}">JWT</a></li>
+                        <li><a class="dropdown-item" href="{{ '/security/jwt-rbac' | relative_url }}">JWT + RBAC</a></li>
+                    </ul>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ '/spring-batch/spring-batch' | relative_url }}">Spring Batch</a>
+                </li>
+                
+                <!-- Templating -->
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Templating</a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="{{ '/templating/jasper' | relative_url }}">Jasper</a></li>
+                    </ul>
+                </li>
+                
+                <!-- Testing -->
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Testing</a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="{{ '/testing/archunit' | relative_url }}">ArchUnit</a></li>
+                        <li><a class="dropdown-item" href="{{ '/testing/gatling' | relative_url }}">Gatling</a></li>
+                        <li><a class="dropdown-item" href="{{ '/testing/chaos-monkey' | relative_url }}">Chaos Monkey</a></li>
+                        <li><a class="dropdown-item" href="{{ '/testing/parameterized-test' | relative_url }}">Tests paramétrés</a></li>
+                    </ul>
+                </li>
             </ul>
-        </li>
-        
-        <!-- Code Generation -->
-        <li class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Code Generation</a>
-            <ul class="dropdown-menu dropdown-menu-end">
-                <li><a class="dropdown-item" href="{{ '/code-generation/openapi' | relative_url }}">OpenAPI Code Gen</a></li>
-                <li><a class="dropdown-item" href="{{ '/code-generation/mapstruct' | relative_url }}">MapStruct</a></li>
-            </ul>
-        </li>
-        
-        <!-- Database Versioning -->
-        <li class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Database Versioning</a>
-            <ul class="dropdown-menu dropdown-menu-end">
-                <li><a class="dropdown-item" href="{{ '/database-versioning/flyway' | relative_url }}">Flyway</a></li>
-                <li><a class="dropdown-item" href="{{ '/database-versioning/liquibase' | relative_url }}">Liquibase</a></li>
-            </ul>
-        </li>
-        
-        <li class="nav-item">
-            <a class="nav-link" href="{{ '/elasticsearch/elastic' | relative_url }}">Elasticsearch</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ '/graphql/graphql' | relative_url }}">GraphQL</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ '/hateoas/hateoas' | relative_url }}">HATEOAS</a>
-        </li>
-        
-        <!-- Monitoring -->
-        <li class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Monitoring</a>
-            <ul class="dropdown-menu dropdown-menu-end">
-                <li><a class="dropdown-item" href="{{ '/monitoring/admin' | relative_url }}">Spring Boot Admin</a></li>
-                <li><a class="dropdown-item" href="{{ '/monitoring/prometheus' | relative_url }}">Grafana & Prometheus</a></li>
-            </ul>
-        </li>
-        
-        <!-- Security -->
-        <li class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Security</a>
-            <ul class="dropdown-menu dropdown-menu-end">
-                <li><a class="dropdown-item" href="{{ '/security/basic-auth' | relative_url }}">Basic Auth</a></li>
-                <li><a class="dropdown-item" href="{{ '/security/jwt' | relative_url }}">JWT</a></li>
-                <li><a class="dropdown-item" href="{{ '/security/jwt-rbac' | relative_url }}">JWT + RBAC</a></li>
-            </ul>
-        </li>
-        
-        <li class="nav-item">
-            <a class="nav-link" href="{{ '/spring-batch/spring-batch' | relative_url }}">Spring Batch</a>
-        </li>
-        
-        <!-- Templating -->
-        <li class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Templating</a>
-            <ul class="dropdown-menu dropdown-menu-end">
-                <li><a class="dropdown-item" href="{{ '/templating/jasper' | relative_url }}">Jasper</a></li>
-            </ul>
-        </li>
-        
-        <!-- Testing -->
-        <li class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Testing</a>
-            <ul class="dropdown-menu dropdown-menu-end">
-                <li><a class="dropdown-item" href="{{ '/testing/archunit' | relative_url }}">ArchUnit</a></li>
-                <li><a class="dropdown-item" href="{{ '/testing/gatling' | relative_url }}">Gatling</a></li>
-                <li><a class="dropdown-item" href="{{ '/testing/chaos-monkey' | relative_url }}">Chaos Monkey</a></li>
-                <li><a class="dropdown-item" href="{{ '/testing/parameterized-test' | relative_url }}">Tests paramétrés</a></li>
-            </ul>
-        </li>
-    </ul>
-</div>
+        </div>
+    </div>
+</nav>
