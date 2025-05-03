@@ -1,7 +1,7 @@
 ---
 layout: default
 title: JWT
-permalink: security/jwt
+permalink: security/jwt/
 ---
 
 # Sécurisez vos API avec Spring Security : JWT
