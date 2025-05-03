@@ -18,7 +18,7 @@ Dans cette série d'articles, nous verrons comment sécuriser une API avec **Sp
 
 Cet article est une suite directe de l'article sur l'implémentation de la sécurité avec JWT dans Spring Boot :
 
-[Sécurisez vos API avec Spring Security : JWT](https://www.sfeir.dev/back/securisez-vos-api-avec-spring-security-jwt/)
+[Sécurisez vos API avec Spring Security : JWT]({{ '/security/jwt/' | relative_url }})
 
 Il est donc primordial d'avoir suivi ce premier tutoriel pour suivre celui-ci, car nous nous appuierons sur ce qui a déjà été mis en place.
 
