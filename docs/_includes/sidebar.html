@@ -9,16 +9,23 @@
         <div class="d-flex flex-column p-3 bg-light sidebar-scrollable" style="width: 280px">
             <ul class="nav nav-pills flex-column mb-auto">
                 
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ '/' | relative_url }}">Accueil</a>
+                </li>
+                
                 {% assign sections =
-                "Spring Boot:springboot:/,Accueil;banner/banner,Bannière Spring Boot;brms/drools,Drools;brms/easy-rules,Easy Rules;brms/rulebook,Rulebook;code-generation/openapi,OpenAPI Code Gen;code-generation/mapstruct,MapStruct;database-versioning/flyway,Flyway;database-versioning/liquibase,Liquibase;monitoring/admin,Spring Boot Admin;monitoring/prometheus,Grafana & Prometheus;security/basic-auth,Basic Auth;security/jwt,JWT;security/jwt-rbac,JWT + RBAC;templating/jasper,Jasper;testing/archunit,ArchUnit;testing/gatling,Gatling;testing/chaos-monkey,Chaos Monkey;testing/parameterized-test,Tests paramétrés;elasticsearch/elastic,Elasticsearch;graphql/graphql,GraphQL;hateoas/hateoas,HATEOAS;spring-batch/spring-batch,Spring Batch|
-                Design Patterns:patterns:patterns/creational/singleton,Singleton;patterns/creational/factory,Factory Method;patterns/creational/abstract-factory,Abstract Factory;patterns/creational/builder,Builder;patterns/creational/prototype,Prototype;patterns/behavioral/observer,Observer;patterns/behavioral/strategy,Strategy;patterns/behavioral/command,Command;patterns/behavioral/state,State;patterns/behavioral/template-method,Template Method;patterns/structural/adapter,Adapter;patterns/structural/decorator,Decorator;patterns/structural/composite,Composite;patterns/structural/proxy,Proxy;patterns/structural/facade,Facade"
+                "Spring Boot:springboot:banner/banner,Bannière Spring Boot;brms/drools,Drools;brms/easy-rules,Easy Rules;brms/rulebook,Rulebook;code-generation/openapi,OpenAPI Code Gen;code-generation/mapstruct,MapStruct;database-versioning/flyway,Flyway;database-versioning/liquibase,Liquibase;monitoring/admin,Spring Boot Admin;monitoring/prometheus,Grafana & Prometheus;security/basic-auth,Basic Auth;security/jwt,JWT;security/jwt-rbac,JWT + RBAC;templating/jasper,Jasper;testing/archunit,ArchUnit;testing/gatling,Gatling;testing/chaos-monkey,Chaos Monkey;testing/parameterized-test,Tests paramétrés;elasticsearch/elastic,Elasticsearch;graphql/graphql,GraphQL;hateoas/hateoas,HATEOAS;spring-batch/spring-batch,Spring Batch|
+                Design Patterns:patterns:
+                Création>patterns/creational/singleton,Singleton;patterns/creational/factory,Factory Method;patterns/creational/abstract-factory,Abstract Factory;patterns/creational/builder,Builder;patterns/creational/prototype,Prototype|
+                Comportement>patterns/behavioral/observer,Observer;patterns/behavioral/strategy,Strategy;patterns/behavioral/command,Command;patterns/behavioral/state,State;patterns/behavioral/template-method,Template Method|
+                Structure>patterns/structural/adapter,Adapter;patterns/structural/decorator,Decorator;patterns/structural/composite,Composite;patterns/structural/proxy,Proxy;patterns/structural/facade,Facade"
                 | split:"|" %}
                 
                 {% for section in sections %}
                 {% assign parts = section | split:":" %}
                 {% assign title = parts[0] %}
                 {% assign id = parts[1] %}
-                {% assign links = parts[2] | split:";" %}
+                {% assign linksRaw = parts[2] %}
                 
                 <li class="nav-item">
                     <a class="nav-link d-flex justify-content-between align-items-center"
@@ -31,12 +38,35 @@
                         <i class="bi bi-caret-down-fill rotate-icon"></i>
                     </a>
                     <ul class="collapse list-unstyled ps-3" id="{{ id }}Collapse">
+                        
+                        {% if title == "Design Patterns" %}
+                        {% assign categories = linksRaw | split: "|" %}
+                        {% for category in categories %}
+                        {% assign cat_parts = category | split: ">" %}
+                        {% assign cat_title = cat_parts[0] %}
+                        {% assign cat_links = cat_parts[1] | split: ";" %}
+                        <li class="nav-item mt-2">
+                            <span class="fw-bold">{{ cat_title }}</span>
+                            <ul class="list-unstyled ps-3">
+                                {% for link in cat_links %}
+                                {% assign path_and_label = link | split: "," %}
+                                <li>
+                                    <a class="nav-link" href="{{ '/' | append: path_and_label[0] | relative_url }}">{{ path_and_label[1] }}</a>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                        {% endfor %}
+                        {% else %}
+                        {% assign links = linksRaw | split:";" %}
                         {% for link in links %}
                         {% assign path_and_label = link | split:"," %}
                         <li>
                             <a class="nav-link" href="{{ '/' | append: path_and_label[0] | relative_url }}">{{ path_and_label[1] }}</a>
                         </li>
                         {% endfor %}
+                        {% endif %}
+                    
                     </ul>
                 </li>
                 {% endfor %}
@@ -44,6 +74,7 @@
             </ul>
         </div>
     </div>
+
 
 
 
