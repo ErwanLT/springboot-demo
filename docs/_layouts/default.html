@@ -36,17 +36,23 @@
             display: flex;
             overflow: hidden;
         }
-
         .content-area {
             flex: 1;
             overflow-y: auto;
             padding: 2em;
             background-color: #fff;
         }
+        .rotate-icon {
+          transition: transform 0.2s ease;
+        }
+        .rotate-icon.rotate {
+          transform: rotate(-180deg);
+        }
     </style>
     
     <!-- Bootstrap et dépendances -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-okaidia.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" crossorigin="anonymous"></script>
@@ -55,6 +61,21 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-properties.min.js"></script>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          const toggles = document.querySelectorAll('[data-bs-toggle="collapse"]');
+          toggles.forEach(function (toggle) {
+            const icon = toggle.querySelector('.rotate-icon');
+            const targetId = toggle.getAttribute('href') || toggle.getAttribute('data-bs-target');
+            const target = document.querySelector(targetId);
+            if (target && icon) {
+              target.addEventListener('show.bs.collapse', () => icon.classList.add('rotate'));
+              target.addEventListener('hide.bs.collapse', () => icon.classList.remove('rotate'));
+            }
+          });
+        });
+    </script>
 </head>
 <body>
 

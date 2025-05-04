@@ -8,126 +8,65 @@
     <div class="collapse show w-100" id="sidebarContent">
         <div class="d-flex flex-column p-3 bg-light" style="width: 280px">
             <ul class="nav nav-pills flex-column mb-auto">
-                
                 <li class="nav-item">
                     <a href="{{ '/' | relative_url }}" class="nav-link">Accueil</a>
                 </li>
-                
                 <li class="nav-item">
                     <a href="{{ '/banner/banner' | relative_url }}" class="nav-link">Bannière Spring Boot</a>
                 </li>
                 
-                <!-- BRMS -->
-                <li class="nav-item">
-                    <a class="nav-link" data-bs-toggle="collapse" href="#brmsCollapse" role="button" aria-expanded="false" aria-controls="brmsCollapse">
-                        BRMS
-                    </a>
-                    <div class="collapse" id="brmsCollapse">
-                        <ul class="nav flex-column ms-3">
-                            <li><a class="nav-link" href="{{ '/brms/drools' | relative_url }}">Drools</a></li>
-                            <li><a class="nav-link" href="{{ '/brms/easy-rules' | relative_url }}">Easy Rules</a></li>
-                            <li><a class="nav-link" href="{{ '/brms/rulebook' | relative_url }}">Rulebook</a></li>
-                        </ul>
-                    </div>
-                </li>
+                <!-- Dropdown with collapse -->
+                {% assign sections =
+                "BRMS:brms:brms/drools,Drools;brms/easy-rules,Easy Rules;brms/rulebook,Rulebook|
+                Code Generation:codegen:code-generation/openapi,OpenAPI Code Gen;code-generation/mapstruct,MapStruct|
+                Database Versioning:dbver:database-versioning/flyway,Flyway;database-versioning/liquibase,Liquibase|
+                Monitoring:monitoring:monitoring/admin,Spring Boot Admin;monitoring/prometheus,Grafana & Prometheus|
+                Security:security:security/basic-auth,Basic Auth;security/jwt,JWT;security/jwt-rbac,JWT + RBAC|
+                Templating:templating:templating/jasper,Jasper|
+                Testing:testing:testing/archunit,ArchUnit;testing/gatling,Gatling;testing/chaos-monkey,Chaos Monkey;testing/parameterized-test,Tests paramétrés" | split:"|" %}
                 
-                <!-- Code Generation -->
-                <li class="nav-item">
-                    <a class="nav-link" data-bs-toggle="collapse" href="#codeGenCollapse" role="button" aria-expanded="false" aria-controls="codeGenCollapse">
-                        Code Generation
-                    </a>
-                    <div class="collapse" id="codeGenCollapse">
-                        <ul class="nav flex-column ms-3">
-                            <li><a class="nav-link" href="{{ '/code-generation/openapi' | relative_url }}">OpenAPI Code Gen</a></li>
-                            <li><a class="nav-link" href="{{ '/code-generation/mapstruct' | relative_url }}">MapStruct</a></li>
-                        </ul>
-                    </div>
-                </li>
+                {% for section in sections %}
+                {% assign parts = section | split:":" %}
+                {% assign title = parts[0] %}
+                {% assign id = parts[1] %}
+                {% assign links = parts[2] | split:";" %}
                 
-                <!-- Database Versioning -->
                 <li class="nav-item">
-                    <a class="nav-link" data-bs-toggle="collapse" href="#dbVersioningCollapse" role="button" aria-expanded="false" aria-controls="dbVersioningCollapse">
-                        Database Versioning
+                    <a class="nav-link d-flex justify-content-between align-items-center"
+                       data-bs-toggle="collapse"
+                       href="#{{ id }}Collapse"
+                       role="button"
+                       aria-expanded="false"
+                       aria-controls="{{ id }}Collapse">
+                        {{ title }}
+                        <i class="bi bi-caret-down-fill rotate-icon"></i>
                     </a>
-                    <div class="collapse" id="dbVersioningCollapse">
-                        <ul class="nav flex-column ms-3">
-                            <li><a class="nav-link" href="{{ '/database-versioning/flyway' | relative_url }}">Flyway</a></li>
-                            <li><a class="nav-link" href="{{ '/database-versioning/liquibase' | relative_url }}">Liquibase</a></li>
-                        </ul>
-                    </div>
+                    <ul class="collapse list-unstyled ps-3" id="{{ id }}Collapse">
+                        {% for link in links %}
+                        {% assign path_and_label = link | split:"," %}
+                        <li>
+                            <a class="nav-link" href="{{ '/' | append: path_and_label[0] | relative_url }}">{{ path_and_label[1] }}</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
                 </li>
+                {% endfor %}
                 
+                <!-- Liens simples -->
                 <li class="nav-item">
                     <a class="nav-link" href="{{ '/elasticsearch/elastic' | relative_url }}">Elasticsearch</a>
                 </li>
-                
                 <li class="nav-item">
                     <a class="nav-link" href="{{ '/graphql/graphql' | relative_url }}">GraphQL</a>
                 </li>
-                
                 <li class="nav-item">
                     <a class="nav-link" href="{{ '/hateoas/hateoas' | relative_url }}">HATEOAS</a>
                 </li>
-                
-                <!-- Monitoring -->
-                <li class="nav-item">
-                    <a class="nav-link" data-bs-toggle="collapse" href="#monitoringCollapse" role="button" aria-expanded="false" aria-controls="monitoringCollapse">
-                        Monitoring
-                    </a>
-                    <div class="collapse" id="monitoringCollapse">
-                        <ul class="nav flex-column ms-3">
-                            <li><a class="nav-link" href="{{ '/monitoring/admin' | relative_url }}">Spring Boot Admin</a></li>
-                            <li><a class="nav-link" href="{{ '/monitoring/prometheus' | relative_url }}">Grafana & Prometheus</a></li>
-                        </ul>
-                    </div>
-                </li>
-                
-                <!-- Security -->
-                <li class="nav-item">
-                    <a class="nav-link" data-bs-toggle="collapse" href="#securityCollapse" role="button" aria-expanded="false" aria-controls="securityCollapse">
-                        Security
-                    </a>
-                    <div class="collapse" id="securityCollapse">
-                        <ul class="nav flex-column ms-3">
-                            <li><a class="nav-link" href="{{ '/security/basic-auth' | relative_url }}">Basic Auth</a></li>
-                            <li><a class="nav-link" href="{{ '/security/jwt' | relative_url }}">JWT</a></li>
-                            <li><a class="nav-link" href="{{ '/security/jwt-rbac' | relative_url }}">JWT + RBAC</a></li>
-                        </ul>
-                    </div>
-                </li>
-                
                 <li class="nav-item">
                     <a class="nav-link" href="{{ '/spring-batch/spring-batch' | relative_url }}">Spring Batch</a>
                 </li>
-                
-                <!-- Templating -->
-                <li class="nav-item">
-                    <a class="nav-link" data-bs-toggle="collapse" href="#templatingCollapse" role="button" aria-expanded="false" aria-controls="templatingCollapse">
-                        Templating
-                    </a>
-                    <div class="collapse" id="templatingCollapse">
-                        <ul class="nav flex-column ms-3">
-                            <li><a class="nav-link" href="{{ '/templating/jasper' | relative_url }}">Jasper</a></li>
-                        </ul>
-                    </div>
-                </li>
-                
-                <!-- Testing -->
-                <li class="nav-item">
-                    <a class="nav-link" data-bs-toggle="collapse" href="#testingCollapse" role="button" aria-expanded="false" aria-controls="testingCollapse">
-                        Testing
-                    </a>
-                    <div class="collapse" id="testingCollapse">
-                        <ul class="nav flex-column ms-3">
-                            <li><a class="nav-link" href="{{ '/testing/archunit' | relative_url }}">ArchUnit</a></li>
-                            <li><a class="nav-link" href="{{ '/testing/gatling' | relative_url }}">Gatling</a></li>
-                            <li><a class="nav-link" href="{{ '/testing/chaos-monkey' | relative_url }}">Chaos Monkey</a></li>
-                            <li><a class="nav-link" href="{{ '/testing/parameterized-test' | relative_url }}">Tests paramétrés</a></li>
-                        </ul>
-                    </div>
-                </li>
-            
             </ul>
         </div>
     </div>
+
 </nav>
