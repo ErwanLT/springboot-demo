@@ -1,4 +1,4 @@
-<nav class="bg-light d-flex flex-column align-items-start p-2 overflow-y: auto;">
+<nav class="bg-light d-flex flex-column align-items-start p-2 overflow-y: auto; sidebar-scrollable">
     <button class="btn btn-outline-secondary mb-2" type="button"
             data-bs-toggle="collapse" data-bs-target="#sidebarContent"
             aria-controls="sidebarContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -6,75 +6,13 @@
     </button>
     
     <div class="collapse show w-100" id="sidebarContent">
-        <div class="d-flex flex-column p-3 bg-light sidebar-scrollable" style="width: 280px">
+        <div class="d-flex flex-column p-3 bg-light" style="width: 280px">
             <ul class="nav nav-pills flex-column mb-auto">
                 <li class="nav-item">
                     <a href="{{ '/' | relative_url }}" class="nav-link">Accueil</a>
                 </li>
                 
                 {% include springboot.html %}
-                
-                <!-- Section principale : Spring Boot -->
-                <li class="nav-item">
-                    <a class="nav-link d-flex justify-content-between align-items-center"
-                       data-bs-toggle="collapse"
-                       href="#springbootCollapse"
-                       role="button"
-                       aria-expanded="false"
-                       aria-controls="springbootCollapse">
-                        Spring Boot
-                        <i class="bi bi-caret-down-fill rotate-icon"></i>
-                    </a>
-                    
-                    <ul class="collapse list-unstyled ps-2" id="springbootCollapse">
-                        <!-- Lien simple : Bannière -->
-                        <li>
-                            <a class="nav-link" href="{{ '/banner/banner' | relative_url }}">Bannière Spring Boot</a>
-                        </li>
-                        
-                        {% assign sections =
-                        "BRMS:brms:brms/drools,Drools;brms/easy-rules,Easy Rules;brms/rulebook,Rulebook|
-                        Code Generation:codegen:code-generation/openapi,OpenAPI Code Gen;code-generation/mapstruct,MapStruct|
-                        Database Versioning:dbver:database-versioning/flyway,Flyway;database-versioning/liquibase,Liquibase|
-                        Monitoring:monitoring:monitoring/admin,Spring Boot Admin;monitoring/prometheus,Grafana & Prometheus|
-                        Security:security:security/basic-auth,Basic Auth;security/jwt,JWT;security/jwt-rbac,JWT + RBAC|
-                        Templating:templating:templating/jasper,Jasper|
-                        Testing:testing:testing/archunit,ArchUnit;testing/gatling,Gatling;testing/chaos-monkey,Chaos Monkey;testing/parameterized-test,Tests paramétrés" | split:"|" %}
-                        
-                        {% for section in sections %}
-                        {% assign parts = section | split:":" %}
-                        {% assign title = parts[0] %}
-                        {% assign id = parts[1] %}
-                        {% assign links = parts[2] | split:";" %}
-                        
-                        <li class="nav-item">
-                            <a class="nav-link d-flex justify-content-between align-items-center"
-                               data-bs-toggle="collapse"
-                               href="#{{ id }}Collapse"
-                               role="button"
-                               aria-expanded="false"
-                               aria-controls="{{ id }}Collapse">
-                                {{ title }}
-                                <i class="bi bi-caret-down-fill rotate-icon"></i>
-                            </a>
-                            <ul class="collapse list-unstyled ps-3" id="{{ id }}Collapse">
-                                {% for link in links %}
-                                {% assign path_and_label = link | split:"," %}
-                                <li>
-                                    <a class="nav-link" href="{{ '/' | append: path_and_label[0] | relative_url }}">{{ path_and_label[1] }}</a>
-                                </li>
-                                {% endfor %}
-                            </ul>
-                        </li>
-                        {% endfor %}
-                        
-                        <!-- Liens simples intégrés -->
-                        <li><a class="nav-link" href="{{ '/elasticsearch/elastic' | relative_url }}">Elasticsearch</a></li>
-                        <li><a class="nav-link" href="{{ '/graphql/graphql' | relative_url }}">GraphQL</a></li>
-                        <li><a class="nav-link" href="{{ '/hateoas/hateoas' | relative_url }}">HATEOAS</a></li>
-                        <li><a class="nav-link" href="{{ '/spring-batch/spring-batch' | relative_url }}">Spring Batch</a></li>
-                    </ul>
-                </li>
                 
                 <!-- Section principale : Design Patterns -->
                 <li class="nav-item">
