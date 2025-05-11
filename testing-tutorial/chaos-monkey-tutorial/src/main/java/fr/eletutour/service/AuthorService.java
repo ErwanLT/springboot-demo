@@ -22,7 +22,7 @@ public class AuthorService {
     }
 
     public Author getAuthorById(Long id) throws AuthorNotFoundException {
-        return authorRepository.findById(id).orElseThrow( () -> new AuthorNotFoundException("Author non trouvé pour l'id : " + id));
+        return authorRepository.findById(id).orElseThrow( () -> new AuthorNotFoundException("Author non trouvé pour l'id : " + id, id));
     }
 
     public Author createAuthor(String name, String bio) {

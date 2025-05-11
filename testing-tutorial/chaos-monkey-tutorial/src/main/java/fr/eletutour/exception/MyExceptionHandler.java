@@ -3,9 +3,12 @@ package fr.eletutour.exception;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ProblemDetail;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+
+import java.net.URI;
 
 @ControllerAdvice
 public class MyExceptionHandler {
@@ -17,8 +20,14 @@ public class MyExceptionHandler {
     }
 
     @ExceptionHandler(AuthorNotFoundException.class)
-    public ResponseEntity<Object> handleAuthorNotFound(AuthorNotFoundException exception) {
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(exception.getMessage());
+    public ProblemDetail handleAuthorNotFound(AuthorNotFoundException exception) {
+        ProblemDetail problemDetail = ProblemDetail
+                .forStatus(HttpStatus.NOT_FOUND);
+        problemDetail.setTitle("Author Not Found");
+        problemDetail.setInstance(URI.create("/authors/" + exception.getAuthorId()));
+        problemDetail.setDetail(exception.getMessage());
+
+        return problemDetail;
     }
 
 }
