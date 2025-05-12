@@ -44,3 +44,5 @@ build/
 /vaadin-tutorial/pokedex/vite.generated.ts
 /vaadin-tutorial/pokedex/src/main/frontend/generated/
 /vaadin-tutorial/pokedex/src/main/frontend/index.html
+/vaadin-tutorial/crud-tutorial/src/main/frontend/generated/
+/vaadin-tutorial/crud-tutorial/src/main/frontend/index.html
