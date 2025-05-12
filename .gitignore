@@ -36,3 +36,11 @@ build/
 /docs/.jekyll-cache/
 /docs/_site/
 /vaadin-tutorial/src/main/frontend/generated/
+/vaadin-tutorial/pokedex/package.json
+/vaadin-tutorial/pokedex/package-lock.json
+/vaadin-tutorial/pokedex/tsconfig.json
+/vaadin-tutorial/pokedex/types.d.ts
+/vaadin-tutorial/pokedex/vite.config.ts
+/vaadin-tutorial/pokedex/vite.generated.ts
+/vaadin-tutorial/pokedex/src/main/frontend/generated/
+/vaadin-tutorial/pokedex/src/main/frontend/index.html
