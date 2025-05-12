@@ -4,7 +4,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
@@ -26,6 +25,7 @@ public class MyExceptionHandler extends ResponseEntityExceptionHandler {
                 .forStatus(HttpStatus.NOT_FOUND);
         problemDetail.setTitle("Author Not Found");
         problemDetail.setInstance(URI.create("/authors/" + exception.getAuthorId()));
+        problemDetail.setType(URI.create("http://localhost:8089/docs/errors/author-not-found.html"));
         problemDetail.setDetail(exception.getMessage());
 
         return problemDetail;
