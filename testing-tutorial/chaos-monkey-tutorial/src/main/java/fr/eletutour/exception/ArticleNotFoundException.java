@@ -2,7 +2,15 @@ package fr.eletutour.exception;
 
 public class ArticleNotFoundException extends Exception {
 
-    public ArticleNotFoundException(String msg) {
+    private Long articleId;
+
+    public ArticleNotFoundException(String msg, Long articleId) {
         super(msg);
+        this.articleId = articleId;
+    }
+
+
+    public String getArticleId() {
+        return articleId.toString();
     }
 }

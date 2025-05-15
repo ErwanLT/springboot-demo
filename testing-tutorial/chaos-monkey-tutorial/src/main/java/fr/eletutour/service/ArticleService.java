@@ -26,7 +26,7 @@ public class ArticleService {
     }
 
     public Article getArticleById(Long id) throws ArticleNotFoundException {
-        return articleRepository.findById(id).orElseThrow( () -> new ArticleNotFoundException("Article non trouvé pour l'id : " + id));
+        return articleRepository.findById(id).orElseThrow( () -> new ArticleNotFoundException("Article non trouvé pour l'id : " + id, id));
     }
 
     public Article createArticle(String title, String content, Long authorId) throws AuthorNotFoundException {

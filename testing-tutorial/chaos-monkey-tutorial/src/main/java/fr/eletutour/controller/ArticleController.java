@@ -3,7 +3,13 @@ package fr.eletutour.controller;
 import fr.eletutour.exception.ArticleNotFoundException;
 import fr.eletutour.model.Article;
 import fr.eletutour.service.ArticleService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ProblemDetail;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,8 +39,19 @@ public class ArticleController {
         return articleService.getArticles();
     }
 
+    @Operation(summary = "recherche d'un article", description = "Recherche d'un article à partir de son id")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Article trouvé avec succès",
+                    content = {@Content(mediaType = "application/json", schema = @Schema(implementation = Article.class))}),
+            @ApiResponse(responseCode = "404", description = "Aucun article avec cet id",
+                    content = {@Content(mediaType = "application/json", schema = @Schema(implementation = ProblemDetail.class))}),
+            @ApiResponse(responseCode = "408", description = "Time out de la requête",
+                    content = {@Content(mediaType = "application/json", schema = @Schema(implementation = ProblemDetail.class))}),
+            @ApiResponse(responseCode = "500", description = "Erreur lors du traitement",
+                    content = {@Content(mediaType = "application/json", schema = @Schema(implementation = ProblemDetail.class))})
+    })
     @GetMapping("/{id}")
-    public ResponseEntity<?> getArticleByIdAvecTimeout(@PathVariable Long id) {
+    public ResponseEntity<?> getArticleByIdAvecTimeout(@PathVariable Long id) throws TimeoutException, InterruptedException, ExecutionException {
         ExecutorService executor = Executors.newSingleThreadExecutor();
 
         Future<Article> future = executor.submit(() -> articleService.getArticleById(id));
@@ -42,22 +59,6 @@ public class ArticleController {
         try {
             Article article = future.get(2, TimeUnit.SECONDS); // Timeout de 2 secondes
             return ResponseEntity.ok(article);
-        } catch (TimeoutException e) {
-            future.cancel(true); // Interrompt le thread si encore actif
-            return ResponseEntity.status(HttpStatus.REQUEST_TIMEOUT)
-                    .body("La récupération de l'article a dépassé le temps imparti.");
-        } catch (ExecutionException e) {
-            Throwable cause = e.getCause();
-            if (cause instanceof ArticleNotFoundException) {
-                return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                        .body("Article non trouvé.");
-            }
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("Erreur lors de la récupération de l'article.");
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt(); // bonne pratique : réinterrompre le thread
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("Le traitement a été interrompu.");
         } finally {
             executor.shutdownNow();
         }
