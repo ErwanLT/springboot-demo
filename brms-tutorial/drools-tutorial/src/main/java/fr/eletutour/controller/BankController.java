@@ -19,6 +19,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Contrôleur REST pour gérer les comptes et les transactions bancaires.
+ * Ce contrôleur expose les endpoints pour :
+ * - Créer des comptes bancaires
+ * - Récupérer les informations d'un compte
+ * - Traiter les transactions (dépôts et retraits)
  */
 @RestController
 @RequestMapping("/api/bank")
@@ -26,10 +30,21 @@ public class BankController {
     private static final Logger logger = LoggerFactory.getLogger(BankController.class);
     private final BankService bankService;
 
+    /**
+     * Constructeur du contrôleur bancaire.
+     *
+     * @param bankService Le service bancaire injecté pour gérer la logique métier
+     */
     public BankController(BankService bankService) {
         this.bankService = bankService;
     }
 
+    /**
+     * Crée un nouveau compte bancaire.
+     *
+     * @param account Les informations du compte à créer
+     * @return Le compte créé avec son identifiant
+     */
     @Operation(summary = "Créer un nouveau compte", description = "Crée un compte bancaire avec les informations fournies.")
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Compte créé avec succès"),
@@ -41,6 +56,12 @@ public class BankController {
         return ResponseEntity.ok(bankService.createAccount(account));
     }
 
+    /**
+     * Récupère les informations d'un compte bancaire.
+     *
+     * @param accountNumber Le numéro du compte à récupérer
+     * @return Les informations du compte
+     */
     @Operation(summary = "Récupérer un compte", description = "Récupère les détails d'un compte par son numéro.")
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Compte trouvé"),
@@ -52,6 +73,12 @@ public class BankController {
         return ResponseEntity.ok(bankService.getAccount(accountNumber));
     }
 
+    /**
+     * Traite une transaction bancaire (dépôt ou retrait).
+     *
+     * @param transaction Les détails de la transaction à traiter
+     * @return La transaction traitée avec son statut
+     */
     @Operation(summary = "Traiter une transaction", description = "Traite une transaction (dépôt ou retrait) pour un compte.")
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Transaction traitée avec succès"),

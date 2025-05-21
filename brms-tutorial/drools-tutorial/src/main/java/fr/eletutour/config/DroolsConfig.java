@@ -21,7 +21,12 @@ import org.springframework.core.io.support.ResourcePatternResolver;
 import java.io.IOException;
 
 /**
- * Configuration du moteur Drools pour charger les règles et créer un KieContainer.
+ * Configuration du moteur Drools pour l'application.
+ * Cette classe configure le moteur de règles Drools en :
+ * - Chargant les fichiers de règles (.drl) depuis le classpath
+ * - Configurant le KieContainer avec les règles compilées
+ * - Gérant la compilation et la validation des règles
+ * - Configurant les sessions Drools
  */
 @Configuration
 @EnableAspectJAutoProxy
@@ -31,6 +36,15 @@ public class DroolsConfig {
     private static final KieServices kieServices = KieServices.Factory.get();
     private static final String RULES_PATH = "rules/*.drl";
 
+    /**
+     * Crée et configure le KieContainer pour l'application.
+     * Le KieContainer est le point d'entrée principal pour l'exécution des règles Drools.
+     * Il charge et compile les règles depuis les fichiers .drl et configure
+     * les sessions Drools nécessaires.
+     *
+     * @return Le KieContainer configuré
+     * @throws IllegalStateException si la compilation des règles échoue ou si aucun fichier de règles n'est trouvé
+     */
     @Bean
     public KieContainer kieContainer() {
         try {

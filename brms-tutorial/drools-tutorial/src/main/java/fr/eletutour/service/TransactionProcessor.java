@@ -13,6 +13,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Processeur pour exécuter les transactions avec les règles Drools.
+ * Cette classe est responsable de l'exécution des transactions bancaires
+ * en utilisant le moteur de règles Drools pour appliquer la logique métier.
+ * Elle gère également la persistance des transactions et des comptes.
  */
 @Component
 public class TransactionProcessor {
@@ -20,6 +23,12 @@ public class TransactionProcessor {
     private final AccountRepository accountRepository;
     private final TransactionRepository transactionRepository;
 
+    /**
+     * Constructeur du processeur de transactions.
+     *
+     * @param accountRepository Le repository pour les comptes
+     * @param transactionRepository Le repository pour les transactions
+     */
     public TransactionProcessor(AccountRepository accountRepository, TransactionRepository transactionRepository) {
         this.accountRepository = accountRepository;
         this.transactionRepository = transactionRepository;
@@ -27,11 +36,14 @@ public class TransactionProcessor {
 
     /**
      * Exécute une transaction en appliquant les règles Drools.
+     * Cette méthode est marquée avec l'annotation @DroolsRule pour indiquer
+     * qu'elle doit être interceptée par l'aspect Drools.
+     * La méthode est transactionnelle et gère la persistance des modifications.
      *
-     * @param transaction La transaction à traiter.
-     * @param account     Le compte associé.
-     * @return La transaction mise à jour.
-     * @throws TransactionFailedException Si la transaction est refusée ou invalide.
+     * @param transaction La transaction à traiter
+     * @param account Le compte associé à la transaction
+     * @return La transaction mise à jour avec le résultat du traitement
+     * @throws TransactionFailedException Si la transaction est refusée ou invalide
      */
     @Transactional
     @DroolsRule

@@ -16,6 +16,9 @@ import java.util.List;
 
 /**
  * Aspect pour appliquer les règles Drools aux méthodes annotées avec @DroolsRule.
+ * Cette classe intercepte l'exécution des méthodes marquées avec @DroolsRule
+ * et applique les règles métier définies dans les fichiers .drl.
+ * Elle gère le cycle de vie des sessions Drools et l'insertion des faits.
  */
 @Aspect
 @Component
@@ -23,10 +26,28 @@ public class DroolsAspect {
     private static final Logger logger = LoggerFactory.getLogger(DroolsAspect.class);
     private final KieContainer kieContainer;
 
+    /**
+     * Constructeur de l'aspect Drools.
+     *
+     * @param kieContainer Le conteneur Drools injecté pour créer les sessions
+     */
     public DroolsAspect(KieContainer kieContainer) {
         this.kieContainer = kieContainer;
     }
 
+    /**
+     * Point de coupe autour des méthodes annotées avec @DroolsRule.
+     * Cette méthode :
+     * - Récupère les faits Drools parmi les arguments
+     * - Crée une session Drools
+     * - Insère les faits dans la session
+     * - Exécute les règles
+     * - Poursuit l'exécution de la méthode originale
+     *
+     * @param joinPoint Le point de jonction représentant la méthode interceptée
+     * @return Le résultat de l'exécution de la méthode
+     * @throws Throwable Si une erreur survient pendant l'exécution
+     */
     @Around("@annotation(fr.eletutour.annotation.DroolsRule)")
     public Object applyDroolsRules(ProceedingJoinPoint joinPoint) throws Throwable {
         logger.info("Interception de la méthode avec @DroolsRule: {}, arguments: {}",

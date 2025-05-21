@@ -12,6 +12,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Service pour gérer les comptes et les transactions bancaires.
+ * Cette classe fournit les opérations métier principales pour :
+ * - La création et la récupération de comptes
+ * - Le traitement des transactions bancaires
+ * - L'intégration avec le moteur de règles Drools via TransactionProcessor
  */
 @Service
 public class BankService {
@@ -20,6 +24,13 @@ public class BankService {
     private final TransactionRepository transactionRepository;
     private final TransactionProcessor transactionProcessor;
 
+    /**
+     * Constructeur du service bancaire.
+     *
+     * @param accountRepository Le repository pour les comptes
+     * @param transactionRepository Le repository pour les transactions
+     * @param transactionProcessor Le processeur de transactions
+     */
     public BankService(AccountRepository accountRepository, TransactionRepository transactionRepository,
                        TransactionProcessor transactionProcessor) {
         this.accountRepository = accountRepository;
@@ -29,10 +40,12 @@ public class BankService {
 
     /**
      * Traite une transaction en récupérant le compte associé.
+     * Cette méthode est transactionnelle et utilise le processeur de transactions
+     * pour appliquer les règles métier via Drools.
      *
-     * @param transaction La transaction à traiter.
-     * @return La transaction mise à jour.
-     * @throws AccountNotFoundException Si le compte n'existe pas.
+     * @param transaction La transaction à traiter
+     * @return La transaction mise à jour avec le résultat du traitement
+     * @throws AccountNotFoundException Si le compte n'existe pas
      */
     @Transactional
     public Transaction getAccountAndDoTransaction(Transaction transaction) {
@@ -46,10 +59,11 @@ public class BankService {
     }
 
     /**
-     * Crée un nouveau compte.
+     * Crée un nouveau compte bancaire.
+     * Cette méthode est transactionnelle et persiste le compte dans la base de données.
      *
-     * @param account Le compte à créer.
-     * @return Le compte créé.
+     * @param account Le compte à créer
+     * @return Le compte créé avec son identifiant
      */
     @Transactional
     public Account createAccount(Account account) {
@@ -58,11 +72,11 @@ public class BankService {
     }
 
     /**
-     * Récupère un compte par son numéro.
+     * Récupère un compte bancaire par son numéro.
      *
-     * @param accountNumber Le numéro du compte.
-     * @return Le compte trouvé.
-     * @throws AccountNotFoundException Si le compte n'existe pas.
+     * @param accountNumber Le numéro du compte à récupérer
+     * @return Le compte trouvé
+     * @throws AccountNotFoundException Si le compte n'existe pas
      */
     public Account getAccount(String accountNumber) {
         return accountRepository.findById(accountNumber)
