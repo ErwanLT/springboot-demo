@@ -16,8 +16,14 @@ import java.util.Map;
 import java.util.function.Function;
 
 /**
- * Service gérant la génération, la validation et l'extraction des informations des tokens JWT.
- * Ce service est responsable de toutes les opérations liées aux tokens JWT dans l'application.
+ * Service de gestion des JWT (JSON Web Tokens).
+ * Ce service gère :
+ * <ul>
+ *     <li>La génération des tokens JWT</li>
+ *     <li>L'extraction des informations des tokens</li>
+ *     <li>La validation des tokens</li>
+ *     <li>La vérification de l'expiration des tokens</li>
+ * </ul>
  */
 @Service
 public class JwtService {
@@ -28,8 +34,8 @@ public class JwtService {
     /**
      * Constructeur du service JWT.
      *
-     * @param secretKey La clé secrète utilisée pour signer les tokens JWT
-     * @param jwtExpiration La durée de validité des tokens JWT en millisecondes
+     * @param secretKey La clé secrète pour signer les tokens
+     * @param jwtExpiration Le temps d'expiration des tokens en millisecondes
      */
     public JwtService(@Value("${security.jwt.secret-key}") String secretKey,
                       @Value("${security.jwt.expiration-time}") long jwtExpiration) {
@@ -38,10 +44,10 @@ public class JwtService {
     }
 
     /**
-     * Extrait le nom d'utilisateur à partir d'un token JWT.
+     * Extrait le nom d'utilisateur du token JWT.
      *
      * @param token Le token JWT
-     * @return Le nom d'utilisateur extrait du token
+     * @return Le nom d'utilisateur
      */
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
@@ -51,9 +57,8 @@ public class JwtService {
      * Extrait une information spécifique du token JWT.
      *
      * @param token Le token JWT
-     * @param claimsResolver La fonction pour extraire l'information souhaitée
-     * @param <T> Le type de l'information à extraire
-     * @return L'information extraite du token
+     * @param claimsResolver La fonction pour extraire l'information
+     * @return L'information extraite
      */
     public <T> T extractClaim(String token, Function<Claims, T> claimsResolver) {
         final Claims claims = extractAllClaims(token);
@@ -61,7 +66,7 @@ public class JwtService {
     }
 
     /**
-     * Génère un nouveau token JWT pour un utilisateur.
+     * Génère un token JWT pour un utilisateur.
      *
      * @param userDetails Les détails de l'utilisateur
      * @return Le token JWT généré
@@ -71,9 +76,9 @@ public class JwtService {
     }
 
     /**
-     * Génère un nouveau token JWT avec des informations supplémentaires.
+     * Génère un token JWT avec des informations supplémentaires.
      *
-     * @param extraClaims Les informations supplémentaires à inclure dans le token
+     * @param extraClaims Les informations supplémentaires à inclure
      * @param userDetails Les détails de l'utilisateur
      * @return Le token JWT généré
      */
@@ -82,20 +87,20 @@ public class JwtService {
     }
 
     /**
-     * Récupère la durée de validité des tokens JWT.
+     * Récupère le temps d'expiration des tokens.
      *
-     * @return La durée de validité en millisecondes
+     * @return Le temps d'expiration en millisecondes
      */
     public long getExpirationTime() {
         return jwtExpiration;
     }
 
     /**
-     * Construit un token JWT avec les informations fournies.
+     * Construit un token JWT.
      *
-     * @param extraClaims Les informations supplémentaires à inclure
+     * @param extraClaims Les informations supplémentaires
      * @param userDetails Les détails de l'utilisateur
-     * @param expiration La durée de validité du token
+     * @param expiration Le temps d'expiration
      * @return Le token JWT construit
      */
     private String buildToken(Map<String, Object> extraClaims, UserDetails userDetails, long expiration) {
@@ -110,9 +115,9 @@ public class JwtService {
     }
 
     /**
-     * Vérifie si un token JWT est valide pour un utilisateur donné.
+     * Vérifie si un token JWT est valide pour un utilisateur.
      *
-     * @param token Le token JWT à vérifier
+     * @param token Le token JWT
      * @param userDetails Les détails de l'utilisateur
      * @return true si le token est valide, false sinon
      */
@@ -124,7 +129,7 @@ public class JwtService {
     /**
      * Vérifie si un token JWT est expiré.
      *
-     * @param token Le token JWT à vérifier
+     * @param token Le token JWT
      * @return true si le token est expiré, false sinon
      */
     private boolean isTokenExpired(String token) {
@@ -135,7 +140,7 @@ public class JwtService {
      * Extrait la date d'expiration d'un token JWT.
      *
      * @param token Le token JWT
-     * @return La date d'expiration du token
+     * @return La date d'expiration
      */
     private Date extractExpiration(String token) {
         return extractClaim(token, Claims::getExpiration);
@@ -145,7 +150,7 @@ public class JwtService {
      * Extrait toutes les informations d'un token JWT.
      *
      * @param token Le token JWT
-     * @return Les informations extraites du token
+     * @return Les informations du token
      */
     private Claims extractAllClaims(String token) {
         return Jwts
@@ -156,7 +161,7 @@ public class JwtService {
     }
 
     /**
-     * Génère la clé de signature pour les tokens JWT.
+     * Récupère la clé de signature pour les tokens JWT.
      *
      * @return La clé de signature
      */
