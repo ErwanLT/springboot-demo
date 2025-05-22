@@ -20,11 +20,28 @@ import org.springframework.transaction.PlatformTransactionManager;
 import java.time.LocalDateTime;
 import java.util.List;
 
+/**
+ * Configuration du traitement par lots Spring Batch.
+ * Cette classe définit :
+ * <ul>
+ *     <li>La configuration du job de désactivation des utilisateurs inactifs</li>
+ *     <li>Les étapes de traitement (steps)</li>
+ *     <li>Les composants de lecture, traitement et écriture des données</li>
+ * </ul>
+ */
 @Configuration
 public class BatchConfiguration {
 
     private static final Logger log = LoggerFactory.getLogger(BatchConfiguration.class);
 
+    /**
+     * Définit le job de désactivation des utilisateurs inactifs.
+     * Ce job traite les utilisateurs qui ne se sont pas connectés depuis plus de 6 mois.
+     *
+     * @param jobRepository Le repository des jobs
+     * @param step1 L'étape de traitement
+     * @return Le job configuré
+     */
     @Bean
     public Job inactivateUsersJob(JobRepository jobRepository, Step step1) {
         return new JobBuilder("inactivateUsersJob", jobRepository)
@@ -33,6 +50,17 @@ public class BatchConfiguration {
                 .build();
     }
 
+    /**
+     * Définit l'étape de traitement du job.
+     * Cette étape traite les utilisateurs par lots de 10.
+     *
+     * @param jobRepository Le repository des jobs
+     * @param transactionManager Le gestionnaire de transactions
+     * @param reader Le lecteur d'utilisateurs
+     * @param processor Le processeur d'utilisateurs
+     * @param writer L'écrivain d'utilisateurs
+     * @return L'étape configurée
+     */
     @Bean
     public Step step1(JobRepository jobRepository, PlatformTransactionManager transactionManager,
                       ItemReader<User> reader, ItemProcessor<User, User> processor,
@@ -46,6 +74,13 @@ public class BatchConfiguration {
                 .build();
     }
 
+    /**
+     * Définit le lecteur d'utilisateurs.
+     * Lit les utilisateurs actifs depuis la base de données.
+     *
+     * @param userRepository Le repository des utilisateurs
+     * @return Le lecteur configuré
+     */
     @Bean
     public ItemReader<User> reader(UserRepository userRepository) {
         log.info("inactivateUsersJob - search users");
@@ -62,6 +97,12 @@ public class BatchConfiguration {
         };
     }
 
+    /**
+     * Définit le processeur d'utilisateurs.
+     * Vérifie si l'utilisateur n'a pas eu de connexion depuis 6 mois.
+     *
+     * @return Le processeur configuré
+     */
     @Bean
     public ItemProcessor<User, User> processor() {
         return user -> {
@@ -73,6 +114,13 @@ public class BatchConfiguration {
         };
     }
 
+    /**
+     * Définit l'écrivain d'utilisateurs.
+     * Sauvegarde les utilisateurs modifiés dans la base de données.
+     *
+     * @param userRepository Le repository des utilisateurs
+     * @return L'écrivain configuré
+     */
     @Bean
     public ItemWriter<User> writer(UserRepository userRepository) {
         log.info("inactivateUsersJob - save users");
