@@ -11,6 +11,16 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Service de gestion des articles.
+ * Ce service fournit :
+ * <ul>
+ *     <li>La récupération des articles</li>
+ *     <li>La création d'articles</li>
+ *     <li>La suppression d'articles</li>
+ *     <li>L'ajout de liens HATEOAS</li>
+ * </ul>
+ */
 @Service
 public class ArticleService {
     private static final String ARTICLE_NOT_FOUND_MESSAGE = "Article non trouvé pour l'id : ";
@@ -18,6 +28,13 @@ public class ArticleService {
     private final AuthorService authorService;
     private final LinkBuilder linkBuilder;
 
+    /**
+     * Constructeur du service.
+     *
+     * @param articleRepository Le repository des articles
+     * @param authorService Le service de gestion des auteurs
+     * @param linkBuilder Le constructeur de liens HATEOAS
+     */
     public ArticleService(ArticleRepository articleRepository,
                           AuthorService authorService,
                           LinkBuilder linkBuilder) {
@@ -26,6 +43,11 @@ public class ArticleService {
         this.linkBuilder = linkBuilder;
     }
 
+    /**
+     * Récupère la liste de tous les articles avec leurs liens HATEOAS.
+     *
+     * @return La liste des articles avec leurs liens
+     */
     public List<Article> getArticles() {
         List<Article> articles = articleRepository.findAll();
         return articles.stream()
@@ -33,12 +55,27 @@ public class ArticleService {
                 .collect(Collectors.toList());
     }
 
+    /**
+     * Récupère un article par son identifiant avec ses liens HATEOAS.
+     *
+     * @param id L'identifiant de l'article
+     * @return L'article trouvé avec ses liens
+     * @throws ArticleNotFoundException Si l'article n'est pas trouvé
+     */
     public Article getArticleById(Long id) throws ArticleNotFoundException {
         var article = articleRepository.findById(id)
                 .orElseThrow(() -> new ArticleNotFoundException(ARTICLE_NOT_FOUND_MESSAGE + id));
         return addArticleLinks(article);
     }
 
+    /**
+     * Crée un nouvel article.
+     *
+     * @param title Le titre de l'article
+     * @param content Le contenu de l'article
+     * @param authorId L'identifiant de l'auteur
+     * @throws AuthorNotFoundException Si l'auteur n'est pas trouvé
+     */
     public void createArticle(String title, String content, Long authorId) throws AuthorNotFoundException {
         Author author = authorService.getAuthorById(authorId);
         Article article = new Article();
@@ -48,6 +85,12 @@ public class ArticleService {
         articleRepository.save(article);
     }
 
+    /**
+     * Ajoute les liens HATEOAS à un article.
+     *
+     * @param article L'article à enrichir
+     * @return L'article avec ses liens
+     */
     private Article addArticleLinks(Article article) {
         article.add(linkBuilder.articleSelfLink(article.getId()));
         article.add(linkBuilder.articlesListLink());
@@ -56,6 +99,12 @@ public class ArticleService {
         return article;
     }
 
+    /**
+     * Supprime un article par son identifiant.
+     *
+     * @param id L'identifiant de l'article à supprimer
+     * @throws ArticleNotFoundException Si l'article n'est pas trouvé
+     */
     public void deleteArticle(Long id) {
         var article = articleRepository.findById(id);
         if (article.isPresent()) {
