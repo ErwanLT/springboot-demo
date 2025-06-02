@@ -19,7 +19,7 @@
         <dependency>
             <groupId>io.gatling</groupId>
             <artifactId>gatling-app</artifactId>
-            <version>3.13.5</version>
+            <version>3.14.3</version>
         </dependency>
         <dependency>
             <groupId>io.gatling.highcharts</groupId>
