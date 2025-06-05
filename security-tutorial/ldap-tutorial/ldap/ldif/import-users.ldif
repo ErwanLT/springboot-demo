@@ -1,0 +1,24 @@
+# Unité d'organisation
+dn: ou=users,dc=example,dc=com
+objectClass: organizationalUnit
+ou: users
+
+# Utilisateur 1
+dn: cn=Alice Martin,ou=users,dc=example,dc=com
+objectClass: inetOrgPerson
+cn: Alice Martin
+sn: Martin
+givenName: Alice
+uid: amartin
+mail: alice.martin@example.com
+userPassword: {SSHA}qfVnInS82tf1GEkSfVEaEGGHKgy4Wduy
+
+# Utilisateur 2
+dn: cn=Bob Dupuis,ou=users,dc=example,dc=com
+objectClass: inetOrgPerson
+cn: Bob Dupuis
+sn: Dupuis
+givenName: Bob
+uid: bdupuis
+mail: bob.dupuis@example.com
+userPassword: {SSHA}kXrb4HpNE3EwI2+x+Hwnk8FThE61HdMe

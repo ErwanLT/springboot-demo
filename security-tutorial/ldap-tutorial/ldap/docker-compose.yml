@@ -1,0 +1,13 @@
+services:
+  openldap:
+    image: bitnami/openldap:latest
+    container_name: openldap
+    environment:
+      - LDAP_ADMIN_USERNAME=admin
+      - LDAP_ADMIN_PASSWORD=admin
+      - LDAP_ROOT=dc=example,dc=com
+    volumes:
+      - ./ldif:/ldifs
+    ports:
+      - "389:389"
+      - "636:636"

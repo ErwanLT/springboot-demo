@@ -11,6 +11,7 @@
         <module>basic-auth-tutorial</module>
         <module>jwt-tutorial</module>
         <module>jwt-rbac-tutorial</module>
+        <module>ldap-tutorial</module>
     </modules>
 
     <artifactId>security-tutorial</artifactId>
