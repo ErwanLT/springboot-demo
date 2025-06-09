@@ -13,7 +13,7 @@
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <spring-cloud.version>2024.0.1</spring-cloud.version>
+        <spring-cloud.version>2025.0.0</spring-cloud.version>
     </properties>
 
     <dependencies>
