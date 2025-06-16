@@ -1,25 +1,27 @@
 package fr.eletutour.mapper;
 
-
 import fr.eletutour.dto.AdresseDTO;
 import fr.eletutour.dto.ClientDTO;
 import fr.eletutour.dto.CommandeDTO;
 import fr.eletutour.model.Adresse;
 import fr.eletutour.model.Client;
 import fr.eletutour.model.Commande;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-@ExtendWith(SpringExtension.class)
 class ClientMapperTest {
 
-    private ClientMapper clientMapper = ClientMapper.INSTANCE;
+    private ClientMapper clientMapper;
+
+    @BeforeEach
+    void setUp() {
+        clientMapper = ClientMapper.INSTANCE;
+    }
 
     @Test
     void testClientMapper_toDTO() {
