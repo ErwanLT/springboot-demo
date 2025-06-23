@@ -44,7 +44,8 @@ public class MainView extends AppLayout {
     private void createDrawer() {
         addToDrawer(new VerticalLayout(
                 new RouterLink("Génération", GenView.class),
-                new RouterLink("Types", TypesListView.class)
+                new RouterLink("Types", TypesListView.class),
+                new RouterLink("Pokémons", CardsView.class)
         ));
     }
 }

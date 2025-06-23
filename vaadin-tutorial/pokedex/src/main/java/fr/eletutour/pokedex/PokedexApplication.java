@@ -1,5 +1,6 @@
 package fr.eletutour.pokedex;
 
+import com.vaadin.flow.component.dependency.JavaScript;
 import com.vaadin.flow.component.page.AppShellConfigurator;
 import com.vaadin.flow.theme.Theme;
 import org.springframework.boot.SpringApplication;
