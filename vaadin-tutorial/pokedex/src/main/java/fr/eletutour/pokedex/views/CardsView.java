@@ -1,9 +1,9 @@
 package fr.eletutour.pokedex.views;
 
-import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.card.Card;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.Image;
+import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.select.Select;
@@ -25,7 +25,7 @@ public class CardsView extends VerticalLayout {
     TextField search = new TextField();
     PokemonService service;
     List<Pokemon> pokemons = new ArrayList<>();
-    private VerticalLayout cardLayout = new VerticalLayout();
+    private final VerticalLayout cardLayout = new VerticalLayout();
 
     public CardsView(PokemonService pokemonService) {
         this.service = pokemonService;
@@ -82,6 +82,60 @@ public class CardsView extends VerticalLayout {
             Card pokemonCard = new Card();
             pokemonCard.addClassName("pokemon-card");
 
+            // Ajout du reflet
+            Div shine = new Div();
+            shine.addClassName("shine");
+            // Couleurs des types
+            List<String> typeNames = pokemon.getTypes().stream().map(t -> t.getName().toLowerCase()).toList();
+            String color1 = switch (typeNames.get(0)) {
+                case "plante" -> "#3DA224";
+                case "poison" -> "#923FCC";
+                case "spectre" -> "#703F70";
+                case "sol" -> "#92501B";
+                case "roche" -> "#B0AA82";
+                case "normal" -> "#A0A2A0";
+                case "électrik" -> "#FAC100";
+                case "feu" -> "#E72324";
+                case "vol" -> "#82BAEF";
+                case "eau" -> "#2481EF";
+                case "psy" -> "#EF3F7A";
+                case "combat" -> "#FF8100";
+                case "fée" -> "#EF70EF";
+                case "insecte" -> "#92A212";
+                case "glace" -> "#3DD9FF";
+                case "dragon" -> "#4F60E2";
+                case "acier" -> "#60A2B9";
+                case "ténèbres" -> "#4F3F3D";
+                default -> "#fff";
+            };
+            String color2 = color1;
+            if (typeNames.size() > 1) {
+                color2 = switch (typeNames.get(1)) {
+                    case "plante" -> "#3DA224";
+                    case "poison" -> "#923FCC";
+                    case "spectre" -> "#703F70";
+                    case "sol" -> "#92501B";
+                    case "roche" -> "#B0AA82";
+                    case "normal" -> "#A0A2A0";
+                    case "électrik" -> "#FAC100";
+                    case "feu" -> "#E72324";
+                    case "vol" -> "#82BAEF";
+                    case "eau" -> "#2481EF";
+                    case "psy" -> "#EF3F7A";
+                    case "combat" -> "#FF8100";
+                    case "fée" -> "#EF70EF";
+                    case "insecte" -> "#92A212";
+                    case "glace" -> "#3DD9FF";
+                    case "dragon" -> "#4F60E2";
+                    case "acier" -> "#60A2B9";
+                    case "ténèbres" -> "#4F3F3D";
+                    default -> "#fff";
+                };
+            }
+            shine.getElement().setAttribute("data-type-color1", color1);
+            shine.getElement().setAttribute("data-type-color2", color2);
+            pokemonCard.getElement().appendChild(shine.getElement());
+
             pokemonCard.setTitle(pokemon.getName().getFr());
             pokemonCard.setSubtitle(new Div(pokemon.getCategory()));
 
@@ -89,8 +143,8 @@ public class CardsView extends VerticalLayout {
             pokemonCard.setHeaderPrefix(new Div("N°" + numFormat));
 
             Div elements = new Div();
-            pokemon.getTypes().forEach(type -> {
-                Image image = new Image(type.getImage(), type.getName());
+            pokemon.getTypes().forEach(typeObj -> {
+                Image image = new Image(typeObj.getImage(), typeObj.getName());
                 image.setHeight("30px");
                 elements.add(image);
             });
@@ -114,22 +168,27 @@ public class CardsView extends VerticalLayout {
             col1.setPadding(false);
             col1.setSpacing(false);
             col1.add(
-                    new Div(new Text("PV : " + stats.getHp())),
-                    new Div(new Text("Attaque : " + stats.getAtk())),
-                    new Div(new Text("Défense : " + stats.getDef()))
+                    new Div(new Span("PV : ") {{ getStyle().set("font-weight", "bold"); }}, new Span(String.valueOf(stats.getHp()))),
+                    new Div(new Span("Attaque : ") {{ getStyle().set("font-weight", "bold"); }}, new Span(String.valueOf(stats.getAtk()))),
+                    new Div(new Span("Défense : ") {{ getStyle().set("font-weight", "bold"); }}, new Span(String.valueOf(stats.getDef())))
             );
 
             VerticalLayout col2 = new VerticalLayout();
             col2.setPadding(false);
             col2.setSpacing(false);
             col2.add(
-                    new Div(new Text("Atq. Spé. : " + stats.getSpe_atk())),
-                    new Div(new Text("Def. Spé. : " + stats.getSpe_def())),
-                    new Div(new Text("Vitesse : " + stats.getVit()))
+                    new Div(new Span("Atq. Spé. : ") {{ getStyle().set("font-weight", "bold"); }}, new Span(String.valueOf(stats.getSpe_atk()))),
+                    new Div(new Span("Def. Spé. : ") {{ getStyle().set("font-weight", "bold"); }}, new Span(String.valueOf(stats.getSpe_def()))),
+                    new Div(new Span("Vitesse : ") {{ getStyle().set("font-weight", "bold"); }}, new Span(String.valueOf(stats.getVit())))
             );
 
             HorizontalLayout statsLayout = new HorizontalLayout(col1, col2);
             pokemonCard.add(statsLayout);
+
+            pokemonCard.addToFooter(
+                    new Div(new Span("Taille : ") {{ getStyle().set("font-weight", "bold"); }}, new Span(String.valueOf(pokemon.getHeight()))),
+                    new Div(new Span("Poids : ") {{ getStyle().set("font-weight", "bold"); }}, new Span(String.valueOf(pokemon.getWeight())))
+            );
 
             row.add(pokemonCard);
             count++;
@@ -144,27 +203,52 @@ public class CardsView extends VerticalLayout {
 
         // Injection du JS via text block
         String tiltScript = """
-            setTimeout(function() {
-                document.querySelectorAll('.pokemon-card').forEach(function(card) {
-                    card.addEventListener('mousemove', function(e) {
-                        var rect = card.getBoundingClientRect();
-                        var x = e.clientX - rect.left;
-                        var y = e.clientY - rect.top;
-                        var centerX = rect.width / 2;
-                        var centerY = rect.height / 2;
-                        var rotateX = ((y - centerY) / centerY) * -20;
-                        var rotateY = ((x - centerX) / centerX) * 20;
-                        card.style.transform = 'scale(1.05) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg)';
-                    });
-                    card.addEventListener('mouseleave', function() {
-                        card.style.transform = '';
-                    });
-                    card.addEventListener('mouseenter', function() {
-                        card.style.transition = 'transform 0.15s cubic-bezier(.25,.8,.25,1)';
-                    });
-                });
-            }, 100);
-        """;
+    setTimeout(function() {
+        function hexToRgb(hex) {
+            hex = hex.replace('#', '');
+            if (hex.length === 3) {
+                hex = hex.split('').map(x => x + x).join('');
+            }
+            var bigint = parseInt(hex, 16);
+            var r = (bigint >> 16) & 255;
+            var g = (bigint >> 8) & 255;
+            var b = bigint & 255;
+            return r + ',' + g + ',' + b;
+        }
+        document.querySelectorAll('.pokemon-card').forEach(function(card) {
+            var shine = card.querySelector('.shine');
+            var colorHex1 = shine ? shine.getAttribute('data-type-color1') : '#fff';
+            var colorHex2 = shine ? shine.getAttribute('data-type-color2') : '#fff';
+            var color1 = hexToRgb(colorHex1);
+            var color2 = hexToRgb(colorHex2);
+            card.addEventListener('mousemove', function(e) {
+                var rect = card.getBoundingClientRect();
+                var x = e.clientX - rect.left;
+                var y = e.clientY - rect.top;
+                var centerX = rect.width / 2;
+                var centerY = rect.height / 2;
+                var rotateX = ((y - centerY) / centerY) * -20;
+                var rotateY = ((x - centerX) / centerX) * 20;
+                card.style.setProperty('--rX', rotateX + 'deg');
+                card.style.setProperty('--rY', rotateY + 'deg');
+                card.classList.add('active');
+                if (shine) {
+                    var angle = Math.atan2(y - centerY, x - centerX) * 180 / Math.PI - 90;
+                    var pos = Math.sqrt(Math.pow(x - centerX, 2) + Math.pow(y - centerY, 2));
+                    shine.style.background = 'linear-gradient(' + angle + 'deg, rgba(' + color1 + ',' + (0.7 + pos/rect.width*0.2) + ') 0%, rgba(' + color2 + ',0.15) 80%)';
+                }
+            });
+            card.addEventListener('mouseleave', function() {
+                card.style.setProperty('--rX', '0deg');
+                card.style.setProperty('--rY', '0deg');
+                card.classList.remove('active');
+                if (shine) {
+                    shine.style.background = '';
+                }
+            });
+        });
+    }, 100);
+""";
         com.vaadin.flow.component.UI.getCurrent().getPage().executeJs(tiltScript);
     }
 

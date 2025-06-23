@@ -84,13 +84,29 @@
 }
 
 .pokemon-card {
+  --rX: 0deg;
+  --rY: 0deg;
   transition: transform 0.2s cubic-bezier(.25,.8,.25,1), box-shadow 0.2s;
   will-change: transform;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   perspective: 1000px;
+  transform: perspective(1000px) rotateX(var(--rX)) rotateY(var(--rY)) scale(1);
+  position: relative;
+  overflow: hidden;
 }
-.pokemon-card:hover {
-  transform: scale(1.05);
+.pokemon-card:hover, .pokemon-card.active {
+  transform: perspective(1000px) rotateX(var(--rX)) rotateY(var(--rY)) scale(1.05);
   box-shadow: 0 8px 24px rgba(0,0,0,0.18);
   z-index: 2;
+}
+.pokemon-card .shine {
+  pointer-events: none;
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(120deg, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.15) 80%);
+  opacity: 1;
+  transition: background 0.08s;
+  z-index: 10;
+  mix-blend-mode: lighten;
+  filter: blur(1px);
 }
