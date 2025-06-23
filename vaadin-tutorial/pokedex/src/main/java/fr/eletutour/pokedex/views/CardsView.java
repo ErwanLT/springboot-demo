@@ -235,7 +235,7 @@ public class CardsView extends VerticalLayout {
                 if (shine) {
                     var angle = Math.atan2(y - centerY, x - centerX) * 180 / Math.PI - 90;
                     var pos = Math.sqrt(Math.pow(x - centerX, 2) + Math.pow(y - centerY, 2));
-                    shine.style.background = 'linear-gradient(' + angle + 'deg, rgba(' + color1 + ',' + (0.7 + pos/rect.width*0.2) + ') 0%, rgba(' + color2 + ',0.15) 80%)';
+                    shine.style.background = 'linear-gradient(' + angle + 'deg, rgba(' + color1 + ',' + (0.7 + pos/rect.width*0.2) + ') 0%, rgba(' + color2 + ',0.5) 80%)';
                 }
             });
             card.addEventListener('mouseleave', function() {
