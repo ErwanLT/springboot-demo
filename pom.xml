@@ -42,7 +42,8 @@
         <module>testing-tutorial</module>
 		<module>elasticsearch-tutorial</module>
 		<module>vaadin-tutorial</module>
-	</modules>
+        <module>bucket4j-tutorial</module>
+    </modules>
 	<scm>
 		<url>https://github.com/ErwanLT/springboot-demo.git</url>
 		<connection>scm:git:ssh://git@github.com/ErwanLT/springboot-demo.git</connection>
