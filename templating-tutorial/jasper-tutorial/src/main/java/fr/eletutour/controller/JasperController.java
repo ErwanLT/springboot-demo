@@ -27,7 +27,7 @@ public class JasperController {
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_PDF);
-        headers.setContentDisposition(ContentDisposition.builder("attachment").filename(request.getExportName()).build());
+        headers.setContentDisposition(ContentDisposition.builder("attachment").filename(request.exportName()).build());
 
         return ResponseEntity.ok()
                 .headers(headers)

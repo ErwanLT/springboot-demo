@@ -2,6 +2,7 @@ package fr.eletutour.jasper;
 
 import fr.eletutour.exception.JasperException;
 import fr.eletutour.models.JasperRequest;
+import fr.eletutour.models.Report;
 import fr.eletutour.models.ReportParameter;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
@@ -55,15 +56,15 @@ public class JasperService {
     public byte[] getPDF(JasperRequest request) throws JasperException {
         try {
             // Compiler rapport principal
-            JasperReport mainReport = compileReport(request.reportType().getMainReportName());
+            JasperReport mainReport = compileReport(request.reportType().getMainReport().path());
 
             // Compiler sous-rapports en mémoire et les ajouter aux paramètres
             Map<String, Object> parameters = convertToMap(request.parameters());
-            for (String subReportName : request.reportType().getSubReportNames()) {
-                JasperReport subReport = compileReport(subReportName);
+            for (Report subreport : request.reportType().getSubReports()) {
+                JasperReport report = compileReport(subreport.path());
                 // Nom du paramètre = nom fichier sans extension, ex: "subReport"
-                String paramName = subReportName.replace(".jrxml", "");
-                parameters.put(paramName, subReport);
+                String paramName = subreport.name().replace(".jrxml", "");
+                parameters.put(paramName, report);
             }
 
             // Data source JSON
