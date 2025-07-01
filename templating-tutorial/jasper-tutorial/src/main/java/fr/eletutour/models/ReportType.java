@@ -9,6 +9,13 @@ public enum ReportType {
             new Report("Simple Report", "simpleReport.jrxml"),
             Collections.emptyList(),
             Boolean.FALSE
+    ),
+    REPORT_WITH_SUBREPORTS(
+            new Report("Report with Subreports", "reportTest.jrxml"),
+            List.of(
+                    new Report("subReport.jrxml", "subReport.jrxml")
+            ),
+            Boolean.FALSE
     );
 
 

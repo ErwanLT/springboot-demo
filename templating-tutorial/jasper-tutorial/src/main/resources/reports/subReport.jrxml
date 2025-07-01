@@ -8,11 +8,9 @@
 			<text><![CDATA[ici le sous rapport]]></text>
 		</element>
 	</title>
-	<detail>
-		<band height="125" splitType="Stretch">
-			<element kind="textField" uuid="0fedeb5e-7996-45ff-847b-337354565017" x="280" y="20" width="100" height="30">
-				<expression><![CDATA[$P{name}]]></expression>
-			</element>
-		</band>
-	</detail>
+	<summary height="50">
+		<element kind="textField" uuid="0fedeb5e-7996-45ff-847b-337354565017" x="140" y="10" width="100" height="30">
+			<expression><![CDATA[$P{name}]]></expression>
+		</element>
+	</summary>
 </jasperReport>
