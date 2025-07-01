@@ -4,13 +4,15 @@ import fr.eletutour.exception.JasperException;
 import fr.eletutour.models.JasperRequest;
 import fr.eletutour.models.Report;
 import fr.eletutour.models.ReportParameter;
+import net.sf.jasperreports.engine.JRDataSource;
+import net.sf.jasperreports.engine.JREmptyDataSource;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
-import net.sf.jasperreports.engine.data.JsonDataSource;
+import net.sf.jasperreports.json.data.JsonDataSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -68,8 +70,14 @@ public class JasperService {
             }
 
             // Data source JSON
-            InputStream jsonStream = new ByteArrayInputStream(parameters.get("jsonString").toString().getBytes(StandardCharsets.UTF_8));
-            JsonDataSource dataSource = new JsonDataSource(jsonStream);
+            JRDataSource dataSource;
+            if( !request.reportType().needDataSource()) {
+                LOGGER.info("Aucune source de données nécessaire pour le rapport {}", request.reportType().getMainReport().name());
+                dataSource = new JREmptyDataSource();
+            } else {
+                InputStream jsonStream = new ByteArrayInputStream(parameters.get("jsonString").toString().getBytes(StandardCharsets.UTF_8));
+                dataSource = new JsonDataSource(jsonStream);
+            }
 
             LOGGER.info("paramètres : {}", parameters);
 
