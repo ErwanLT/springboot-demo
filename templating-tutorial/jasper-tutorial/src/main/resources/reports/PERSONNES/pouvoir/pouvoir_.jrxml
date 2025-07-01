@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.18.1.final using JasperReports Library version 6.18.1-9d75d1969e774d4f179fb3be8401e98a0e6d1611  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="pouvoir" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a8676260-0c0b-4440-8d70-de217ce9531d">
+	<property name="ireport.zoom" value="1.7715610000000017"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="325"/>
+	<property name="ireport.jasperserver.url" value="https://integ-jasper.agrica.loc/jasperserver/"/>
+	<property name="ireport.jasperserver.user" value="jasper"/>
+	<property name="ireport.jasperserver.reportUnit" value="/Agrica/MAGI/Reports/PERSONNES/pouvoir"/>
+	<property name="ireport.jasperserver.report.resource" value="/Agrica/MAGI/Reports/PERSONNES/pouvoir_files/pouvoir_"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="pouvoirAdapter"/>
+	<parameter name="jsonString" class="java.lang.String"/>
+	<parameter name="JSON_INPUT_STREAM" class="java.io.InputStream" isForPrompting="false">
+		<defaultValueExpression><![CDATA[new java.io.ByteArrayInputStream($P{jsonString}.getBytes("UTF-8"))]]></defaultValueExpression>
+	</parameter>
+	<queryString language="JSON">
+		<![CDATA[$P{JSON_INPUT_STREAM}]]>
+	</queryString>
+	<field name="INSTITUTION" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="INSTITUTION"/>
+		<fieldDescription><![CDATA[$.INSTITUTION]]></fieldDescription>
+	</field>
+	<field name="Prenom" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="Prenom"/>
+		<fieldDescription><![CDATA[$.Prenom]]></fieldDescription>
+	</field>
+	<field name="NOM" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="NOM"/>
+		<fieldDescription><![CDATA[$.NOM]]></fieldDescription>
+	</field>
+	<field name="Date" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="Date"/>
+		<fieldDescription><![CDATA[$.Date]]></fieldDescription>
+	</field>
+	<field name="CP" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="CP"/>
+		<fieldDescription><![CDATA[$.CP]]></fieldDescription>
+	</field>
+	<field name="Ville" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="Ville"/>
+		<fieldDescription><![CDATA[$.Ville]]></fieldDescription>
+	</field>
+	<field name="Heure" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="Heure"/>
+		<fieldDescription><![CDATA[$.Heure]]></fieldDescription>
+	</field>
+	<field name="Organisation" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="Organisation"/>
+		<fieldDescription><![CDATA[$.Organisation]]></fieldDescription>
+	</field>
+	<field name="College" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="College"/>
+		<fieldDescription><![CDATA[$.College]]></fieldDescription>
+	</field>
+	<field name="Voie" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="Voie"/>
+		<fieldDescription><![CDATA[$.Voie]]></fieldDescription>
+	</field>
+	<field name="Nombre" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="Nombre"/>
+		<fieldDescription><![CDATA[$.Nombre]]></fieldDescription>
+	</field>
+	<field name="REUNION" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="REUNION"/>
+		<fieldDescription><![CDATA[$.REUNION]]></fieldDescription>
+	</field>
+	<field name="ARTICLE" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="ARTICLE"/>
+		<fieldDescription><![CDATA[$.ARTICLE]]></fieldDescription>
+	</field>
+	<field name="ENTETE_ARTICLE" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="ENTETE_ARTICLE"/>
+		<fieldDescription><![CDATA[$.ENTETE_ARTICLE]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="686" splitType="Stretch">
+			<textField>
+				<reportElement x="128" y="0" width="298" height="26" uuid="f62685a1-502d-4068-8106-c9b787cc1aeb"/>
+				<textElement textAlignment="Center">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{INSTITUTION}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="232" y="61" width="100" height="20" uuid="adc54bc5-54dd-4c53-83fd-c2579377b63a"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[POUVOIR]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="88" y="37" width="377" height="20" uuid="b7293411-b772-4f64-918b-17d1ee5be171"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{REUNION}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="60" y="110" width="495" height="20" uuid="9c1aa202-545d-4f31-b3ae-27efe0b2580a">
+					<printWhenExpression><![CDATA[!$F{Nombre}.trim().isEmpty()]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Administrateur du Collège " + $F{College} + " (au titre de " + $F{Organisation} +")   -  "+$F{Nombre}+" Voix"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="59" y="158" width="495" height="20" uuid="1df1c18d-a405-426c-82ca-f8ba9081bac3"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[Donne pouvoir à :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="61" y="410" width="224" height="20" uuid="602dea7d-22ef-451f-bb98-0f5f93b43453"/>
+				<text><![CDATA[L' Administrateur]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="60" y="423" width="225" height="20" uuid="37a88be0-0342-4725-8d8a-7aa6ef572bc9"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[(faire précéder la signature de la mention]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="61" y="437" width="67" height="20" uuid="0c929ec4-7df7-4372-a0e8-aa408ec1e341"/>
+				<textElement>
+					<font size="8" isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[manuscrite "]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="105" y="437" width="100" height="20" uuid="8f231dbd-c63a-4a12-805e-f200a7bffac7"/>
+				<textElement>
+					<font size="8" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Bon pour pouvoir]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="168" y="437" width="18" height="20" uuid="6f06fd00-a60f-4c39-9320-022ca5c6043f"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[")]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="335" y="410" width="180" height="20" uuid="de681f5a-b324-4563-a951-3f2b310f5600"/>
+				<text><![CDATA[Le Représentant]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="334" y="424" width="181" height="20" uuid="98384120-1eca-41dd-9c8e-6503c46a9617"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[(faire précéder la signature de la mention]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="335" y="437" width="67" height="20" uuid="6526587e-2175-4f0d-a351-eefcce93af67"/>
+				<textElement>
+					<font size="8" isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[manuscrite "]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="379" y="437" width="138" height="20" uuid="ac1d6770-b977-4d80-a733-b7176d3ffc03"/>
+				<textElement>
+					<font size="8" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Bon pour acceptation de pouvoir]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="497" y="437" width="18" height="20" uuid="4156744e-bd4a-4ed8-80df-5fa9f2cb2018"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[")]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="60" y="209" width="494" height="20" uuid="1eb8894f-d29f-463d-91e2-26f4b062f2f5"/>
+				<textFieldExpression><![CDATA["Administrateur du Collège " + $F{College}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="60" y="236" width="494" height="20" uuid="f5592010-bfc2-4ed7-a9f5-b6462d4eaf19"/>
+				<textFieldExpression><![CDATA["Aux fins de me représenter au  "+ $F{REUNION}+" qui aura lieu "]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="60" y="259" width="495" height="40" uuid="3abb6a60-4d20-4b60-b87f-96333c6c27b7"/>
+				<textElement markup="styled"/>
+				<textFieldExpression><![CDATA[$F{Voie} + "\n" + $F{CP} + " "+ $F{Ville}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="60" y="302" width="494" height="20" uuid="daee431c-b825-490a-bece-a1ae70a789a5"/>
+				<textFieldExpression><![CDATA["le "+$F{Date}+" à "+$F{Heure}+"."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="60" y="110" width="495" height="20" uuid="dc8133a0-d2ed-4362-b7e4-77413f7965b5">
+					<printWhenExpression><![CDATA[$F{Nombre}.trim().isEmpty()]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Administrateur du Collège " + $F{College} + " (au titre de " + $F{Organisation} + ")"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="61" y="90" width="494" height="20" uuid="8293d248-d914-4a7d-b1d0-ff33778d8f67"/>
+				<textElement markup="html"/>
+				<textFieldExpression><![CDATA["En application de l'article "+$F{ENTETE_ARTICLE}+" des statuts, je soussigné(e) <b> "+ $F{Prenom}+ "  "+ $F{NOM}.toUpperCase() +"</b>"]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="49" y="619" width="448" height="67" uuid="a1a5509e-1f91-4b2b-8026-defdfc87c095"/>
+				<box topPadding="5" leftPadding="5" bottomPadding="5" rightPadding="5">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ARTICLE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="60" y="189" width="494" height="20" uuid="8fc6d7f5-9e05-49a4-ade1-0c78448a37f6"/>
+				<text><![CDATA[Mme - M .........................................................................]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="59" y="340" width="495" height="30" uuid="178637ee-2ed8-40ef-b808-695d001fa552"/>
+				<text><![CDATA[Fait à ........................................, Le .............................................................]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

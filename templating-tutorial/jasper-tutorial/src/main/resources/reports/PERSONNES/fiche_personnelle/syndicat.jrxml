@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.18.1.final using JasperReports Library version 6.18.1-9d75d1969e774d4f179fb3be8401e98a0e6d1611  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="add_professionnelle" pageWidth="555" pageHeight="802" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="f53731b4-67e7-4283-80d8-041a616ba817">
+	<property name="ireport.zoom" value="1.6105100000000008"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="ireport.jasperserver.url" value="https://qualif-jasper.agrica.loc/jasperserver/"/>
+	<property name="ireport.jasperserver.user" value="jasper"/>
+	<property name="ireport.jasperserver.reportUnit" value="/Agrica/MAGI/Reports/PERSONNES/fiche_personnelle"/>
+	<property name="ireport.jasperserver.report.resource" value="/Agrica/MAGI/Reports/PERSONNES/fiche_personnelle_files/syndicat.jrxml"/>
+	<parameter name="SYNDICAT" class="java.lang.String"/>
+	<summary>
+		<band height="62">
+			<textField isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToTallestObject" x="164" y="12" width="265" height="12" uuid="1c0406ee-3c72-4f06-b5b7-b49003f00396"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font  size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{SYNDICAT}.split("#")[1]]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToTallestObject" x="164" y="0" width="265" height="12" uuid="e931bda6-ba37-40b9-9ab0-d4945ecb869d"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font  size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{SYNDICAT}.split("#")[0]]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="0" y="0" width="152" height="50" uuid="350745fb-ffc7-49af-b033-e5177adc7d1b"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font size="13" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Coordonnées syndicat"]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

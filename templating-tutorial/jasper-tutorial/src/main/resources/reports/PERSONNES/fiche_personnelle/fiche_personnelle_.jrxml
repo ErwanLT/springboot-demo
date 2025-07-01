@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6-5c96b6aa8a39ac1dc6b6bea4b81168e16dd39231  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="composition des instances" pageWidth="600" pageHeight="850" whenNoDataType="AllSectionsNoDetail" columnWidth="560" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3ec5f5e9-6ef7-475d-956c-bbb9c4d36595">
+	<property name="ireport.zoom" value="1.6105100000000012"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="217"/>
+	<property name="ireport.jasperserver.url" value="https://integ-jasper.agrica.loc/jasperserver/"/>
+	<property name="ireport.jasperserver.user" value="jasper"/>
+	<property name="ireport.jasperserver.reportUnit" value="/Agrica/MAGI/Reports/PERSONNES/fiche_personnelle/fiche_personnelle_"/>
+	<property name="ireport.jasperserver.report.resource" value="/Agrica/MAGI/Reports/PERSONNES/fiche_personnelle/fiche_personnelle__files/Main jrxml"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="fichePersoAdapter"/>
+	<import value="java.util.Base64"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="MANDATS" uuid="8fac99c0-0b2c-43e1-96d5-f072a1668268">
+		<queryString language="JSON">
+			<![CDATA[]]>
+		</queryString>
+		<field name="instance" class="java.lang.String">
+			<property name="net.sf.jasperreports.json.field.expression" value=".[0]"/>
+		</field>
+		<field name="nom_reunion" class="java.lang.String">
+			<property name="net.sf.jasperreports.json.field.expression" value=".[1]"/>
+		</field>
+		<field name="poste" class="java.lang.String">
+			<property name="net.sf.jasperreports.json.field.expression" value=".[2]"/>
+		</field>
+	</subDataset>
+	<subDataset name="REPRESENTATIONS" uuid="be149edf-179c-4967-bf22-fc3d7141b0eb">
+		<queryString language="JSON">
+			<![CDATA[]]>
+		</queryString>
+		<field name="Field_1" class="java.lang.String">
+			<property name="net.sf.jasperreports.json.field.expression" value=".[0]"/>
+		</field>
+		<field name="Field_2" class="java.lang.String">
+			<property name="net.sf.jasperreports.json.field.expression" value=".[1]"/>
+		</field>
+	</subDataset>
+	<subDataset name="MANDATEXTERNES" uuid="86e7e1ab-dc99-4ccb-8a13-3b16e9697d14">
+		<queryString language="JSON">
+			<![CDATA[]]>
+		</queryString>
+		<field name="Field_1" class="java.lang.String">
+			<property name="net.sf.jasperreports.json.field.expression" value=".[0]"/>
+		</field>
+		<field name="Field_2" class="java.lang.String">
+			<property name="net.sf.jasperreports.json.field.expression" value=".[1]"/>
+		</field>
+	</subDataset>
+	<parameter name="infos_generales" class="net.sf.jasperreports.engine.JasperReport"/>
+	<parameter name="add_personnelle" class="net.sf.jasperreports.engine.JasperReport"/>
+	<parameter name="add_professionnelle" class="net.sf.jasperreports.engine.JasperReport"/>
+	<parameter name="syndicat" class="net.sf.jasperreports.engine.JasperReport"/>
+	<parameter name="jsonString" class="java.lang.String"/>
+	<parameter name="JSON_INPUT_STREAM" class="java.io.InputStream" isForPrompting="false">
+		<defaultValueExpression><![CDATA[new java.io.ByteArrayInputStream($P{jsonString}.getBytes("UTF-8"))]]></defaultValueExpression>
+	</parameter>
+	<queryString language="JSON">
+		<![CDATA[]]>
+	</queryString>
+	<field name="INFO_GENERALE" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="INFO_GENERALE"/>
+		<fieldDescription><![CDATA[INFO_GENERALE]]></fieldDescription>
+	</field>
+	<field name="PHOTO" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="PHOTO"/>
+		<fieldDescription><![CDATA[PHOTO]]></fieldDescription>
+	</field>
+	<field name="ADD_PERSONNELLE" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="ADD_PERSONNELLE"/>
+		<fieldDescription><![CDATA[ADD_PERSONNELLE]]></fieldDescription>
+	</field>
+	<field name="ADD_PROFESSIONNELLE" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="ADD_PROFESSIONNELLE"/>
+		<fieldDescription><![CDATA[ADD_PROFESSIONNELLE]]></fieldDescription>
+	</field>
+	<field name="SYNDICAT" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="SYNDICAT"/>
+		<fieldDescription><![CDATA[SYNDICAT]]></fieldDescription>
+	</field>
+	<field name="MANDATS" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="MANDATS"/>
+		<fieldDescription><![CDATA[MANDATS]]></fieldDescription>
+	</field>
+	<field name="REPRESENTATIONS" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="REPRESENTATIONS"/>
+		<fieldDescription><![CDATA[REPRESENTATIONS]]></fieldDescription>
+	</field>
+	<field name="MANDATEXTERNES" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="MANDATEXTERNES"/>
+		<fieldDescription><![CDATA[MANDATEXTERNES]]></fieldDescription>
+	</field>
+	<title>
+		<band height="76">
+			<image>
+				<reportElement x="10" y="4" width="114" height="63" uuid="9ec77134-4e2b-4bdd-a3d7-4389e0a2697b"/>
+				<imageExpression><![CDATA["./Agrica/MAGI/Resources/agrica_logo_blue_blanc.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="418" y="4" width="75" height="72" uuid="aea80806-5ab9-4e2c-8207-f2b9ba2ae1fc"/>
+				<imageExpression><![CDATA[$F{PHOTO} != null && !$F{PHOTO}.isEmpty() ?
+    new ByteArrayInputStream(Base64.getDecoder().decode($F{PHOTO})) :
+    "./Agrica/MAGI/Resources/image_profil.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<summary>
+		<band height="422">
+			<subreport>
+				<reportElement positionType="Float" x="10" y="24" width="540" height="33" uuid="e2905ed9-e1a1-4f5a-b363-4f189dccab47"/>
+				<subreportParameter name="INFO_GENERALE">
+					<subreportParameterExpression><![CDATA[$F{INFO_GENERALE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{infos_generales}]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement positionType="Float" x="10" y="70" width="540" height="33" uuid="1c0ab36a-1a28-47cd-b2de-7f245fe7a57e"/>
+				<subreportParameter name="ADD_PERSONNELLE">
+					<subreportParameterExpression><![CDATA[$F{ADD_PERSONNELLE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{add_personnelle}]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement positionType="Float" x="10" y="117" width="540" height="33" uuid="fdda0671-3cc2-4a75-8bf2-8d0aabad79e7"/>
+				<subreportParameter name="ADD_PROFESSIONNELLE">
+					<subreportParameterExpression><![CDATA[$F{ADD_PROFESSIONNELLE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{add_professionnelle}]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement positionType="Float" x="10" y="166" width="540" height="33" uuid="4865d4da-5c3c-465e-90dc-e362231f2e26"/>
+				<subreportParameter name="SYNDICAT">
+					<subreportParameterExpression><![CDATA[$F{SYNDICAT}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{syndicat}]]></subreportExpression>
+			</subreport>
+			<componentElement>
+				<reportElement positionType="Float" x="10" y="244" width="540" height="25" uuid="ccdd41d9-b343-44c6-9986-9732d0344d03"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="MANDATS" uuid="ecc03008-942d-40ad-88a0-e3fb0768b64c">
+						<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JsonDataSource)$P{REPORT_DATA_SOURCE}).subDataSource("MANDATS")]]></dataSourceExpression>
+					</datasetRun>
+					<jr:listContents height="25" width="540">
+						<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+							<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="0" y="0" width="143" height="25" uuid="e5379155-cb75-47fa-b2db-5f2b44235923"/>
+							<box bottomPadding="3">
+								<pen lineWidth="0.0"/>
+								<topPen lineWidth="1.0"/>
+								<leftPen lineWidth="1.0"/>
+								<bottomPen lineWidth="1.0" lineColor="#AAAAAA"/>
+								<rightPen lineWidth="1.0"/>
+							</box>
+							<textElement textAlignment="Left" verticalAlignment="Middle">
+								<font size="9" isBold="false"/>
+							</textElement>
+							<textFieldExpression><![CDATA[" "+$F{instance}]]></textFieldExpression>
+						</textField>
+						<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+							<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="143" y="0" width="253" height="25" uuid="2e50c612-7f07-4f64-b2de-7edae7a4bc52"/>
+							<box bottomPadding="3">
+								<pen lineWidth="0.0"/>
+								<topPen lineWidth="1.0" lineStyle="Solid"/>
+								<leftPen lineWidth="1.0" lineStyle="Solid"/>
+								<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#AAAAAA"/>
+								<rightPen lineWidth="1.0" lineStyle="Solid"/>
+							</box>
+							<textElement textAlignment="Left" verticalAlignment="Middle">
+								<font size="9" isBold="false"/>
+								<paragraph leftIndent="3"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{nom_reunion}]]></textFieldExpression>
+						</textField>
+						<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+							<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="396" y="0" width="144" height="25" uuid="c6f7b734-a064-4d51-9201-df0d7537270a"/>
+							<box bottomPadding="3">
+								<pen lineWidth="0.0"/>
+								<topPen lineWidth="1.0" lineStyle="Solid"/>
+								<leftPen lineWidth="1.0" lineStyle="Solid"/>
+								<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#AAAAAA"/>
+								<rightPen lineWidth="1.0" lineStyle="Solid"/>
+							</box>
+							<textElement textAlignment="Left" verticalAlignment="Middle">
+								<font size="9" isBold="false"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{poste}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" mode="Transparent" x="10" y="222" width="540" height="22" forecolor="#27AABF" uuid="9ffbbe40-1795-458c-ac3c-a919844d4215"/>
+				<box>
+					<pen lineWidth="0.0" lineColor="#000000"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="13" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Mandat interne"]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement positionType="Float" x="10" y="320" width="540" height="25" uuid="40eb753e-511f-4ed5-9138-fe95939b44f0"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="REPRESENTATIONS" uuid="89a15cbb-5732-4952-be94-6ed34f6afeaf">
+						<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JsonDataSource)$P{REPORT_DATA_SOURCE}).subDataSource("REPRESENTATIONS")]]></dataSourceExpression>
+					</datasetRun>
+					<jr:listContents height="25" width="540">
+						<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+							<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="0" y="0" width="270" height="25" uuid="723fce7c-76cb-4fc6-9ea2-549605a1940b"/>
+							<box bottomPadding="3">
+								<pen lineWidth="0.0"/>
+								<topPen lineWidth="1.0"/>
+								<leftPen lineWidth="1.0"/>
+								<bottomPen lineWidth="1.0" lineColor="#AAAAAA"/>
+								<rightPen lineWidth="1.0"/>
+							</box>
+							<textElement textAlignment="Left" verticalAlignment="Middle">
+								<font size="9" isBold="false"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{Field_1}]]></textFieldExpression>
+						</textField>
+						<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+							<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="270" y="0" width="270" height="25" uuid="378e51ad-8f75-4730-abc0-27e0856634ba"/>
+							<box bottomPadding="3">
+								<pen lineWidth="0.0"/>
+								<topPen lineWidth="1.0"/>
+								<leftPen lineWidth="1.0"/>
+								<bottomPen lineWidth="1.0" lineColor="#AAAAAA"/>
+								<rightPen lineWidth="1.0"/>
+							</box>
+							<textElement textAlignment="Left" verticalAlignment="Middle">
+								<font size="9" isBold="false"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{Field_2}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="10" y="295" width="540" height="25" forecolor="#27AABF" uuid="d43268d0-1f97-4b0b-8da5-3a02a8d3e6a7"/>
+				<box>
+					<pen lineWidth="0.0" lineColor="#000000"/>
+					<topPen lineWidth="1.0" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="13" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Représentation"]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement positionType="Float" x="13" y="397" width="537" height="25" uuid="00106ef6-b4a8-456a-81f7-050a21f86421"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="MANDATEXTERNES" uuid="cad646b0-accd-419e-b821-57604bbf9022">
+						<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JsonDataSource)$P{REPORT_DATA_SOURCE}).subDataSource("MANDATEXTERNES")]]></dataSourceExpression>
+					</datasetRun>
+					<jr:listContents height="25" width="537">
+						<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+							<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="0" y="0" width="267" height="25" uuid="1c5b452d-cd77-4136-8331-9dc1c150eef3"/>
+							<box bottomPadding="3">
+								<pen lineWidth="0.0"/>
+								<topPen lineWidth="1.0"/>
+								<leftPen lineWidth="1.0"/>
+								<bottomPen lineWidth="1.0" lineColor="#AAAAAA"/>
+								<rightPen lineWidth="1.0"/>
+							</box>
+							<textElement textAlignment="Left" verticalAlignment="Middle">
+								<font size="9" isBold="false"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{Field_1}]]></textFieldExpression>
+						</textField>
+						<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+							<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="267" y="0" width="270" height="25" uuid="51c46881-1a51-4760-97dc-b52509060f3a"/>
+							<box bottomPadding="3">
+								<pen lineWidth="0.0"/>
+								<topPen lineWidth="1.0"/>
+								<leftPen lineWidth="1.0"/>
+								<bottomPen lineWidth="1.0" lineColor="#AAAAAA"/>
+								<rightPen lineWidth="1.0"/>
+							</box>
+							<textElement textAlignment="Left" verticalAlignment="Middle">
+								<font size="9" isBold="false"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{Field_2}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="13" y="372" width="537" height="25" forecolor="#27AABF" uuid="10c737c9-0373-43d4-b807-29d3f8199369"/>
+				<box>
+					<pen lineWidth="0.0" lineColor="#000000"/>
+					<topPen lineWidth="1.0" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="13" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Mandat externe"]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>
