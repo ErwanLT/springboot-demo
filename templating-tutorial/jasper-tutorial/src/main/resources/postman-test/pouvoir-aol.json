@@ -1,0 +1,10 @@
+{
+  "exportName": "test.pdf",
+  "reportType": "POUVOIR",
+  "parameters": [
+    {
+      "name": "jsonString",
+      "value": "{\n  \"INSTITUTION\": \"DITW\",\n  \"Prenom\": \"Erwan\",\n  \"NOM\": \"LE TUTOUR\",\n  \"Date\": \"lundi 25 avril\",\n  \"CP\": \"94190\",\n  \"Ville\": \"Villeneuve\",\n  \"Heure\": \"15h\",\n  \"Organisation\": \"SFEIR\",\n  \"College\": \"cadre\",\n  \"Voie\": \"rue Jean Mermoz\",\n  \"Nombre\": \"15\",\n  \"REUNION\": \"montée de version ECO\",\n  \"ARTICLE\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum commodo lorem et tellus fringilla ornare. Sed sollicitudin consectetur egestas. Nulla facilisi. Donec vehicula dui massa, interdum laoreet nisl rutrum in. Suspendisse a ligula id justo pharetra consequat laoreet mollis dolor. Vestibulum fermentum arcu in nisi dapibus, pulvinar faucibus quam sagittis. Donec rhoncus libero diam, nec aliquam arcu dictum in. Fusce facilisis tellus eget varius ullamcorper. \",\n  \"ENTETE_ARTICLE\": \"Lorem Ipsum\"\n}"
+    }
+  ]
+}
