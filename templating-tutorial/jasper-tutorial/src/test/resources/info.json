@@ -1,0 +1,42 @@
+{
+  "identite": {
+    "nom": "LE TUTOUR",
+    "prenom": "Erwan",
+    "dateNaissance": "1991-01-22",
+    "nationalite": "Française"
+  },
+  "contact": {
+    "adresse": {
+      "rue": "12 rue des Lilas",
+      "codePostal": "69003",
+      "ville": "Lyon",
+      "pays": "France"
+    },
+    "telephone": "+33 6 12 34 56 78",
+    "email": "erwan.letutour@example.com"
+  },
+  "situationFamiliale": {
+    "etatCivil": "Marié",
+    "nombreEnfants": 1
+  },
+  "profession": {
+    "metier": "Développeur Java",
+    "employeur": "Société Informatique SA",
+    "experience": [
+      {
+        "poste": "Développeur Junior",
+        "entreprise": "TechSoft",
+        "annees": "2008-2011"
+      },
+      {
+        "poste": "Développeur Confirmé",
+        "entreprise": "Société Informatique SA",
+        "annees": "2011-aujourd'hui"
+      }
+    ]
+  },
+  "divers": {
+    "langues": ["Français", "Anglais"],
+    "loisirs": ["Lecture", "Jeux Video", "Jeux de société"]
+  }
+}

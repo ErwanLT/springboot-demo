@@ -16,6 +16,11 @@ public enum ReportType {
                     new Report("subReport.jrxml", "subReport.jrxml")
             ),
             Boolean.FALSE
+    ),
+    REPORT_WITH_DATA_SOURCE(
+            new Report("Report with Data Source", "testWithDatasource.jrxml"),
+            Collections.emptyList(),
+            Boolean.TRUE
     );
 
 
