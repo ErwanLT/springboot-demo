@@ -134,7 +134,7 @@ $F{pays}]]></expression>
 		<element kind="staticText" uuid="5fd058cb-46bd-4462-a94a-e903d9faf4e1" mode="Opaque" x="-20" y="10" width="595" height="30" backcolor="#C4C4C4" bold="true" hTextAlign="Center" vTextAlign="Middle">
 			<text><![CDATA[Informations personnelle]]></text>
 		</element>
-		<element kind="staticText" uuid="753694f0-9c85-4629-923a-7ee9f88137d0" mode="Opaque" x="-22" y="199" width="595" height="30" backcolor="#C4C4C4" bold="true" hTextAlign="Center" vTextAlign="Middle">
+		<element kind="staticText" uuid="753694f0-9c85-4629-923a-7ee9f88137d0" mode="Opaque" x="-20" y="199" width="595" height="30" backcolor="#C4C4C4" bold="true" hTextAlign="Center" vTextAlign="Middle">
 			<text><![CDATA[Informations professionnelle]]></text>
 		</element>
 		<element kind="staticText" uuid="0bff2dc5-2934-45c3-a0a1-32c89bf554ae" x="0" y="242" width="100" height="30" bold="true">
@@ -149,7 +149,7 @@ $F{pays}]]></expression>
 		<element kind="textField" uuid="9a685b12-dd04-4348-a006-a5a977a661e9" x="100" y="272" width="410" height="30">
 			<expression><![CDATA[$F{employeur}]]></expression>
 		</element>
-		<element kind="staticText" uuid="c5d5e8f2-f193-46d5-85ac-281f51ddf9dc" x="-20" y="302" width="595" height="30" underline="true" hTextAlign="Center" vTextAlign="Middle">
+		<element kind="staticText" uuid="c5d5e8f2-f193-46d5-85ac-281f51ddf9dc" x="-20" y="302" width="595" height="30" underline="true" bold="true" hTextAlign="Center" vTextAlign="Middle">
 			<text><![CDATA[Expériences]]></text>
 		</element>
 		<element kind="component" uuid="b53aaee1-83d1-4ed9-a981-28f770d95cb5" x="0" y="330" width="550" height="200">
