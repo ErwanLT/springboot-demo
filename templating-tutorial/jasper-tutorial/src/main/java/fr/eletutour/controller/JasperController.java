@@ -1,7 +1,7 @@
 package fr.eletutour.controller;
 
 import fr.eletutour.exception.JasperException;
-import fr.eletutour.jasper.JasperService;
+import fr.eletutour.service.JasperService;
 import fr.eletutour.models.JasperRequest;
 import org.springframework.http.ContentDisposition;
 import org.springframework.http.HttpHeaders;

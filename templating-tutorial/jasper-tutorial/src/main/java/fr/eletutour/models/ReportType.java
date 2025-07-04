@@ -6,19 +6,19 @@ import java.util.List;
 public enum ReportType {
 
     SIMPLE_REPORT(
-            new Report("Simple Report", "simpleReport.jrxml"),
+            new Report("Simple Report", "simpleReport/simpleReport.jrxml"),
             Collections.emptyList(),
             Boolean.FALSE
     ),
     REPORT_WITH_SUBREPORTS(
-            new Report("Report with Subreports", "reportTest.jrxml"),
+            new Report("Report with Subreports", "reportTest/reportTest.jrxml"),
             List.of(
                     new Report("subReport.jrxml", "subReport.jrxml")
             ),
             Boolean.FALSE
     ),
     REPORT_WITH_DATA_SOURCE(
-            new Report("Report with Data Source", "testWithDatasource.jrxml"),
+            new Report("Report with Data Source", "testWithDatasource/testWithDatasource.jrxml"),
             Collections.emptyList(),
             Boolean.TRUE
     );
