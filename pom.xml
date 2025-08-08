@@ -43,7 +43,7 @@
 		<module>elasticsearch-tutorial</module>
 		<module>vaadin-tutorial</module>
         <module>bucket4j-tutorial</module>
-		<module>aaspect-tutorial</module>
+		<module>aspect-tutorial</module>
 	</modules>
 	<scm>
 		<url>https://github.com/ErwanLT/springboot-demo.git</url>
