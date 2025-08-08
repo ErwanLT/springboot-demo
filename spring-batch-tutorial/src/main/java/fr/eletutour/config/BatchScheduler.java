@@ -1,9 +1,9 @@
 package fr.eletutour.config;
 
-import org.springframework.batch.core.Job;
-import org.springframework.batch.core.JobParameters;
-import org.springframework.batch.core.JobParametersBuilder;
-import org.springframework.batch.core.launch.JobLauncher;
+import org.springframework.batch.core.job.Job;
+import org.springframework.batch.core.job.parameters.JobParameters;
+import org.springframework.batch.core.job.parameters.JobParametersBuilder;
+import org.springframework.batch.core.launch.JobOperator;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -19,19 +19,20 @@ import org.springframework.stereotype.Component;
 @Component
 public class BatchScheduler {
 
-    private final JobLauncher jobLauncher;
+    private final JobOperator jobOperator;
     private final Job inactivateUsersJob;
 
     /**
      * Constructeur du planificateur.
      *
-     * @param jobLauncher Le lanceur de jobs
+     * @param jobOperator Le lanceur de jobs
      * @param inactivateUsersJob Le job de désactivation des utilisateurs
      */
-    public BatchScheduler(JobLauncher jobLauncher, Job inactivateUsersJob) {
-        this.jobLauncher = jobLauncher;
+    public BatchScheduler(JobOperator jobOperator, Job inactivateUsersJob) {
+        this.jobOperator = jobOperator;
         this.inactivateUsersJob = inactivateUsersJob;
     }
+
 
     /**
      * Exécute le job de désactivation des utilisateurs toutes les 10 secondes.
@@ -44,6 +45,6 @@ public class BatchScheduler {
         JobParameters jobParameters = new JobParametersBuilder()
                 .addLong("time", System.currentTimeMillis())  // Paramètre unique pour chaque exécution
                 .toJobParameters();
-        jobLauncher.run(inactivateUsersJob, jobParameters);
+        jobOperator.start(inactivateUsersJob, jobParameters);
     }
 }
