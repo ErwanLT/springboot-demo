@@ -42,6 +42,18 @@ services:
     networks:
       - elastic
 
+  logstash:
+    image: docker.elastic.co/logstash/logstash:9.1.1
+    container_name: logstash
+    volumes: 
+      - ./src/main/resources/logstash/logstash.conf:/usr/share/logstash/pipeline/logstash.conf
+    ports:
+      - "5044:5044"
+    depends_on:
+      - elasticsearch
+    networks:
+      - elastic
+
 networks:
   elastic:
     driver: bridge
