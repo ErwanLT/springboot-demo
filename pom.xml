@@ -44,7 +44,8 @@
 		<module>vaadin-tutorial</module>
         <module>bucket4j-tutorial</module>
 		<module>aspect-tutorial</module>
-	</modules>
+        <module>messaging-tutorial</module>
+    </modules>
 	<scm>
 		<url>https://github.com/ErwanLT/springboot-demo.git</url>
 		<connection>scm:git:ssh://git@github.com/ErwanLT/springboot-demo.git</connection>
