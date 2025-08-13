@@ -9,18 +9,30 @@ import org.springframework.stereotype.Service;
 @Service
 public class KafkaProducerService {
 
-    private final Logger LOG = LoggerFactory.getLogger(KafkaProducerService.class);
+    private static final Logger LOG = LoggerFactory.getLogger(KafkaProducerService.class);
 
     private final KafkaTemplate<String, String> kafkaTemplate;
     private final String topic;
 
-    public KafkaProducerService(KafkaTemplate<String, String> kafkaTemplate, @Value("${app.kafka.topic}") String topic) {
+    public KafkaProducerService(KafkaTemplate<String, String> kafkaTemplate,
+                                @Value("${app.kafka.topic}") String topic) {
         this.kafkaTemplate = kafkaTemplate;
         this.topic = topic;
     }
 
     public void sendMessage(String message) {
-        LOG.info("Envoie du message : {}", message);
-        kafkaTemplate.send(topic, message);
+        LOG.info("Envoi du message : {}", message);
+
+        kafkaTemplate.send(topic, message)
+                .whenComplete((result, ex) -> {
+                    if (ex != null) {
+                        LOG.error("Erreur lors de l'envoi du message : {}", message, ex);
+                    } else {
+                        LOG.info("Message envoyé : topic={}, partition={}, offset={}",
+                                result.getRecordMetadata().topic(),
+                                result.getRecordMetadata().partition(),
+                                result.getRecordMetadata().offset());
+                    }
+                });
     }
 }
