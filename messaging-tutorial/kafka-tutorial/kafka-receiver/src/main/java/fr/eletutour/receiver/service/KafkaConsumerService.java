@@ -17,12 +17,25 @@ public class KafkaConsumerService {
             containerFactory = "kafkaListenerContainerFactory"
     )
     public void listen(String message, Acknowledgment acknowledgment) {
-        try {
-            LOG.info("Message reçu : {}", message);
-            // Traitement du message
-            acknowledgment.acknowledge(); // Commit manuel de l'offset
-        } catch (Exception e) {
-            LOG.error("Erreur lors du traitement du message : {}", message, e);
+        LOG.info("Message reçu : {}", message);
+
+        if (message.contains("erreur")) {
+            LOG.error("Simulating processing error for message: {}", message);
+            throw new RuntimeException("Erreur de traitement simulée pour le message: " + message);
         }
+
+        // Traitement du message (si pas d'erreur)
+        LOG.info("Message traité avec succès : {}", message);
+        acknowledgment.acknowledge(); // Commit manuel de l'offset
+    }
+
+    @KafkaListener(
+            topics = "${app.kafka.dlt-topic}",
+            groupId = "${spring.kafka.consumer.group-id}",
+            containerFactory = "kafkaListenerContainerFactory"
+    )
+    public void listenDlt(String message, Acknowledgment acknowledgment) {
+        LOG.warn("Message reçu de la DLQ : {}", message);
+        acknowledgment.acknowledge();
     }
 }

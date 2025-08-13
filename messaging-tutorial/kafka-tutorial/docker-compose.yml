@@ -18,3 +18,15 @@ services:
       KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
       KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
       KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+    command:
+      - "sh"
+      - "-c"
+      - |
+        /etc/confluent/docker/run &
+        # Attendre que Kafka soit prêt
+        cub kafka-ready -b kafka:29092 1 20
+        # Créer le topic principal
+        kafka-topics --create --topic my-topic --bootstrap-server kafka:29092 --partitions 1 --replication-factor 1
+        # Créer le topic DLQ
+        kafka-topics --create --topic my-topic.DLT --bootstrap-server kafka:29092 --partitions 1 --replication-factor 1
+        wait -n
