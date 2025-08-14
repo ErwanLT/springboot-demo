@@ -1,5 +1,6 @@
 package fr.eletutour.sender.controller;
 
+import fr.eletutour.model.Message;
 import fr.eletutour.sender.service.KafkaProducerService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,7 +18,7 @@ public class MessageController {
     }
 
     @PostMapping
-    public void sendMessage(@RequestBody String message) {
+    public void sendMessage(@RequestBody Message message) {
         producerService.sendMessage(message);
     }
 }

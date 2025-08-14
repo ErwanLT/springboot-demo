@@ -1,5 +1,6 @@
 package fr.eletutour.receiver.service;
 
+import fr.eletutour.model.Message;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -16,11 +17,11 @@ public class KafkaConsumerService {
             groupId = "${spring.kafka.consumer.group-id}",
             containerFactory = "kafkaListenerContainerFactory"
     )
-    public void listen(String message, Acknowledgment acknowledgment) {
+    public void listen(Message message, Acknowledgment acknowledgment) { // Changé de String à Message
         LOG.info("Message reçu : {}", message);
         
         // Simuler une erreur pour les messages contenant "erreur"
-        if (message.contains("erreur")) {
+        if (message.message() != null && message.message().contains("erreur")) { // Accès au contenu de l'objet Message
             LOG.error("Simulating processing error for message: {}", message);
             // L'exception sera interceptée par le DefaultErrorHandler
             throw new RuntimeException("Erreur de traitement simulée pour le message: " + message);
@@ -37,7 +38,7 @@ public class KafkaConsumerService {
             groupId = "${spring.kafka.consumer.group-id}",
             containerFactory = "kafkaListenerContainerFactory"
     )
-    public void listenDlt(String message, Acknowledgment acknowledgment) {
+    public void listenDlt(Message message, Acknowledgment acknowledgment) { // Changé de String à Message
         LOG.warn("Message reçu de la DLQ : {}", message);
         
         try {
@@ -45,7 +46,7 @@ public class KafkaConsumerService {
             LOG.info("Tentative de re-traitement du message de la DLQ : {}", message);
             
             // Pour la démonstration, si le message contient "re-erreur", il échoue à nouveau
-            if (message.contains("re-erreur")) {
+            if (message.message() != null && message.message().contains("re-erreur")) { // Accès au contenu de l'objet Message
                 throw new RuntimeException("Échec du re-traitement simulé pour le message: " + message);
             }
 

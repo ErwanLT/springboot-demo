@@ -1,5 +1,6 @@
 package fr.eletutour.receiver.configuration;
 
+import fr.eletutour.model.Message;
 import org.apache.kafka.common.TopicPartition;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -19,11 +20,11 @@ public class KafkaConsumerConfig {
     private String dltTopic;
 
     @Bean
-    public ConcurrentKafkaListenerContainerFactory<String, String> kafkaListenerContainerFactory(
-            ConsumerFactory<String, String> consumerFactory,
-            KafkaTemplate<String, String> kafkaTemplate) { // Inject KafkaTemplate
+    public ConcurrentKafkaListenerContainerFactory<String, Message> kafkaListenerContainerFactory( // Changé à Message
+                                                                                                   ConsumerFactory<String, Message> consumerFactory,
+                                                                                                   KafkaTemplate<String, Message> kafkaTemplate) { // Changé à Message
 
-        ConcurrentKafkaListenerContainerFactory<String, String> factory =
+        ConcurrentKafkaListenerContainerFactory<String, Message> factory = // Changé à Message
                 new ConcurrentKafkaListenerContainerFactory<>();
         
         factory.setConsumerFactory(consumerFactory);
@@ -41,7 +42,6 @@ public class KafkaConsumerConfig {
             new FixedBackOff(0L, 0)
         );
         factory.setCommonErrorHandler(errorHandler);
-
         
         return factory;
     }
