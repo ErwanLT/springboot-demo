@@ -20,25 +20,17 @@ public class KafkaConsumerConfig {
     private String dltTopic;
 
     @Bean
-    public ConcurrentKafkaListenerContainerFactory<String, Message> kafkaListenerContainerFactory( // Changé à Message
-                                                                                                   ConsumerFactory<String, Message> consumerFactory,
+    public ConcurrentKafkaListenerContainerFactory<String, Message> kafkaListenerContainerFactory( ConsumerFactory<String, Message> consumerFactory,
                                                                                                    KafkaTemplate<String, Message> kafkaTemplate) { // Changé à Message
 
         ConcurrentKafkaListenerContainerFactory<String, Message> factory = // Changé à Message
                 new ConcurrentKafkaListenerContainerFactory<>();
         
         factory.setConsumerFactory(consumerFactory);
-        
-        // Active le mode Ack manuel
-        factory.getContainerProperties().setAckMode(ContainerProperties.AckMode.MANUAL);
 
-        // Configure le DefaultErrorHandler avec DeadLetterPublishingRecoverer
-        // FixedBackOff(0L, 0) signifie pas de re-tentative avant d'envoyer au DLT
+        factory.getContainerProperties().setAckMode(ContainerProperties.AckMode.MANUAL);
         DefaultErrorHandler errorHandler = new DefaultErrorHandler(
-            new DeadLetterPublishingRecoverer(kafkaTemplate, (consumerRecord, e) -> {
-                // Définir le topic DLQ et la partition (null pour laisser Kafka choisir)
-                return new TopicPartition(dltTopic, -1);
-            }),
+            new DeadLetterPublishingRecoverer(kafkaTemplate, (consumerRecord, e) -> new TopicPartition(dltTopic, -1)),
             new FixedBackOff(0L, 0)
         );
         factory.setCommonErrorHandler(errorHandler);
