@@ -1,58 +1,89 @@
 package fr.eletutour.receiver.service;
 
 import fr.eletutour.model.Message;
+import fr.eletutour.receiver.entity.ProcessedMessage;
+import fr.eletutour.receiver.repository.ProcessedMessageRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.support.Acknowledgment;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class KafkaConsumerService {
 
     private static final Logger LOG = LoggerFactory.getLogger(KafkaConsumerService.class);
+    private final ProcessedMessageRepository processedMessageRepository;
 
+    public KafkaConsumerService(ProcessedMessageRepository processedMessageRepository) {
+        this.processedMessageRepository = processedMessageRepository;
+    }
+
+    @Transactional
     @KafkaListener(
             topics = "${app.kafka.topic}",
             groupId = "${spring.kafka.consumer.group-id}",
             containerFactory = "kafkaListenerContainerFactory"
     )
-    public void listen(Message message, Acknowledgment acknowledgment) { // Changé de String à Message
+    public void listen(Message message, Acknowledgment acknowledgment) {
+        if (message == null || message.id() == null) {
+            LOG.warn("Received message or message ID is null, cannot process for idempotence.");
+            acknowledgment.acknowledge();
+            return;
+        }
+
+        if (processedMessageRepository.existsById(message.id())) {
+            LOG.info("Message with ID {} has already been processed, skipping.", message.id());
+            acknowledgment.acknowledge();
+            return;
+        }
+
         LOG.info("Message reçu : {}", message);
-        
+
         // Simuler une erreur pour les messages contenant "erreur"
-        if (message.message() != null && message.message().contains("erreur")) { // Accès au contenu de l'objet Message
+        if (message.message() != null && message.message().contains("erreur")) {
             LOG.error("Simulating processing error for message: {}", message);
-            // L'exception sera interceptée par le DefaultErrorHandler
             throw new RuntimeException("Erreur de traitement simulée pour le message: " + message);
         }
 
         // Traitement du message (si pas d'erreur)
         LOG.info("Message traité avec succès : {}", message);
-        acknowledgment.acknowledge(); // Commit manuel de l'offset
+        processedMessageRepository.save(new ProcessedMessage(message.id()));
+        acknowledgment.acknowledge();
     }
 
-    // Listener pour la Dead Letter Queue (DLQ)
+    @Transactional
     @KafkaListener(
             topics = "${app.kafka.dlt-topic}",
             groupId = "${spring.kafka.consumer.group-id}",
             containerFactory = "kafkaListenerContainerFactory"
     )
-    public void listenDlt(Message message, Acknowledgment acknowledgment) { // Changé de String à Message
+    public void listenDlt(Message message, Acknowledgment acknowledgment) {
+        if (message == null || message.id() == null) {
+            LOG.warn("Received DLT message or message ID is null, cannot process for idempotence.");
+            acknowledgment.acknowledge();
+            return;
+        }
+
+        if (processedMessageRepository.existsById(message.id())) {
+            LOG.warn("DLT Message with ID {} has already been processed, skipping.", message.id());
+            acknowledgment.acknowledge();
+            return;
+        }
+
         LOG.warn("Message reçu de la DLQ : {}", message);
-        
+
         try {
-            // Simuler une tentative de re-traitement
             LOG.info("Tentative de re-traitement du message de la DLQ : {}", message);
-            
-            // Pour la démonstration, si le message contient "re-erreur", il échoue à nouveau
-            if (message.message() != null && message.message().contains("re-erreur")) { // Accès au contenu de l'objet Message
+
+            if (message.message() != null && message.message().contains("re-erreur")) {
                 throw new RuntimeException("Échec du re-traitement simulé pour le message: " + message);
             }
 
-            // Si le re-traitement réussit
             LOG.info("Message de la DLQ re-traité avec succès : {}", message);
-            acknowledgment.acknowledge(); // Acknowledge le message de la DLQ
+            processedMessageRepository.save(new ProcessedMessage(message.id()));
+            acknowledgment.acknowledge();
         } catch (Exception e) {
             LOG.error("Échec du re-traitement du message de la DLQ : {}", message, e);
             acknowledgment.acknowledge();
