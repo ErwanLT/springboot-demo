@@ -45,6 +45,7 @@
         <module>bucket4j-tutorial</module>
 		<module>aspect-tutorial</module>
         <module>messaging-tutorial</module>
+        <module>reactive-tutorial</module>
     </modules>
 	<scm>
 		<url>https://github.com/ErwanLT/springboot-demo.git</url>
