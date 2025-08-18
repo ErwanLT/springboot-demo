@@ -29,7 +29,6 @@
 		</developer>
 	</developers>
     <modules>
-        <module>spring-batch-tutorial</module>
         <module>graphql-tutorial</module>
 		<module>security-tutorial</module>
         <module>monitoring-tutorial</module>
@@ -46,6 +45,7 @@
 		<module>aspect-tutorial</module>
         <module>messaging-tutorial</module>
         <module>reactive-tutorial</module>
+        <module>scheduled-tutorial</module>
     </modules>
 	<scm>
 		<url>https://github.com/ErwanLT/springboot-demo.git</url>
