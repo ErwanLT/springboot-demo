@@ -12,6 +12,7 @@ public class JobSchedulerConfig {
     public JobDetail inactiveUserJobDetail() {
         return JobBuilder.newJob(InactiveUserCleanupJob.class)
                 .withIdentity("inactiveUserJob")
+                .withDescription("Suppression des users inactifs")
                 .storeDurably()
                 .build();
     }
@@ -21,7 +22,8 @@ public class JobSchedulerConfig {
         return TriggerBuilder.newTrigger()
                 .forJob(jobDetail)
                 .withIdentity("inactiveUserTrigger")
-                .withSchedule(CronScheduleBuilder.dailyAtHourAndMinute(13, 12))
+                .withDescription("trigger du job de suppression des users inactifs")
+                .withSchedule(CronScheduleBuilder.dailyAtHourAndMinute(13, 0))
                 .build();
     }
 }
