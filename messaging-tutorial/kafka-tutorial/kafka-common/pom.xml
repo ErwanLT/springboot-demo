@@ -8,6 +8,7 @@
         <artifactId>kafka-tutorial</artifactId>
         <version>6.0.1-SNAPSHOT</version>
     </parent>
+    <packaging>jar</packaging>
 
     <artifactId>kafka-common</artifactId>
 
