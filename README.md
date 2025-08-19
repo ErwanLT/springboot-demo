@@ -78,7 +78,11 @@ Sécurisez vos API de manière stateless avec les **JSON Web Tokens (JWT)**.
 Mettez en place un **contrôle d'accès basé sur les rôles (RBAC)** pour gérer finement les permissions de vos utilisateurs.
 [article](https://www.sfeir.dev/back/securisez-vos-api-avec-spring-security-acces-par-role/)
 
-## [Spring batch](spring-batch-tutorial)
+## [Scheduled Tutorial](scheduled-tutorial)
+### [Quartz tutorial](scheduled-tutorial/quartz-tutorial)
+Démontre comment utiliser le planificateur Quartz pour une planification de jobs robuste et persistante.
+
+### [Spring batch](spring-batch-tutorial)
 Implémentez **Spring Batch** pour créer des traitements par lots (batch) robustes et performants pour des tâches comme l'import/export de données ou des traitements périodiques.
 [article](https://www.sfeir.dev/back/planifier-des-taches-avec-spring-batch/)
 
