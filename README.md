@@ -66,6 +66,12 @@ Utilisez **Prometheus** pour collecter des métriques et **Grafana** pour créer
 ### [Spring Boot Admin](monitoring-tutorial/admin-tutorial)
 Déployez **Spring Boot Admin** pour une interface de monitoring et de gestion dédiée à vos applications Spring.
 
+## [Programmation Réactive (WebFlux)](reactive-tutorial)
+Tutoriel sur la création d'applications web réactives et non-bloquantes avec **Spring WebFlux**.
+- **Concepts Clés** : Apprenez à utiliser `Mono` et `Flux` pour gérer des flux de données asynchrones.
+- **Client Web Réactif** : Découvrez `WebClient` pour effectuer des appels API externes de manière non-bloquante.
+- **Gestion du Code Bloquant** : Comprenez comment intégrer des opérations bloquantes dans un flux réactif sans impacter les performances, en utilisant des Schedulers dédiés.
+
 ## [Security](security-tutorial)
 Apprenez à sécuriser vos applications avec Spring Security.
 ### [Basic Auth](security-tutorial/basic-auth-tutorial)
