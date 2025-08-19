@@ -46,6 +46,7 @@
         <module>messaging-tutorial</module>
         <module>reactive-tutorial</module>
         <module>scheduled-tutorial</module>
+        <module>i18n-tutorial</module>
     </modules>
 	<scm>
 		<url>https://github.com/ErwanLT/springboot-demo.git</url>
