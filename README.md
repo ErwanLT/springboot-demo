@@ -54,6 +54,9 @@ Tutoriel complet sur l'intégration de **GraphQL** pour créer des API flexibles
 ## [HATEOAS](hateoas-tutorial)
 Tutoriel sur comment implémenter **HATEOAS** (Hypermedia as the Engine of Application State) pour enrichir vos API REST avec des liens de navigation, les rendant plus découvrables.
 
+## [Internationalization](i18n-tutorial)
+Mise en place de l'i18n et du l10n dans un projet springboot.
+
 ## [Messaging](messaging-tutorial)
 ### [Kafka](messaging-tutorial/kafka-tutorial)
 Tutoriel sur l'intégration d'**Apache Kafka** pour construire des systèmes de messagerie asynchrones, distribués et réactifs.
