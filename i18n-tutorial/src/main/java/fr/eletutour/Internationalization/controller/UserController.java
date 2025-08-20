@@ -1,11 +1,13 @@
 package fr.eletutour.Internationalization.controller;
 
+import fr.eletutour.Internationalization.dto.UserDto;
 import fr.eletutour.Internationalization.entities.User;
 import fr.eletutour.Internationalization.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Locale;
 
 @RestController
 @RequestMapping("/api/users")
@@ -18,25 +20,23 @@ public class UserController {
     }
 
     @GetMapping
-    public List<User> getAllUsers() {
-        return userService.getAllUsers();
+    public List<UserDto> getAllUsers(Locale locale) {
+        return userService.getAllUsers(locale);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<User> getUserById(@PathVariable Long id) {
-        User user = userService.getUserById(id);
-        return ResponseEntity.ok(user);
+    public ResponseEntity<UserDto> getUserById(@PathVariable Long id, Locale locale) {
+        return ResponseEntity.ok(userService.getUserById(id, locale));
     }
 
     @PostMapping
-    public User createUser(@RequestBody User user) {
-        return userService.createUser(user);
+    public UserDto createUser(@RequestBody User user, Locale locale) {
+        return userService.createUser(user, locale);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User userDetails) {
-        User updatedUser = userService.updateUser(id, userDetails);
-        return ResponseEntity.ok(updatedUser);
+    public ResponseEntity<UserDto> updateUser(@PathVariable Long id, @RequestBody User userDetails, Locale locale) {
+        return ResponseEntity.ok(userService.updateUser(id, userDetails, locale));
     }
 
     @DeleteMapping("/{id}")
