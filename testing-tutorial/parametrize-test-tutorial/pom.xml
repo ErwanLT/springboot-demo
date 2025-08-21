@@ -14,7 +14,7 @@
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <junit-params.version>5.13.1</junit-params.version>
-        <commons-lang3.version>3.17.0</commons-lang3.version>
+        <commons-lang3.version>3.18.0</commons-lang3.version>
     </properties>
 
     <dependencies>

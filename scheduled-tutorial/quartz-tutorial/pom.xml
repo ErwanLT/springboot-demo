@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>fr.eletutour</groupId>
-        <artifactId>springboot-demo</artifactId>
+        <artifactId>scheduled-tutorial</artifactId>
         <version>6.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>aaspect-tutorial</artifactId>
+    <artifactId>quartz-tutorial</artifactId>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
@@ -20,25 +20,8 @@
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-aop</artifactId>
+            <artifactId>spring-boot-starter-quartz</artifactId>
         </dependency>
     </dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-failsafe-plugin</artifactId>
-                <version>3.5.3</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>integration-test</goal>
-                            <goal>verify</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
 </project>

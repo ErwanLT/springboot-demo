@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>fr.eletutour</groupId>
-        <artifactId>springboot-demo</artifactId>
+        <artifactId>scheduled-tutorial</artifactId>
         <version>6.0.1-SNAPSHOT</version>
     </parent>
 
