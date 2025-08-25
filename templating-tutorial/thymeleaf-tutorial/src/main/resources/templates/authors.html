@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Authors</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>Authors</h1>
+    <form th:action="@{/authors}" method="get" class="form-inline mb-3">
+        <input type="text" name="keyword" th:value="${keyword}" class="form-control mr-2" placeholder="Search by name"/>
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="author : ${authors}">
+            <td th:text="${author.id}"></td>
+            <td th:text="${author.name}"></td>
+            <td>
+                <a th:href="@{/author/{id}(id=${author.id})}" class="btn btn-primary">View</a>
+                <a th:href="@{/delete-author/{id}(id=${author.id})}" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <a href="/add-author" class="btn btn-success">Add Author</a>
+    <a href="/books" class="btn btn-info">View All Books</a>
+</div>
+</body>
+</html>

@@ -11,6 +11,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>jasper-tutorial</module>
+        <module>thymeleaf-tutorial</module>
     </modules>
 
     <properties>
