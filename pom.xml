@@ -50,6 +50,7 @@
         <module>cache-tutorial</module>
         <module>notification-tutorial</module>
         <module>async-tutorial</module>
+        <module>audit-tutorial</module>
     </modules>
 	<scm>
 		<url>https://github.com/ErwanLT/springboot-demo.git</url>
