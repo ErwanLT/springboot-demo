@@ -6,6 +6,12 @@ Projet de démonstration des fonctionnalités et des intégrations possibles ave
 ## [Programmation Orientée Aspect (AOP)](aspect-tutorial)
 Tutoriel sur la **Programmation Orientée Aspect** avec Spring Boot. Apprenez à séparer les préoccupations transversales (comme la journalisation ou la sécurité) de votre logique métier pour un code plus propre et modulaire.
 
+## [Programmation Asynchrone](async-tutorial)
+Tutoriel sur la programmation asynchrone avec Spring Boot pour améliorer la performance et la scalabilité de vos applications.
+
+## [Audit](audit-tutorial)
+Tutoriel sur la mise en place de l'audit pour tracer les modifications de vos données.
+
 ## [Customisation bannière](banner-tutorial)
 Découvrez comment customiser la bannière affichée au démarrage de votre application Spring Boot pour y ajouter votre touche personnelle ou des informations utiles.
 [article](https://www.sfeir.dev/back/comment-avoir-une-banniere-spring-personnalisee/)
@@ -21,6 +27,9 @@ Découvrez **RuleBook** et son DSL intuitif pour construire des règles métier 
 
 ## [Limitation de Débit (Rate Limiting) avec Bucket4j](bucket4j-tutorial)
 Tutoriel sur la mise en place de la **limitation de débit (rate limiting)** pour vos API en utilisant la bibliothèque Bucket4j, afin de protéger vos services contre les surcharges.
+
+## [Cache](cache-tutorial)
+Tutoriel sur la mise en place d'un système de cache pour améliorer les performances de vos applications.
 
 ## [Génération de code](code-generation-tutorial)
 Automatisez la création de code répétitif pour accélérer votre développement.
@@ -68,6 +77,9 @@ Utilisez **Prometheus** pour collecter des métriques et **Grafana** pour créer
 [article](https://www.sfeir.dev/back/superviser-votre-application-spring-boot/)
 ### [Spring Boot Admin](monitoring-tutorial/admin-tutorial)
 Déployez **Spring Boot Admin** pour une interface de monitoring et de gestion dédiée à vos applications Spring.
+
+## [Notification](notification-tutorial)
+Tutoriel sur l'envoi de notifications (par exemple, email, SMS) depuis une application Spring Boot.
 
 ## [Programmation Réactive (WebFlux)](reactive-tutorial)
 Tutoriel sur la création d'applications web réactives et non-bloquantes avec **Spring WebFlux**.
