@@ -6,9 +6,6 @@ Projet de démonstration des fonctionnalités et des intégrations possibles ave
 ## [Programmation Orientée Aspect (AOP)](aspect-tutorial)
 Tutoriel sur la **Programmation Orientée Aspect** avec Spring Boot. Apprenez à séparer les préoccupations transversales (comme la journalisation ou la sécurité) de votre logique métier pour un code plus propre et modulaire.
 
-## [Programmation Asynchrone](async-tutorial)
-Tutoriel sur la programmation asynchrone avec Spring Boot pour améliorer la performance et la scalabilité de vos applications.
-
 ## [Audit](audit-tutorial)
 Tutoriel sur la mise en place de l'audit pour tracer les modifications de vos données.
 
@@ -81,11 +78,12 @@ Déployez **Spring Boot Admin** pour une interface de monitoring et de gestion d
 ## [Notification](notification-tutorial)
 Tutoriel sur l'envoi de notifications (par exemple, email, SMS) depuis une application Spring Boot.
 
-## [Programmation Réactive (WebFlux)](reactive-tutorial)
+## [Programmation Concurrente](concurrency-tutorial)
+Découvrez différentes approches pour gérer la concurrence et le parallélisme dans vos applications Spring Boot.
+### [Programmation Asynchrone](concurrency-tutorial/async-tutorial)
+Tutoriel sur la programmation asynchrone avec Spring Boot pour améliorer la performance et la scalabilité de vos applications.
+### [Programmation Réactive (WebFlux)](concurrency-tutorial/reactive-tutorial)
 Tutoriel sur la création d'applications web réactives et non-bloquantes avec **Spring WebFlux**.
-- **Concepts Clés** : Apprenez à utiliser `Mono` et `Flux` pour gérer des flux de données asynchrones.
-- **Client Web Réactif** : Découvrez `WebClient` pour effectuer des appels API externes de manière non-bloquante.
-- **Gestion du Code Bloquant** : Comprenez comment intégrer des opérations bloquantes dans un flux réactif sans impacter les performances, en utilisant des Schedulers dédiés.
 
 ## [Security](security-tutorial)
 Apprenez à sécuriser vos applications avec Spring Security.

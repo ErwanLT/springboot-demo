@@ -44,13 +44,12 @@
         <module>bucket4j-tutorial</module>
 		<module>aspect-tutorial</module>
         <module>messaging-tutorial</module>
-        <module>reactive-tutorial</module>
         <module>scheduled-tutorial</module>
         <module>i18n-tutorial</module>
         <module>cache-tutorial</module>
         <module>notification-tutorial</module>
-        <module>async-tutorial</module>
         <module>audit-tutorial</module>
+        <module>concurrency-tutorial</module>
     </modules>
 	<scm>
 		<url>https://github.com/ErwanLT/springboot-demo.git</url>
