@@ -26,11 +26,12 @@
             <td th:text="${book.title}"></td>
             <td th:text="${book.author.name}"></td>
             <td>
-                <a th:href="@{/delete-book/{id}(id=${book.id})}" class="btn btn-danger">Delete</a>
+                <a th:href="@{/delete-book/{id}(id=${book.id})}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this book?')">Delete</a>
             </td>
         </tr>
         </tbody>
     </table>
+    <p><span th:text="${#lists.size(books)}"></span> book(s) found.</p>
     <a href="/authors" class="btn btn-secondary">Back to Authors</a>
 </div>
 </body>

@@ -3,8 +3,10 @@ package fr.eletutour.controller;
 import fr.eletutour.model.Author;
 import fr.eletutour.model.Book;
 import fr.eletutour.service.LibraryService;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -37,6 +39,7 @@ public class LibraryController {
         }
         model.addAttribute("authors", authors);
         model.addAttribute("keyword", keyword);
+        model.addAttribute("newAuthor", new Author()); // For the modal form
         return "authors";
     }
 
@@ -55,32 +58,32 @@ public class LibraryController {
 
     @GetMapping("/author/{id}")
     public String showAuthorDetails(@PathVariable Long id, Model model) {
-        libraryService.getAuthorById(id).ifPresent(author -> model.addAttribute("author", author));
+        libraryService.getAuthorById(id).ifPresent(author -> {
+            model.addAttribute("author", author);
+            Book newBook = new Book();
+            newBook.setAuthor(author);
+            model.addAttribute("newBook", newBook); // For the modal form
+        });
         return "author-details";
     }
 
-    @GetMapping("/add-author")
-    public String showAddAuthorForm(Model model) {
-        model.addAttribute("author", new Author());
-        return "add-author";
-    }
-
     @PostMapping("/author")
-    public String addAuthor(@ModelAttribute Author author) {
+    public String addAuthor(@Valid @ModelAttribute("newAuthor") Author author, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            model.addAttribute("authors", libraryService.getAllAuthors());
+            model.addAttribute("keyword", null);
+            return "authors";
+        }
         libraryService.saveAuthor(author);
         return "redirect:/authors";
     }
 
-    @GetMapping("/author/{authorId}/add-book")
-    public String showAddBookForm(@PathVariable Long authorId, Model model) {
-        Book book = new Book();
-        libraryService.getAuthorById(authorId).ifPresent(book::setAuthor);
-        model.addAttribute("book", book);
-        return "add-book";
-    }
-
     @PostMapping("/book")
-    public String addBook(@ModelAttribute Book book, @RequestParam Long authorId) {
+    public String addBook(@Valid @ModelAttribute("newBook") Book book, BindingResult result, @RequestParam Long authorId, Model model) {
+        if (result.hasErrors()) {
+            libraryService.getAuthorById(authorId).ifPresent(author -> model.addAttribute("author", author));
+            return "author-details";
+        }
         libraryService.getAuthorById(authorId).ifPresent(book::setAuthor);
         libraryService.saveBook(book);
         return "redirect:/author/" + authorId;
