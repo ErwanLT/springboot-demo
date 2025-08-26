@@ -39,7 +39,7 @@ public class LibraryController {
         }
         model.addAttribute("authors", authors);
         model.addAttribute("keyword", keyword);
-        model.addAttribute("newAuthor", new Author()); // For the modal form
+        model.addAttribute("newAuthor", new Author());
         return "authors";
     }
 
@@ -62,7 +62,7 @@ public class LibraryController {
             model.addAttribute("author", author);
             Book newBook = new Book();
             newBook.setAuthor(author);
-            model.addAttribute("newBook", newBook); // For the modal form
+            model.addAttribute("newBook", newBook);
         });
         return "author-details";
     }
