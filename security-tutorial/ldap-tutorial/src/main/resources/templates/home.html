@@ -32,6 +32,8 @@
             <div class="alert alert-info mt-4" sec:authorize="hasRole('ADMINS')">
                 <h4 class="alert-heading">Admin Section</h4>
                 <p>This text is only visible to users with the 'ADMINS' role.</p>
+                <hr>
+                <a th:href="@{/admin/users}" class="btn btn-primary">View User List</a>
             </div>
 
         </div>
