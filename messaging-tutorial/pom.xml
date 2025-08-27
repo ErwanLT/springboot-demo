@@ -11,6 +11,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>kafka-tutorial</module>
+        <module>jms-tutorial</module>
     </modules>
 
     <properties>
