@@ -1,9 +1,16 @@
-# Unité d'organisation
 dn: ou=users,dc=example,dc=com
 objectClass: organizationalUnit
 ou: users
 
-# Utilisateur 1
+# Admin user for the application to bind with
+dn: cn=admin,dc=example,dc=com
+objectClass: simpleSecurityObject
+objectClass: organizationalRole
+cn: admin
+userPassword: admin-password
+description: LDAP administrator
+
+# Test users
 dn: cn=Alice Martin,ou=users,dc=example,dc=com
 objectClass: inetOrgPerson
 cn: Alice Martin
@@ -11,9 +18,8 @@ sn: Martin
 givenName: Alice
 uid: amartin
 mail: alice.martin@example.com
-userPassword: {SSHA}qfVnInS82tf1GEkSfVEaEGGHKgy4Wduy
+userPassword: password
 
-# Utilisateur 2
 dn: cn=Bob Dupuis,ou=users,dc=example,dc=com
 objectClass: inetOrgPerson
 cn: Bob Dupuis
@@ -21,4 +27,4 @@ sn: Dupuis
 givenName: Bob
 uid: bdupuis
 mail: bob.dupuis@example.com
-userPassword: {SSHA}kXrb4HpNE3EwI2+x+Hwnk8FThE61HdMe
+userPassword: password
