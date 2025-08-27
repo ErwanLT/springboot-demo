@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.ldap.LdapBindAuthenticationManagerFactory;
 import org.springframework.security.ldap.server.UnboundIdContainer;
+import org.springframework.security.ldap.userdetails.DefaultLdapAuthoritiesPopulator;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
@@ -58,6 +59,11 @@ public class SecurityConfig {
         LdapBindAuthenticationManagerFactory factory = new LdapBindAuthenticationManagerFactory(contextSource);
         factory.setUserSearchFilter("(uid={0})");
         factory.setUserSearchBase("ou=users");
+
+        DefaultLdapAuthoritiesPopulator authoritiesPopulator = new DefaultLdapAuthoritiesPopulator(contextSource, "ou=groups");
+        authoritiesPopulator.setGroupSearchFilter("uniqueMember={0}");
+        factory.setLdapAuthoritiesPopulator(authoritiesPopulator);
+
         return factory.createAuthenticationManager();
     }
 }

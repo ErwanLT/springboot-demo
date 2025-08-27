@@ -27,6 +27,13 @@
             <h1 class="display-5 fw-bold">Welcome, <span sec:authentication="name">User</span>!</h1>
             <p class="col-md-8 fs-4">You have successfully authenticated against the in-memory LDAP server.</p>
             <p>This page is only visible to authenticated users.</p>
+
+            <!-- Admin-only section -->
+            <div class="alert alert-info mt-4" sec:authorize="hasRole('ADMINS')">
+                <h4 class="alert-heading">Admin Section</h4>
+                <p>This text is only visible to users with the 'ADMINS' role.</p>
+            </div>
+
         </div>
     </div>
 </div>

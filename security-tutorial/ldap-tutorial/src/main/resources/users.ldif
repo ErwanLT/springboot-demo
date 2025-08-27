@@ -28,3 +28,19 @@ givenName: Bob
 uid: bdupuis
 mail: bob.dupuis@example.com
 userPassword: password
+
+# --- Groups --- #
+dn: ou=groups,dc=example,dc=com
+objectClass: organizationalUnit
+ou: groups
+
+dn: cn=ADMINS,ou=groups,dc=example,dc=com
+objectClass: groupOfUniqueNames
+cn: ADMINS
+uniqueMember: cn=Alice Martin,ou=users,dc=example,dc=com
+
+dn: cn=USERS,ou=groups,dc=example,dc=com
+objectClass: groupOfUniqueNames
+cn: USERS
+uniqueMember: cn=Alice Martin,ou=users,dc=example,dc=com
+uniqueMember: cn=Bob Dupuis,ou=users,dc=example,dc=com
