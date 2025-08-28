@@ -41,6 +41,53 @@
         </tbody>
     </table>
     <a th:href="@{/home}" class="btn btn-secondary">Back to Home</a>
+
+    <hr class="my-4">
+
+    <h3>Create New User</h3>
+
+    <div th:if="${successMessage}" class="alert alert-success" th:text="${successMessage}"></div>
+
+    <form th:action="@{/admin/users/create}" th:object="${newUser}" method="post" class="needs-validation" novalidate>
+        <div class="row g-3">
+            <div class="col-md-6">
+                <label for="fullName" class="form-label">Full Name (cn)</label>
+                <input type="text" th:field="*{fullName}" class="form-control" id="fullName" required>
+                <div class="text-danger" th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}"></div>
+            </div>
+            <div class="col-md-6">
+                <label for="uid" class="form-label">Username (uid)</label>
+                <input type="text" th:field="*{uid}" class="form-control" id="uid" required>
+                <div class="text-danger" th:if="${#fields.hasErrors('uid')}" th:errors="*{uid}"></div>
+            </div>
+            <div class="col-12">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" th:field="*{email}" class="form-control" id="email" required>
+                <div class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+            </div>
+            <div class="col-12">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" th:field="*{password}" class="form-control" id="password" required>
+                <div class="text-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+            </div>
+
+            <div class="col-12 mt-3">
+                <label class="form-label">Roles</label>
+                <div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" th:field="*{roles}" id="roleUsers" value="USERS">
+                        <label class="form-check-label" for="roleUsers">User</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" th:field="*{roles}" id="roleAdmins" value="ADMINS">
+                        <label class="form-check-label" for="roleAdmins">Admin</label>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <button class="btn btn-primary mt-3" type="submit">Create User</button>
+    </form>
 </div>
 </body>
 </html>
