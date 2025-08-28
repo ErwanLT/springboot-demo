@@ -1,5 +1,6 @@
 package fr.eletutour.jms.service;
 
+import fr.eletutour.jms.exception.MessageProcessingException;
 import fr.eletutour.jms.model.ChatMessage;
 import jakarta.jms.JMSException;
 import jakarta.jms.Message;
@@ -30,7 +31,7 @@ public class MessageConsumerService {
                 log.warn("Dernière tentative de rejeu ({} sur {}). Le message sera envoyé à la DLQ en cas d'échec.", deliveryCount, maxDeliveries);
             }
             log.error("Erreur simulée (tentative {} sur {}).", deliveryCount, maxDeliveries);
-            throw new RuntimeException("Erreur simulée pour déclencher le rejeu.");
+            throw new MessageProcessingException("Erreur simulée pour déclencher le rejeu.");
         }
 
         log.info("Message traité avec succès: {}", chatMessage);
