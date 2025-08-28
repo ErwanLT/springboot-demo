@@ -30,6 +30,7 @@
             <th>Full Name (cn)</th>
             <th>Username (uid)</th>
             <th>Email</th>
+            <th>Roles</th>
         </tr>
         </thead>
         <tbody>
@@ -37,6 +38,9 @@
             <td th:text="${user.fullName}"></td>
             <td th:text="${user.uid}"></td>
             <td th:text="${user.email}"></td>
+            <td>
+                <span th:each="role, iterStat : ${user.roles}" th:text="${role} + (${iterStat.last} ? '' : ', ')"></span>
+            </td>
         </tr>
         </tbody>
     </table>

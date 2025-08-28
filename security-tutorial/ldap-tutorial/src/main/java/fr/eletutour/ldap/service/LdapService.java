@@ -2,18 +2,16 @@ package fr.eletutour.ldap.service;
 
 import fr.eletutour.ldap.dto.NewUserDto;
 import fr.eletutour.ldap.dto.UserDto;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ldap.core.AttributesMapper;
 import org.springframework.ldap.core.ContextMapper;
 import org.springframework.ldap.core.DirContextAdapter;
 import org.springframework.ldap.core.DirContextOperations;
 import org.springframework.ldap.core.LdapTemplate;
+import org.springframework.ldap.support.LdapEncoder;
 import org.springframework.ldap.support.LdapNameBuilder;
 import org.springframework.stereotype.Service;
 
 import javax.naming.Name;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -29,11 +27,25 @@ public class LdapService {
         return ldapTemplate.search(
                 "ou=users",
                 "(objectclass=inetOrgPerson)",
-                (AttributesMapper<UserDto>) attrs -> new UserDto(
-                        attrs.get("cn").get().toString(),
-                        attrs.get("uid").get().toString(),
-                        attrs.get("mail").get().toString()
-                )
+                (ContextMapper<UserDto>) ctx -> {
+                    DirContextAdapter adapter = (DirContextAdapter) ctx;
+                    String userDn = adapter.getNameInNamespace();
+                    List<String> roles = findUserRoles(userDn);
+                    return new UserDto(
+                            adapter.getStringAttribute("cn"),
+                            adapter.getStringAttribute("uid"),
+                            adapter.getStringAttribute("mail"),
+                            roles
+                    );
+                }
+        );
+    }
+
+    private List<String> findUserRoles(String userDn) {
+        return ldapTemplate.search(
+                "ou=groups",
+                "(&(objectclass=groupOfUniqueNames)(uniqueMember=" + LdapEncoder.filterEncode(userDn) + "))",
+                (AttributesMapper<String>) attrs -> (String) attrs.get("cn").get()
         );
     }
 
@@ -70,6 +82,4 @@ public class LdapService {
         group.addAttributeValue("uniqueMember", userDn.toString());
         ldapTemplate.modifyAttributes(group);
     }
-
-    
 }
