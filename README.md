@@ -24,6 +24,12 @@ Découvrez **RuleBook** et son DSL intuitif pour construire des règles métier 
 
 ## [Limitation de Débit (Rate Limiting) avec Bucket4j](bucket4j-tutorial)
 Tutoriel sur la mise en place de la **limitation de débit (rate limiting)** pour vos API en utilisant la bibliothèque Bucket4j, afin de protéger vos services contre les surcharges.
+### [Avec un filtre (Filter)](bucket4j-tutorial/filter-tutorial)
+Approche robuste utilisant un **Filtre de Servlet** pour appliquer des règles de limitation globales (par exemple, par adresse IP) avant que la requête n'atteigne le contrôleur.
+### [Avec l'AOP](bucket4j-tutorial/aop-tutorial)
+Méthode déclarative et propre utilisant la **Programmation Orientée Aspect** pour protéger des méthodes spécifiques avec une simple annotation, sans modifier le code métier.
+### [Dans le contrôleur (Controller)](bucket4j-tutorial/controller-tutorial)
+Approche directe où la logique de limitation est appelée explicitement depuis le **contrôleur**, idéale pour des règles simples et spécifiques à un endpoint.
 
 ## [Cache](cache-tutorial)
 Tutoriel sur la mise en place d'un système de cache pour améliorer les performances de vos applications.
@@ -64,6 +70,8 @@ Tutoriel sur comment implémenter **HATEOAS** (Hypermedia as the Engine of Appli
 Mise en place de l'i18n et du l10n dans un projet springboot.
 
 ## [Messaging](messaging-tutorial)
+### [JMS](messaging-tutorial/jms-tutorial)
+Tutoriel sur l'intégration de **JMS (Java Message Service)** avec ActiveMQ pour une messagerie asynchrone standard et découplée.
 ### [Kafka](messaging-tutorial/kafka-tutorial)
 Tutoriel sur l'intégration d'**Apache Kafka** pour construire des systèmes de messagerie asynchrones, distribués et réactifs.
 
@@ -96,18 +104,22 @@ Sécurisez vos API de manière stateless avec les **JSON Web Tokens (JWT)**.
 ### [RBAC](security-tutorial/jwt-rbac-tutorial)
 Mettez en place un **contrôle d'accès basé sur les rôles (RBAC)** pour gérer finement les permissions de vos utilisateurs.
 [article](https://www.sfeir.dev/back/securisez-vos-api-avec-spring-security-acces-par-role/)
+### [LDAP](security-tutorial/ldap-tutorial)
+Intégrez une authentification **LDAP** pour déléguer la gestion des utilisateurs à un annuaire d'entreprise.
 
 ## [Scheduled Tutorial](scheduled-tutorial)
 ### [Quartz tutorial](scheduled-tutorial/quartz-tutorial)
 Démontre comment utiliser le planificateur Quartz pour une planification de jobs robuste et persistante.
 
-### [Spring batch](spring-batch-tutorial)
+### [Spring Batch](scheduled-tutorial/spring-batch-tutorial)
 Implémentez **Spring Batch** pour créer des traitements par lots (batch) robustes et performants pour des tâches comme l'import/export de données ou des traitements périodiques.
 [article](https://www.sfeir.dev/back/planifier-des-taches-avec-spring-batch/)
 
 ## [Templating](templating-tutorial)
 ### [Jasper](templating-tutorial/jasper-tutorial)
 Tutoriel sur la génération de documents, comme des rapports PDF, en utilisant la bibliothèque **JasperReports**.
+### [Thymeleaf](templating-tutorial/thymeleaf-tutorial)
+Utilisez **Thymeleaf** comme moteur de templates pour construire des applications web côté serveur.
 
 ## [Testing tutorial](testing-tutorial)
 Découvrez un éventail d'outils et de techniques pour tester vos applications.
@@ -123,3 +135,7 @@ Réalisez des **tests de performance** et de charge sur votre application avec G
 
 ## [Vaadin](vaadin-tutorial)
 Tutoriel sur la création d'applications web riches et interactives entièrement en Java, sans écrire de HTML ou de JavaScript, en utilisant le framework **Vaadin** avec Spring Boot.
+### [Application CRUD](vaadin-tutorial/crud-tutorial)
+Un exemple d'application **CRUD (Create, Read, Update, Delete)** complète pour gérer des produits.
+### [Pokédex](vaadin-tutorial/pokedex)
+Une application **Pokédex** plus riche pour démontrer la navigation, les vues dynamiques et le data binding.

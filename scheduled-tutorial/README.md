@@ -1,9 +1,9 @@
-# Tutoriels sur les Tâches Planifiées avec Spring Boot
+# Scheduled Tutorial
 
-Ce projet contient des modules démontrant différentes manières de gérer les tâches planifiées et de fond dans une application Spring Boot.
+Ce module contient des tutoriels sur la planification de tâches (scheduling) et les traitements par lots (batch processing).
 
-## [quartz-tutorial](./quartz-tutorial/README.md) 
-Démontre comment utiliser le planificateur Quartz pour une planification de jobs robuste et persistante.
+## [Quartz](quartz-tutorial)
+Démontre comment utiliser le planificateur **Quartz** pour une planification de jobs robuste et persistante, avec un stockage des jobs dans une base de données.
 
-## [spring-batch-tutorial](./spring-batch-tutorial/README.md)
-Montre comment utiliser Spring Batch pour traiter de grands volumes de données de manière tolérante aux pannes.
+## [Spring Batch](spring-batch-tutorial)
+Implémentez **Spring Batch** pour créer des traitements par lots robustes et performants, idéaux pour des tâches comme l'import/export de données ou des traitements périodiques sur de grands volumes de données.

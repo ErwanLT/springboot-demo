@@ -1,20 +1,12 @@
-# Tutoriels Bucket4j
+# Limitation de Débit (Rate Limiting) avec Bucket4j
 
-Ce module parent regroupe plusieurs approches pour implémenter la **limitation de débit (rate limiting)** dans une application Spring Boot en utilisant la bibliothèque **Bucket4j**.
+Ce module regroupe plusieurs approches pour implémenter la **limitation de débit (rate limiting)** dans une application Spring Boot en utilisant la bibliothèque **Bucket4j**.
 
-## Description
+## [Avec un filtre (Filter)](filter-tutorial)
+Approche robuste utilisant un **Filtre de Servlet** pour appliquer des règles de limitation globales (par exemple, par adresse IP) avant que la requête n'atteigne le contrôleur.
 
-La limitation de débit est une technique essentielle pour protéger vos API contre les surcharges, les abus et garantir une qualité de service équitable pour tous les utilisateurs. Bucket4j est une bibliothèque Java puissante et efficace pour implémenter cette fonctionnalité.
+## [Avec l'AOP](aop-tutorial)
+Méthode déclarative et propre utilisant la **Programmation Orientée Aspect** pour protéger des méthodes spécifiques avec une simple annotation, sans modifier le code métier.
 
-Ce projet explore trois méthodes distinctes pour intégrer Bucket4j.
-
-## Sous-modules
-
-### [Controller-based (controller-tutorial)](controller-tutorial)
-Une approche directe où la logique de limitation de débit est implémentée directement au sein du contrôleur Spring. Simple et efficace pour des cas d'usage ciblés.
-
-### [Filter-based (filter-tutorial)](filter-tutorial)
-Une méthode classique utilisant un **Servlet Filter** pour intercepter les requêtes en amont et appliquer une limitation de débit globale ou basée sur des règles spécifiques.
-
-### [AOP-based (aop-tutorial)](aop-tutorial)
-Une approche élégante et déclarative utilisant la **Programmation Orientée Aspect (AOP)**. Une simple annotation (`@RateLimited`) sur une méthode suffit pour activer la limitation de débit, séparant ainsi complètement cette préoccupation technique du code métier.
+## [Dans le contrôleur (Controller)](controller-tutorial)
+Approche directe où la logique de limitation est appelée explicitement depuis le **contrôleur**, idéale pour des règles simples et spécifiques à un endpoint.

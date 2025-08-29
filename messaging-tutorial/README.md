@@ -1,9 +1,9 @@
-# Tutoriel Messaging
+# Messaging
 
-Ce module regroupe des tutoriels sur les systèmes de **messagerie asynchrone**.
+Ce module regroupe des tutoriels sur les systèmes de **messagerie asynchrone**, un paradigme fondamental pour découpler les services et améliorer la résilience.
 
-La messagerie asynchrone est un paradigme de communication fondamental dans les architectures modernes, notamment les microservices. Elle permet de découpler les services, d'améliorer la résilience et de gérer efficacement les charges de travail.
+## [JMS](jms-tutorial)
+Tutoriel sur l'intégration de **JMS (Java Message Service)** avec ActiveMQ pour une messagerie asynchrone standard et découplée, basée sur des files d'attente (queues).
 
-## Sous-modules
-
-- **[Tutoriel Kafka](kafka-tutorial)** : Un guide complet sur l'intégration d'Apache Kafka, une plateforme de streaming d'événements distribuée, dans un écosystème Spring Boot.
+## [Kafka](kafka-tutorial)
+Tutoriel sur l'intégration d'**Apache Kafka** pour construire des systèmes de messagerie asynchrones, distribués et réactifs, basés sur un modèle de publication/abonnement à des topics.
