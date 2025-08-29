@@ -1,0 +1,112 @@
+.explain {
+    text-decoration: underline dotted;
+    cursor: help;
+}
+
+.type {
+    border-radius: 10px;
+}
+
+.entete {
+    max-width: 30%;
+}
+
+.plante {
+	background-color: #3DA224 !important;
+}
+
+.poison {
+	background-color: #923FCC;
+}
+
+.spectre {
+    background-color: #703F70;
+}
+
+.sol {
+    background-color: #92501B;
+}
+
+.roche {
+    background-color: #B0AA82;
+}
+
+.normal {
+    background-color: #A0A2A0;
+}
+
+.électrik {
+    background-color : #FAC100;
+}
+
+.feu {
+    background-color : #E72324;
+}
+
+.vol {
+    background-color : #82BAEF;
+}
+
+.eau {
+    background-color : #2481EF;
+}
+
+.psy {
+    background-color : #EF3F7A;
+}
+
+.combat {
+    background-color : #FF8100;
+}
+
+.fée {
+    background-color : #EF70EF;
+}
+
+.insecte{
+    background-color : #92A212;
+}
+
+.glace {
+    background-color : #3DD9FF;
+}
+
+.dragon {
+    background-color : #4F60E2;
+}
+
+.acier {
+    background-color : #60A2B9;
+}
+
+.ténèbres {
+    background-color : #4F3F3D;
+}
+
+.pokemon-card {
+  --rX: 0deg;
+  --rY: 0deg;
+  transition: transform 0.2s cubic-bezier(.25,.8,.25,1), box-shadow 0.2s;
+  will-change: transform;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  perspective: 1000px;
+  transform: perspective(1000px) rotateX(var(--rX)) rotateY(var(--rY)) scale(1);
+  position: relative;
+  overflow: hidden;
+}
+.pokemon-card:hover, .pokemon-card.active {
+  transform: perspective(1000px) rotateX(var(--rX)) rotateY(var(--rY)) scale(1.05);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+  z-index: 2;
+}
+.pokemon-card .shine {
+  pointer-events: none;
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(120deg, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.15) 80%);
+  opacity: 1;
+  transition: background 0.08s;
+  z-index: 10;
+  mix-blend-mode: lighten;
+  filter: blur(1px);
+}

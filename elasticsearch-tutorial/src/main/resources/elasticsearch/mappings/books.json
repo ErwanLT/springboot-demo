@@ -1,8 +1,0 @@
-{
-  "properties": {
-    "id": { "type": "keyword" },
-    "title": { "type": "text", "analyzer": "standard" },
-    "content": { "type": "text", "analyzer": "standard" },
-    "author": { "type": "keyword" }
-  }
-}

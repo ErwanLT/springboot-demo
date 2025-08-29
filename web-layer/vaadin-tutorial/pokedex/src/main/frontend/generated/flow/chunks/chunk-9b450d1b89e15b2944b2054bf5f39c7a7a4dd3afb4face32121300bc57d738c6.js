@@ -1,0 +1,11 @@
+import 'Frontend/generated/jar-resources/flow-component-renderer.js';
+import 'Frontend/js/card-tilt.js';
+import '@vaadin/polymer-legacy-adapter/style-modules.js';
+import '@vaadin/text-field/src/vaadin-text-field.js';
+import '@vaadin/vertical-layout/src/vaadin-vertical-layout.js';
+import '@vaadin/tooltip/src/vaadin-tooltip.js';
+import '@vaadin/card/src/vaadin-card.js';
+import '@vaadin/horizontal-layout/src/vaadin-horizontal-layout.js';
+import '@vaadin/select/src/vaadin-select.js';
+import 'Frontend/generated/jar-resources/selectConnector.js';
+import 'Frontend/generated/jar-resources/lit-renderer.ts';

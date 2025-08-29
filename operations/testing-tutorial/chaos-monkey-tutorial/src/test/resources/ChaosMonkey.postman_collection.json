@@ -1,0 +1,594 @@
+{
+	"info": {
+		"_postman_id": "6e05c069-50a6-43e9-a871-82cc84cc004d",
+		"name": "ChaosMonkey",
+		"description": "Collection de test pour Chaos Monkey pour Spring Boot\n\n- Actiation de Chaos Monkey\n    \n- Verification des watchers\n    \n- Update des watchers\n    \n- Update des assaults\n    \n- Test de latence",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12559449"
+	},
+	"item": [
+		{
+			"name": "activation",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Verify 'enabled' is true in the response\", function () {",
+							"    pm.expect(pm.response.json().enabled).to.be.true;",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "*/*"
+					}
+				],
+				"url": {
+					"raw": "{{chaosMonkeyURL}}/actuator/chaosmonkey/enable",
+					"host": [
+						"{{chaosMonkeyURL}}"
+					],
+					"path": [
+						"actuator",
+						"chaosmonkey",
+						"enable"
+					]
+				},
+				"description": "Activation de Chaos Monkey"
+			},
+			"response": [
+				{
+					"name": "OK",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/actuator/chaosmonkey/enable",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"actuator",
+								"chaosmonkey",
+								"enable"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "*/*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"enabledAt\": \"<dateTime>\",\n  \"disabledAt\": \"<dateTime>\",\n  \"enabledFor\": {\n    \"raw\": {\n      \"seconds\": \"<long>\",\n      \"zero\": \"<boolean>\",\n      \"nano\": \"<integer>\",\n      \"negative\": \"<boolean>\",\n      \"positive\": \"<boolean>\",\n      \"units\": [\n        {\n          \"durationEstimated\": \"<boolean>\",\n          \"timeBased\": \"<boolean>\",\n          \"dateBased\": \"<boolean>\"\n        },\n        {\n          \"durationEstimated\": \"<boolean>\",\n          \"timeBased\": \"<boolean>\",\n          \"dateBased\": \"<boolean>\"\n        }\n      ]\n    },\n    \"formatted\": \"<string>\"\n  },\n  \"enabled\": \"<boolean>\"\n}"
+				}
+			]
+		},
+		{
+			"name": "watchers",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Test for status code",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"// Test for response fields being false",
+							"pm.test(\"Check if response fields are false\", function () {",
+							"    pm.expect(pm.response.json()).to.eql({",
+							"    \"controller\": false,",
+							"    \"restController\": true,",
+							"    \"service\": false,",
+							"    \"repository\": false,",
+							"    \"component\": false,",
+							"    \"restTemplate\": false,",
+							"    \"webClient\": false,",
+							"    \"actuatorHealth\": false,",
+							"    \"beans\": [],",
+							"    \"beanClasses\": [],",
+							"    \"excludeClasses\": []",
+							"});",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "*/*"
+					}
+				],
+				"url": {
+					"raw": "{{chaosMonkeyURL}}/actuator/chaosmonkey/watchers",
+					"host": [
+						"{{chaosMonkeyURL}}"
+					],
+					"path": [
+						"actuator",
+						"chaosmonkey",
+						"watchers"
+					]
+				},
+				"description": "Récupération de la configuration des watchers actuelle"
+			},
+			"response": [
+				{
+					"name": "OK",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/actuator/chaosmonkey/watchers",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"actuator",
+								"chaosmonkey",
+								"watchers"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "*/*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"controller\": \"<boolean>\",\n  \"restController\": \"<boolean>\",\n  \"service\": \"<boolean>\",\n  \"repository\": \"<boolean>\",\n  \"component\": \"<boolean>\",\n  \"restTemplate\": \"<boolean>\",\n  \"webClient\": \"<boolean>\",\n  \"actuatorHealth\": \"<boolean>\",\n  \"beans\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}"
+				}
+			]
+		},
+		{
+			"name": "update watchers",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Config has changed\", function() {",
+							"    pm.response.to.have.body(\"Watcher config has changed\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "*/*"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"controller\": false,\n  \"restController\": true,\n  \"service\": false,\n  \"repository\": false,\n  \"component\": false,\n  \"restTemplate\": false,\n  \"webClient\": false,\n  \"actuatorHealth\": false\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{chaosMonkeyURL}}/actuator/chaosmonkey/watchers",
+					"host": [
+						"{{chaosMonkeyURL}}"
+					],
+					"path": [
+						"actuator",
+						"chaosmonkey",
+						"watchers"
+					]
+				},
+				"description": "Update de la configuration des watchers"
+			},
+			"response": [
+				{
+					"name": "update watchers rest controller",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"controller\": false,\n  \"restController\": true,\n  \"service\": false,\n  \"repository\": false,\n  \"component\": false,\n  \"restTemplate\": false,\n  \"webClient\": false,\n  \"actuatorHealth\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8089/actuator/chaosmonkey/watchers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8089",
+							"path": [
+								"actuator",
+								"chaosmonkey",
+								"watchers"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain;charset=UTF-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "26"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 07 Feb 2025 14:43:46 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "Watcher config has changed"
+				},
+				{
+					"name": "update watchers all true",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"controller\": false,\n  \"restController\": true,\n  \"service\": true,\n  \"repository\": true,\n  \"component\": false,\n  \"restTemplate\": false,\n  \"webClient\": false,\n  \"actuatorHealth\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{chaosMonkeyURL}}/actuator/chaosmonkey/watchers",
+							"host": [
+								"{{chaosMonkeyURL}}"
+							],
+							"path": [
+								"actuator",
+								"chaosmonkey",
+								"watchers"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain;charset=UTF-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "26"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 07 Feb 2025 14:43:46 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "Watcher config has changed"
+				}
+			]
+		},
+		{
+			"name": "update assaults",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Config has changed\", function() {",
+							"    pm.response.to.have.body(\"Assault config has changed\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "*/*"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"level\": 1,\n  \"deterministic\": true,\n  \"latencyRangeStart\": 5000,\n  \"latencyRangeEnd\": 10000,\n  \"latencyActive\": true,\n  \"watchedCustomServices\": [\n\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{chaosMonkeyURL}}/actuator/chaosmonkey/assaults",
+					"host": [
+						"{{chaosMonkeyURL}}"
+					],
+					"path": [
+						"actuator",
+						"chaosmonkey",
+						"assaults"
+					]
+				},
+				"description": "Update de la configuration des assaults"
+			},
+			"response": [
+				{
+					"name": "latency assault",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"level\": 5,\n  \"deterministic\": true,\n  \"latencyRangeStart\": 5000,\n  \"latencyRangeEnd\": 10000,\n  \"latencyActive\": true,\n  \"watchedCustomServices\": [\n\n  ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8089/actuator/chaosmonkey/assaults",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8089",
+							"path": [
+								"actuator",
+								"chaosmonkey",
+								"assaults"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain;charset=UTF-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "26"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 11 Feb 2025 12:05:14 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "Assault config has changed"
+				}
+			]
+		},
+		{
+			"name": "get Articles",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is greater than 5 seconds\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.above(5000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "*/*"
+					}
+				],
+				"url": {
+					"raw": "{{chaosMonkeyURL}}/articles",
+					"host": [
+						"{{chaosMonkeyURL}}"
+					],
+					"path": [
+						"articles"
+					]
+				},
+				"description": "Test latence de la requete"
+			},
+			"response": [
+				{
+					"name": "OK",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/articles",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"articles"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "*/*"
+						}
+					],
+					"cookie": [],
+					"body": "[\n  {\n    \"id\": \"<long>\",\n    \"title\": \"<string>\",\n    \"content\": \"<string>\",\n    \"author\": {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\",\n      \"bio\": \"<string>\",\n      \"articles\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Article detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Article detected>\"\n        }\n      ]\n    }\n  },\n  {\n    \"id\": \"<long>\",\n    \"title\": \"<string>\",\n    \"content\": \"<string>\",\n    \"author\": {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\",\n      \"bio\": \"<string>\",\n      \"articles\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Article detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Article detected>\"\n        }\n      ]\n    }\n  }\n]"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "chaosMonkeyURL",
+			"value": "http://localhost:8089",
+			"type": "string"
+		}
+	]
+}

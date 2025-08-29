@@ -1,1 +1,0 @@
-# Génération de client à partir de la spécification OpenAPI
