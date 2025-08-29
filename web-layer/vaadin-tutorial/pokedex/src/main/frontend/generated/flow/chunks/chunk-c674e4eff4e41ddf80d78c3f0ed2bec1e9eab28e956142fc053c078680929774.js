@@ -1,9 +1,0 @@
-import '@vaadin/polymer-legacy-adapter/style-modules.js';
-import '@vaadin/vertical-layout/src/vaadin-vertical-layout.js';
-import '@vaadin/tooltip/src/vaadin-tooltip.js';
-import '@vaadin/tabs/src/vaadin-tab.js';
-import '@vaadin/tabsheet/src/vaadin-tabsheet.js';
-import '@vaadin/horizontal-layout/src/vaadin-horizontal-layout.js';
-import '@vaadin/tabs/src/vaadin-tabs.js';
-import '@vaadin/button/src/vaadin-button.js';
-import 'Frontend/generated/jar-resources/disableOnClickFunctions.js';
