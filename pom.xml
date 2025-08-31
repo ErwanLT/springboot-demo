@@ -29,27 +29,12 @@
 		</developer>
 	</developers>
     <modules>
-        <module>graphql-tutorial</module>
-		<module>security-tutorial</module>
-        <module>monitoring-tutorial</module>
-        <module>hateoas-tutorial</module>
-		<module>database-versioning-tutorial</module>
-        <module>banner-tutorial</module>
-		<module>code-generation-tutorial</module>
-        <module>templating-tutorial</module>
-		<module>brms-tutorial</module>
-        <module>testing-tutorial</module>
-		<module>elasticsearch-tutorial</module>
-		<module>vaadin-tutorial</module>
-        <module>bucket4j-tutorial</module>
-		<module>aspect-tutorial</module>
-        <module>messaging-tutorial</module>
-        <module>scheduled-tutorial</module>
-        <module>i18n-tutorial</module>
-        <module>cache-tutorial</module>
-        <module>notification-tutorial</module>
-        <module>audit-tutorial</module>
-        <module>concurrency-tutorial</module>
+        <module>core-concept</module>
+        <module>database-access</module>
+        <module>developer-tools</module>
+        <module>integration</module>
+        <module>operations</module>
+        <module>web-layer</module>
     </modules>
 	<scm>
 		<url>https://github.com/ErwanLT/springboot-demo.git</url>
