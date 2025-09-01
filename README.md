@@ -34,14 +34,12 @@ Approche directe où la logique de limitation est appelée explicitement depuis 
 ## [Cache](database-access/cache-tutorial)
 Tutoriel sur la mise en place d'un système de cache pour améliorer les performances de vos applications.
 
-## [Génération de code](developer-tools/code-generation-tutorial)
-Automatisez la création de code répétitif pour accélérer votre développement.
-### [Génération de client à partir de la spécification OpenAPI](developer-tools/code-generation-tutorial/client-generation-tutorial)
-Apprenez à générer automatiquement un client d'API REST à partir d'une spécification **OpenAPI (Swagger)**.
-[article](https://www.sfeir.dev/back/generer-vos-client-dapi-a-partir-de-leur-specification-openapi/)
-### [Génération de mappers](developer-tools/code-generation-tutorial/mapper-tutorial)
-Utilisez **MapStruct** pour générer automatiquement les mappers entre vos objets (par exemple, DTO et entités) et dire adieu au code de mapping manuel.
-[article](https://www.sfeir.dev/back/mapstruct-dites-adieu-au-code-repetitif/)
+## [Outils pour les Développeurs (Developer Tools)](developer-tools)
+Collection de tutoriels axés sur des outils et des techniques qui améliorent la productivité et la qualité du code.
+### [Génération de Code](developer-tools/code-generation-tutorial)
+Explore différentes techniques pour automatiser les tâches répétitives, notamment la génération de clients d'API (OpenAPI) et de mappers (MapStruct).
+### [Spring Modulith](developer-tools/modulith-tutorial)
+Démontre comment structurer une application en "modulithe" avec des frontières de modules claires et vérifiables.
 
 ## [Database versioning](database-access/database-versioning-tutorial)
 Gérez les évolutions de votre schéma de base de données de manière rigoureuse et automatisée.
