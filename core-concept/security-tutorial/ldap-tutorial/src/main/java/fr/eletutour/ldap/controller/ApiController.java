@@ -16,8 +16,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 public class ApiController {
 
-    @Autowired
-    private LdapService ldapService;
+    private final LdapService ldapService;
+
+    public ApiController(LdapService ldapService) {
+        this.ldapService = ldapService;
+    }
 
     @GetMapping("/")
     public String root() {
@@ -32,6 +35,11 @@ public class ApiController {
     @GetMapping("/login")
     public String login() {
         return "login";
+    }
+
+    @GetMapping("/access-denied")
+    public String accessDenied() {
+        return "access-denied";
     }
 
     @PreAuthorize("hasRole('ADMINS')")
