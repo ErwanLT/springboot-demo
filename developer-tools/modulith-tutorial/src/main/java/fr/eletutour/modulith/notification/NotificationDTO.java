@@ -33,7 +33,7 @@ public class NotificationDTO {
         return productName;
     }
 
-    public void setProductname(String productName) {
+    public void setProductName(String productName) {
         this.productName = productName;
     }
 }
