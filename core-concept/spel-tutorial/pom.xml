@@ -5,27 +5,17 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>fr.eletutour</groupId>
-        <artifactId>springboot-demo</artifactId>
+        <artifactId>core-concept</artifactId>
         <version>7.0.0-SNAPSHOT</version>
     </parent>
-    <packaging>pom</packaging>
 
-    <artifactId>core-concept</artifactId>
+    <artifactId>spel-tutorial</artifactId>
 
-
-    <properties>
+        <properties>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <modules>
-        <module>aspect-tutorial</module>
-        <module>audit-tutorial</module>
-        <module>banner-tutorial</module>
-        <module>concurrency-tutorial</module>
-        <module>security-tutorial</module>
-        <module>spel-tutorial</module>
-    </modules>
 
 </project>
