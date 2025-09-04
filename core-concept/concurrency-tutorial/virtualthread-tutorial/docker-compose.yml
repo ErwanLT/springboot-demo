@@ -1,0 +1,8 @@
+version: '3.8'
+services:
+  sftp:
+    image: atmoz/sftp
+    container_name: sftp-server
+    ports:
+      - "2222:22"
+    command: foo:pass:1001::upload

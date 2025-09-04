@@ -17,6 +17,7 @@
     <modules>
         <module>async-tutorial</module>
         <module>reactive-tutorial</module>
+        <module>virtualthread-tutorial</module>
     </modules>
 
 </project>
