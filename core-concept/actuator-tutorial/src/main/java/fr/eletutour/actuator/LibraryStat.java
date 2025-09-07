@@ -1,5 +1,6 @@
 package fr.eletutour.actuator;
 
+import fr.eletutour.service.BookService;
 import org.springframework.boot.actuate.endpoint.annotation.Endpoint;
 import org.springframework.boot.actuate.endpoint.annotation.ReadOperation;
 import org.springframework.boot.actuate.endpoint.annotation.WriteOperation;
@@ -12,11 +13,17 @@ import java.util.Map;
 @Endpoint(id = "libraryStat")
 public class LibraryStat {
 
+    private final BookService bookService;
+
+    public LibraryStat(BookService bookService) {
+        this.bookService = bookService;
+    }
+
     @ReadOperation
     public Map<String, Object> libraryStats() {
         Map<String, Object> stats = new HashMap<>();
-        stats.put("booksTotal", 1200);
-        stats.put("booksBorrowed", 320);
+        stats.put("booksTotal", bookService.getTotalBooks());
+        stats.put("booksBorrowed", bookService.getBorrowedBooks());
         stats.put("activeMembers", 85);
         return stats;
     }
