@@ -26,6 +26,7 @@
         <module>concurrency-tutorial</module>
         <module>security-tutorial</module>
         <module>spel-tutorial</module>
+        <module>actuator-tutorial</module>
     </modules>
 
 </project>
