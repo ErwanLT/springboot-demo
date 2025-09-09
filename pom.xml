@@ -140,7 +140,7 @@
                     </properties>
                     <includes>
                         <include>**/*.java</include>
-                        <include>**/*.xml</include>
+                        <include>**/*.sql</include>
                         <include>**/*.html</include>
                     </includes>
                 </configuration>
