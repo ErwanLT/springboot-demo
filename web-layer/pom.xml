@@ -25,6 +25,7 @@
         <module>i18n-tutorial</module>
         <module>templating-tutorial</module>
         <module>vaadin-tutorial</module>
+        <module>api-versioning-tutorial</module>
     </modules>
 
 </project>
