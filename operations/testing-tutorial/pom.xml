@@ -4,7 +4,7 @@
     <parent>
         <groupId>fr.eletutour</groupId>
         <artifactId>operations</artifactId>
-        <version>7.0.0-SNAPSHOT</version>
+        <version>7.0.0</version>
     </parent>
     <packaging>pom</packaging>
     <modules>
