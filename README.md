@@ -1,4 +1,8 @@
-[![Java CI with Maven](https://github.com/ErwanLT/springboot-demo/actions/workflows/maven.yml/badge.svg)](https://github.com/ErwanLT/springboot-demo/actions/workflows/maven.yml)
+[![Java CI with Maven](https://github.com/ErwanLT/springboot-demo/actions/workflows/maven.yml/badge.svg)](https://github.com/ErwanLT/springboot-demo/actions/workflows/maven.yml) 
+[![Java](https://img.shields.io/badge/Java-21-blue.svg?logo=java)](https://www.java.com) 
+[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.5.5-green.svg?logo=springboot)](https://spring.io/projects/spring-boot) 
+[![OpenAPI](https://img.shields.io/badge/OpenAPI-2.8.8-blue.svg?logo=openapiinitiative)](https://springdoc.org/) 
+[![Vaadin](https://img.shields.io/badge/Vaadin-24.8.0-lightblue.svg?logo=vaadin)](https://vaadin.com)
 
 # Springboot Démo
 Projet de démonstration des fonctionnalités et des intégrations possibles avec le framework Spring Boot.
