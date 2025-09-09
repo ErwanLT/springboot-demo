@@ -44,6 +44,8 @@
 	</scm>
 	<properties>
 		<java.version>21</java.version>
+		<project.inceptionYear>2023</project.inceptionYear>
+		<project.organization.name>eletutour.fr</project.organization.name>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -106,6 +108,28 @@
 					<autoVersionSubmodules>true</autoVersionSubmodules> <!-- Gère les sous-modules automatiquement -->
 				</configuration>
 			</plugin>
+            <plugin>
+                <groupId>com.mycila</groupId>
+                <artifactId>license-maven-plugin</artifactId>
+                <version>4.5</version>
+                <configuration>
+                    <header>header.txt</header>
+                    <properties>
+                        <owner>LE TUTOUR Erwan</owner>
+                        <project.inceptionYear>2025</project.inceptionYear>
+                    </properties>
+                    <includes>
+                        <include>**/*.java</include>
+                    </includes>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
 		</plugins>
 	</build>
 
