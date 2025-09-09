@@ -4,7 +4,7 @@
     <parent>
         <groupId>fr.eletutour</groupId>
         <artifactId>testing-tutorial</artifactId>
-        <version>7.0.0</version>
+        <version>8.0.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>archunit-tutorial</artifactId>
