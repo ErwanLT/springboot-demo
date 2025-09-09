@@ -3,47 +3,97 @@ package com.example.apiversioningtutorial.controller;
 import com.example.apiversioningtutorial.dto.UserV1;
 import com.example.apiversioningtutorial.dto.UserV2;
 import com.example.apiversioningtutorial.dto.UserV3;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("/api/user")
+@Tag(name = "User API", description = "API for user management with versioning examples")
 public class ApiController {
 
-    @GetMapping("/api/v1/user")
+    // --- Versioning via URL ---
+    @Operation(summary = "Get User V1 (URL versioning)")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Found the user",
+                    content = { @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = UserV1.class)) })
+    })
+    @GetMapping("/v1")
     public UserV1 getUserV1() {
         return new UserV1("John Doe");
     }
 
-    @GetMapping("/api/v2/user")
+    @Operation(summary = "Get User V2 (URL versioning)")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Found the user",
+                    content = { @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = UserV2.class)) })
+    })
+    @GetMapping("/v2")
     public UserV2 getUserV2() {
         return new UserV2("John", "Doe");
     }
 
-    @GetMapping("/api/v3/user")
+    @Operation(summary = "Get User V3 (URL versioning)")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Found the user",
+                    content = { @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = UserV3.class)) })
+    })
+    @GetMapping("/v3")
     public UserV3 getUserV3() {
         return new UserV3("John", "Doe", 30);
     }
 
-    // Query Param Versioning
-
-    @GetMapping(path = "/api/user", params = "version=1")
+    // --- Versioning via Query Param ---
+    @Operation(summary = "Get User V1 (Query Param versioning)")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Found the user",
+                    content = { @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = UserV1.class)) })
+    })
+    @GetMapping(params = "version=1")
     public UserV1 getUserQueryV1() {
         return new UserV1("John Doe");
     }
 
-    @GetMapping(path = "/api/user", params = "version=2")
+    @Operation(summary = "Get User V2 (Query Param versioning)")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Found the user",
+                    content = { @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = UserV2.class)) })
+    })
+    @GetMapping(params = "version=2")
     public UserV2 getUserQueryV2() {
         return new UserV2("John", "Doe");
     }
 
-    // Header Versioning
-
-    @GetMapping(path = "/api/user/header", headers = "X-API-VERSION=1")
+    // --- Versioning via Header ---
+    @Operation(summary = "Get User V1 (Header versioning)")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Found the user",
+                    content = { @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = UserV1.class)) })
+    })
+    @GetMapping(path = "/header", headers = "X-API-VERSION=1")
     public UserV1 getUserHeaderV1() {
         return new UserV1("John Doe");
     }
 
-    @GetMapping(path = "/api/user/header", headers = "X-API-VERSION=2")
+    @Operation(summary = "Get User V2 (Header versioning)")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Found the user",
+                    content = { @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = UserV2.class)) })
+    })
+    @GetMapping(path = "/header", headers = "X-API-VERSION=2")
     public UserV2 getUserHeaderV2() {
         return new UserV2("John", "Doe");
     }
