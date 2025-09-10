@@ -20,6 +20,7 @@
         <module>monitoring-tutorial</module>
         <module>scheduled-tutorial</module>
         <module>testing-tutorial</module>
+        <module>resilience4j-tutorial</module>
     </modules>
 
 </project>
