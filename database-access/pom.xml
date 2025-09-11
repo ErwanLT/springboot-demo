@@ -19,6 +19,7 @@
         <module>cache-tutorial</module>
         <module>database-versioning-tutorial</module>
         <module>elasticsearch-tutorial</module>
+        <module>r2dbc-tutorial</module>
     </modules>
 
 </project>
