@@ -13,3 +13,6 @@ Mettez en place un **contrôle d'accès basé sur les rôles (RBAC)** pour gére
 
 ## [LDAP](ldap-tutorial)
 Intégrez une authentification **LDAP** pour déléguer la gestion des utilisateurs à un annuaire d'entreprise existant, une solution courante en milieu professionnel.
+
+## [OAuth2 Authorization Server](oauth2-authorization-server-tutorial)
+Configurez un **serveur d'autorisation OAuth2** pour déléguer l'authentification et gérer les accès de manière sécurisée et standardisée.

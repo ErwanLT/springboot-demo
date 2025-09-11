@@ -9,3 +9,7 @@ Tutoriel sur la programmation asynchrone avec Spring Boot pour améliorer la per
 ## [Programmation Réactive (WebFlux)](reactive-tutorial)
 
 Tutoriel sur la création d'applications web réactives et non-bloquantes avec **Spring WebFlux** pour une meilleure gestion des ressources et une plus grande résilience.
+
+## [Virtual Threads (Project Loom)](virtualthread-tutorial)
+
+Explorez l'utilisation des **Virtual Threads** pour simplifier l'écriture de code concurrent hautement performant.

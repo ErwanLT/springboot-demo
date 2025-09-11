@@ -10,6 +10,12 @@ Projet de démonstration des fonctionnalités et des intégrations possibles ave
 ## [Programmation Orientée Aspect (AOP)](core-concept/aspect-tutorial)
 Tutoriel sur la **Programmation Orientée Aspect** avec Spring Boot. Apprenez à séparer les préoccupations transversales (comme la journalisation ou la sécurité) de votre logique métier pour un code plus propre et modulaire.
 
+## [Actuator](core-concept/actuator-tutorial)
+Tutoriel sur **Spring Boot Actuator**, qui fournit des fonctionnalités prêtes à l'emploi pour surveiller et gérer votre application (points de terminaison de santé, métriques, etc.).
+
+## [API Versioning](web-layer/api-versioning-tutorial)
+Découvrez différentes stratégies pour versionner vos API REST afin de gérer les évolutions sans casser les clients existants.
+
 ## [Audit](core-concept/audit-tutorial)
 Tutoriel sur la mise en place de l'audit pour tracer les modifications de vos données.
 
@@ -88,12 +94,18 @@ Déployez **Spring Boot Admin** pour une interface de monitoring et de gestion d
 ## [Notification](integration/notification-tutorial)
 Tutoriel sur l'envoi de notifications (par exemple, email, SMS) depuis une application Spring Boot.
 
+## [Resilience4j](operations/resilience4j-tutorial)
+Tutoriel sur l'implémentation de patterns de résilience (disjoncteur, réessai, etc.) avec **Resilience4j** pour rendre vos applications plus robustes face aux pannes.
+
 ## [Programmation Concurrente](core-concept/concurrency-tutorial)
 Découvrez différentes approches pour gérer la concurrence et le parallélisme dans vos applications Spring Boot.
 ### [Programmation Asynchrone](core-concept/concurrency-tutorial/async-tutorial)
 Tutoriel sur la programmation asynchrone avec Spring Boot pour améliorer la performance et la scalabilité de vos applications.
 ### [Programmation Réactive (WebFlux)](core-concept/concurrency-tutorial/reactive-tutorial)
 Tutoriel sur la création d'applications web réactives et non-bloquantes avec **Spring WebFlux**.
+
+### [Virtual Threads (Project Loom)](core-concept/concurrency-tutorial/virtualthread-tutorial)
+Explorez l'utilisation des **Virtual Threads** pour simplifier l'écriture de code concurrent hautement performant.
 
 ## [Security](core-concept/security-tutorial)
 Apprenez à sécuriser vos applications avec Spring Security.
@@ -108,6 +120,12 @@ Mettez en place un **contrôle d'accès basé sur les rôles (RBAC)** pour gére
 [article](https://www.sfeir.dev/back/securisez-vos-api-avec-spring-security-acces-par-role/)
 ### [LDAP](core-concept/security-tutorial/ldap-tutorial)
 Intégrez une authentification **LDAP** pour déléguer la gestion des utilisateurs à un annuaire d'entreprise.
+
+### [OAuth2 Authorization Server](core-concept/security-tutorial/oauth2-authorization-server-tutorial)
+Configurez un **serveur d'autorisation OAuth2** pour déléguer l'authentification et gérer les accès de manière sécurisée et standardisée.
+
+## [SpEL (Spring Expression Language)](core-concept/spel-tutorial)
+Tutoriel sur le **Spring Expression Language (SpEL)**, un langage puissant pour interroger et manipuler un graphe d'objets à l'exécution.
 
 ## [Scheduled Tutorial](operations/scheduled-tutorial)
 ### [Quartz tutorial](operations/scheduled-tutorial/quartz-tutorial)
