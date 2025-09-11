@@ -25,6 +25,7 @@
         <module>security-tutorial</module>
         <module>spel-tutorial</module>
         <module>actuator-tutorial</module>
+        <module>validation-tutorial</module>
     </modules>
 
 </project>

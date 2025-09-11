@@ -11,3 +11,4 @@ Ce module regroupe les tutoriels sur les concepts de base de Spring Boot.
 - [**Concurrency**](./concurrency-tutorial/README.md): Découvrez différentes approches pour gérer la concurrence et le parallélisme.
 - [**Security**](./security-tutorial/README.md): Apprenez à sécuriser vos applications avec Spring Security.
 - [**SpEL**](./spel-tutorial/README.md): Tutoriel sur le Spring Expression Language (SpEL).
+- [**Validation**](./validation-tutorial/README.md): Tutoriel sur la validation des données en entrée avec les annotations de Jakarta Bean Validation.
