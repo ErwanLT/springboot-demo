@@ -26,6 +26,7 @@
         <module>spel-tutorial</module>
         <module>actuator-tutorial</module>
         <module>validation-tutorial</module>
+        <module>aot-tutorial</module>
     </modules>
 
 </project>
