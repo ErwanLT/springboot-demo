@@ -11,6 +11,8 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.Collections;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -39,7 +41,9 @@ public class UserControllerTest {
                 "1234567890",
                 "https://example.com",
                 LocalDate.now(),
-                "4111111111111111" // Visa
+                "4111111111111111", // Visa
+                Arrays.asList("reading", "coding"),
+                Arrays.asList("music", "movies")
         );
     }
 
@@ -137,6 +141,36 @@ public class UserControllerTest {
     void whenInvalidCreditCard_thenReturns400() throws Exception {
         UserDto userDto = createValidUserDto();
         userDto.setCreditCardNumber("1234");
+        mockMvc.perform(post("/api/users")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(userDto)))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    void whenHobbiesEmpty_thenReturns400() throws Exception {
+        UserDto userDto = createValidUserDto();
+        userDto.setHobbies(Collections.emptyList());
+        mockMvc.perform(post("/api/users")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(userDto)))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    void whenHobbiesTooMany_thenReturns400() throws Exception {
+        UserDto userDto = createValidUserDto();
+        userDto.setHobbies(Arrays.asList("h1", "h2", "h3", "h4", "h5", "h6")); // More than 5
+        mockMvc.perform(post("/api/users")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(userDto)))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    void whenPreferencesNull_thenReturns400() throws Exception {
+        UserDto userDto = createValidUserDto();
+        userDto.setPreferences(null);
         mockMvc.perform(post("/api/users")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(userDto)))

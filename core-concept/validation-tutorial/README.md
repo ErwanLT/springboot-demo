@@ -35,7 +35,9 @@ Pour tester la validation, vous pouvez envoyer des requêtes POST à `http://loc
   "phoneNumber": "1234567890",
   "website": "https://example.com",
   "registrationDate": "2023-10-26",
-  "creditCardNumber": "4111111111111111"
+  "creditCardNumber": "4111111111111111",
+  "hobbies": ["reading", "coding"],
+  "preferences": ["music", "movies"]
 }
 ```
 
@@ -49,6 +51,8 @@ Pour tester la validation, vous pouvez envoyer des requêtes POST à `http://loc
   "phoneNumber": "123",
   "website": "not-a-url",
   "registrationDate": "2099-01-01",
-  "creditCardNumber": "1234"
+  "creditCardNumber": "1234",
+  "hobbies": [],
+  "preferences": null
 }
 ```

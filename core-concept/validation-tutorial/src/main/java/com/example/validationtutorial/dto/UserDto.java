@@ -9,6 +9,7 @@ import org.hibernate.validator.constraints.CreditCardNumber;
 import org.hibernate.validator.constraints.URL;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -41,5 +42,12 @@ public class UserDto {
 
     @CreditCardNumber(message = "Credit card number should be valid")
     private String creditCardNumber;
+
+    @NotEmpty(message = "Hobbies cannot be empty")
+    @Size(min = 1, max = 5, message = "User must have between 1 and 5 hobbies")
+    private List<String> hobbies;
+
+    @NotNull(message = "Preferences cannot be null")
+    private List<String> preferences;
 
 }
