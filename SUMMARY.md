@@ -17,7 +17,6 @@
   - OAuth2
 - SpEL
 - Validation
-- Compilation Ahead-of-Time (AOT)
 
 ## Database Access (`database-access`)
 - Cache
