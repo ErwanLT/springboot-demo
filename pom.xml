@@ -109,30 +109,6 @@
 				</configuration>
 			</plugin>
             <plugin>
-                <groupId>com.mycila</groupId>
-                <artifactId>license-maven-plugin</artifactId>
-                <version>4.5</version>
-                <configuration>
-                    <header>header.txt</header>
-                    <properties>
-                        <owner>LE TUTOUR Erwan</owner>
-                        <project.inceptionYear>2025</project.inceptionYear>
-                    </properties>
-                    <includes>
-                        <include>**/*.java</include>
-                        <include>**/*.sql</include>
-                        <include>**/*.html</include>
-                    </includes>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.12</version>
