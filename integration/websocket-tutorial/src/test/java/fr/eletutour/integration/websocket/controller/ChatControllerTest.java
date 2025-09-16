@@ -1,7 +1,7 @@
-package com.example.integration.websocket.controller;
+package fr.eletutour.integration.websocket.controller;
 
-import com.example.integration.websocket.model.ChatMessage;
-import com.example.integration.websocket.model.MessageType;
+import fr.eletutour.integration.websocket.model.ChatMessage;
+import fr.eletutour.integration.websocket.model.MessageType;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

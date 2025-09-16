@@ -1,4 +1,4 @@
-package com.example.integration.websocket;
+package fr.eletutour.integration.websocket;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

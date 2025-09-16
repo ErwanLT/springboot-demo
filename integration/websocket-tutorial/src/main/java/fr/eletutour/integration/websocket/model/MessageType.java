@@ -1,4 +1,4 @@
-package com.example.integration.websocket.model;
+package fr.eletutour.integration.websocket.model;
 
 public enum MessageType {
     CHAT,

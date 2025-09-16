@@ -1,7 +1,7 @@
-package com.example.integration.websocket.controller;
+package fr.eletutour.integration.websocket.controller;
 
-import com.example.integration.websocket.model.ChatMessage;
-import com.example.integration.websocket.model.MessageType;
+import fr.eletutour.integration.websocket.model.ChatMessage;
+import fr.eletutour.integration.websocket.model.MessageType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

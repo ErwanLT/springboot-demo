@@ -1,4 +1,4 @@
-package com.example.integration.websocket.config;
+package fr.eletutour.integration.websocket.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;
