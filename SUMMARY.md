@@ -25,6 +25,7 @@
   - Liquibase
 - Elasticsearch
 - R2DBC
+- Query DSL
 
 ## Developer Tools (`developer-tools`)
 - Génération de Code
@@ -39,6 +40,7 @@
   - JMS
   - Kafka
 - Notification
+- WebSockets
 
 ## Operations (`operations`)
 - Monitoring
@@ -79,7 +81,6 @@
 - MongoDB
 
 ## Integration
-- WebSockets
 - gRPC
 - Clients REST Déclaratifs (OpenFeign)
 

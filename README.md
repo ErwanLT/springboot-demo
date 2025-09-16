@@ -100,6 +100,9 @@ Tutoriel sur l'intégration d'**Apache Kafka** pour construire des systèmes de 
 ### [Notification](integration/notification-tutorial)
 Tutoriel sur l'envoi de notifications (par exemple, email, SMS) depuis une application Spring Boot.
 
+### [WebSocket](integration/websocket-tutorial)
+Tutoriel sur la création d'une application de chat en temps réel avec Spring Boot et WebSockets pour une communication bidirectionnelle instantanée.
+
 ## Operations (`operations`)
 
 ### [Monitoring](operations/monitoring-tutorial)

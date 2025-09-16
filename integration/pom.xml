@@ -20,5 +20,6 @@
         <module>brms-tutorial</module>
         <module>messaging-tutorial</module>
         <module>notification-tutorial</module>
+        <module>websocket-tutorial</module>
     </modules>
 </project>

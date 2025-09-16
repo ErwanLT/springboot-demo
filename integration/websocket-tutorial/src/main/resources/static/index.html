@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WebSocket Chat</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.4.0/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" class="form-control" placeholder="Your name">
+                </div>
+                <button id="connect" class="btn btn-primary" type="submit">Connect</button>
+                <button id="disconnect" class="btn btn-danger" type="submit" disabled="disabled">Disconnect</button>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table id="conversation" class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Messages</th>
+                </tr>
+                </thead>
+                <tbody id="messages">
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <form class="form-inline">
+                <div class="form-group">
+                    <input type="text" id="message" class="form-control" placeholder="Your message">
+                </div>
+                <button id="sendMessage" class="btn btn-primary" type="submit">Send</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    var stompClient = null;
+    var username = null;
+
+    function setConnected(connected) {
+        document.getElementById("connect").disabled = connected;
+        document.getElementById("disconnect").disabled = !connected;
+        document.getElementById("conversation").style.visibility = connected ? "visible" : "hidden";
+        document.getElementById("messages").innerHTML = "";
+    }
+
+    function connect(event) {
+        username = document.getElementById("username").value;
+        if (username) {
+            var socket = new SockJS('/ws');
+            stompClient = Stomp.over(socket);
+            stompClient.connect({}, onConnected, onError);
+        }
+        event.preventDefault();
+    }
+
+    function onConnected() {
+        setConnected(true);
+        stompClient.subscribe('/topic/public', onMessageReceived);
+        stompClient.send("/app/chat.addUser",
+            {},
+            JSON.stringify({sender: username, type: 'JOIN'})
+        )
+    }
+
+    function onError(error) {
+        alert('Could not connect to WebSocket server. Please refresh this page to try again!');
+    }
+
+    function disconnect() {
+        if (stompClient !== null) {
+            stompClient.disconnect();
+        }
+        setConnected(false);
+        console.log("Disconnected");
+    }
+
+    function sendMessage(event) {
+        var messageContent = document.getElementById("message").value;
+        if (messageContent && stompClient) {
+            var chatMessage = {
+                sender: username,
+                content: document.getElementById("message").value,
+                type: 'CHAT'
+            };
+            stompClient.send("/app/chat.sendMessage", {}, JSON.stringify(chatMessage));
+            document.getElementById("message").value = "";
+        }
+        event.preventDefault();
+    }
+
+    function onMessageReceived(payload) {
+        var message = JSON.parse(payload.body);
+        var messageElement = document.createElement('li');
+        if (message.type === 'JOIN') {
+            messageElement.classList.add('event-message');
+            message.content = message.sender + ' joined!';
+        } else if (message.type === 'LEAVE') {
+            messageElement.classList.add('event-message');
+            message.content = message.sender + ' left!';
+        } else {
+            messageElement.classList.add('chat-message');
+            var usernameElement = document.createElement('span');
+            usernameElement.style.fontWeight = "bold";
+            usernameElement.appendChild(document.createTextNode(message.sender));
+            messageElement.appendChild(usernameElement);
+        }
+        var textElement = document.createElement('p');
+        textElement.appendChild(document.createTextNode(message.content));
+        messageElement.appendChild(textElement);
+        document.getElementById("messages").appendChild(messageElement);
+        document.getElementById("messages").scrollTop = document.getElementById("messages").scrollHeight;
+    }
+
+    document.getElementById("connect").addEventListener("click", connect);
+    document.getElementById("disconnect").addEventListener("click", disconnect);
+    document.getElementById("sendMessage").addEventListener("click", sendMessage);
+</script>
+</body>
+</html>
