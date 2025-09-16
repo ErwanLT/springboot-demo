@@ -7,6 +7,8 @@ import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
 
+import java.net.URI;
+
 import static org.springframework.http.MediaType.APPLICATION_JSON;
 
 @Component
@@ -19,21 +21,36 @@ public class PersonHandler {
     }
 
     public Mono<ServerResponse> getAllPersons(ServerRequest request) {
-        return ServerResponse.ok().contentType(APPLICATION_JSON)
+        return ServerResponse.ok()
+                .contentType(APPLICATION_JSON)
                 .body(personRepository.findAll(), Person.class);
     }
 
     public Mono<ServerResponse> getPersonById(ServerRequest request) {
-        int personId = Integer.parseInt(request.pathVariable("id"));
+        String idStr = request.pathVariable("id");
+        int personId;
+
+        try {
+            personId = Integer.parseInt(idStr);
+        } catch (NumberFormatException e) {
+            return ServerResponse.badRequest()
+                    .bodyValue("Invalid ID format: " + idStr);
+        }
+
         return personRepository.findById(personId)
-                .flatMap(person -> ServerResponse.ok().contentType(APPLICATION_JSON).bodyValue(person))
+                .flatMap(person -> ServerResponse.ok()
+                        .contentType(APPLICATION_JSON)
+                        .bodyValue(person))
                 .switchIfEmpty(ServerResponse.notFound().build());
     }
 
     public Mono<ServerResponse> createPerson(ServerRequest request) {
-        Mono<Person> personMono = request.bodyToMono(Person.class);
-        return personMono.flatMap(person ->
-                ServerResponse.ok().contentType(APPLICATION_JSON)
-                        .body(personRepository.save(person), Person.class));
+        return request.bodyToMono(Person.class)
+                .flatMap(personRepository::save)
+                .flatMap(savedPerson ->
+                        ServerResponse.created(URI.create("/api/persons/" + savedPerson.getId()))
+                                .contentType(APPLICATION_JSON)
+                                .bodyValue(savedPerson)
+                );
     }
 }
