@@ -1,34 +1,36 @@
 package fr.eletutour.integration.grpc;
 
-import net.devh.boot.grpc.client.inject.GrpcClient;
+import fr.eletutour.integration.grpc.service.GreetingServiceImpl;
+import io.grpc.inprocess.InProcessChannelBuilder;
+import io.grpc.inprocess.InProcessServerBuilder;
+import io.grpc.testing.GrpcCleanupRule;
+import org.junit.Rule;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.DirtiesContext;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-/**
- * Integration tests for the GreetingService.
- */
-@SpringBootTest(properties = {
-        "grpc.server.inProcessName=test", // Run the server in-process
-        "grpc.server.port=-1", // Disable external port
-        "grpc.client.inProcess.address=in-process:test" // Configure the client to connect to the in-process server
-})
-@DirtiesContext // Ensures the context is reset between tests
 public class GreetingServiceImplTest {
 
-    @GrpcClient("inProcess")
-    private GreetingServiceGrpc.GreetingServiceBlockingStub greetingServiceBlockingStub;
+    @Rule
+    public final GrpcCleanupRule grpcCleanup = new GrpcCleanupRule();
 
-    /**
-     * Test the sayHello RPC method.
-     */
     @Test
-    public void testSayHello() {
+    public void testSayHello() throws Exception {
+        // Generate a unique in-process server name.
+        String serverName = InProcessServerBuilder.generateName();
+
+        // Create a server, add service, start, and register for automatic graceful shutdown.
+        grpcCleanup.register(InProcessServerBuilder
+                .forName(serverName).directExecutor().addService(new GreetingServiceImpl()).build().start());
+
+        GreetingServiceGrpc.GreetingServiceBlockingStub blockingStub = GreetingServiceGrpc.newBlockingStub(
+                // Create a client channel and register for automatic graceful shutdown.
+                grpcCleanup.register(InProcessChannelBuilder.forName(serverName).directExecutor().build()));
+
+
         String name = "TestUser";
         HelloRequest request = HelloRequest.newBuilder().setName(name).build();
-        HelloReply response = greetingServiceBlockingStub.sayHello(request);
+        HelloReply response = blockingStub.sayHello(request);
 
         assertThat(response.getMessage()).isEqualTo("Hello, " + name);
     }

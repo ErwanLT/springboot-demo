@@ -5,7 +5,7 @@ import fr.eletutour.integration.grpc.GreetingServiceGrpc;
 import fr.eletutour.integration.grpc.HelloReply;
 import fr.eletutour.integration.grpc.HelloRequest;
 import io.grpc.stub.StreamObserver;
-import net.devh.boot.grpc.server.service.GrpcService;
+import org.springframework.grpc.server.service.GrpcService;
 
 /**
  * gRPC service that implements the GreetingService.
