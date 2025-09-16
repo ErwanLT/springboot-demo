@@ -103,6 +103,9 @@ Tutoriel sur l'envoi de notifications (par exemple, email, SMS) depuis une appli
 ### [WebSocket](integration/websocket-tutorial)
 Tutoriel sur la création d'une application de chat en temps réel avec Spring Boot et WebSockets pour une communication bidirectionnelle instantanée.
 
+### [gRPC](integration/grpc-tutorial)
+Tutoriel sur la création d'un service et client gRPC pour une communication haute performance avec Spring Boot.
+
 ## Operations (`operations`)
 
 ### [Monitoring](operations/monitoring-tutorial)

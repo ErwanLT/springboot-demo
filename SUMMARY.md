@@ -41,6 +41,7 @@
   - Kafka
 - Notification
 - WebSockets
+- gRPC
 
 ## Operations (`operations`)
 - Monitoring
@@ -81,7 +82,6 @@
 - MongoDB
 
 ## Integration
-- gRPC
 - Clients REST Déclaratifs (OpenFeign)
 
 ## Operations

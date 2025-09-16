@@ -21,5 +21,6 @@
         <module>messaging-tutorial</module>
         <module>notification-tutorial</module>
         <module>websocket-tutorial</module>
+        <module>grpc-tutorial</module>
     </modules>
 </project>

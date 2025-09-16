@@ -8,3 +8,4 @@ Ce module regroupe les tutoriels sur l'intégration de systèmes externes avec S
 - [**Messaging**](./messaging-tutorial/README.md): Tutoriels sur l'intégration de systèmes de messagerie comme JMS et Kafka.
 - [**Notification**](./notification-tutorial/README.md): Tutoriel sur l'envoi de notifications (par exemple, email, SMS).
 - [**WebSocket**](./websocket-tutorial/README.md): Tutoriel sur la création d'une application de chat en temps réel avec Spring Boot et WebSockets.
+- [**gRPC**](./grpc-tutorial/README.md): Tutoriel sur la création d'un service et client gRPC avec Spring Boot.
