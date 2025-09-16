@@ -56,7 +56,7 @@ public class PersonRouterTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(Mono.just(person), Person.class)
                 .exchange()
-                .expectStatus().isOk()
+                .expectStatus().isCreated()
                 .expectBody(Person.class);
     }
 }
