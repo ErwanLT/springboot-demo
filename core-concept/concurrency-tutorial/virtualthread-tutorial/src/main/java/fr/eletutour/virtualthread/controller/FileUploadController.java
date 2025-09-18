@@ -26,4 +26,9 @@ public class FileUploadController {
     public void organizeFiles() {
         sftpService.organizeFiles();
     }
+
+    @PostMapping("/organize-sequentially")
+    public void organizeFilesSequentially() {
+        sftpService.organizeFilesSequentially();
+    }
 }

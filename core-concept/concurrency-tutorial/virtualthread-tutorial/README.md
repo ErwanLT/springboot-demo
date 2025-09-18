@@ -47,3 +47,29 @@ curl -X POST -F 'files=@/path/to/your/file1.txt' -F 'files=@/path/to/your/file2.
 ```
 
 The application will receive the files, process them in parallel using virtual threads, and upload them to the SFTP server in the `/home/foo/upload` directory.
+
+## 4. Organize Files
+
+This tutorial provides two endpoints to organize files on the SFTP server. The files will be moved into a `yyyy/MM/dd` directory structure based on their filenames (expected format: `yyyyMMdd_HHmm_name`).
+
+This allows you to compare the performance of organizing files concurrently using virtual threads versus sequentially.
+
+### Concurrent Organization
+
+To organize files concurrently, send a POST request to the `/organize` endpoint:
+
+```bash
+curl -X POST http://localhost:8080/organize
+```
+
+Check the application logs to see the execution time.
+
+### Sequential Organization
+
+To organize files sequentially, send a POST request to the `/organize-sequentially` endpoint:
+
+```bash
+curl -X POST http://localhost:8080/organize-sequentially
+```
+
+By comparing the execution time logged by the application for both endpoints, you can observe the performance benefits of using virtual threads for I/O-bound tasks.
