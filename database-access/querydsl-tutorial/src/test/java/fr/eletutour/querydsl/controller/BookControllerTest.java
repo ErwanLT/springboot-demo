@@ -8,6 +8,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.time.LocalDate;
@@ -45,5 +46,14 @@ class BookControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.content[0].title").value("The Lord of the Rings"))
                 .andExpect(jsonPath("$.content[0].author").value("J.R.R. Tolkien"));
+    }
+
+    @Test
+    void searchBooks_whenServiceThrowsIllegalArgument_shouldReturnBadRequest() throws Exception {
+        when(bookService.searchBooks(any(), any(), any(), any(), any(), any(), any(), any(), any(Pageable.class)))
+                .thenThrow(new IllegalArgumentException("Invalid sort property"));
+
+        mockMvc.perform(get("/books/search?sort=invalid,asc"))
+                .andExpect(status().isBadRequest());
     }
 }

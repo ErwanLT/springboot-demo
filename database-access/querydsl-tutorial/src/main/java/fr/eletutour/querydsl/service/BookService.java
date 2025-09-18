@@ -21,6 +21,9 @@ public class BookService {
 
     private final JPAQueryFactory queryFactory;
 
+    private static final List<String> ALLOWED_SORT_PROPERTIES = List.of("id", "title", "author", "year", "publicationDate", "price");
+
+
     public BookService(JPAQueryFactory queryFactory) {
         this.queryFactory = queryFactory;
     }
@@ -67,10 +70,14 @@ public class BookService {
         // Tri dynamique
         List<OrderSpecifier<?>> orders = new ArrayList<>();
         pageable.getSort().forEach(order -> {
+            String property = order.getProperty();
+            if (!ALLOWED_SORT_PROPERTIES.contains(property)) {
+                throw new IllegalArgumentException("Invalid sort property: " + property);
+            }
             PathBuilder<Book> path = new PathBuilder<>(Book.class, "book");
             orders.add(new OrderSpecifier(
                     order.isAscending() ? Order.ASC : Order.DESC,
-                    path.get(order.getProperty(), Comparable.class)
+                    path.get(property, Comparable.class)
             ));
         });
 
