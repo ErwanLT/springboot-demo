@@ -56,12 +56,13 @@ Tutoriel sur la validation des données en entrée avec les annotations de Jakar
 ## Database Access (`database-access`)
 
 ### [Cache](database-access/cache-tutorial)
-Collection de tutoriels sur différentes stratégies de mise en cache.
-#### [Cache en mémoire](database-access/cache-tutorial/in-memory-cache-tutorial)
-Démontre l'utilisation du cache en mémoire de base de Spring Boot.
-#### [Cache avec Caffeine](database-access/cache-tutorial/caffeine-cache-tutorial)
-Intègre le cache haute performance Caffeine pour une gestion plus fine de l'éviction et de l'expiration.
-
+    Collection de tutoriels sur différentes stratégies de mise en cache.
+    #### [Cache en mémoire](database-access/cache-tutorial/in-memory-cache-tutorial)
+    Démontre l'utilisation du cache en mémoire de base de Spring Boot.
+    #### [Cache avec Caffeine](database-access/cache-tutorial/caffeine-cache-tutorial)
+    Intègre le cache haute performance Caffeine pour une gestion plus fine de l'éviction et de l'expiration.
+    #### [Cache avec Redis](database-access/cache-tutorial/redis-cache-tutorial)
+    Démontre l'utilisation de Redis comme cache distribué pour une application Spring Boot.
 ### [Database versioning](database-access/database-versioning-tutorial)
 Gérez les évolutions de votre schéma de base de données de manière rigoureuse et automatisée.
 [article](https://www.sfeir.dev/back/migration-versioning-de-base-de-donnees-dans-une-application-spring-boot/)

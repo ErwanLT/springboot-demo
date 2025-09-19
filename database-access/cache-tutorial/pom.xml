@@ -13,6 +13,7 @@
     <modules>
         <module>in-memory-cache-tutorial</module>
         <module>caffeine-cache-tutorial</module>
+        <module>redis-cache-tutorial</module>
     </modules>
 
 </project>

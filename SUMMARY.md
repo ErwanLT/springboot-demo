@@ -21,6 +21,9 @@
 
 ## Database Access (`database-access`)
 - Cache
+  - in memory
+  - caffeine
+  - redis
 - Database versioning
   - Flyway
   - Liquibase
