@@ -5,4 +5,4 @@ Ce module contient une collection de tutoriels démontrant différentes stratég
 ## Modules Disponibles
 
 -   **`in-memory-cache-tutorial`**: Un tutoriel sur l'utilisation du cache en mémoire de base de Spring Boot, basé sur `ConcurrentHashMap`.
--   *(D'autres modules seront ajoutés ici...)*
+-   **`caffeine-cache-tutorial`**: Un tutoriel sur l'intégration du cache haute performance Caffeine.

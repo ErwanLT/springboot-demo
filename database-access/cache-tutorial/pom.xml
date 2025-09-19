@@ -12,6 +12,7 @@
 
     <modules>
         <module>in-memory-cache-tutorial</module>
+        <module>caffeine-cache-tutorial</module>
     </modules>
 
 </project>
