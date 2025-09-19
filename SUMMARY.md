@@ -17,6 +17,7 @@
   - OAuth2
 - SpEL
 - Validation
+- Gestion centralisée des exceptions
 
 ## Database Access (`database-access`)
 - Cache

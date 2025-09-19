@@ -56,7 +56,9 @@ Tutoriel sur la validation des données en entrée avec les annotations de Jakar
 ## Database Access (`database-access`)
 
 ### [Cache](database-access/cache-tutorial)
-Tutoriel sur la mise en place d'un système de cache pour améliorer les performances de vos applications.
+Collection de tutoriels sur différentes stratégies de mise en cache.
+#### [Cache en mémoire](database-access/cache-tutorial/in-memory-cache-tutorial)
+Démontre l'utilisation du cache en mémoire de base de Spring Boot.
 
 ### [Database versioning](database-access/database-versioning-tutorial)
 Gérez les évolutions de votre schéma de base de données de manière rigoureuse et automatisée.
