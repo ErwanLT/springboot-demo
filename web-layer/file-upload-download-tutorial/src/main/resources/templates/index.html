@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>File Upload and Download</title>
+</head>
+<body>
+
+<h1>Single File Upload</h1>
+<form action="/uploadFile" method="post" enctype="multipart/form-data">
+    <input type="file" name="file">
+    <button type="submit">Upload</button>
+</form>
+
+<div th:if="${fileName}">
+    <p>File uploaded successfully: <a th:href="${fileDownloadUri}" th:text="${fileName}"></a></p>
+</div>
+
+<h1>Multiple File Upload</h1>
+<form action="/uploadMultipleFiles" method="post" enctype="multipart/form-data">
+    <input type="file" name="files" multiple>
+    <button type="submit">Upload</button>
+</form>
+
+<div th:if="${fileDownloadUris}">
+    <h2>Uploaded Files:</h2>
+    <ul>
+        <li th:each="uri : ${fileDownloadUris}">
+            <a th:href="${uri}" th:text="${uri}"></a>
+        </li>
+    </ul>
+</div>
+
+</body>
+</html>

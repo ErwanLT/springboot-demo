@@ -24,6 +24,7 @@
         <module>templating-tutorial</module>
         <module>vaadin-tutorial</module>
         <module>api-versioning-tutorial</module>
+        <module>file-upload-download-tutorial</module>
     </modules>
 
 </project>

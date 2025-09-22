@@ -80,6 +80,7 @@
 - Vaadin
     - Application CRUD
     - Pokédex
+- Gestion de fichier upload / download
 
 # Sujets non encore traités (Roadmap)
 
