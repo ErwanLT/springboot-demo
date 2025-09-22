@@ -63,13 +63,17 @@
 
 ## Web Layer (`web-layer`)
 - API Versioning
-- Limitation de Débit (Rate Limiting)
+  - url
+  - param
+  - header
+- Limitation de Débit (Bucket4J)
     - Avec un filtre (Filter)
     - Avec l'AOP
     - Dans le contrôleur (Controller)
 - GraphQL
 - HATEOAS
 - Internationalization (i18n)
+- Localisation (l10n)
 - Templating
   - Jasper
   - Thymeleaf
