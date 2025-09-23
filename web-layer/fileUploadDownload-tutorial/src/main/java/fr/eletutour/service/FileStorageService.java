@@ -1,5 +1,6 @@
 package fr.eletutour.service;
 
+import fr.eletutour.exception.FileStorageException;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
@@ -19,12 +20,16 @@ public class FileStorageService {
     private final Path fileStorageLocation;
 
     public FileStorageService() {
-        this.fileStorageLocation = Paths.get("uploads").toAbsolutePath().normalize();
+        this(Paths.get("uploads"));
+    }
+
+    public FileStorageService(Path fileStorageLocation) {
+        this.fileStorageLocation = fileStorageLocation.toAbsolutePath().normalize();
 
         try {
             Files.createDirectories(this.fileStorageLocation);
         } catch (Exception ex) {
-            throw new RuntimeException("Could not create the directory where the uploaded files will be stored.", ex);
+            throw new FileStorageException("Could not create the directory where the uploaded files will be stored.", ex);
         }
     }
 
@@ -33,14 +38,14 @@ public class FileStorageService {
 
         try {
             if (fileName.contains("..")) {
-                throw new RuntimeException("Sorry! Filename contains invalid path sequence " + fileName);
+                throw new FileStorageException("Sorry! Filename contains invalid path sequence " + fileName);
             }
 
             Path targetLocation = this.fileStorageLocation.resolve(fileName);
             Files.copy(file.getInputStream(), targetLocation, StandardCopyOption.REPLACE_EXISTING);
 
         } catch (IOException ex) {
-            throw new RuntimeException("Could not store file " + fileName + ". Please try again!", ex);
+            throw new FileStorageException("Could not store file " + fileName + ". Please try again!", ex);
         }
     }
 
@@ -51,10 +56,10 @@ public class FileStorageService {
             if (resource.exists()) {
                 return resource;
             } else {
-                throw new RuntimeException("File not found " + fileName);
+                throw new FileStorageException("File not found " + fileName);
             }
         } catch (MalformedURLException ex) {
-            throw new RuntimeException("File not found " + fileName, ex);
+            throw new FileStorageException("File not found " + fileName, ex);
         }
     }
 }
