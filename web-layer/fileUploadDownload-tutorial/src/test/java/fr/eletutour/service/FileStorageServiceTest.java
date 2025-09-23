@@ -51,4 +51,18 @@ class FileStorageServiceTest {
     void loadFileAsResource_withNonExistentFile() {
         assertThrows(FileStorageException.class, () -> fileStorageService.loadFileAsResource("test.txt"));
     }
+
+    @Test
+    void deleteAll() throws IOException {
+        // Given
+        Path file = tempDir.resolve("test.txt");
+        Files.write(file, "Spring Framework".getBytes());
+        assertThat(Files.exists(file)).isTrue();
+
+        // When
+        fileStorageService.deleteAll();
+
+        // Then
+        assertThat(Files.exists(tempDir)).isFalse();
+    }
 }

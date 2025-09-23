@@ -1,9 +1,11 @@
 package fr.eletutour.service;
 
 import fr.eletutour.exception.FileStorageException;
+import jakarta.annotation.PreDestroy;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
+import org.springframework.util.FileSystemUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -61,5 +63,10 @@ public class FileStorageService {
         } catch (MalformedURLException ex) {
             throw new FileStorageException("File not found " + fileName, ex);
         }
+    }
+
+    @PreDestroy
+    public void deleteAll() {
+        FileSystemUtils.deleteRecursively(fileStorageLocation.toFile());
     }
 }
