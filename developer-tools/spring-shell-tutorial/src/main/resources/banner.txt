@@ -1,0 +1,7 @@
+ __     __     __    __     ______
+/\ \  _ \ \   /\ "-./  \   /\  ___\
+\ \ \/ ".\ \  \ \ \-./\ \  \ \___  \
+ \ \__/".~\_\  \ \_\ \ \_\  \/\_____\
+  \/_/   \/_/   \/_/  \/_/   \/_____/
+Warehous Management System
+Powered by Spring Boot ${spring-boot.version}

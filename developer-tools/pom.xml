@@ -19,6 +19,7 @@
     <modules>
         <module>code-generation-tutorial</module>
         <module>modulith-tutorial</module>
+        <module>spring-shell-tutorial</module>
     </modules>
 
 </project>
