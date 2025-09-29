@@ -120,45 +120,52 @@ public class WarehouseCommands {
 
     @ShellMethod(key = "run-inventory-ui", value = "Run a long-running inventory check with a TUI progress bar.")
     public String runInventoryUi() throws Exception {
-        // lance la tâche asynchrone (ex : CompletableFuture)
+        // Start the asynchronous long-running task.
         Future<String> future = asyncService.longRunningTask();
 
-        // construit la ProgressView (tickStart=0, tickEnd=100 par défaut)
+        // Build the ProgressView component.
         ProgressView view = new ProgressView(
                 ProgressView.ProgressViewItem.ofText(30, HorizontalAlign.LEFT),
                 ProgressView.ProgressViewItem.ofSpinner(3, HorizontalAlign.LEFT),
                 ProgressView.ProgressViewItem.ofPercent(0, HorizontalAlign.RIGHT)
         );
-        view.setDescription("Vérification inventaire...");
+        view.setDescription("Running inventory check...");
 
-        // wrap -> ViewComponent prêt à l'emploi (configure terminal/eventLoop pour toi)
+        // Wrap the view in a ViewComponent to handle terminal and event loop.
         ViewComponent component = viewComponentBuilder.build(view);
 
-        // exécute asynchrone la vue (ne bloque pas la commande)
+        // Run the view component asynchronously so it doesn't block the command.
         ViewComponent.ViewComponentRun run = component.runAsync();
 
-        // démarre la logique interne du ProgressView (optionnel si la vue gère son propre tick)
-        view.start();
-
-        // boucle d'update : ici on simule / extrait l'avancement de ta tâche
-        // remplace la logique ci-dessous par la progression réelle si dispo
-        int simulated = 0;
-        while (!future.isDone()) {
-            // met à jour la barre de progression (thread-safe pour ce cas d'usage)
-            view.setTickValue(Math.min(100, simulated));
-            simulated += 2;               // ou calcul réel
-            Thread.sleep(150);            // rafraîchissement raisonnable
+        try {
+            // Run and manage the progress view until the future is done.
+            runProgress(view, future);
+        } finally {
+            // Request the component to close and wait for it to terminate.
+            component.exit();
+            run.await();
         }
 
-        // tâche terminée : garantir état final et arrêter la vue
+        // Return the result from the asynchronous task.
+        return future.get();
+    }
+
+    private void runProgress(ProgressView view, Future<?> future) throws InterruptedException {
+        // Start the ProgressView's internal logic (e.g., spinner animation).
+        view.start();
+
+        // Since the async task doesn't report progress, we simulate it.
+        // The loop updates the progress bar until the task is complete.
+        int progress = 0;
+        while (!future.isDone()) {
+            // Update the progress bar. This is thread-safe for this use case.
+            view.setTickValue(Math.min(100, progress));
+            progress += 2; // Simulate a 2% progress increment.
+            Thread.sleep(150); // Refresh at a reasonable rate.
+        }
+
+        // Ensure the progress bar shows 100% and stop the view.
         view.setTickValue(100);
         view.stop();
-
-        // demander la fermeture du component + attendre la fin
-        component.exit();
-        run.await();
-
-        // renvoyer résultat
-        return future.get(); // ou future.join()
     }
 }
