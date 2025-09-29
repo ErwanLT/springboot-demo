@@ -6,23 +6,15 @@ import fr.eletutour.service.WarehouseService;
 import org.springframework.shell.component.ViewComponent;
 import org.springframework.shell.component.ViewComponentBuilder;
 import org.springframework.shell.component.flow.ComponentFlow;
-import org.springframework.shell.component.view.TerminalUI;
 import org.springframework.shell.component.view.control.ProgressView;
 import org.springframework.shell.geom.HorizontalAlign;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 import org.springframework.shell.standard.ShellOption;
-import org.springframework.shell.table.BeanListTableModel;
-import org.springframework.shell.table.BorderStyle;
-import org.springframework.shell.table.Table;
-import org.springframework.shell.table.TableBuilder;
-import org.springframework.shell.table.TableModel;
+import org.springframework.shell.table.*;
 
 import java.util.Collection;
 import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
