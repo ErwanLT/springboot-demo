@@ -77,6 +77,9 @@ Tutoriel sur l'intégration d'**Elasticsearch** dans une application Spring Boot
 ### [R2DBC](database-access/r2dbc-tutorial)
 Tutoriel sur l'utilisation de R2DBC (Reactive Relational Database Connectivity) avec Spring Data R2DBC pour interagir avec une base de données relationnelle de manière réactive.
 
+### [QueryDSL](database-access/querydsl-tutorial)
+Tutoriel sur l'utilisation de QueryDSL pour construire des requêtes SQL de manière typée et sécurisée.
+
 ## Developer Tools (`developer-tools`)
 
 ### [Génération de Code](developer-tools/code-generation-tutorial)
@@ -84,6 +87,9 @@ Explore différentes techniques pour automatiser les tâches répétitives, nota
 
 ### [Spring Modulith](developer-tools/modulith-tutorial)
 Démontre comment structurer une application en "modulithe" avec des frontières de modules claires et vérifiables.
+
+### [Spring Shell](developer-tools/spring-shell-tutorial)
+Créez des applications en ligne de commande (CLI) interactives avec Spring Shell.
 
 ## Integration (`integration`)
 
@@ -110,6 +116,9 @@ Tutoriel sur la création d'une application de chat en temps réel avec Spring B
 
 ### [gRPC](integration/grpc-tutorial)
 Tutoriel sur la création d'un service et client gRPC pour une communication haute performance avec Spring Boot.
+
+### [Blockchain](integration/blockchain-tutorial)
+Tutoriel sur l'intégration avec la blockchain Ethereum en utilisant la librairie Web3j.
 
 ## Operations (`operations`)
 
@@ -184,3 +193,6 @@ Tutoriel sur la création d'applications web riches et interactives entièrement
 Un exemple d'application **CRUD (Create, Read, Update, Delete)** complète pour gérer des produits.
 #### [Pokédex](web-layer/vaadin-tutorial/pokedex)
 Une application **Pokédex** plus riche pour démontrer la navigation, les vues dynamiques et le data binding.
+
+### [File Upload/Download](web-layer/fileUploadDownload-tutorial)
+Implémentez un service pour téléverser et télécharger des fichiers avec Spring Boot.
