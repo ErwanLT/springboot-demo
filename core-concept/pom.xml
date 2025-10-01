@@ -27,6 +27,7 @@
         <module>actuator-tutorial</module>
         <module>validation-tutorial</module>
         <module>custom-starter-tutorial</module>
+        <module>doc-tutorial</module>
     </modules>
 
 </project>
