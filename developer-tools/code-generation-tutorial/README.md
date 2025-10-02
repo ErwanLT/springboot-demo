@@ -1,8 +1,9 @@
-# Code Generation Tutorial
+# Tutoriel sur la Génération de Code
 
-This module explores different techniques for code generation to automate repetitive tasks and accelerate development.
+Ce module explore différentes techniques de génération de code pour automatiser les tâches répétitives et accélérer le développement.
 
-## Sub-modules
+### [Génération de Client (OpenAPI)](client-generation-tutorial)
+Apprenez à générer automatiquement un client d'API REST à partir d'une spécification OpenAPI (Swagger).
 
-- [Client Generation from OpenAPI](client-generation-tutorial): Learn how to automatically generate a REST API client from an OpenAPI (Swagger) specification.
-- [Mapper Generation with MapStruct](mapper-tutorial): Use MapStruct to automatically generate mappers between your Java objects (e.g., DTOs and entities).
+### [Génération de Mapper (MapStruct)](mapper-tutorial)
+Utilisez MapStruct pour générer automatiquement les mappers entre vos objets Java (par exemple, entre les DTOs et les entités).
