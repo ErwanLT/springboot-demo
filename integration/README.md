@@ -2,10 +2,29 @@
 
 Ce module regroupe les tutoriels sur l'intégration de systèmes externes avec Spring Boot.
 
-## Sous-modules
+### [Système de gestion de règles métier (BRMS)](brms-tutorial)
+Explorez différents moteurs de règles pour externaliser et gérer dynamiquement votre logique métier.
+#### [Drools](brms-tutorial/drools-tutorial)
+Intégrez **Drools**, un moteur de règles robuste, pour gérer des règles métier complexes de manière déclarative.
+#### [Easy Rules](brms-tutorial/easyrules-tutorial)
+Utilisez **Easy Rules**, une bibliothèque légère, pour créer des règles métier simples et faciles à maintenir.
+#### [RuleBook](brms-tutorial/rulebook-tutorial)
+Découvrez **RuleBook** et son DSL intuitif pour construire des règles métier lisibles et chaînées en Java.
 
-- [**BRMS**](./brms-tutorial/README.md): Explorez différents moteurs de règles pour externaliser et gérer dynamiquement votre logique métier.
-- [**Messaging**](./messaging-tutorial/README.md): Tutoriels sur l'intégration de systèmes de messagerie comme JMS et Kafka.
-- [**Notification**](./notification-tutorial/README.md): Tutoriel sur l'envoi de notifications (par exemple, email, SMS).
-- [**WebSocket**](./websocket-tutorial/README.md): Tutoriel sur la création d'une application de chat en temps réel avec Spring Boot et WebSockets.
-- [**gRPC**](./grpc-tutorial/README.md): Tutoriel sur la création d'un service et client gRPC avec Spring Boot.
+### [Messaging](messaging-tutorial)
+#### [JMS](messaging-tutorial/jms-tutorial)
+Tutoriel sur l'intégration de **JMS (Java Message Service)** avec ActiveMQ pour une messagerie asynchrone standard et découplée.
+#### [Kafka](messaging-tutorial/kafka-tutorial)
+Tutoriel sur l'intégration d'**Apache Kafka** pour construire des systèmes de messagerie asynchrones, distribués et réactifs.
+
+### [Notification](notification-tutorial)
+Tutoriel sur l'envoi de notifications (par exemple, email, SMS) depuis une application Spring Boot.
+
+### [WebSocket](websocket-tutorial)
+Tutoriel sur la création d'une application de chat en temps réel avec Spring Boot et WebSockets pour une communication bidirectionnelle instantanée.
+
+### [gRPC](grpc-tutorial)
+Tutoriel sur la création d'un service et client gRPC pour une communication haute performance avec Spring Boot.
+
+### [Blockchain](blockchain-tutorial)
+Tutoriel sur l'intégration avec la blockchain Ethereum en utilisant la librairie Web3j.
