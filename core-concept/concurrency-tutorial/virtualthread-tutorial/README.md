@@ -1,75 +1,78 @@
-# Virtual Thread Tutorial
+# Tutoriel sur les Virtual Threads (Project Loom)
 
-This tutorial demonstrates how to use virtual threads in a Spring Boot application to upload files to an SFTP server.
+Ce tutoriel démontre comment utiliser les **Virtual Threads** dans une application Spring Boot pour améliorer les performances des tâches concurrentes liées à des entrées/sorties (I/O-bound). L'exemple concret est le traitement de fichiers (téléversement, organisation) sur un serveur SFTP.
 
-## Prerequisites
+## Concepts Clés
+
+- **Virtual Threads (Project Loom)**: Introduits dans Java 21, les *virtual threads* sont des threads légers gérés par la JVM. Ils sont conçus pour augmenter considérablement le débit des applications concurrentes qui passent beaucoup de temps à attendre (comme les appels réseau ou les opérations sur les fichiers), sans la complexité de la programmation asynchrone.
+
+- **Activation dans Spring Boot**: Pour utiliser les virtual threads, on peut :
+    1.  Activer la propriété `spring.threads.virtual.enabled=true` dans `application.properties` pour que l'ensemble de l'application (y compris le serveur web embarqué) les utilise.
+    2.  Définir un bean `AsyncTaskExecutor` personnalisé, comme dans ce projet, pour dédier les virtual threads à des tâches spécifiques soumises via cet exécuteur.
+        ```java
+        @Bean
+        public AsyncTaskExecutor applicationTaskExecutor() {
+            return new TaskExecutorAdapter(Executors.newVirtualThreadPerTaskExecutor());
+        }
+        ```
+
+- **Spring Integration SFTP**: Module de Spring Integration utilisé pour simplifier les interactions avec un serveur SFTP.
+
+## Fonctionnalités Démontrées
+
+- **Configuration des Virtual Threads**: Mise en place d'un exécuteur de tâches basé sur les virtual threads.
+- **Traitement Parallèle**: Le téléversement de plusieurs fichiers est traité en parallèle, chaque fichier étant géré par un virtual thread distinct.
+- **Comparaison de Performance**: L'application expose deux endpoints pour organiser les fichiers sur le serveur SFTP :
+    - Un endpoint (`/organize`) qui effectue l'opération de manière concurrente avec des virtual threads.
+    - Un endpoint (`/organize-sequentially`) qui fait la même chose de manière séquentielle.
+    Cela permet de comparer les temps d'exécution dans les logs et de constater le gain de performance.
+
+## Comment l'exécuter et le tester
+
+### 1. Prérequis
 
 - Java 21
-- Docker and Docker Compose
-- Maven
+- Docker et Docker Compose
 
-## 1. Start the SFTP Server
+### 2. Démarrer le serveur SFTP
 
-Navigate to the `core-concept/concurrency-tutorial/virtualthread-tutorial` directory and run the following command to start the SFTP server:
+Un serveur SFTP est fourni via Docker. Pour le lancer, exécutez la commande suivante à la racine de ce module (`virtualthread-tutorial`) :
 
 ```bash
 docker-compose up -d
 ```
+Le serveur sera disponible sur `localhost:2222` (utilisateur: `foo`, mot de passe: `pass`).
 
-The SFTP server will be available on `localhost:2222` with the following credentials:
-- **User**: `foo`
-- **Password**: `pass`
+### 3. Lancer l'application
 
-## 2. Build and Run the Application
-
-Navigate to the `core-concept/concurrency-tutorial/virtualthread-tutorial` directory and run the following command to build the application:
+Vous pouvez démarrer l'application Spring Boot via votre IDE ou avec Maven :
 
 ```bash
-mvn clean install
+mvn spring-boot:run
 ```
 
-Then, run the application:
+### 4. Téléverser des fichiers
+
+Utilisez `curl` pour envoyer une requête `POST` à l'endpoint `/upload` avec un ou plusieurs fichiers. L'application les traitera en parallèle.
 
 ```bash
-java -jar target/virtualthread-tutorial-1.0-SNAPSHOT.jar
+# Assurez-vous de créer des fichiers de test au préalable
+# Exemple : touch 20240115_1030_file1.txt 20240116_1100_file2.txt
+
+curl -X POST -F 'files=@/chemin/vers/20240115_1030_file1.txt' -F 'files=@/chemin/vers/20240116_1100_file2.txt' http://localhost:8080/upload
 ```
+Les fichiers seront téléversés dans le dossier `/upload` du serveur SFTP.
 
-The application will start and be ready to accept file uploads.
+### 5. Organiser les fichiers et comparer les performances
 
-## 3. Upload Files
+Les fichiers seront déplacés dans une structure de dossiers `année/mois/jour` basée sur leur nom. Observez les logs de l'application pour voir la différence de temps d'exécution.
 
-To test the application, you can send a POST request to the `/upload` endpoint with a list of files.
+- **Organisation concurrente (avec Virtual Threads) :**
+  ```bash
+  curl -X POST http://localhost:8080/organize
+  ```
 
-You can use a tool like `curl` to send the request. For example:
-
-```bash
-curl -X POST -F 'files=@/path/to/your/file1.txt' -F 'files=@/path/to/your/file2.txt' http://localhost:8080/upload
-```
-
-The application will receive the files, process them in parallel using virtual threads, and upload them to the SFTP server in the `/home/foo/upload` directory.
-
-## 4. Organize Files
-
-This tutorial provides two endpoints to organize files on the SFTP server. The files will be moved into a `yyyy/MM/dd` directory structure based on their filenames (expected format: `yyyyMMdd_HHmm_name`).
-
-This allows you to compare the performance of organizing files concurrently using virtual threads versus sequentially.
-
-### Concurrent Organization
-
-To organize files concurrently, send a POST request to the `/organize` endpoint:
-
-```bash
-curl -X POST http://localhost:8080/organize
-```
-
-Check the application logs to see the execution time.
-
-### Sequential Organization
-
-To organize files sequentially, send a POST request to the `/organize-sequentially` endpoint:
-
-```bash
-curl -X POST http://localhost:8080/organize-sequentially
-```
-
-By comparing the execution time logged by the application for both endpoints, you can observe the performance benefits of using virtual threads for I/O-bound tasks.
+- **Organisation séquentielle :**
+  ```bash
+  curl -X POST http://localhost:8080/organize-sequentially
+  ```
