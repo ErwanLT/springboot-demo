@@ -91,6 +91,9 @@ Démontre comment structurer une application en "modulithe" avec des frontières
 ### [Spring Shell](developer-tools/spring-shell-tutorial)
 Créez des applications en ligne de commande (CLI) interactives avec Spring Shell.
 
+### [Hotswap avec DevTools](developer-tools/hotswap-tutorial)
+Apprenez à utiliser le rechargement à chaud (hotswap) avec Spring Boot DevTools pour accélérer le développement en appliquant les changements de code sans redémarrer l'application.
+
 ## Integration (`integration`)
 
 ### [Système de gestion de règles métier (BRMS)](integration/brms-tutorial)
