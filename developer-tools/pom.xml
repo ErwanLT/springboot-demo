@@ -20,6 +20,7 @@
         <module>code-generation-tutorial</module>
         <module>modulith-tutorial</module>
         <module>spring-shell-tutorial</module>
+        <module>hotswap-tutorial</module>
     </modules>
 
 </project>
