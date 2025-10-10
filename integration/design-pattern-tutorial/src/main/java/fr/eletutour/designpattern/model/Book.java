@@ -2,12 +2,14 @@
 package fr.eletutour.designpattern.model;
 
 public class Book {
+    private final long id;
     private final String title;
     private final String author;
     private final String type;
     private final String cote;
 
     private Book(Builder builder) {
+        this.id = builder.id;
         this.title = builder.title;
         this.author = builder.author;
         this.type = builder.type;
@@ -15,10 +17,16 @@ public class Book {
     }
 
     public static class Builder {
+        private long id;
         private String title;
         private String author;
         private String type;
         private String cote;
+
+        public Builder id(long id) {
+            this.id = id;
+            return this;
+        }
 
         public Builder title(String title) {
             this.title = title;
@@ -46,6 +54,7 @@ public class Book {
     }
 
     // Getters classiques
+    public long getId() { return id; }
     public String getTitle() { return title; }
     public String getAuthor() { return author; }
     public String getType() { return type; }

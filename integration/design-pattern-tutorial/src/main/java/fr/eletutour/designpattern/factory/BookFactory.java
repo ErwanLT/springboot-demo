@@ -15,11 +15,12 @@ public class BookFactory {
         this.coteStrategyFactory = coteStrategyFactory;
     }
 
-    public Book createBook(String title, String author, String type) {
+    public Book createBook(long id, String title, String author, String type) {
         BookCoteStrategy strategy = coteStrategyFactory.getStrategy(type);
         String cote = strategy.generateCote(author);
 
         return new Book.Builder()
+                .id(id)
                 .title(title)
                 .author(author)
                 .type(type)
