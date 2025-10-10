@@ -59,4 +59,15 @@ public class Book {
     public String getAuthor() { return author; }
     public String getType() { return type; }
     public String getCote() { return cote; }
+
+    @Override
+    public String toString() {
+        return "Book{"
+                + "id=" + id
+                + ", title='" + title + '\''
+                + ", author='" + author + '\''
+                + ", type='" + type + '\''
+                + ", cote='" + cote + '\''
+                + '}';
+    }
 }
