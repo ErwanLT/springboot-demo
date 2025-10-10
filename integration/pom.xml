@@ -23,5 +23,6 @@
         <module>websocket-tutorial</module>
         <module>grpc-tutorial</module>
         <module>blockchain-tutorial</module>
+        <module>design-pattern-tutorial</module>
     </modules>
 </project>

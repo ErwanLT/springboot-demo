@@ -28,3 +28,6 @@ Tutoriel sur la création d'un service et client gRPC pour une communication hau
 
 ### [Blockchain](blockchain-tutorial)
 Tutoriel sur l'intégration avec la blockchain Ethereum en utilisant la librairie Web3j.
+
+### [Design Pattern](design-pattern-tutorial)
+Tutoriel sur la mise en place d'un CRUD de gestion de bibliothèque mais boosté via des design patterns tel que factory, builder, strategy...
