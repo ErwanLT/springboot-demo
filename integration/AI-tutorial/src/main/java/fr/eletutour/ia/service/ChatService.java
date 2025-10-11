@@ -9,11 +9,14 @@ import dev.langchain4j.data.message.AiMessage;
 import dev.langchain4j.data.segment.TextSegment;
 import dev.langchain4j.memory.chat.MessageWindowChatMemory;
 import dev.langchain4j.model.chat.ChatModel;
+import dev.langchain4j.model.chat.response.ChatResponse;
+import dev.langchain4j.model.chat.response.StreamingChatResponseHandler;
 import dev.langchain4j.model.embedding.EmbeddingModel;
 import dev.langchain4j.model.input.Prompt;
 import dev.langchain4j.model.input.PromptTemplate;
 import dev.langchain4j.model.mistralai.MistralAiChatModel;
 import dev.langchain4j.model.mistralai.MistralAiEmbeddingModel;
+import dev.langchain4j.model.mistralai.MistralAiStreamingChatModel;
 import dev.langchain4j.store.embedding.EmbeddingMatch;
 import dev.langchain4j.store.embedding.EmbeddingSearchRequest;
 import dev.langchain4j.store.embedding.EmbeddingStore;
@@ -30,6 +33,7 @@ import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 
 import static dev.langchain4j.data.document.loader.FileSystemDocumentLoader.loadDocument;
@@ -44,6 +48,7 @@ public class ChatService {
 
     private final ChatModel model;
     private final EmbeddingModel embeddingModel;
+    private final MistralAiStreamingChatModel streamingChatModel;
 
     public ChatService(@Value("${mistral.api.key}") String KEY){
         model = MistralAiChatModel.builder()
@@ -56,6 +61,13 @@ public class ChatService {
         embeddingModel = MistralAiEmbeddingModel.builder()
                 .apiKey(KEY)
                 .modelName(MISTRAL_EMBED)
+                .logRequests(true)
+                .logResponses(true)
+                .build();
+
+        streamingChatModel = MistralAiStreamingChatModel.builder()
+                .apiKey(KEY)
+                .modelName(MISTRAL_SMALL_LATEST)
                 .logRequests(true)
                 .logResponses(true)
                 .build();
@@ -149,4 +161,30 @@ public class ChatService {
         }
     }
 
+    public String streaming() {
+        String userMessage = "Écrit un poème à propos de java et des axolotl faisant 100 mots";
+
+        CompletableFuture<ChatResponse> futureResponse = new CompletableFuture<>();
+
+        streamingChatModel.chat(userMessage, new StreamingChatResponseHandler() {
+
+            @Override
+            public void onPartialResponse(String partialResponse) {
+                System.out.print(partialResponse);
+            }
+
+            @Override
+            public void onCompleteResponse(ChatResponse completeResponse) {
+                futureResponse.complete(completeResponse);
+            }
+
+            @Override
+            public void onError(Throwable error) {
+                futureResponse.completeExceptionally(error);
+            }
+        });
+
+        AiMessage response = futureResponse.join().aiMessage();
+        return response.text();
+    }
 }
