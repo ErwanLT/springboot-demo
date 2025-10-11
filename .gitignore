@@ -54,4 +54,4 @@ GEMINI.md
 /web-layer/vaadin-tutorial/pokedex/src/main/frontend/index.html
 /web-layer/vaadin-tutorial/src/
 
-/integration/AI-tutorial/src/main/resources/application.properties
+/integration/AI-tutorial/src/main/resources/api-key
