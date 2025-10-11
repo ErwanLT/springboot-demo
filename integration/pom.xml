@@ -24,5 +24,6 @@
         <module>grpc-tutorial</module>
         <module>blockchain-tutorial</module>
         <module>design-pattern-tutorial</module>
+        <module>AI-tutorial</module>
     </modules>
 </project>
