@@ -63,7 +63,7 @@ public class ChatService {
 
     public String chat(String subjet, String adjective) {
         PromptTemplate promptTemplate = PromptTemplate
-                .from("Tell me a {{adjective}} joke about {{content}} in french..");
+                .from("Raconte moi une blague {{adjective}} sur {{content}}..");
         Map<String, Object> variables = new HashMap<>();
         variables.put("adjective", adjective);
         variables.put("content", subjet);
