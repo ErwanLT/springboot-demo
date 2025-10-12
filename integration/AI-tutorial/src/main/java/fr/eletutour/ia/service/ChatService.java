@@ -87,12 +87,12 @@ public class ChatService {
     public String memory() {
         var chatMemory = MessageWindowChatMemory.withMaxMessages(5);
 
-        chatMemory.add(userMessage("Hello, my name is Erwan"));
+        chatMemory.add(userMessage("Bonjour je m'appelle Erwan"));
         AiMessage answer = model.chat(chatMemory.messages()).aiMessage();
         System.out.println(answer.text());
         chatMemory.add(answer);
 
-        chatMemory.add(userMessage("What is my name?"));
+        chatMemory.add(userMessage("Quel est mon nom ?"));
         AiMessage answerWithName = model.chat(chatMemory.messages()).aiMessage();
         chatMemory.add(answerWithName);
         return answerWithName.text();
