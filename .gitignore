@@ -55,3 +55,4 @@ GEMINI.md
 /web-layer/vaadin-tutorial/src/
 
 /integration/AI-tutorial/src/main/resources/api-key
+/integration/AI-tutorial/langchain4j-tutorial/langchain4j-api/src/main/resources/application.properties

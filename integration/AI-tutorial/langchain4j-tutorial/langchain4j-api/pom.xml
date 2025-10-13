@@ -5,15 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>fr.eletutour</groupId>
-        <artifactId>integration</artifactId>
+        <artifactId>langchain4j-tutorial</artifactId>
         <version>8.0.0-SNAPSHOT</version>
     </parent>
-    <packaging>pom</packaging>
-    <modules>
-        <module>langchain4j-tutorial</module>
-    </modules>
 
-    <artifactId>AI-tutorial</artifactId>
+    <artifactId>langchain4j-api</artifactId>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>

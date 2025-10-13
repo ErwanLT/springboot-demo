@@ -25,5 +25,6 @@
         <module>blockchain-tutorial</module>
         <module>design-pattern-tutorial</module>
         <module>AI-tutorial</module>
+        <module>AI-tutorial/langchain4j-tutorial</module>
     </modules>
 </project>
