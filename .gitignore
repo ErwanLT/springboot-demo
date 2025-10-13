@@ -56,3 +56,4 @@ GEMINI.md
 
 /integration/AI-tutorial/src/main/resources/api-key
 /integration/AI-tutorial/langchain4j-tutorial/langchain4j-api/src/main/resources/application.properties
+/integration/AI-tutorial/langchain4j-tutorial/springboot-integration/src/main/resources/application.properties
