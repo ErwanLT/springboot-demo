@@ -1,14 +1,21 @@
 package fr.eletutour.ia.service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import dev.langchain4j.data.document.Document;
 import dev.langchain4j.data.document.DocumentSplitter;
 import dev.langchain4j.data.document.parser.TextDocumentParser;
 import dev.langchain4j.data.document.splitter.DocumentSplitters;
 import dev.langchain4j.data.embedding.Embedding;
 import dev.langchain4j.data.message.AiMessage;
+import dev.langchain4j.data.message.UserMessage;
 import dev.langchain4j.data.segment.TextSegment;
 import dev.langchain4j.memory.chat.MessageWindowChatMemory;
 import dev.langchain4j.model.chat.ChatModel;
+import dev.langchain4j.model.chat.request.ChatRequest;
+import dev.langchain4j.model.chat.request.ResponseFormat;
+import dev.langchain4j.model.chat.request.json.JsonObjectSchema;
+import dev.langchain4j.model.chat.request.json.JsonSchema;
 import dev.langchain4j.model.chat.response.ChatResponse;
 import dev.langchain4j.model.chat.response.StreamingChatResponseHandler;
 import dev.langchain4j.model.embedding.EmbeddingModel;
@@ -21,6 +28,7 @@ import dev.langchain4j.store.embedding.EmbeddingMatch;
 import dev.langchain4j.store.embedding.EmbeddingSearchRequest;
 import dev.langchain4j.store.embedding.EmbeddingStore;
 import dev.langchain4j.store.embedding.inmemory.InMemoryEmbeddingStore;
+import fr.eletutour.ia.model.Book;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -38,6 +46,7 @@ import java.util.stream.Collectors;
 
 import static dev.langchain4j.data.document.loader.FileSystemDocumentLoader.loadDocument;
 import static dev.langchain4j.data.message.UserMessage.userMessage;
+import static dev.langchain4j.model.chat.request.ResponseFormatType.JSON;
 import static dev.langchain4j.model.mistralai.MistralAiChatModelName.MISTRAL_SMALL_LATEST;
 import static dev.langchain4j.model.mistralai.MistralAiEmbeddingModelName.MISTRAL_EMBED;
 
@@ -186,5 +195,38 @@ public class ChatService {
 
         AiMessage response = futureResponse.join().aiMessage();
         return response.text();
+    }
+
+    public Book structuredOutput() throws JsonProcessingException {
+        ResponseFormat responseFormat = ResponseFormat.builder()
+                .type(JSON)
+                .jsonSchema(JsonSchema.builder()
+                        .name("Book")
+                        .rootElement(JsonObjectSchema.builder()
+                                .addStringProperty("title")
+                                .addStringProperty("author")
+                                .addIntegerProperty("year")
+                                .addBooleanProperty("available")
+                                .required("title", "author", "year", "available")
+                                .build())
+                        .build())
+                .build();
+
+        UserMessage userMessage = UserMessage.from("""
+        "Les Misérables" est un roman écrit par Victor Hugo en 1862.
+        Cet ouvrage monumental est aujourd’hui encore disponible en librairie.
+        """);
+
+        ChatRequest chatRequest = ChatRequest.builder()
+                .responseFormat(responseFormat)
+                .messages(userMessage)
+                .build();
+
+        ChatResponse chatResponse = model.chat(chatRequest);
+
+        String output = chatResponse.aiMessage().text();
+
+        return new ObjectMapper().readValue(output, Book.class);
+
     }
 }
