@@ -1,6 +1,7 @@
 package fr.eletutour.ia.controller;
 
 import dev.langchain4j.model.chat.ChatModel;
+import fr.eletutour.ia.assistant.CookingAssistant;
 import fr.eletutour.ia.assistant.PoliteAssistant;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -11,10 +12,12 @@ public class IAController {
 
     private final ChatModel chatModel;
     private final PoliteAssistant politeAssistant;
+    private final CookingAssistant cookingAssistant;
 
-    public IAController(ChatModel chatModel, PoliteAssistant politeAssistant) {
+    public IAController(ChatModel chatModel, PoliteAssistant politeAssistant, CookingAssistant cookingAssistant) {
         this.chatModel = chatModel;
         this.politeAssistant = politeAssistant;
+        this.cookingAssistant = cookingAssistant;
     }
 
     @GetMapping("/chat")
@@ -25,6 +28,11 @@ public class IAController {
     @GetMapping("/polite")
     public String politeAssistant() {
         return politeAssistant.chat("Hello");
+    }
+
+    @GetMapping("/cook")
+    public String chat(@RequestParam(defaultValue = "Donne-moi une recette de crêpes") String message) {
+        return cookingAssistant.chat(message);
     }
 
 }
