@@ -96,6 +96,9 @@ Apprenez à utiliser le rechargement à chaud (hotswap) avec Spring Boot DevTool
 
 ## Integration (`integration`)
 
+### [Intelligence Artificielle (IA)](integration/AI-tutorial)
+Tutoriels sur l'intégration de l'**IA** avec Spring Boot, notamment via la bibliothèque **Langchain4j**.
+
 ### [Système de gestion de règles métier (BRMS)](integration/brms-tutorial)
 Explorez différents moteurs de règles pour externaliser et gérer dynamiquement votre logique métier.
 #### [Drools](integration/brms-tutorial/drools-tutorial)

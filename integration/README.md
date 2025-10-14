@@ -2,6 +2,9 @@
 
 Ce module regroupe les tutoriels sur l'intégration de systèmes externes avec Spring Boot.
 
+### [Intelligence Artificielle (IA)](AI-tutorial)
+Tutoriels sur l'intégration de diverses capacités d'Intelligence Artificielle dans des applications Spring Boot.
+
 ### [Système de gestion de règles métier (BRMS)](brms-tutorial)
 Explorez différents moteurs de règles pour externaliser et gérer dynamiquement votre logique métier.
 #### [Drools](brms-tutorial/drools-tutorial)
