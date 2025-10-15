@@ -13,13 +13,14 @@ Projet de démonstration des fonctionnalités et des intégrations possibles ave
 Tutoriel sur **Spring Boot Actuator**, qui fournit des fonctionnalités prêtes à l'emploi pour surveiller et gérer votre application (points de terminaison de santé, métriques, etc.).
 
 ### [Programmation Orientée Aspect (AOP)](core-concept/aspect-tutorial)
-Tutoriel sur la **Programmation Orientée Aspect** avec Spring Boot. Apprenez à séparer les préoccupations transversales (comme la journalisation ou la sécurité) de votre logique métier pour un code plus propre et modulaire.
+Tutoriel sur la **Programmation Orientée Aspect** avec Spring Boot. Apprenez à séparer les préoccupations transversales (comme la journalisation ou la sécurité) de votre logique métier pour un code plus propre et modulaire.<br>
+[article](www.sfeir.dev/back/spring-aop-comprendre-la-programmation-orientee-aspect-dans-spring/)
 
 ### [Audit](core-concept/audit-tutorial)
 Tutoriel sur la mise en place de l'audit pour tracer les modifications de vos données.
 
 ### [Customisation bannière](core-concept/banner-tutorial)
-Découvrez comment customiser la bannière affichée au démarrage de votre application Spring Boot pour y ajouter votre touche personnelle ou des informations utiles.
+Découvrez comment customiser la bannière affichée au démarrage de votre application Spring Boot pour y ajouter votre touche personnelle ou des informations utiles.<br>
 [article](https://www.sfeir.dev/back/comment-avoir-une-banniere-spring-personnalisee/)
 
 ### [Programmation Concurrente](core-concept/concurrency-tutorial)
@@ -34,13 +35,13 @@ Explorez l'utilisation des **Virtual Threads** pour simplifier l'écriture de co
 ### [Security](core-concept/security-tutorial)
 Apprenez à sécuriser vos applications avec Spring Security.
 #### [Basic Auth](core-concept/security-tutorial/basic-auth-tutorial)
-Implémentez l'authentification **Basic Auth**, une méthode simple et standard pour protéger vos endpoints.
+Implémentez l'authentification **Basic Auth**, une méthode simple et standard pour protéger vos endpoints.<br>
 [article](https://www.sfeir.dev/back/securisez-vos-api-avec-spring-security-basic-auth/)
 #### [JWT](core-concept/security-tutorial/jwt-tutorial)
-Sécurisez vos API de manière stateless avec les **JSON Web Tokens (JWT)**.
+Sécurisez vos API de manière stateless avec les **JSON Web Tokens (JWT)**.<br>
 [article](https://www.sfeir.dev/back/securisez-vos-api-avec-spring-security-jwt/)
 #### [RBAC](core-concept/security-tutorial/jwt-rbac-tutorial)
-Mettez en place un **contrôle d'accès basé sur les rôles (RBAC)** pour gérer finement les permissions de vos utilisateurs.
+Mettez en place un **contrôle d'accès basé sur les rôles (RBAC)** pour gérer finement les permissions de vos utilisateurs.<br>
 [article](https://www.sfeir.dev/back/securisez-vos-api-avec-spring-security-acces-par-role/)
 #### [LDAP](core-concept/security-tutorial/ldap-tutorial)
 Intégrez une authentification **LDAP** pour déléguer la gestion des utilisateurs à un annuaire d'entreprise.
@@ -64,7 +65,7 @@ Intègre le cache haute performance Caffeine pour une gestion plus fine de l'év
 #### [Cache avec Redis](database-access/cache-tutorial/redis-cache-tutorial)
 Démontre l'utilisation de Redis comme cache distribué pour une application Spring Boot.
 ### [Database versioning](database-access/database-versioning-tutorial)
-Gérez les évolutions de votre schéma de base de données de manière rigoureuse et automatisée.
+Gérez les évolutions de votre schéma de base de données de manière rigoureuse et automatisée.<br>
 [article](https://www.sfeir.dev/back/migration-versioning-de-base-de-donnees-dans-une-application-spring-boot/)
 #### [Flyway](database-access/database-versioning-tutorial/flyway-tutorial)
 Utilisez **Flyway** pour versionner votre base de données avec des migrations basées sur des scripts SQL.
@@ -83,7 +84,8 @@ Tutoriel sur l'utilisation de QueryDSL pour construire des requêtes SQL de mani
 ## Developer Tools (`developer-tools`)
 
 ### [Génération de Code](developer-tools/code-generation-tutorial)
-Explore différentes techniques pour automatiser les tâches répétitives, notamment la génération de clients d'API (OpenAPI) et de mappers (MapStruct).
+Explore différentes techniques pour automatiser les tâches répétitives, notamment la génération de clients d'API (OpenAPI) et de mappers (MapStruct).<br>
+[artcile](https://www.sfeir.dev/back/mapstruct-dites-adieu-au-code-repetitif/)
 
 ### [Spring Modulith](developer-tools/modulith-tutorial)
 Démontre comment structurer une application en "modulithe" avec des frontières de modules claires et vérifiables.
@@ -102,11 +104,14 @@ Tutoriels sur l'intégration de l'**IA** avec Spring Boot, notamment via la bibl
 ### [Système de gestion de règles métier (BRMS)](integration/brms-tutorial)
 Explorez différents moteurs de règles pour externaliser et gérer dynamiquement votre logique métier.
 #### [Drools](integration/brms-tutorial/drools-tutorial)
-Intégrez **Drools**, un moteur de règles robuste, pour gérer des règles métier complexes de manière déclarative.
+Intégrez **Drools**, un moteur de règles robuste, pour gérer des règles métier complexes de manière déclarative.<br>
+[article](https://www.sfeir.dev/back/maitrisez-vos-regles-metier-integrez-drools-dans-spring-boot/)
 #### [Easy Rules](integration/brms-tutorial/easyrules-tutorial)
-Utilisez **Easy Rules**, une bibliothèque légère, pour créer des règles métier simples et faciles à maintenir.
+Utilisez **Easy Rules**, une bibliothèque légère, pour créer des règles métier simples et faciles à maintenir.<br>
+[article](https://www.sfeir.dev/back/integration-deasy-rules-dans-une-application-spring-boot/)
 #### [RuleBook](integration/brms-tutorial/rulebook-tutorial)
-Découvrez **RuleBook** et son DSL intuitif pour construire des règles métier lisibles et chaînées en Java.
+Découvrez **RuleBook** et son DSL intuitif pour construire des règles métier lisibles et chaînées en Java.<br>
+[article](https://www.sfeir.dev/back/revolutionner-la-gestion-des-regles-metier-integrer-rulebook-dans-spring-boot/)
 
 ### [Messaging](integration/messaging-tutorial)
 #### [JMS](integration/messaging-tutorial/jms-tutorial)
@@ -131,10 +136,11 @@ Tutoriel sur l'intégration avec la blockchain Ethereum en utilisant la librairi
 ### [Monitoring](operations/monitoring-tutorial)
 Supervisez et monitorez l'état de santé de vos applications.
 #### [Prometheus et Grafana](operations/monitoring-tutorial/prometheus-tutorial)
-Utilisez **Prometheus** pour collecter des métriques et **Grafana** pour créer des tableaux de bord de visualisation.
+Utilisez **Prometheus** pour collecter des métriques et **Grafana** pour créer des tableaux de bord de visualisation.<br>
 [article](https://www.sfeir.dev/back/superviser-votre-application-spring-boot/)
 #### [Spring Boot Admin](operations/monitoring-tutorial/admin-tutorial)
-Déployez **Spring Boot Admin** pour une interface de monitoring et de gestion dédiée à vos applications Spring.
+Déployez **Spring Boot Admin** pour une interface de monitoring et de gestion dédiée à vos applications Spring.<br>
+[article](https://www.sfeir.dev/back/gerer-et-superviser-ses-applications-avec-spring-boot-admin/)
 
 ### [Resilience4j](operations/resilience4j-tutorial)
 Tutoriel sur l'implémentation de patterns de résilience (disjoncteur, réessai, etc.) avec **Resilience4j** pour rendre vos applications plus robustes face aux pannes.
@@ -143,20 +149,23 @@ Tutoriel sur l'implémentation de patterns de résilience (disjoncteur, réessai
 #### [Quartz tutorial](operations/scheduled-tutorial/quartz-tutorial)
 Démontre comment utiliser le planificateur Quartz pour une planification de jobs robuste et persistante.
 #### [Spring Batch](operations/scheduled-tutorial/spring-batch-tutorial)
-Implémentez **Spring Batch** pour créer des traitements par lots (batch) robustes et performants pour des tâches comme l'import/export de données ou des traitements périodiques.
+Implémentez **Spring Batch** pour créer des traitements par lots (batch) robustes et performants pour des tâches comme l'import/export de données ou des traitements périodiques.<br>
 [article](https://www.sfeir.dev/back/planifier-des-taches-avec-spring-batch/)
 
 ### [Testing tutorial](operations/testing-tutorial)
 Découvrez un éventail d'outils et de techniques pour tester vos applications.
 #### [ArchUnit](operations/testing-tutorial/archunit-tutorial)
-Utilisez **ArchUnit** pour écrire des tests qui valident et maintiennent les contraintes architecturales de votre code (ex: "les services ne doivent pas accéder directement aux contrôleurs").
+Utilisez **ArchUnit** pour écrire des tests qui valident et maintiennent les contraintes architecturales de votre code (ex: "les services ne doivent pas accéder directement aux contrôleurs").<br>
+[article](https://www.sfeir.dev/back/maitrisez-votre-architecture-spring-boot-avec-archunit/)
 #### [Chaos Monkey](operations/testing-tutorial/chaos-monkey-tutorial)
-Introduisez du chaos dans votre application avec **Chaos Monkey** pour tester sa résilience en simulant des pannes et des latences de manière contrôlée.
+Introduisez du chaos dans votre application avec **Chaos Monkey** pour tester sa résilience en simulant des pannes et des latences de manière contrôlée.<br>
 [article](https://www.sfeir.dev/back/introduisez-du-chaos-dans-votre-application-spring-boot/)
 #### [Gatling](operations/testing-tutorial/gatling-tutorial)
-Réalisez des **tests de performance** et de charge sur votre application avec Gatling pour identifier les goulots d'étranglement.
+Réalisez des **tests de performance** et de charge sur votre application avec Gatling pour identifier les goulots d'étranglement.<br>
+[article](https://www.sfeir.dev/back/maitrisez-les-tests-de-charge-avec-gatling-pour-spring-boot/)
 #### [Parameterized tests](operations/testing-tutorial/parametrize-test-tutorial)
-Écrivez des **tests paramétrés** avec JUnit 5 pour exécuter le même test avec différents jeux de données, rendant vos tests plus concis et efficaces.
+Écrivez des **tests paramétrés** avec JUnit 5 pour exécuter le même test avec différents jeux de données, rendant vos tests plus concis et efficaces.<br>
+[article](https://www.sfeir.dev/back/un-test-pour-les-gouverner-tous/)
 
 ## Web Layer (`web-layer`)
 
@@ -164,7 +173,8 @@ Réalisez des **tests de performance** et de charge sur votre application avec G
 Découvrez différentes stratégies pour versionner vos API REST afin de gérer les évolutions sans casser les clients existants.
 
 ### [Limitation de Débit (Rate Limiting) avec Bucket4j](web-layer/bucket4j-tutorial)
-Tutoriel sur la mise en place de la **limitation de débit (rate limiting)** pour vos API en utilisant la bibliothèque Bucket4j, afin de protéger vos services contre les surcharges.
+Tutoriel sur la mise en place de la **limitation de débit (rate limiting)** pour vos API en utilisant la bibliothèque Bucket4j, afin de protéger vos services contre les surcharges.<br>
+[article](https://www.sfeir.dev/back/limiter-les-appels-a-son-api-rest-avec-bucket4j/)
 #### [Avec un filtre (Filter)](web-layer/bucket4j-tutorial/filter-tutorial)
 Approche robuste utilisant un **Filtre de Servlet** pour appliquer des règles de limitation globales (par exemple, par adresse IP) avant que la requête n'atteigne le contrôleur.
 #### [Avec l'AOP](web-layer/bucket4j-tutorial/aop-tutorial)
@@ -173,16 +183,24 @@ Méthode déclarative et propre utilisant la **Programmation Orientée Aspect** 
 Approche directe où la logique de limitation est appelée explicitement depuis le **contrôleur**, idéale pour des règles simples et spécifiques à un endpoint.
 
 ### [GraphQL](web-layer/graphql-tutorial)
-Tutoriel complet sur l'intégration de **GraphQL** pour créer des API flexibles et performantes.
+Tutoriel complet sur l'intégration de **GraphQL** pour créer des API flexibles et performantes.<br>
+[article](https://www.sfeir.dev/back/spring-boot-graphql/)
+
 **Partie 1 : Mise en place** : Initialisez GraphQL dans votre projet Spring Boot.
+
 **Partie 2 : Le schéma** : Définissez la structure de votre API avec le schéma GraphQL.
+
 **Partie 3 : Controllers** : Implémentez les résolveurs pour vos requêtes et mutations.
+
 **Partie 4 : Tests unitaires** : Apprenez à tester efficacement votre API GraphQL.
+
 **Partie 5 : Documentation** : Découvrez des outils pour documenter et tester votre API.
+
 **Partie 6 : Gestion des erreurs** : Mettez en place une gestion d'erreurs centralisée et robuste.
 
 ### [HATEOAS](web-layer/hateoas-tutorial)
-Tutoriel sur comment implémenter **HATEOAS** (Hypermedia as the Engine of Application State) pour enrichir vos API REST avec des liens de navigation, les rendant plus découvrables.
+Tutoriel sur comment implémenter **HATEOAS** (Hypermedia as the Engine of Application State) pour enrichir vos API REST avec des liens de navigation, les rendant plus découvrables.<br>
+[article](https://www.sfeir.dev/back/mise-en-place-de-hateoas-dans-spring-boot-un-guide-pratique/)
 
 ### [Internationalization](web-layer/i18n-tutorial)
 Mise en place de l'i18n et du l10n dans un projet springboot.
