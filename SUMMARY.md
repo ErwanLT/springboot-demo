@@ -5,6 +5,8 @@
 - Programmation Orientée Aspect (AOP)
 - Audit
 - Customisation bannière
+- Custom starter
+- Documentation (Spring REST Docs)
 - Programmation Concurrente
   - Asynchrone
   - Réactive (WebFlux)
@@ -33,9 +35,15 @@
 
 ## Developer Tools (`developer-tools`)
 - Génération de Code
+- Hotswap
 - Spring Modulith
+- Spring Shell
 
 ## Integration (`integration`)
+- AI
+  - Langchain4j
+- Blockchain
+- Design Pattern
 - Système de gestion de règles métier (BRMS)
   - Drools
   - Easy Rules
