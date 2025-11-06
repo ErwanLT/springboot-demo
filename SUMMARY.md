@@ -32,6 +32,7 @@
 - Elasticsearch
 - R2DBC
 - Query DSL
+- Multi database
 
 ## Developer Tools (`developer-tools`)
 - Génération de Code
