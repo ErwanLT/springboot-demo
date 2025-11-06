@@ -21,6 +21,7 @@
         <module>elasticsearch-tutorial</module>
         <module>r2dbc-tutorial</module>
         <module>querydsl-tutorial</module>
+        <module>multi-database-tutorial</module>
     </modules>
 
 </project>

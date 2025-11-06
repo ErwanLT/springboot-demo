@@ -93,18 +93,25 @@
 # Sujets non encore traités (Roadmap)
 
 ## Core Concept
+- Spring Native (GraalVM)
+- Gestion de la configuration (Spring Cloud Config)
 
 ## Database Access
 - JPA / Hibernate Avancé
 - MongoDB
+- jOOQ
+- Multi-tenancy
 
 ## Integration
 - Clients REST Déclaratifs (OpenFeign)
+- WebClient
+- Apache Camel
 
 ## Operations
 - Distributed Tracing
 - Dockerisation
 - Configuration de CI/CD
+- Déploiement sur Kubernetes
 
 ## Web Layer
 - CORS
