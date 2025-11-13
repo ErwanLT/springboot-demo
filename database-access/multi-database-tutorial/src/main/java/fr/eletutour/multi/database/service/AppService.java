@@ -25,41 +25,31 @@ public class AppService {
         this.productRepository = productRepository;
     }
 
-    @Transactional("userTransactionManager")
-    public User createUser(User user) {
-        return userRepository.save(user);
-    }
-
-    @Transactional("orderTransactionManager")
-    public Product createProduct(Product product) {
-        return productRepository.save(product);
-    }
-
-    @Transactional("orderTransactionManager")
-    public Order createOrder(Order order) {
-        return orderRepository.save(order);
-    }
-
     /**
-     * Crée un utilisateur dans la base "users_db",
-     * puis un produit et une commande dans la base "orders_db".
-     * Chaque transaction reste indépendante.
+     * Cette méthode exécute une transaction globale sur les deux bases H2.
+     * Si une étape échoue, toutes les opérations sont annulées.
      */
+    @Transactional("chainedTransactionManager")
     public String createUserAndOrder(CreateUserAndOrderRequest request) {
-        // 1️⃣ Création de l'utilisateur dans la base users_db
-        User user = new User(request.getUsername(),
+        // Création de l'utilisateur (users_db)
+        User user = new User(
+                request.getUsername(),
                 request.getFirstName(),
                 request.getLastName(),
-                request.getEmail());
-        User savedUser = createUser(user);
+                request.getEmail()
+        );
+        User savedUser = userRepository.save(user);
 
-        // 2️⃣ Création du produit dans la base orders_db
-        Product product = new Product(request.getProductName(), request.getProductPrice());
-        Product savedProduct = createProduct(product);
+        // Création du produit (orders_db)
+        Product product = new Product(
+                request.getProductName(),
+                request.getProductPrice()
+        );
+        Product savedProduct = productRepository.save(product);
 
-        // 3️⃣ Création de la commande dans la base orders_db
+        // Création de la commande (orders_db)
         Order order = new Order(savedProduct, savedUser.getId());
-        Order savedOrder = createOrder(order);
+        Order savedOrder = orderRepository.save(order);
 
         return String.format("""
                 ✅ Utilisateur '%s' (ID: %d) créé dans users_db.
