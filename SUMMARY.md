@@ -32,6 +32,7 @@
 - Elasticsearch
 - R2DBC
 - Query DSL
+- jOOQ
 - Multi database
 
 ## Developer Tools (`developer-tools`)
@@ -100,7 +101,6 @@
 ## Database Access
 - JPA / Hibernate Avancé
 - MongoDB
-- jOOQ
 - Multi-tenancy
 
 ## Integration
