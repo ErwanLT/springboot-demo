@@ -19,6 +19,7 @@
         <module>cache-tutorial</module>
         <module>database-versioning-tutorial</module>
         <module>elasticsearch-tutorial</module>
+        <module>jooq-tutorial</module>
         <module>r2dbc-tutorial</module>
         <module>querydsl-tutorial</module>
         <module>multi-database-tutorial</module>
