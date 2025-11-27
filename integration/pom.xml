@@ -25,5 +25,7 @@
         <module>blockchain-tutorial</module>
         <module>design-pattern-tutorial</module>
         <module>AI-tutorial</module>
+        <module>qrcode-tutorial</module>
+        <module>dynamic-body-tutorial</module>
     </modules>
 </project>
