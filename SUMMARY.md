@@ -3,7 +3,7 @@
 ## Core Concept (`core-concept`)
 - Actuator
 - Programmation Orientée Aspect (AOP)
-- Audit
+- Audit (JPA)
 - Customisation bannière
 - Custom starter
 - Documentation (Spring REST Docs)
@@ -11,41 +11,62 @@
   - Asynchrone
   - Réactive (WebFlux)
   - Virtual Threads
-- Security
+- Sécurité
   - Basic Auth
   - JWT
-  - RBAC
+  - JWT avec RBAC
   - LDAP
-  - OAuth2
+  - Serveur d'autorisation OAuth2
 - SpEL
 - Validation
 - Gestion centralisée des exceptions
 
 ## Database Access (`database-access`)
-- Cache
-  - in memory
-  - caffeine
-  - redis
-- Database versioning
+- Mise en cache (Caching)
+  - Cache in-memory
+  - Cache avec Caffeine
+  - Cache avec Redis
+- Versioning de base de données
   - Flyway
   - Liquibase
 - Elasticsearch
+  - Indexation et recherche de documents (Spring Data Elasticsearch)
+  - Logging structuré (ECS) avec Logback
+  - Collecte et expédition de logs (Logstash)
 - R2DBC
 - Query DSL
 - jOOQ
-- Multi database
+- Configuration multi-bases de données
 
 ## Developer Tools (`developer-tools`)
-- Génération de Code
+- Génération de code
+  - Génération de client (OpenAPI Codegen)
+  - MapStruct (Mapper Tutorial)
 - Hotswap
 - Spring Modulith
 - Spring Shell
+  - Création d'applications CLI interactives
+  - Définition de commandes (`@ShellMethod`, `@ShellOption`)
+  - Composants d'interface textuelle (TUI) : Tableaux, barres de progression (`ProgressView`)
+  - Gestion de tâches asynchrones (`@Async`)
+  - Contrôle avancé du terminal (ex: mini-jeu Fallout-style)
 
 ## Integration (`integration`)
-- AI
+- Intelligence Artificielle (IA)
   - Langchain4j
+    - Chat et génération de texte
+    - Streaming des réponses
+    - RAG (Retrieval-Augmented Generation) avec des documents locaux
+    - Extraction de données structurées (JSON)
+    - Personnalisation de l'IA (Assistants)
+    - Analyse de sentiment
+    - Intégration d'outils (Tools)
 - Blockchain
-- Design Pattern
+- Design Patterns
+  - Strategy
+  - Factory
+  - AOP (Aspect) pour le logging
+- Gestion de corps de requête dynamiques
 - Système de gestion de règles métier (BRMS)
   - Drools
   - Easy Rules
@@ -54,43 +75,50 @@
   - JMS
   - Kafka
 - Notification
+  - Envoi d'email
+- Génération de QR Code
 - WebSockets
 - gRPC
 
 ## Operations (`operations`)
-- Monitoring
+- Supervision (Monitoring)
   - Prometheus et Grafana
   - Spring Boot Admin
 - Resilience4j
-- Scheduled Tutorial
+  - Circuit Breaker
+  - Retry
+  - Time Limiter
+  - Rate Limiter
+  - Bulkhead
+- Tâches planifiées (Scheduling)
     - Quartz
     - Spring Batch
-- Testing
+- Stratégies de test
   - ArchUnit
   - Chaos Monkey
   - Gatling
-  - Parameterized tests
+  - Tests paramétrés (JUnit 5)
 
 ## Web Layer (`web-layer`)
-- API Versioning
+- Versioning d'API
   - url
   - param
   - header
-- Limitation de Débit (Bucket4J)
+- Limitation de débit (Rate Limiting)
     - Avec un filtre (Filter)
     - Avec l'AOP
     - Dans le contrôleur (Controller)
 - GraphQL
 - HATEOAS
-- Internationalization (i18n)
+- Internationalisation (i18n)
 - Localisation (l10n)
-- Templating
+- Moteurs de templates
   - Jasper
   - Thymeleaf
 - Vaadin
     - Application CRUD
     - Pokédex
-- Gestion de fichier upload / download
+- Gestion d'upload/download de fichiers
 
 # Sujets non encore traités (Roadmap)
 
