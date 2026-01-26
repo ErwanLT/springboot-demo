@@ -20,6 +20,8 @@
 - SpEL
 - Validation
 - Gestion centralisée des exceptions
+  - Exception Handler
+  - ProblemDetail (RFC 9457)
 
 ## Database Access (`database-access`)
 - Mise en cache (Caching)
