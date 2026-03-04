@@ -12,6 +12,7 @@
     <modules>
         <module>kafka-tutorial</module>
         <module>jms-tutorial</module>
+        <module>transactional-outbox-tutorial</module>
     </modules>
 
     <properties>
