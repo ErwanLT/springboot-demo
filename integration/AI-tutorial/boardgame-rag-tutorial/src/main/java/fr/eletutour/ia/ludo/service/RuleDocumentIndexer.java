@@ -20,13 +20,16 @@ public class RuleDocumentIndexer implements CommandLineRunner {
     private final RuleCorpusLoader ruleCorpusLoader;
     private final VectorStore vectorStore;
     private final boolean reindexOnStartup;
+    private final int maxChunkChars;
 
     public RuleDocumentIndexer(RuleCorpusLoader ruleCorpusLoader,
                                VectorStore vectorStore,
-                               @Value("${app.rag.reindex-on-startup:true}") boolean reindexOnStartup) {
+                               @Value("${app.rag.reindex-on-startup:true}") boolean reindexOnStartup,
+                               @Value("${app.rag.max-embedding-chunk-chars:1200}") int maxChunkChars) {
         this.ruleCorpusLoader = ruleCorpusLoader;
         this.vectorStore = vectorStore;
         this.reindexOnStartup = reindexOnStartup;
+        this.maxChunkChars = maxChunkChars;
     }
 
     @Override
@@ -43,27 +46,71 @@ public class RuleDocumentIndexer implements CommandLineRunner {
         }
 
         TokenTextSplitter splitter = TokenTextSplitter.builder()
-                .withChunkSize(500)
-                .withMinChunkSizeChars(150)
-                .withMinChunkLengthToEmbed(80)
-                .withMaxNumChunks(10_000)
+                .withChunkSize(220)
+                .withMinChunkSizeChars(80)
+                .withMinChunkLengthToEmbed(40)
+                .withMaxNumChunks(20_000)
                 .withKeepSeparator(true)
                 .build();
 
         List<Document> chunks = new ArrayList<>();
         for (Document sectionDoc : loadedRules) {
             List<Document> split = splitter.split(sectionDoc);
-            for (int i = 0; i < split.size(); i++) {
-                Document chunk = split.get(i).mutate()
-                        .id(sectionDoc.getMetadata().get("source") + "#"
-                                + sectionDoc.getMetadata().get("section") + "#" + i)
-                        .metadata("chunk", i)
-                        .build();
-                chunks.add(chunk);
+            int chunkIndex = 0;
+            for (Document splitChunk : split) {
+                for (String safeText : splitToMaxChars(splitChunk.getText(), maxChunkChars)) {
+                    Document chunk = new Document(safeText).mutate()
+                            .id(sectionDoc.getMetadata().get("source") + "#"
+                                    + sectionDoc.getMetadata().get("section") + "#" + chunkIndex)
+                            .metadata(sectionDoc.getMetadata())
+                            .metadata("chunk", chunkIndex)
+                            .build();
+                    chunks.add(chunk);
+                    chunkIndex++;
+                }
             }
         }
 
         vectorStore.add(chunks);
         LOGGER.info("Indexed {} chunks from {} rule sections", chunks.size(), loadedRules.size());
+    }
+
+    private List<String> splitToMaxChars(String text, int maxChars) {
+        String normalized = text == null ? "" : text.trim();
+        if (normalized.isEmpty()) {
+            return List.of();
+        }
+        if (normalized.length() <= maxChars) {
+            return List.of(normalized);
+        }
+
+        List<String> parts = new ArrayList<>();
+        int start = 0;
+        int length = normalized.length();
+
+        while (start < length) {
+            int end = Math.min(start + maxChars, length);
+            if (end < length) {
+                int cut = normalized.lastIndexOf('\n', end);
+                if (cut <= start) {
+                    cut = normalized.lastIndexOf(' ', end);
+                }
+                if (cut > start) {
+                    end = cut;
+                }
+            }
+
+            String part = normalized.substring(start, end).trim();
+            if (!part.isEmpty()) {
+                parts.add(part);
+            }
+            start = end;
+
+            while (start < length && Character.isWhitespace(normalized.charAt(start))) {
+                start++;
+            }
+        }
+
+        return parts;
     }
 }

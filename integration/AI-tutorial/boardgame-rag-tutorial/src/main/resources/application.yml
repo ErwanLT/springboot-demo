@@ -15,7 +15,7 @@ spring:
         client:
           host: http://localhost
           port: 8000
-        initialize-schema: true
+        initialize-schema: false
         collection-name: boardgame-rules
         tenant-name: default_tenant
         database-name: default_database
@@ -25,3 +25,4 @@ app:
     reindex-on-startup: true
     retrieval-top-k: 20
     max-context-tokens: 1200
+    max-embedding-chunk-chars: 1200
