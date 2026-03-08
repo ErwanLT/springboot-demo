@@ -11,6 +11,8 @@
     <packaging>pom</packaging>
     <modules>
         <module>langchain4j-tutorial</module>
+        <module>library-tools-tutorial</module>
+        <module>boardgame-rag-tutorial</module>
     </modules>
 
     <artifactId>AI-tutorial</artifactId>
