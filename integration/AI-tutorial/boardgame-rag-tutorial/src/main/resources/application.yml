@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: boardgame-rag-tutorial
+  ai:
+    ollama:
+      base-url: http://localhost:11434
+      chat:
+        options:
+          model: llama3.2
+      embedding:
+        options:
+          model: mxbai-embed-large
+    vectorstore:
+      chroma:
+        client:
+          host: http://localhost
+          port: 8000
+        initialize-schema: true
+        collection-name: boardgame-rules
+        tenant-name: default_tenant
+        database-name: default_database
+
+app:
+  rag:
+    reindex-on-startup: true
+    retrieval-top-k: 20
+    max-context-tokens: 1200
