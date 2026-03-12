@@ -18,6 +18,7 @@
 
     <modules>
         <module>bucket4j-tutorial</module>
+        <module>data-rest-tutorial</module>
         <module>graphql-tutorial</module>
         <module>hateoas-tutorial</module>
         <module>i18n-tutorial</module>
