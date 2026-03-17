@@ -40,3 +40,19 @@ Ce tutoriel est composé de deux applications Spring Boot :
     ```
 
 4.  **Tester l'intégration**: Vous pouvez maintenant appeler les endpoints de `AuthorApplication`, qui à son tour appellera `BookApplication` en utilisant le client Feign généré.
+
+## Choisir le client HTTP (Feign ou HttpExchange)
+
+Par défaut, `AuthorApplication` utilise le client **OpenFeign généré**. Pour basculer sur **HttpExchange** (Spring Framework), changez la propriété suivante :
+
+```properties
+books.client=http-exchange
+```
+
+Les deux clients pointent vers la même URL (paramétrable) :
+
+```properties
+bookManagement.url=http://localhost:8092
+```
+
+Cela vous permet de comparer directement les comportements sans changer le code métier.

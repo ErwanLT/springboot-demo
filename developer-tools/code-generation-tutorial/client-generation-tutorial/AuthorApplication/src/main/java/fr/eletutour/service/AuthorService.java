@@ -1,6 +1,6 @@
 package fr.eletutour.service;
 
-import fr.eletutour.book.consumer.api.BookManagementApi;
+import fr.eletutour.client.BookClient;
 import fr.eletutour.books.consumer.model.Book;
 import fr.eletutour.dao.entity.AuthorEntity;
 import fr.eletutour.dao.repository.AuthorRepository;
@@ -19,12 +19,12 @@ import java.util.stream.Collectors;
 public class AuthorService {
     private static final Logger logger = LoggerFactory.getLogger(AuthorService.class);
     private final AuthorRepository authorRepository;
-    private final BookManagementApi bookManagementApiClient;
+    private final BookClient bookClient;
     private final AuthorMapper authorMapper = AuthorMapper.INSTANCE;
 
-    public AuthorService(AuthorRepository authorRepository, BookManagementApi bookManagementApiClient) {
+    public AuthorService(AuthorRepository authorRepository, BookClient bookClient) {
         this.authorRepository = authorRepository;
-        this.bookManagementApiClient = bookManagementApiClient;
+        this.bookClient = bookClient;
     }
 
     /**
@@ -98,7 +98,7 @@ public class AuthorService {
         for (Book book : books) {
             try {
                 book.setAuthorId(authorId);
-                savedBooks.add(bookManagementApiClient.createBook(book));
+                savedBooks.add(bookClient.createBook(book));
             } catch (Exception e) {
                 logger.warn("Échec de la sauvegarde du livre pour l'auteur {}, titre : {}", authorId, book.getName(), e);
             }
@@ -147,7 +147,7 @@ public class AuthorService {
     private Author enrichAuthorWithBooks(Author author) {
         try {
             logger.debug("Récupération des livres pour l'auteur avec l'ID {}", author.getId());
-            List<Book> books = bookManagementApiClient.getBooksByAuthorId(author.getId());
+            List<Book> books = bookClient.getBooksByAuthorId(author.getId());
             author.setBooks(books);
             logger.debug("Ajout de {} livres à l'auteur avec l'ID {}", books.size(), author.getId());
         } catch (Exception e) {
