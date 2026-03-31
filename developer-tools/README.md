@@ -8,7 +8,7 @@ Chaque sous-module est un projet autonome illustrant une technologie ou une appr
 Explore différentes techniques pour automatiser les tâches répétitives, notamment la génération de clients d'API (OpenAPI) et de mappers (MapStruct).
 
 ### [Spring Modulith](modulith-tutorial)
-Démontre comment structurer une application en "modulithe" avec des frontières de modules claires et vérifiables.
+Démontre comment structurer une application en "modulith" avec des frontières de modules claires et vérifiables.
 
 ### [Spring Shell](spring-shell-tutorial)
 Créez des applications en ligne de commande (CLI) interactives avec Spring Shell.

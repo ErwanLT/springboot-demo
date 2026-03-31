@@ -15,6 +15,12 @@ Tutoriel sur la mise en place de l'audit pour tracer les modifications de vos do
 Découvrez comment customiser la bannière affichée au démarrage de votre application Spring Boot pour y ajouter votre touche personnelle ou des informations utiles.
 [article](https://www.sfeir.dev/back/comment-avoir-une-banniere-spring-personnalisee/)
 
+### [Custom Starter](custom-starter-tutorial)
+Créez un starter Spring Boot personnalisé pour partager de la configuration et des composants réutilisables.
+
+### [Documentation d'API (SpringDoc)](doc-tutorial)
+Générez automatiquement une documentation OpenAPI et une UI Swagger pour vos API REST.
+
 ### [Programmation Concurrente](concurrency-tutorial)
 Découvrez différentes approches pour gérer la concurrence et le parallélisme dans vos applications Spring Boot.
 #### [Programmation Asynchrone](concurrency-tutorial/async-tutorial)

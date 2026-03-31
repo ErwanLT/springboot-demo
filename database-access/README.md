@@ -22,6 +22,12 @@ Découvrez **Liquibase**, une alternative puissante pour le versioning de base d
 ### [Elasticsearch](elasticsearch-tutorial)
 Tutoriel sur l'intégration d'**Elasticsearch** dans une application Spring Boot en utilisant Spring Data Elasticsearch pour l'indexation, la recherche plein texte et l'analyse de données.
 
+### [jOOQ](jooq-tutorial)
+Tutoriel sur l'utilisation de **jOOQ** pour construire des requêtes SQL typées avec Spring Boot.
+
+### [Multi-Database](multi-database-tutorial)
+Tutoriel sur la configuration et l'utilisation de plusieurs sources de données dans une même application.
+
 ### [R2DBC](r2dbc-tutorial)
 Tutoriel sur l'utilisation de R2DBC (Reactive Relational Database Connectivity) avec Spring Data R2DBC pour interagir avec une base de données relationnelle de manière réactive.
 

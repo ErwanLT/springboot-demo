@@ -30,7 +30,7 @@ server.port=8097
 
 # Exemple de configuration pour les notifications Slack (optionnel)
 spring.boot.admin.notify.slack.enabled=true
-spring.boot.admin.notify.slack.webhook-url=https://hooks.slack.com/services/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
+spring.boot.admin.notify.slack.webhook-url=https://hooks.slack.com/services/<workspace>/<channel>/<token>
 spring.boot.admin.notify.slack.channel=notifications
 ```
 

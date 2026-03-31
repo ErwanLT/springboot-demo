@@ -5,6 +5,9 @@ Ce module regroupe les tutoriels sur la couche web des applications Spring Boot.
 ### [API Versioning](api-versioning-tutorial)
 Découvrez différentes stratégies pour versionner vos API REST afin de gérer les évolutions sans casser les clients existants.
 
+### [Spring Data REST](data-rest-tutorial)
+Expose automatiquement vos repositories JPA en API REST sans écrire de contrôleurs.
+
 ### [Limitation de Débit (Rate Limiting) avec Bucket4j](bucket4j-tutorial)
 Tutoriel sur la mise en place de la **limitation de débit (rate limiting)** pour vos API en utilisant la bibliothèque Bucket4j, afin de protéger vos services contre les surcharges.
 #### [Avec un filtre (Filter)](bucket4j-tutorial/filter-tutorial)

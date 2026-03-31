@@ -14,7 +14,7 @@ Tutoriel sur **Spring Boot Actuator**, qui fournit des fonctionnalités prêtes 
 
 ### [Programmation Orientée Aspect (AOP)](core-concept/aspect-tutorial)
 Tutoriel sur la **Programmation Orientée Aspect** avec Spring Boot. Apprenez à séparer les préoccupations transversales (comme la journalisation ou la sécurité) de votre logique métier pour un code plus propre et modulaire.<br>
-[article](www.sfeir.dev/back/spring-aop-comprendre-la-programmation-orientee-aspect-dans-spring/)
+[article](https://www.sfeir.dev/back/spring-aop-comprendre-la-programmation-orientee-aspect-dans-spring/)
 
 ### [Audit](core-concept/audit-tutorial)
 Tutoriel sur la mise en place de l'audit pour tracer les modifications de vos données.
@@ -22,6 +22,12 @@ Tutoriel sur la mise en place de l'audit pour tracer les modifications de vos do
 ### [Customisation bannière](core-concept/banner-tutorial)
 Découvrez comment customiser la bannière affichée au démarrage de votre application Spring Boot pour y ajouter votre touche personnelle ou des informations utiles.<br>
 [article](https://www.sfeir.dev/back/comment-avoir-une-banniere-spring-personnalisee/)
+
+### [Custom Starter](core-concept/custom-starter-tutorial)
+Créez un starter Spring Boot personnalisé pour partager de la configuration et des composants réutilisables.
+
+### [Documentation d'API (SpringDoc)](core-concept/doc-tutorial)
+Générez automatiquement une documentation OpenAPI et une UI Swagger pour vos API REST.
 
 ### [Programmation Concurrente](core-concept/concurrency-tutorial)
 Découvrez différentes approches pour gérer la concurrence et le parallélisme dans vos applications Spring Boot.
@@ -75,6 +81,12 @@ Découvrez **Liquibase**, une alternative puissante pour le versioning de base d
 ### [Elasticsearch](database-access/elasticsearch-tutorial)
 Tutoriel sur l'intégration d'**Elasticsearch** dans une application Spring Boot en utilisant Spring Data Elasticsearch pour l'indexation, la recherche plein texte et l'analyse de données.
 
+### [jOOQ](database-access/jooq-tutorial)
+Tutoriel sur l'utilisation de **jOOQ** pour construire des requêtes SQL typées avec Spring Boot.
+
+### [Multi-Database](database-access/multi-database-tutorial)
+Tutoriel sur la configuration et l'utilisation de plusieurs sources de données dans une même application.
+
 ### [R2DBC](database-access/r2dbc-tutorial)
 Tutoriel sur l'utilisation de R2DBC (Reactive Relational Database Connectivity) avec Spring Data R2DBC pour interagir avec une base de données relationnelle de manière réactive.
 
@@ -85,10 +97,10 @@ Tutoriel sur l'utilisation de QueryDSL pour construire des requêtes SQL de mani
 
 ### [Génération de Code](developer-tools/code-generation-tutorial)
 Explore différentes techniques pour automatiser les tâches répétitives, notamment la génération de clients d'API (OpenAPI) et de mappers (MapStruct).<br>
-[artcile](https://www.sfeir.dev/back/mapstruct-dites-adieu-au-code-repetitif/)
+[article](https://www.sfeir.dev/back/mapstruct-dites-adieu-au-code-repetitif/)
 
 ### [Spring Modulith](developer-tools/modulith-tutorial)
-Démontre comment structurer une application en "modulithe" avec des frontières de modules claires et vérifiables.
+Démontre comment structurer une application en "modulith" avec des frontières de modules claires et vérifiables.
 
 ### [Spring Shell](developer-tools/spring-shell-tutorial)
 Créez des applications en ligne de commande (CLI) interactives avec Spring Shell.
@@ -100,6 +112,12 @@ Apprenez à utiliser le rechargement à chaud (hotswap) avec Spring Boot DevTool
 
 ### [Intelligence Artificielle (IA)](integration/AI-tutorial)
 Tutoriels sur l'intégration de l'**IA** avec Spring Boot, notamment via la bibliothèque **Langchain4j**.
+#### [Langchain4j](integration/AI-tutorial/langchain4j-tutorial)
+Utilisation de Langchain4j avec Spring Boot (API directe et starter Spring Boot).
+#### [RAG Boardgame](integration/AI-tutorial/boardgame-rag-tutorial)
+RAG avec Spring AI, Ollama et Chroma pour interroger des règles de jeu.
+#### [Library Tools](integration/AI-tutorial/library-tools-tutorial)
+Questions/réponses avec Spring AI et base H2 en mémoire.
 
 ### [Système de gestion de règles métier (BRMS)](integration/brms-tutorial)
 Explorez différents moteurs de règles pour externaliser et gérer dynamiquement votre logique métier.
@@ -118,9 +136,14 @@ Découvrez **RuleBook** et son DSL intuitif pour construire des règles métier 
 Tutoriel sur l'intégration de **JMS (Java Message Service)** avec ActiveMQ pour une messagerie asynchrone standard et découplée.
 #### [Kafka](integration/messaging-tutorial/kafka-tutorial)
 Tutoriel sur l'intégration d'**Apache Kafka** pour construire des systèmes de messagerie asynchrones, distribués et réactifs.
+#### [Transactional Outbox](integration/messaging-tutorial/transactional-outbox-tutorial)
+Implémente le pattern Transactional Outbox pour garantir la cohérence entre base de données et publication d'événements.
 
 ### [Notification](integration/notification-tutorial)
 Tutoriel sur l'envoi de notifications (par exemple, email, SMS) depuis une application Spring Boot.
+
+### [Dynamic Body](integration/dynamic-body-tutorial)
+Gérez des payloads JSON polymorphes avec les sealed interfaces et Jackson.
 
 ### [WebSocket](integration/websocket-tutorial)
 Tutoriel sur la création d'une application de chat en temps réel avec Spring Boot et WebSockets pour une communication bidirectionnelle instantanée.
@@ -128,8 +151,14 @@ Tutoriel sur la création d'une application de chat en temps réel avec Spring B
 ### [gRPC](integration/grpc-tutorial)
 Tutoriel sur la création d'un service et client gRPC pour une communication haute performance avec Spring Boot.
 
+### [QR Code](integration/qrcode-tutorial)
+Génération et lecture de QR codes via une API REST.
+
 ### [Blockchain](integration/blockchain-tutorial)
-Tutoriel sur l'intégration avec la blockchain Ethereum en utilisant la librairie Web3j.
+Mini API REST de blockchain simplifiée (BaguetteCoin).
+
+### [Design Pattern](integration/design-pattern-tutorial)
+CRUD de bibliothèque illustrant des patterns (Factory, Builder, Strategy, etc.).
 
 ## Operations (`operations`)
 
@@ -171,6 +200,9 @@ Réalisez des **tests de performance** et de charge sur votre application avec G
 
 ### [API Versioning](web-layer/api-versioning-tutorial)
 Découvrez différentes stratégies pour versionner vos API REST afin de gérer les évolutions sans casser les clients existants.
+
+### [Spring Data REST](web-layer/data-rest-tutorial)
+Expose automatiquement vos repositories JPA en API REST sans écrire de contrôleurs.
 
 ### [Limitation de Débit (Rate Limiting) avec Bucket4j](web-layer/bucket4j-tutorial)
 Tutoriel sur la mise en place de la **limitation de débit (rate limiting)** pour vos API en utilisant la bibliothèque Bucket4j, afin de protéger vos services contre les surcharges.<br>

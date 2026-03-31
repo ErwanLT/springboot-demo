@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Ce projet est un exemple d'application Spring Boot structurée en utilisant [Spring Modulith](https://spring.io/projects/spring-modulith). Il a pour but de démontrer comment construire un "modulithe" : une application monolithique avec des frontières de modules claires et vérifiables.
+Ce projet est un exemple d'application Spring Boot structurée en utilisant [Spring Modulith](https://spring.io/projects/spring-modulith). Il a pour but de démontrer comment construire un "modulith" : une application monolithique avec des frontières de modules claires et vérifiables.
 
 Cette approche combine la simplicité de développement et de déploiement d'un monolithe avec les avantages de la modularité, en s'inspirant fortement des principes du Domain-Driven Design (DDD).
 
