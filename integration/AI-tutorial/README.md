@@ -4,3 +4,6 @@ Ce module contient des projets de démonstration pour l'intégration de diverses
 
 ### [Langchain4j](langchain4j-tutorial)
 Tutoriels sur l'utilisation de la bibliothèque **Langchain4j** pour interagir avec des modèles de langage (LLMs), que ce soit via l'API de base ou l'intégration Spring Boot.
+
+### [MCP](mcp-tutorial)
+Tutoriel sur le **Model Context Protocol (MCP)** avec Spring AI, démontrant l'interaction entre un serveur MCP (exposant des outils) et un client MCP.
