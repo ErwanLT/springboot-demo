@@ -75,7 +75,7 @@ public class BookService implements CrudService<
     private BookResponse toResponse(Book book) {
         return new BookResponse(
                 book.getId(), 
-                book.getTitle(), 
+                book.getTitle().value(), 
                 authorService.toResponse(book.getAuthor())
         );
     }

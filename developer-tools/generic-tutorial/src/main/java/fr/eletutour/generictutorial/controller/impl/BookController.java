@@ -33,17 +33,6 @@ public class BookController extends GenericCrudController<
     }
 
     @Override
-    @Operation(summary = "Get all books")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "List of books retrieved successfully",
-                    content = @Content(mediaType = "application/json",
-                            array = @ArraySchema(schema = @Schema(implementation = BookResponse.class))))
-    })
-    public List<BookResponse> getAll() {
-        return super.getAll();
-    }
-
-    @Override
     protected CrudService<
                 BookResponse,
                 CreateBookRequest,
