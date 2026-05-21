@@ -4,6 +4,7 @@ import fr.eletutour.generictutorial.controller.dto.BookResponse;
 import fr.eletutour.generictutorial.controller.dto.CreateBookRequest;
 import fr.eletutour.generictutorial.controller.dto.UpdateBookRequest;
 import fr.eletutour.generictutorial.domain.Book;
+import fr.eletutour.generictutorial.exception.EntityNotFoundException;
 import fr.eletutour.generictutorial.repository.BookRepository;
 import fr.eletutour.generictutorial.service.CrudService;
 import org.springframework.stereotype.Service;
@@ -18,15 +19,19 @@ public class BookService implements CrudService<
         Long> {
 
     private final BookRepository repository;
+    private final AuthorRepository authorRepository;
+    private final AuthorService authorService;
 
-    public BookService(BookRepository repository) {
+    public BookService(BookRepository repository, AuthorRepository authorRepository, AuthorService authorService) {
         this.repository = repository;
+        this.authorRepository = authorRepository;
+        this.authorService = authorService;
     }
 
     @Override
     public BookResponse getById(Long id) {
         Book book = repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Not found"));
+                .orElseThrow(() -> new EntityNotFoundException("Book with id " + id + " not found"));
 
         return toResponse(book);
     }
@@ -41,7 +46,10 @@ public class BookService implements CrudService<
 
     @Override
     public BookResponse create(CreateBookRequest request) {
-        Book book = new Book(null, request.title());
+        Author author = authorRepository.findById(request.authorId())
+                .orElseThrow(() -> new EntityNotFoundException("Author not found"));
+        
+        Book book = new Book(null, request.title(), author);
 
         Book saved = repository.save(book);
         return toResponse(saved);
@@ -50,7 +58,7 @@ public class BookService implements CrudService<
     @Override
     public BookResponse update(Long id, UpdateBookRequest request) {
         Book book = repository.findById(id)
-                .orElseThrow();
+                .orElseThrow(() -> new EntityNotFoundException("Book with id " + id + " not found"));
 
         book.rename(request.title());
 
@@ -63,6 +71,10 @@ public class BookService implements CrudService<
     }
 
     private BookResponse toResponse(Book book) {
-        return new BookResponse(book.getId(), book.getTitle());
+        return new BookResponse(
+                book.getId(), 
+                book.getTitle(), 
+                authorService.toResponse(book.getAuthor())
+        );
     }
 }
