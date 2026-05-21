@@ -17,6 +17,7 @@
     </properties>
 
     <modules>
+        <module>generic-tutorial</module>
         <module>code-generation-tutorial</module>
         <module>modulith-tutorial</module>
         <module>spring-shell-tutorial</module>
