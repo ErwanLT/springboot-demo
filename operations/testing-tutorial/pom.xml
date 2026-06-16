@@ -12,6 +12,7 @@
         <module>chaos-monkey-tutorial</module>
         <module>gatling-tutorial</module>
         <module>parametrize-test-tutorial</module>
+        <module>properties-test-tutorial</module>
     </modules>
 
     <artifactId>testing-tutorial</artifactId>
