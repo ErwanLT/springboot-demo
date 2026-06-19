@@ -1,5 +1,6 @@
 package fr.eletutour.properties.testing;
 
+import fr.eletutour.properties.testing.tools.ScoreTools;
 import net.jqwik.api.ForAll;
 import net.jqwik.api.Property;
 import net.jqwik.api.PropertyDefaults;

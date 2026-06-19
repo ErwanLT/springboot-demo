@@ -1,4 +1,4 @@
-package fr.eletutour.properties.testing;
+package fr.eletutour.properties.testing.tools;
 
 public class ScoreTools {
 
