@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: openapi-demo
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    groups-order: ASC

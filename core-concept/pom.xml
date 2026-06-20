@@ -28,6 +28,7 @@
         <module>validation-tutorial</module>
         <module>custom-starter-tutorial</module>
         <module>doc-tutorial</module>
+        <module>openapi-tips-tutorial</module>
     </modules>
 
 </project>
